@@ -1,0 +1,1544 @@
+
+
+\chapter{Funciones}{\label{Cap7}}\hypertarget{Cap7}{}
+
+
+\begin{wrapfigure}{l}{0.43\textwidth} 
+	\vspace{-25pt}\begin{center} \includegraphics[width=0.45\textwidth]{../Logos_de_Python/funciones1}
+	\end{center}\vspace{-30.5pt} %\caption{Python 3} 
+\end{wrapfigure}En programación, una función es una porción de código diseñada para realizar una tarea específica y que puede ser invocada (llamada) desde cualquier parte del programa. Permiten organizar el código en bloques más pequeños y facilitan la reutilización del código, ya que puedes llamar a una función las veces que sean necesarias con diferentes argumentos. Además, favorecen  el desarrollo, la lectura y el mantenimiento del código, al encapsular lógica específica en bloques más pequeños y autocontenidos.
+
+Crear una función es algo inevitable en cualquier tipo de aplicación y en cualquier lenguaje de programación.\\
+
+
+En Python, las funciones son una herramienta poderosa y versátil que contribuye significativamente a la flexibilidad del lenguaje. 
+Son estructuras esenciales de código; organizadas en un grupo de instrucciones que constituyen una unidad lógica del programa y resuelven un problema muy concreto.  Una función es un conjunto de líneas de código que realizan una tarea específica, tomando diferentes argumentos previamente definidos como parámetros, que de alguna forma reciben un tratamiento funcional y genera un resultado de salida. 
+Al definir una función los valores de entrada se denominan parámetros, pero durante la llamada o ejecución de la función los 
+valores que toma se denominan argumentos.\\ 
+
+
+
+Las funciones en Python persigue dos objetivos claros: No repetir fragmentos de código en un programa, y reutilizar el código en distintos escenarios.
+
+% 
+
+
+Python trae una serie de funciones que podemos utilizar directamente en nuestras aplicaciones, se conocen como  funciones  \href{https://docs.python.org/es/3/library/functions.html}{\color{vino} integradas de Python}. Algunas de ellas ya la hemos usado en ejemplos anteriores. Por ejemplo, la función {\ttfamily len()}, que obtiene el número de elementos de un objeto contenedor como una lista, una cadena. También hemos usado la función {\ttfamily print()}, que muestra un mensaje de texto por consola. 
+
+Y por supuesto, también  podemos definir nuestras sus propias funciones para estructurar el código de manera que sea más legible y para reutilizar aquellas partes que se repiten a lo largo de una aplicación. Esto es una tarea fundamental a medida que va creciendo el número de líneas de un programa.\\
+
+
+Las funciones reciben parámetros de entrada, llamados argumentos (datos de entrada), que son introducidos por el usuario o por defecto, para  ser procesados y devolver una salida. Siendo estructuras esenciales del código, las funciones permiten definir un bloque de código reutilizable que se puede ejecutar las veces que sea necesario dentro de un programa. Se trata de una estructura que agrupa partes del código creando soluciones modulares para problemas complejos.\\
+
+En Python, la construcción o definición  de funciones se realiza mediante la instrucción {\ttfamily def} seguido del 
+nombre descriptivo de la función con dos paréntesis, que contienen los parámetros requeridos y al final dos puntos (:);  luego en la siguiente línea después de la indentación con 4 espacios el bloque de código de operación o algoritmo. Su  sintaxis general:  
+
+\begin{lstlisting}
+	def nombre_función(parámetros):
+	código  # aquí el algoritmo
+	return 	
+\end{lstlisting}
+
+Toda función debe tener un nombre, argumentos de entrada, un código a ejecutar y parámetros de salida. Al igual que las funciones en matemáticas, en programación podemos realizar varias operaciones diferentes con los datos de  entrada, para devolver un resultado o salida que dependerá del bloque de código especificado. Esta definición es totalmente análogo a las  funciones clásicas en las matemáticas {\ttfamily y = f(x)}:
+
+
+Ilustremos con una función con dos argumentos y su bloque de código la suma de los argumentos, y retorna la suma: 
+
+%\hspace{-2.5cm}{\ttfamily \scriptsize suma.py}\vspace{-0.5cm}
+\begin{lstlisting}
+	In[]:		
+	>>> x, y = 10, 30
+	>>> def f(x,y):
+	t = x+y
+	return t
+	>>> print(f(x,y))
+	40
+\end{lstlisting}
+
+Parámetros de la función son { \ttfamily x, y}, { }los valores 10 y 30 son los argumentos y  salida  {\ttfamily return} como {\ttfamily t}, la suma.\\ 
+% def g(x,y):    
+%    return x+y  
+
+Una función, es la forma de agrupar expresiones y sentencias (algoritmos) que realicen
+determinadas acciones, pero que éstas, solo se ejecuten cuando sean llamadas. Es decir,
+que al colocar un algoritmo dentro de una función, al correr el archivo, el algoritmo no será
+ejecutado si no se ha hecho una referencia a la función que lo contiene.\\
+
+
+Es importante entender que una función puede devolver cualquier tipo de valor que necesite, incluso estructuras de datos más complicados, como listas y diccionarios. 
+
+\section{Cadena de documentación de una función}
+
+En proceso ....
+
+la cadena de documentación de una función...
+
+\subsection{Imprimir cadena de documentación de una función}
+
+Para imprimir la cadena de documentación de una función, se usa la función integrada  de Python  {\ttfamily help()}, y se le pasa el nombre de la función, esta función {\ttfamily help()} devuelve la lista de argumentos junto con cadena de documentación:
+
+\begin{lstlisting}
+	In[]:
+	>>> help(hacer_pizza)
+	Help on function hacer_pizza in module __main__:
+	
+	hacer_pizza(tamaño, *ingredientes)
+	Resume de la pizza que estamos a punto de hacer.
+\end{lstlisting}
+
+Si quiere ver solo la cadena de documentación sin formato, se usa la sintaxis {nombre.\_\!\!\_doc\_\!\!\_}:
+
+\begin{lstlisting}
+	In[]:
+	>>> hacer_pizza.__doc__
+	'Resume de la pizza que estamos a punto de hacer.'
+\end{lstlisting}
+
+Y desde un archivo con la sentencia  {\ttfamily print(nombre.\_\!\!\_doc\_\!\!\_)}.\\
+
+Ese sufijo {\ttfamily \_\!\!\_doc\_\!\!\_} de aspecto extraño es el nombre interno de la cadena de documentación (docstring) dentro de la función. 
+
+
+\section{Función, parámetros y argumentos}
+
+Una función es un fragmento de código con un nombre asociado que realiza una serie de tareas y devuelve un valor.
+La función más sencilla de todas, es una función sin parámetros de entrada ni parámetros de salida:
+
+\begin{lstlisting}
+	>>> def saludo():
+	print("Hola")
+\end{lstlisting}
+
+Hemos definido la función {\ttfamily saludo()}. El siguiente paso es llamarla por su nombre {\ttfamily saludo()}. Si ejecutamos se imprime {\ttfamily Hola}.
+
+\begin{lstlisting}
+	In[]:
+	>>> saludo()
+	Hola
+\end{lstlisting}
+
+Una función es un fragmento de código con un nombre asociado que realiza una serie de tareas y devuelve un valor. A los fragmentos de código que tienen un nombre asociado y no devuelven valores se les suele llamar procedimientos. En Python no existen los procedimientos, ya que cuando el programador no especifica un valor de retorno la función devuelve el valor {\ttfamily None} (nada), equivalente al {\ttfamily null} de Java.
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 
+		A veces la gente habla de argumentos y parámetros indistintamente. No te sorprendas
+		si ve las variables en una definición de función denominada argumentos o el
+		variables en una llamada de función denominadas parámetros.}
+\end{minipage}
+\vspace{0.2cm}
+
+Ahora construyamos una función con argumento de entrada, esta vez le damos un parámetro a la función, el parámetro de entrada es el {\ttfamily nombre}, al hacer el llamado se imprimirá {\ttfamily Hola} con el valor del {\ttfamily nombre}:
+
+\begin{lstlisting}
+	In[]:	
+	>>> def saludo(nombre):
+	print("Hola", nombre)
+\end{lstlisting}
+La función tiene un argumento; así que ejecutamos la función con su argumento, {\ttfamily {}"{}Juan{}"{}}:
+\begin{lstlisting}
+	In[]:
+	>>> saludo("Juan")
+	Hola Juan
+\end{lstlisting}
+
+Este proceso se conoce como pasar argumentos a la función. En la próxima sección exponemos las formas de pasar argumentos a una función.
+
+
+\subsection{Pasar argumentos}
+
+
+Debido a que una función puede tener múltiples parámetros, una llamada de la función puede necesitar múltiples argumentos. 
+Puedes pasar argumentos a tus funciones de muchas maneras, puede utilizar argumentos posicionales, que deben estar
+en el mismo orden en que se escribieron los parámetros; argumentos de palabras clave, donde cada argumento consta de un nombre de variable y un valor; y listas y diccionarios de valores. Veamos cada uno de estos por separado.
+
+\subsubsection{Pasar Argumentos por posición}
+
+Cuando se llama a una función, Python hace coincidir cada argumento en la llamada de la función con cada  parámetro en la definición de la función.  Es la forma básica e intuitiva de pasar argumentos a la función y se basa en el orden en que los argumentos son proporcionados. Los valores emparejados de esta manera se denominan argumentos posicionales. Veamos un primer ejemplo:
+
+\hspace{-2.3cm}{\ttfamily \scriptsize nombres.py}\vspace{-0.5cm}
+\begin{lstlisting}
+	def nombres(primer_nombre, segundo_nombre, apellido):
+	"""Devuelve el nombre completo, con formato de título."""
+	nombre_completo = f"{primer_nombre} {segundo_nombre} {apellido}"
+	return nombre_completo.title()
+\end{lstlisting}\label{arg_opcional}
+
+En este ejemplo se pasan los argumentos en orden, primer nombre, segundo nombre y apellido. Si por 
+algún motivo usa otro orden para pasar los argumentos, Python los ordena en el orden que se
+han definido los argumentos en la función.\vspace{0.08cm}
+
+{\ttfamily\scriptsize \noindent Out[]:\vspace{-0.7cm}	
+	{\color{blue}
+		\begin{verbatim}		 	
+			>>> print(nombres('carlos', 'enrrique', 'Guerrero'))
+			Carlos Guerrero Enrrique	
+		\end{verbatim}
+}}
+
+Observe, se ha hecho un comentario en la función, indicando que hace la función.
+
+Veamos un segundo ejemplo para ejemplificar el proceso de pasar argumentos en otro orden. 
+Consideremos una función que construye un diccionario con registros del personal de una empresa, categorizado de acuerdo al grado de instrucción.  Recibe sus argumentos de entrada posicionales y devuelve el resultado, pero en este caso devuelve un diccionario:
+
+\begin{lstlisting}
+	In[]:
+	>>> def personal(grado1, grado2, grado3):
+	return {'Ingenierio': grado1.title(),'Técnico': grado2.title(),\
+		'Obrero':grado3.title()}
+	
+	>>> personal("carlos","Luisa", "Manuel")
+	{'Ingenierio': 'Carlos', 'Técnico': 'Luisa', 'Obrero': 'Manuel'}
+\end{lstlisting}
+
+Este es una forma natural e intuitiva muy común; sin embargo presenta una desventaja debido al orden que tienen que ingresar las argumentos posicionales, que es necesario recordar el significado de cada posición. Si nos olvidamos y llamamos la función {\ttfamily personal()} con Manuel, Carlos y luisa, los resultados no serán los ideales. El personal se confunde: 
+
+\begin{lstlisting}
+	In[]:	
+	>>> personal('Manuel', 'Carlos', 'luisa')
+	{'Ingenierio': 'Manuel', 'Técnico': 'Carlos', 'Obrero': 'Luisa'}
+\end{lstlisting}
+
+Debe tener claro el orden en que se ingresan los argumentos.
+
+\subsubsection{Pasar Argumentos por palabra-clave}
+
+Para evitar confusión con los argumentos posicionales, puede especificar los argumentos con nombres de
+sus parámetros correspondientes, incluso en un orden diferente al de su definición en el función:
+
+\begin{lstlisting}
+	In[]:	
+	>>> personal(grado2 = "Luisa",  grado3 = "Manuel", grado1 = "carlos")
+	{'Ingenierio': 'Carlos', 'Técnico': 'Luisa', 'Obrero': 'Manuel'}
+\end{lstlisting}
+
+
+Este tipo de procedimiento se conoce como argumento  palabra-clave, es un par nombre-valor que se pasa a una función. 
+Se  asocia directamente el nombre y el valor dentro del argumento, de modo que cuando pasa el argumento a la función, 
+no hay confusión. Los argumentos de palabras clave lo liberan de tener preocuparse por ordenar correctamente sus
+argumentos en la llamada a la función, y aclaran el papel de cada valor en la llamada a la función.
+
+
+\subsubsection{Argumento predeterminados}
+
+Al definir una función, también se puede definir un valor predeterminado para cada parámetro. Si se proporciona un argumento para un parámetro en el llamado de la función, Python usa el valor del argumento; sin embargo, si no se proporciona el argumento, Python utiliza el valor predeterminado del parámetro.  De esta forma, cuando defines un valor predeterminado para un parámetro, puedes excluir el argumento correspondiente que normalmente escribirías en la llamada a la función. 
+
+El uso de valores predeterminados puede simplificar las llamadas de las funciones y aclarar las formas en que se utilizan normalmente.
+Se pueden usar como valores predeterminados  un tipo de datos mutable como lista o diccionario como argumento predeterminado.\\
+
+Ilustramos con el ejemplo anterior, se define el valor determinado para el parámetro {\ttfamily grado3} igual a {\ttfamily Obrero}:
+
+\begin{lstlisting}
+	In[]:
+	>>> def personal(grado1, grado2, grado3 = "Obrero"):
+	return {'Ingenierio': grado1.title(),'Técnico': grado2.title(),\
+		'Obrero':grado3.title()}
+\end{lstlisting}
+
+En este caso, si  al llamar la función no se incluye el valor del parámetro {\ttfamily grado3}, Python usa el valor predeterminado o por defecto:
+\begin{lstlisting}
+	>>> personal("Carlos","Luisa")
+	{'Ingenierio': 'Carlos', 'Técnico': 'Luisa', 'Obrero': 'Obrero'}
+\end{lstlisting}  
+
+En este ejemplo solo pasamos los valores de los primeros dos parámetros, y Python usó el valor predeterminado para el tercer parámetro  {\ttfamily grado3}.
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize Es importante tener pendiente que debe definir los argumentos predeterminados al final, después de los no predeterminados;  Python no permite definir un argumento predeterminado antes de un argumento no predeterminado.  Genera un  {}"{}Error de sintaxis{}"{}:  Python no permite esto porque crea ambigüedad en la llamada a la función.
+		\begin{lstlisting}
+			def personal(grado1="Ingeniero", grado2, grado3):
+			return {'Ingenierio': grado1.title(),
+				'Técnico': grado2.title(),
+				'Obrero':grado3.title()}
+		\end{lstlisting}
+		{\ttfamily\scriptsize\hspace{-0.65cm}{\vspace{-0.6cm}	
+				{\color{blue} 	
+					\begin{verbatim}
+						SyntaxError: non-default argument follows default argument	
+					\end{verbatim}
+		}} }
+		El error ocurre al escribir un argumento no predeterminado después uno o más argumentos predeterminados. Esta situación se puede solucionar escribiendo al final el parámetro predeterminado:
+		\begin{lstlisting}
+			def personal(grado2, grado3,grado1 = "Ingeniero"):
+			return {'Ingenierio': grado1.title(),
+				'Técnico': grado2.title(),
+				'Obrero':grado3.title()}
+		\end{lstlisting}
+	}
+\end{minipage}
+%\vspace{0.2cm}
+
+
+\subsubsection{Argumento opcional}
+
+Algunas veces se necesita que un argumento sea opcional, de modo que las personas que usan la función puedan optar por proporcionar información adicional si quieren. Para estos casos se puede utilizar valores predeterminados para hacer que un argumento sea opcional.
+
+Por ejemplo, supongamos que queremos una función para registrar datos personales como el ejemplo {\ttfamily nombre.py} de la página \pageref{arg_opcional},  pero dejando segundo nombre como opcional. 
+
+El segundo nombre no siempre es necesario, y la función original no funcionaría si intentara llamarla solo con un nombre y un apellido.
+Para que el segundo nombre sea opcional, podemos darle un valor predeterminado como vacío, de esta forma Python ignorar el argumento a menos que el usuario proporcione un valor. 
+
+Configuramos el valor predeterminado para el {\ttfamily segundo\_nombre} en una cadena vacía y lo movemos al final de la
+lista de parámetros, como se muestra a continuación:
+
+
+\hspace{-2.3cm}{\ttfamily\scriptsize nombres.py}
+\vspace{-0.508cm}
+\begin{lstlisting}
+	def nombres(primer_nombre, apellido, segundo_nombre =""):
+	"""Devuelve el nombre completo en formato de título"""
+	if segundo_nombre:
+	nombre_completo = f"{primer_nombre} {segundo_nombre} {apellido}"
+	else:
+	nombre_completo = f"{primer_nombre} {apellido}"
+	return nombre_completo.title()
+\end{lstlisting}
+
+Esta versión modificada funciona para personas con un sólo nombre y un apellido, y también funciona para personas que tienen un segundo nombre.
+
+\begin{lstlisting}
+	In[]:
+	>>> participante = nombres('carlos', 'Guerrero')
+	>>> print(participante)
+	Carlos Guerrero
+	>>> participante = nombres('carlos', 'enrrique', 'Guerrero')
+	>>> print(participante)
+	Carlos Guerrero Enrrique
+\end{lstlisting}
+
+
+Los valores opcionales permiten que las funciones manejen una amplia gama de casos, mientras que la llamada de la función siguen 
+siendo lo más simples posible. En este ejemplo, el nombre se construye a partir de tres partes posibles. Porque
+siempre hay un nombre y apellido, estos parámetros aparecen primero en la lista
+definición de la función. El segundo nombre es opcional, por lo que aparece en último lugar en la lista de 
+definición de parámetros  y su valor predeterminado es una cadena vacía.\\
+
+En el cuerpo de la función, verificamos si se ha incluido el segundo nombre con el condicional {\ttfamily if-else}.
+Python interpreta cadenas vacías como Falsas y las no vacías como verdaderas; por lo que el condicional de prueba {\ttfamily  segundo\_nombre}  se evalúa como {\ttfamily True} si un argumento del segundo nombre está en la llamada de la función. 
+
+Si se proporciona el primero, el segundo nombre y apellido, se combinan para formar el {\ttfamily nombre\_completo}. Este nombre luego se cambia a formato título y se devuelve a la línea del  llamado de la función, donde se asigna a la variable participante y se imprime. Si no se proporciona el segundo nombre, el espacio vacío de la cadena hace que la prueba del if sea Falsa,  ejecutándose el  bloque  del {\ttfamily else}, creando el {\ttfamily nombre\_completo} con un sólo nombre y el apellido, y  devuelve con formato título a la línea de llamada donde se asigna a la variable participante y se imprime.
+
+Llamar a esta función con un nombre y apellido es sencillo. Sin embargo, si estamos usando un segundo nombre, tenemos que asegurarnos que el segundo nombre es el último argumento que se pasará para que Python coincida  correctamente con el método posicional de argumentos.\\
+
+Citamos otro ejemplo, una función con un valor opcional. La función {\ttfamily datos\_personales}, con tres argumentos:  nombre, apellido y edad; esta vez la edad es opcional, con un valor igual a {\ttfamily None}: \\
+
+\hspace{-2.5cm}{\ttfamily \scriptsize datos\_}
+
+\vspace{-0.2cm}
+\hspace{-2.5cm}{\ttfamily \scriptsize opcional.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	def datos_personales(nombre, apellido, edad=None):
+	"""Devuelve un diccionario de información sobre una persona."""
+	persona = {'Nombre': nombre, 'Apellido': apellido}
+	if edad:
+	persona['Edad'] = edad
+	return persona
+\end{lstlisting}	
+
+Aquí se agregó la edad como parámetro opcional, y se le asigna al parámetro edad el valor especial  {\ttfamily None}, que se usa cuando una variable no tiene un valor específico asignado. Las pruebas condicionales con  {\ttfamily None} se evalúa como Falso. Si al llamar la función se incluye un valor para la edad, el condicional se evalúa como {\ttfamily True}, y el valor de la edad se almacena en el diccionario. 
+
+\begin{lstlisting}
+	In[]:
+	>>> print(datos_personales('Luis', 'Cutty'))
+	{'Nombre': 'Luis', 'Apellido': 'Cutty'}
+	
+	>>> print(datos_personales('Luis', 'Cutty', edad=27))
+	{'Nombre': 'Luis', 'Apellido': 'Cutty', 'Edad': 27}
+\end{lstlisting}
+
+Con valores predeterminados se puede agregar cualquier otra información que se desee almacenar sobre una persona.
+
+
+\subsection{Lista como argumento}
+
+Algunas veces resultará útil pasar una lista como argumento de una función, ya sea una lista de nombres, números o tal vez objetos más complejos, como diccionarios. Cuando pasa una lista a una función, la función obtiene acceso directo al contenido de la lista.\\ 
+
+%El uso de funciones  con listas hace el trabajar sea más eficiente.
+
+Supongamos  que tenemos una lista de usuarios y queremos imprimir un saludo para cada uno. 
+En el siguiente ejemplo,  se pasa una lista de nombres como argumento a una función llamada {\ttfamily saludo\_usuario()}, que envía un  saludo a cada persona de la lista de forma individual:
+
+\hspace{-2.3cm}{\ttfamily \scriptsize saludo.py}\vspace{-0.5cm}
+\begin{lstlisting}		
+	def saludo_usuario(nombres):
+	"""Imprime un saludo sencillo a cada usuario en la lista."""
+	for nombre in nombres:
+	msg = f"Hola, {nombre.title()}!"
+	print(msg)
+\end{lstlisting}
+Definimos la función {\ttfamily saludo\_usuario()}, le pasamos la lista de nombres como argumentos de la función. La función recorre la lista que recibe e imprime un saludo para cada usuario:
+% usuarios = ['carlos', 'luis', 'margot']
+\begin{lstlisting}
+	In[]:	
+	>>> saludo_usuario(['carlos', 'luis', 'margot'])
+	Hola, Carlos!
+	Hola, Luis!
+	Hola, Margot!			
+\end{lstlisting}
+
+La salida es el resultado que se quería. Cada usuario ve un saludo personalizado y puede llamar a la 
+función en cualquier momento que desee para saludar a un grupo específico de usuarios.
+
+
+\subsubsection{Pasar un número arbitrario de argumentos}
+% https://ellibrodepython.com/funciones-en-python
+
+En algún momento nos encontraremos con el problema de que no sabemos con seguridad cuántos parámetros  se le debe asignar a una función. Afortunadamente, Python permite que una función recopile una cantidad arbitraria de argumentos en la declaración de llamada.
+
+
+Por ejemplo, considere una función para elaborar una pizza. Y suponga que esta vez se le permite al cliente solicitar los ingredientes que desee; de esta forma, no sabemos de antemano cuántos ingredientes pedirá el cliente. 
+
+En el siguiente ejemplo la función  tiene un parámetro precedido por un asterisco  {\ttfamily*ingredientes},  este parámetro permite 
+recopilar tantos argumentos como se proporcionan en línea de llamada:
+
+%({\ttfamily*}toppings),
+\hspace{-2.2cm}{\ttfamily \scriptsize pizza.py}\vspace{-0.5cm}
+\begin{lstlisting}		
+	def hacer_pizza(*ingredientes):
+	"""Imprimir la lista de ingredientes que se han solicitado."""
+	print(ingredientes)
+	
+	hacer_pizza('peperoni')
+	hacer_pizza('champiñones', 'pimientos verdes', 'queso extra')
+\end{lstlisting}
+
+El asterisco en el nombre del parámetro {\ttfamily* ingredientes}, le indica a Python que cree una tupla llamada ingredientes, 
+que contenga todos los valores que reciba esta función.\vspace{0.07cm}
+
+{\ttfamily\scriptsize \noindent Out[]:\vspace{-0.275cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			('pepperoni',)
+			('champiñones', 'pimientos verdes', 'queso extra')	
+		\end{verbatim}
+}}
+
+La llamada  {\ttfamily print()} en el cuerpo de la función produce 
+una salida que muestra, como Python puede manejar una llamada de la función con un valor, y una llamada con tres valores. 
+En este caso, Python trata las llamadas  de la función para los argumentos diferentes de manera similar. 
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Advertencia}}  %[width=\textwidth]
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize   Si se declara un argumento de una función con un asterisco ({\bf{*}}argumento), Python que crea una tupla de manera automática. Es decir, el argumento que se pase a la función  es empaquetado en una tupla.}
+\end{minipage}
+\vspace{0.2cm}
+
+
+Python empaqueta los argumentos de la función en una tupla, incluso si la función recibe solo un valor, como se observa en la primera linea de salida.\\
+
+
+Agregamos un bucle {\ttfamily for ...in} en  {\ttfamily pizza.py},  que recorra la tupla de ingredientes y describa la pizza que se pide:
+
+\hspace{-2.2cm}{\ttfamily \scriptsize pizza.py}\vspace{-0.5cm}
+\begin{lstlisting}
+	def hacer_pizza(*ingredientes):
+	"""Resume de la pizza que estamos a punto de hacer."""
+	print("\nPreparando una pizza con los siguientes ingredientes:")
+	for ingrediente in ingredientes:
+	print(f"- {ingrediente}")
+	
+	hacer_pizza('peperoni')
+	hacer_pizza('champiñones', 'pimientos verdes', 'queso extra')
+\end{lstlisting}
+{\ttfamily\scriptsize\noindent Out[]:\vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Preparando una pizza con los siguientes ingredientes:
+			- peperoni
+			
+			Preparando una pizza con los siguientes ingredientes:
+			- champiñones
+			- pimientos verdes
+			- queso extra
+		\end{verbatim}
+}}
+
+La función responde apropiadamente, ya sea que reciba uno valor o más valores.
+
+
+Esta sintaxis funciona sin importar cuántos argumentos reciba la función, para un número arbitrario de argumentos.
+
+\subsubsection{Argumentos posicionales y arbitrarios}
+
+Si quiere que una función acepte diferentes tipos de argumentos, debe colocar el parámetro que acepte un número arbitrario de argumentos de al final. Python ubica primero los argumentos con procedimiento posicional y el de palabra-clave,  luego recopila los argumentos restantes en el último parámetro.
+
+Por ejemplo, si la función necesita tomar un tamaño para la pizza, el parámetro debe ir antes del parámetro {\ttfamily*}ingredientes:
+
+\hspace{-2.2cm}{\ttfamily \scriptsize pizza.py}\vspace{-0.5cm}
+\begin{lstlisting}
+	def hacer_pizza(tamaño, *ingredientes):
+	"""Resume de la pizza que estamos a punto de hacer."""
+	print(f"\nHacer una pizza {tamaño.title()} con los siguientes ingredientes:")
+	for ingrediente in ingredientes:
+	print(f" * {ingrediente}")
+	
+	hacer_pizza("pequeña", 'peperoni')
+	hacer_pizza("grande", 'champiñones', 'pimientos verdes', 'queso extra')
+\end{lstlisting}
+
+En la definición de la función, Python asigna el primer valor que recibe al parámetro
+tamaño, y todos los demás valores que vienen después se almacenan en la tupla ingredientes. 
+Las llamadas a la función incluyen primero un argumento para el tamaño, seguido con tantos ingredientes como se indiquen (solicite el cliente). 
+
+Ahora cada pizza tiene un tamaño y una cantidad de ingredientes, y cada pieza de información está impresa en el lugar adecuado, mostrando primero el tamaño y luego los ingredientes:\vspace{0.08cm}
+
+
+{\ttfamily\scriptsize\noindent Out[]:\vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Hacer una pizza Pequeña con los siguientes ingredientes:
+			* peperoni
+			
+			Hacer una pizza Grande con los siguientes ingredientes:
+			* champiñones
+			* pimientos verdes
+			* queso extra	
+		\end{verbatim}
+}}
+
+
+Generalmente el parámetro genérico {\ttfamily *}argumentos, se usa  para recopila un número arbitrarios argumentos posicionales.
+
+\subsubsection{Uso de argumentos arbitrarios palabra-valor}
+
+En algunos problemas se necesitará una cantidad arbitraria de argumentos, pero tal vez no se conozca qué tipo de información se pasará a la función. En este caso, se deben construir funciones que acepten tantos  nombre-valor como se le proporcione en la llamada (valores asociados con un nombre).
+Se puede utilizar dos asteriscos antes del argumento ({\bf{**}}argumento)  para agrupar pares nombre-valor en un diccionario, donde Los nombres  son las claves y sus valores son los valores correspondientes del diccionario.  
+
+Para ilustrar esta situación consideremos un ejemplo donde se  crea un perfiles de usuario, dejando la opción al usuario para ingresar información adicional. Aquí se sabe que obtendrás información sobre un usuario, pero no estás seguro de qué tipo de información recibirás. 
+
+La función {\ttfamily perfil\_usuario()} en el siguiente ejemplo toma como argumento nombre y apellido, y además acepta una cantidad arbitraria de argumentos palabras-clave:
+
+\hspace{-2.3cm}{\ttfamily \scriptsize perfil.py}  \vspace{-0.5cm}
+\begin{lstlisting}
+	def perfil_usuario(nombre,apellido, **información_usuario):
+	"""Diccionario que contiene toda la información sobre un usuario."""
+	información_usuario['Nombre'] = nombre
+	información_usuario['Apellido'] = apellido
+	return información_usuario
+\end{lstlisting}
+Los asteriscos dobles antes del parámetro {\ttfamily **información\_usuario} hacen que Python cree un diccionario. En este caso, se llama {\ttfamily información\_usuario} que es el diccionario generado automáticamente, que contiene todos los 
+pares nombre-valor adicionales que recibe la función del usuario. Dentro de la función se puede acceder a los pares clave-valor en {\ttfamily información\_usuario},  tal como lo haría con cualquier diccionario. En el cuerpo de la función se agrega el nombre y apellido al diccionario  {\ttfamily información\_usuario}, porque siempre se reciben estos dos datos del usuario. Luego devuelve el diccionario  {\ttfamily información\_usuario}.
+\begin{lstlisting}
+	In[]:
+	>>> perfil = perfil_usuario('carlos', 'dávila', ubicación='Mérida',\
+	área = 'Matemática')
+	>>> print(perfil)			
+	{'ubicación': 'Mérida', 'campo': 'Matemática','nombre': 'carlos',
+		'apellido': 'dávila'}	
+\end{lstlisting}
+La definición de la función {\ttfamily perfil\_usuario()} se definen dos parámetros nombre y apellido, y se define también los argumentos arbitrarios palabras-valor; que permite al usuario pasar tantos pares de nombre-valor como desee.
+
+Se llama la función {\ttfamily perfil\_usuario()}, pasándole  nombre 'carlos', apellido 'dávila' y los dos pares nombre valor: ubicación ='Mérida', área = 'Matemática'. %\noindent {\ttfamily ubicación ='Mérida'} y {\ttfamily área = 'Matemática'}. 
+Le asignamos a la variable {\ttfamily perfil} el valor que devuelve la función y se imprime:
+El diccionario devuelto contiene el nombre, apellido del usuario, y además la ubicación y el área de estudio. La función operará sin importar cuántos pares clave-valor adicionales se proporcionen en la llamada a la función.
+
+
+%\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Advertencia}}  %[width=\textwidth]
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize  
+		Si se declara un argumento de una función con dos asteriscos ({\bf{**}}argumento), Python crea un diccionario automáticamente para agrupar argumentos palabras-valor, donde los nombres de los argumentos son las claves y sus valores son los valores correspondientes del diccionario. En este caso podemos iterar los valores haciendo uso del método {\ttfamily items()}.
+		\begin{lstlisting}
+			>>> def kwargs(**argumento):
+			"""Python crea un diccionario  **argumento."""
+			return argumento
+			
+			>>> kwargs(uno = 3, dos = "dos", tres= "tercero")
+			{'uno': 3, 'dos': 'dos', 'tres': 'tercero'}
+			
+			>>> type( kwargs())
+			<class 'dict'>
+		\end{lstlisting}	
+	}
+\end{minipage}
+%\vspace{0.2cm}
+
+
+Puede mezclar argumentos posicionales, arbitrarios y palabras-clave en muchas formas al escribir sus propias funciones. 
+Es importante conocer todos estos tipos de argumentos existen porque los encontrará cuando empieces a leer códigos 
+de otras personas. Se necesita práctica para utilizar los diferentes tipos correctamente, y saber cuándo utilizar cada tipo.
+Por ahora, recuerda usar el enfoque más simple que facilita el trabajo.
+A medida que avances, aprenderás a utilizar más eficientemente cada enfoque.
+
+
+
+\section{Estilos de Funciones}
+
+Debes tener en cuenta algunos detalles al diseñar funciones. Las funciones deben tener nombres descriptivos y estos nombres deben usar letras minúsculas y guiones bajos. Los nombres descriptivos le ayudan a usted y a los demás a comprender el objetivo del código. Los nombres de los módulos también deben usar estas convenciones.
+
+Cada función debe tener un comentario que explique de forma clara y concisa lo que hace. Este comentario debe aparecer inmediatamente después de la definición función y utilizar el formato docstring (cadenas de documentación). Es importante la descripción en la cadena de documentación, para facilitar la comprensión  por otros programadores, de tal forma genere  confianza en que código funciona como se describe; además, el nombre de la función, los argumentos que necesita y el tipo de valor que devuelve, deben estar claramente definidos para facilitar el uso en los programas. 
+
+Si especifica un valor predeterminado para un parámetro, no se deben utilizar espacios a cada lado del signo igual:
+
+\begin{lstlisting}
+	def nombre_función(parámetro_0, parámetro_1='valor_predeterminado')
+\end{lstlisting}
+
+Se debe utilizar la misma convención para los argumentos palabras-clave al llamar función:
+
+\begin{lstlisting}
+	nombre_función(valor_0, parámetro_1='valor')
+\end{lstlisting}
+
+
+La \href{https://www.python.org/dev/peps/pep-0008}{\textcolor{blue}{PEP 8}} recomienda que
+limite las líneas de código a 79 caracteres, para que cada línea sea visible de una manera razonablemente
+en la ventana del editor.
+
+Si un conjunto de parámetros hace que la definición de una función sea mayor a 79 caracteres, presione ENTER después del paréntesis de apertura en la línea de la definición; y en la siguiente línea, separe 8 espacios la lista de argumentos del cuerpo de la función (dos veces tecla TAB si está codificado):
+
+\begin{lstlisting}
+	def nombre_función(
+	parámetro_0, parámetro_1, parámetro_2,
+	parámetro_3, parámetro_4, parámetro_5):
+	cuerpo de funcion
+\end{lstlisting}
+
+La mayoría de los editores alinean automáticamente cualquier línea adicional de argumentos para
+coincide con la sangría que has establecido en la primera línea:
+
+
+Si su programa o módulo tiene más de una función, puede separar
+cada uno por dos líneas en blanco para que sea más fácil ver dónde 
+termina una y dónde comienza la siguiente.
+
+Todas las declaraciones  {\ttfamily import} deben escribirse al principio de un archivo. 
+Debe escribir los comentarios de la función al principio del archivo para describir el programa general.
+
+
+
+
+\section{Almacenar funciones en módulos}
+
+Una ventaja de las funciones es la forma como separan bloques de código del
+programa principal. Cuando utiliza nombres descriptivos para sus funciones, los programas se vuelven mucho más fáciles de seguir. Las funciones se pueden almacenar en un archivos separados llamado módulo y luego se puede importar ese  módulo (archivo) al programa principal. 
+
+Una declaración de importación le dice a Python que el código ese módulo está disponible en el archivo del programa que se está ejecutando actualmente. Al almacenar las funciones en un archivo  le permite ocultar los detalles del código de su programa y concéntrese en la lógica de nivel superior. También le permite reutilizar funciones en muchos programas diferentes. 
+
+Cuando almacene funciones en archivos,  puede compartir esos archivos con otros programadores sin
+tener que compartir todo el programa. Saber importar funciones le permite utilizar las librerías de funciones que otros programadores han escrito.  Hay varias formas de importar un módulo, a continuación las describimos.
+
+\subsection{Importar un módulo completo}
+
+Para comenzar a importar funciones, primero necesitamos crear un módulo. 
+Un módulo es un archivo que termina en {\ttfamily .py}, y que contiene el código que desea importar a su programa. Por ejemplo, 
+vamos a crear un módulo que contenga la función {\ttfamily hacer\_pizza()}. Para crear este módulo, construimos el
+archivo {\ttfamily  modulo\_pizzas.py} que contiene la función {\ttfamily hacer\_pizza()}:
+
+
+\hspace{-2.3cm}{\ttfamily \scriptsize modulo}
+
+\vspace{-0.2cm}
+\hspace{-2.4cm}{\ttfamily \scriptsize \_pizza.py}\vspace{-0.84cm}
+\begin{lstlisting}		
+	def hacer_pizza(tamaño, *ingredientes):
+	"""Resume de la pizza que estamos a punto de hacer."""
+	print(f"\nHacer una pizza {tamaño} con los siguientes ingredientes:")
+	for ingrediente in ingredientes:
+	print(f"- {ingrediente}")
+\end{lstlisting}        
+
+Ya hemos creamos el módulo  {\ttfamily modulo\_pizzas.py}. Ahora creamos el archivo {\ttfamily import\_pizza.py}, en el mismo directorio que se encuentra  {\ttfamily modulo\_pizzas.py}. Este archivo importa el módulo que acabamos de crear, y hace dos llamadas a la función {\ttfamily hacer\_pizzas()}; para llamar una función desde un módulo importado, debe ingresar el nombre del módulo que importó, {\ttfamily modulo\_pizzas}, seguido del nombre de la función, {\ttfamily hacer\_pizza}, separados por un punto: 
+
+
+\hspace{-2.3cm}{\ttfamily \scriptsize import}
+
+\vspace{-0.2cm}
+\hspace{-2.4cm}{\ttfamily \scriptsize \_pizza.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	import modulo_pizza
+	modulo_pizza.hacer_pizza("pequeña", 'pepperoni')
+	modulo\_pizzas.hacer_pizza("grande", 'champiñones',\
+	'pimientos verdes', 'queso extra')	
+\end{lstlisting}Este código produce el mismo resultado que el programa original:
+\vspace{0.08cm}
+
+{\ttfamily\scriptsize\noindent Out[]:\vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Hacer una pizza pequeña con los siguientes ingredientes:
+			- pepperoni
+			
+			Hacer una pizza grande con los siguientes ingredientes:
+			- champiñones
+			- pimientos verdes
+			- queso extra	
+		\end{verbatim}
+}}
+
+
+Cuando Python lee el archivo, la línea {\ttfamily import modulo\_pizza} le dice a Python que abra el archivo {\ttfamily modulo\_pizzas.py} y copie todas sus funciones en este programa. En realidad, no ve el código que se copia entre archivos porque Python copia el 
+código detrás de escena, justo antes de que se ejecute el programa. Todo lo que necesita
+saber es que cualquier función definida en  {\ttfamily modulo\_pizzas.py } ahora estará disponible en {\ttfamily import\_modulo.py}.
+
+
+Este primer método de importación, en el que simplemente escribe {\ttfamily import} seguido del nombre del módulo, hace que todas las funciones del módulo estén disponible en el programa. 
+
+Si utiliza la declaración {\ttfamily import} para importar un módulo completo digamos {\ttfamily module\_name.py}, toda función del módulo está disponible a través de la siguiente sintaxis: {\ttfamily module\_name.function\_name()}
+
+\subsubsection{Importación de funciones específicas}
+
+También puede importar  una sola función específica desde un módulo, mediante la sintaxis:
+
+\begin{lstlisting}
+	from nombre_modulo import nombre_función
+\end{lstlisting}
+
+Además, puedes importar tantas funciones como quieras desde un módulo separando
+el nombre de cada función con una coma:
+
+\begin{lstlisting}
+	from module_name import function_0, function_1, function_2
+\end{lstlisting}
+
+El ejemplo de {\ttfamily import\_pizzas.py} se vería así si queremos importar
+solo la función que vamos a usar:
+
+\begin{lstlisting}
+	from modulo_pizzas import  hacer_pizza
+	
+	hacer_pizza("pequeña", 'peperoni')
+	make_pizza("grande", 'champiñones', 'pimientos verdes', 'queso extra')
+\end{lstlisting}
+
+En esta sintaxis, no necesita utilizar la notación de puntos para importar una
+función. Debido a que hemos importado explícitamente la función {\ttfamily hacer\_pizza()}  en la
+declaración  {\ttfamily import}, podemos llamarla por su nombre cuando usamos la función.
+
+\subsubsection{Usar {\ttfamily as} para darle un alias a la función}
+
+Si el nombre de una función que está importando puede entrar en conflicto con nombre (objeto) existente
+en su programa, o si el nombre de la función es muy largo, puede usar un Alias corto y único: al importar la función, le puede asignar un nombre alternativo similar a un apodo para la función. 
+
+Aquí le damos a la función {\ttfamily hacer\_pizza()} un alias, {\ttfamily hp()}, importando  {\ttfamily hacer\_pizza} como {\ttfamily hp}. La palabra clave {\ttfamily as} cambia el nombre de una función usando el alias que usted proporciona:
+
+\begin{lstlisting}
+	from modulo_pizzas import hacer_pizza as hp
+\end{lstlisting}
+
+La declaración {\ttfamily import} que se muestra aquí cambia el nombre de la función  {\ttfamily hacer\_pizza()}  por {\ttfamily hp()} en este programa. Cada vez que se llame  a la función {\ttfamily hacer\_pizza()} podemos simplemente escribir {\ttfamily hp()} en su lugar, y Python ejecutará el código de {\ttfamily hacer\_pizza()} evitando cualquier confusión con otra función {\ttfamily hacer\_pizza()} que hayas escrito en este archivo de programa.
+
+\begin{lstlisting}
+	hp("pequeña", 'peperoni')
+	hp("grande", 'champiñones', 'pimientos verdes', 'queso extra')
+\end{lstlisting}
+
+La sintaxis general para proporcionar un alias es:
+
+\begin{lstlisting}
+	from nombre_modulo import nombre_funcion as nf	
+\end{lstlisting}
+
+\subsubsection{Usar {\ttfamily as} para darle un alias a un módulo}
+
+También puede proporcionar un alias para el nombre de un módulo. Darle a un módulo un alias corto, como {\ttfamily mp} para {\ttfamily modulo\_pizza.py}, le permite llamar a las funciones del módulo más rápidamente. Llamar a {\ttfamily mp.hacer\_pizza()} es más conciso que llamar a  {\ttfamily modulo\_pizza.hacer\_pizza()}:
+
+\begin{lstlisting}
+	import modulo\_pizza as mp
+	mp.hacer_pizza("pequeña", 'peperoni')
+	mp.hacer_pizza("grande", 'champiñones', 'pimientos verdes', 'queso extra')
+\end{lstlisting}
+
+Al módulo {\ttfamily modulo\_pizza} se le asigna el alias {\ttfamily mp} en la declaración {\ttfamily import}, pero todas las funciones del módulo conservan sus nombres originales. Llamar a la función escribiendo {\ttfamily mp.hacer\_pizza()} no sólo es más conciso que {\ttfamily modulo\_pizza.hacer\_pizza()}, sino que también redirige su atención desde el nombre del módulo y le permite centrarse en los nombres descriptivos de sus funciones. Estos nombres de funciones, que le indican claramente qué hace cada función, son más importantes para la legibilidad de su código que usar el nombre completo del módulo. La sintaxis general de este enfoque es:
+
+\begin{lstlisting}
+	import nombre_módulo as nm
+\end{lstlisting}
+
+\subsubsection{Importar todas las funciones de un módulo}
+
+
+Puedes pedirle a Python que importe todas las funciones de un módulo usando el operador asterisco {\ttfamily (*)}, con la sintaxis:
+
+\begin{lstlisting}
+	from nombre_modulo import *
+\end{lstlisting}
+
+En el caso del modulo {\ttfamily modulo\_pizza} será:
+
+\begin{lstlisting}
+	from modulo_pizza import *
+\end{lstlisting}
+
+El asterisco en la declaración {\ttfamily import} le dice a Python que copie cada función
+desde el módulo {\ttfamily modulo\_pizza} a este archivo de programa. Debido a que cada función es importada, se puede llamar a cada función por su nombre sin usar la notación de puntos. 
+
+\begin{lstlisting}
+	hacer_pizza("pequeña", 'peperoni')
+	hacer_pizza("grande", 'champiñones', 'pimientos verdes', 'queso extra')
+\end{lstlisting}
+
+Sin embargo, es mejor no utilizar este enfoque cuando trabaja con módulos muy grandes que no escribió Usted:
+si el módulo tiene un nombre de función que coincide con un nombre existente en su proyecto, puede obtener resultados inesperados. Python puede ver varias funciones o variables con el mismo nombre, y en lugar de importar todas las funciones por separado, las sobrescribirá. 
+
+El mejor enfoque es importar la función o funciones que necesite, o importar el módulo completo y usar la notación de puntos. Esto conduce a un código claro que es fácil de leer y comprender. 
+
+
+\subsection{Funciones como argumento}
+
+En  Python, todo es un objeto. Esto incluye números, cadenas, tuplas, listas, diccionarios y también funciones. Las funciones son ciudadanos de primera en Python. Puedes asignarlos a variables, usarlos como argumentos para otras funciones, y devolver como funciones. Esto te da la capacidad de hacer algunas cosas en Python que son difíciles o imposibles de realizar en muchos otros lenguajes.
+
+Para probar esto, definamos una función simple llamada  {\ttfamily g\_función()} que no tiene ningún argumento;
+simplemente imprime el número 42:
+
+\begin{lstlisting}
+	In[]:
+	>>> def g_función():
+	print(42)
+\end{lstlisting}Si ejecuta esta función, se sabe el resultado que obtendrá:
+
+\begin{lstlisting}
+	In[]:	
+	>>> g_función()
+	42
+\end{lstlisting}
+Ahora, definamos otra función llamada {\ttfamily f\_función()}, que tiene como argumento {\ttfamily g\_función}, 
+una función cualquiera para ejecutar. Una vez dentro, simplemente se llama a la función.
+
+\begin{lstlisting}
+	In[]:	
+	>>> def f_función(g_función):
+	g_función()
+\end{lstlisting}
+
+Si pasamos el argumento {\ttfamily g\_función()} a la función {\ttfamily f\_función()}, estamos usando una función como valor; es decir, el argumento es una función:
+
+\begin{lstlisting}	
+	In[]:
+	>>> f_función(g_función)
+	42
+\end{lstlisting}
+
+Observe se le pasa {\ttfamily g\_función} {\bf  sin paréntesis}, y no la función con los paréntesis {\ttfamily  g\_función()}. En Python, esos paréntesis significan llamar la función; pero sin paréntesis, Python trata la función como cualquier otro objeto. En Python todo es un objeto:
+
+\begin{lstlisting}
+	In[]:
+	>>> tipo(f_función)
+	<class 'function'>
+\end{lstlisting}
+
+Ahora ejecutamos una función con argumentos. Definamos una función {\ttfamily h\_función()} que imprima
+la suma de sus dos argumentos numéricos, {\ttfamily arg1} y {\ttfamily arg2}:
+
+\begin{lstlisting}
+	In[]:
+	>>> def h_función(arg1, arg2):
+	print(arg1 + arg2)
+\end{lstlisting}
+
+Y verifiquemos el objeto creado {\ttfamily h\_función()}:
+
+\begin{lstlisting}
+	In[]:
+	>>> tipo(h_función())
+	<class 'function'>
+\end{lstlisting}
+
+
+Ahora, definamos una función  {\ttfamily función\_argfun\_2args()} que toma tres
+argumentos: una función como argumento (función a ejecutar), {\ttfamily arg1} y {\ttfamily arg2} el primer argumento y segundo argumento de función.
+
+\begin{lstlisting}
+	In[]:	
+	>>> def función_argfun_2args(función, arg1, arg2):
+	función(arg1, arg2)
+\end{lstlisting}
+
+Cuando se llamas la {\ttfamily  función\_argfun\_2args()}, se le pasa la función como valor de parámetro la función, y los argumentos {\ttfamily arg1} y  {\ttfamily arg1} (lista de argumentos). Luego, la función ejecuta a la función argumento con sus dos valores
+que se indican dentro de los paréntesis ({\ttfamily función(arg1, arg2)}).
+
+Probemos pasando el nombre de la función {\ttfamily h\_función} y los argumentos 5 y 9 a {\ttfamily  función\_argfun\_2args()}:
+
+\begin{lstlisting}
+	In[]:	
+	>>> función_argfun_2args(h_función, 7, 8)
+	15
+\end{lstlisting}
+
+Dentro de la función {\ttfamily  función\_argfun\_2args()}, el nombre de la función {\ttfamily  h\_función} 
+es el valor del argumento,  7  y  8 los valores de  {\ttfamily arg1} y {\ttfamily arg2} respectivamente, al ejecutar se obtiene el valor de 15.\\
+
+Además, se pueden utilizar funciones como elementos de listas, tuplas, conjuntos y diccionarios. Las funciones son
+inmutables, por lo que también puedes usarlas como claves de diccionario. También puede definir una función dentro de otra función (sección \ref{decoradora}). Una función interna puede resultar útil al realizar alguna tarea compleja más de una vez. 
+
+
+\subsection{Función Lambda}
+
+En Python, una función Lambda se refiere a una función pequeña y sin nombre; se conocen como  “funciones anónimas”, debido a que técnicamente carecen de nombre.
+
+Una función normal en Python, se define con la declaración {\ttfamily def} seguida del nombre y los parámetros.  La funciones Lambda simplifica una función en una línea de código; es decir, se definen en una línea que ejecuta una expresión. Este tipo de funciones pueden tomar cualquier número de argumentos, pero solo pueden tener una única expresión.
+
+Para ilustrarlo estas funciones, primero hagamos un ejemplo con una función normal. Consideremos la siguiente función que suma dos números:
+\begin{lstlisting}
+	>>> def suma(x,y):
+	t = x+y
+	return t
+	
+	>>> suma(4,7)
+	11
+\end{lstlisting}
+
+La sintaxis básica de una función lambda es:
+\begin{lstlisting} 
+	lambda argumentos : expresión
+\end{lstlisting}
+En lugar de usar {\ttfamily def} para definir la función, se usa la palabra  clave lambda; a continuación escribimos
+{ \ttfamily x }, {\ttfamily y } como argumentos de la función, y {\ttfamily x + y} como expresión. Además, se omite la palabra clave {\ttfamily return}, condensando aún más la sintaxis.
+
+\begin{lstlisting}
+	>>> suma_l = lambda x,y: x+y
+\end{lstlisting}
+
+\begin{lstlisting}
+	>>> suma_l(4,7)
+	11
+\end{lstlisting}
+
+Al igual que ocurre en las comprensiones, lo que hemos hecho es escribir el código en una sola línea y limpiar la sintaxis innecesaria.\\
+
+Aunque la definición es anónima, si la almacenamos en la variable {\ttfamily suma\_l} se puede llamarla desde cualquier parte del código, de no ser así solo podríamos hacer uso de ella en la línea donde la definamos.
+
+También se pueden usar los diferentes argumentos de funciones como argumentos arbitrarios. Por ejemplo, la siguiente función lambda permite cualquier cantidad de numeros que quieres ingresar como argumento de la función: 
+
+\begin{lstlisting}
+	>>> datos = lambda *arg: sum(arg)
+	>>> datos(4,5,2,0,1)
+	12
+	>>> type(datos)
+	<class 'function'>
+\end{lstlisting}
+
+Las expresiones lambda son usadas para crear funciones anónimas, a veces denominadas formas lambda. La expresión lambda produce un objeto de función ({\ttfamily <{}class {}'{}function{}'{}>{}}). El objeto sin nombre se comporta como un objeto función.
+
+Por último debe tener en cuenta que las expresiones lambda de Python no pueden contener declaraciones, porque el marco sintáctico de Python no puede manejar declaraciones anidadas dentro de expresiones.
+
+
+\section{Generadores}\label{generadorF}
+
+Un generador es un objeto iterable, puedes leer sus elementos uno por uno, pero solo puedes iterarlos una vez, porque no se almacena en memoria la estructura de datos en su totalidad,  los valores se generan sobre la marcha ({}"{}on the fly{}"{}). Cuando se itera sobre un generador, podemos decir coloquialmente que los items "se consumen" .
+Un generador se comporta parecido a una lista, en el sentido que puede ser recorrida con un iterador, la diferencia es que los valores no están almacenados en una colección, sino que se generan "sobre la marcha".
+
+Lo único que un generador almacena en memoria es su estado (por ejemplo variables locales) para poder continuar a partir de ahí si se vuelve a iterar sobre él. En ningún momento almacena los items que va generando, lo que implica que a diferencia de otros iteradores, solo son iterables una vez,y por supuesto no son indizables.\\
+
+
+En Python un generator es un tipo función que en vez de usar expresión {\ttfamily return} para devolver un valor, se usa la expresión {\ttfamily yield}, y la función devolverá un generador. Para entender lo que hace {\ttfamily yield}, debes comprender que cuando se llama a la función, el código que has escrito en el cuerpo de la función no se ejecutá. La función solo devuelve el objeto generador; y luego, el código se ejecutará cada vez que use el generador.
+
+Cuando el intérprete Python encuentra una función que incluye una expresión  {\ttfamily yield} (o varios), entiende que al llamar esta función no obtendremos un valor devuelto con un {\ttfamily return}, sino que obtendremos un generador (generator).
+
+Con un generador se puede iterar potencialmente secuencias enormes sin almacenar la secuencia completa en la memoria. Los generadores suelen ser la fuente de datos de los iteradores. Ya hemos trabajado uno de ellos, el generador {\ttfamily range()} (página \pageref{rango}), en ejemplos de código anteriores para generar una serie de números enteros.
+
+En Python 2, {\ttfamily range()} devuelve una lista, y {\ttfamily xrange()} es un generador; que se convirtió en la función  {\ttfamily range()} en Python 3.\\ 
+
+
+Cada vez que itera a través de un generador, realiza un seguimiento de dónde estaba la última vez
+fue llamado y devuelve el siguiente valor. Esto es diferente de una función normal que no tiene memoria de llamadas anteriores y siempre comienza en su primera línea con el mismo estado.
+Si desea crear una secuencia potencialmente grande y el código es demasiado grande para una 
+comprensión de generador, puede escribir una función generadora.
+
+
+Es una función normal, pero devuelve su valor con declaración  {\ttfamily yield} en lugar de  {\ttfamily return}. La sentencia  
+{\ttfamily yield} es una orden  muy similar a {\ttfamily return}, con una gran diferencia, que {\ttfamily yield} pausará la ejecución de la función y guardará el estado de la misma hasta que decidas usarla de nuevo. Confunde un poco, pero ilustremos con un ejemplo.\\
+
+Construimos una versión nuestra de la función {\ttfamily rango()}:
+\begin{lstlisting}
+	>>> def rango(primero=0, último=11, paso=1):
+	número = primero
+	while número < último:
+	yield número
+	número += paso
+\end{lstlisting}
+
+Es una función normal, pero no devuelve un valor; devuelve un generador. Al evaluarla es un tipo gererator:
+
+\begin{lstlisting}
+	>>> rango()
+	<generator object rango at 0x000001FD18F120A0>
+\end{lstlisting}
+
+Podemos iterar sobre este objeto generador:
+
+\begin{lstlisting}
+	>>> for x in rango(1,4):
+	print(x)
+	1
+	2
+	3
+\end{lstlisting}
+
+
+Citamos una comprensión de generador para este caso, como en la sección \ref{compresionG}:
+(Las tuplas no tiene comprensión, se crea un generador o generator)
+
+\begin{lstlisting}
+	>>> generador = (x**2 for x in range(1,4))
+	>>> for i in generador:
+	print(i)
+	1
+	4
+	9
+\end{lstlisting}
+
+También podemos construir un generador para números pares:
+
+\begin{lstlisting}
+	>>> def par(último=11,primero=0,paso=1):
+	número = primero
+	while número < último:
+	if número%2==0:
+	yield número
+	número += paso
+\end{lstlisting}	
+Y ejecutamos con un {\ttfamily for ... in } para extraer los items en una lista:
+\begin{lstlisting}	
+	>>> lista = []
+	>>> for x in par(9):
+	lista.append(x)
+	
+	>>> print(lista)
+	[0, 2, 4, 6, 8]	
+\end{lstlisting}
+
+Estas funciones son generadores, y están disponibles para ejecutar.
+
+
+
+
+
+\section{Función Decoradora} \label{decoradora}
+%https://www.programaenpython.com/avanzado/decoradores-en-python/
+% https://docs.python.org/es/dev/reference/simple_stmts.html   
+% Definicoines de decklaracione simples 
+
+Un decorador en Python es una función que recibe como argumento otra función, le agrega o la modifica en algo  y devuelve esta nueva función modificada. La modificación no afecta la función original. Son herramientas muy útiles cuando se trata de modificar funciones existentes sin cambiar su código fuente.
+
+Al momento de implementar un decorador se trabaja al menos con tres funciones. La función de entrada (input), la función salida (output) y la función principal. En matemáticas $ f(g)  \to h()  $.
+Este procedimiento suena algo confuso, es un tema avanzado dentro de Python. No obstante, en esta sección dará  una introducción a estas funciones y se  programará algunas funciones decoradoras. 
+
+
+Mediante un ejemplo didáctico podemos ilustrar este procedimiento:  Consideremos la función {\ttfamily f\_funcion()} como la función principal o decoradora;  la función {\ttfamily g\_funcion()}, la función de entrada, la función a decorar; y la función interna {\ttfamily h\_funcion()}, la función a devolver.
+
+En primer lugar, definamos una función a decorar, con documentación: {\ttfamily Función de prueba}, sin argumentos, sólo imprime el mensaje:{\ttfamily g\_funcion() a ser decorada}, y sin {\ttfamily return}:
+
+\begin{lstlisting}
+	def g_funcion():
+	"""Función de prueba"""
+	print(print("*"*3,"g_funcion() a ser decorada","*"*3))
+\end{lstlisting}
+
+Definimos la función decoradora:
+
+
+\hspace{-2.7cm}{\ttfamily \scriptsize funcion\_}
+
+\vspace{-0.2cm}
+\hspace{-2.7cm}{\ttfamily \scriptsize decoradora.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	def f_funcion(g_funcion):    
+	def h_funcion(*args, **kwargs):
+	print("Función a ser decorada:")
+	print("Documetación:",funcion.__doc__)
+	resultado = g_funcion(*args, **kwargs)
+	print("Resultado ",resultado)
+	print("*"*25,"\n")
+	return resultado
+	return h_funcion
+\end{lstlisting}
+
+Esta función recibe la de entrada {\ttfamily g\_funcion()}, la decora mediante la  función interna {\ttfamily h\_funcion()}:  imprime la documentación de la función {\ttfamily g\_funcion()},  procesa la función e imprimme el resultado, y retorna el resultado.  La función decoradora devuelve la {\ttfamily f\_funcion()}.  
+
+
+Como hemos dicho que la función decoradora ({\ttfamily f\_funcion()}) toma una función  {\ttfamily g\_funcion()} como argumento y devuelve otra función  {\ttfamily h\_funcion()}:
+
+\begin{lstlisting}
+	In[]:
+	>>> decorado1 = f_funcion(g_funcion)
+	>>> decorado1()
+	
+	Función a ser decorada:
+	Documetación: Función de prueba
+	*** g_funcion() a ser decorada ***
+	Resultado  None
+	************************* 	
+\end{lstlisting}
+
+
+
+Consideremos otra función para decorar: 
+\begin{lstlisting}
+	In[]:
+	>>> def lista(*args):
+	"""Listas de argumentos"""
+	args
+	lista = list(args)
+	return lista
+\end{lstlisting}
+
+Esta función crea una lista a partir de los argumento. La decoramos:
+
+\begin{lstlisting}
+	In[]:
+	>>> decorado2 = f_funcion(lista)
+	>>> decorado1(3,8,0,-9)
+	Función a ser decorada:
+	Documetación: listas de argumentos
+	Resultado  [3, 8, 0, -9]
+\end{lstlisting}
+
+Todo este procedimiento manual se simplifica con la sintaxis formal para la asignación de una función decoradora:
+
+\begin{lstlisting}
+	@nombre_decorator
+	función_a_decorar	
+\end{lstlisting}
+
+Volvemos al ejemplo ilustrativo:
+
+\begin{lstlisting}
+	In[]:
+	>>> @f_funcion
+	def g_funcion():
+	"""Función de prueba"""
+	print(print("*"*3,"g_funcion() a ser decorada","*"*3))
+\end{lstlisting}
+A ejecutar se obtiene el mismo resultado, anterior:        
+\begin{lstlisting}
+	In[]:
+	>>> g_funcion()
+	Función a ser decorada:
+	Documetación: None
+	*** g() es decorada ***
+	Resultado  None
+	************************* 
+	
+\end{lstlisting}
+
+Probemos con la segunda función:
+
+\begin{lstlisting}
+	In[]:
+	>>> @f_funcion
+	def lista(*args):
+	"""Listas de argumentos"""
+	args
+	lista = list(args)
+	return lista
+	
+	>>>> lista(3,8,0,-9)
+	Función a ser decorada:
+	Documetación: Listas de argumentos
+	Resultado  [3, 8, 0, -9]
+	************************* 
+	
+	[3, 8, 0, -9] 
+\end{lstlisting}
+
+Cualquier función que pases a la función  decoradora, obtendrás una nueva función que incluye las declaraciones adicionales que se agregan en  la función  decoradora. En realidad, un decorador 
+no tiene que ejecutar ningún código de {\ttfamily g\_funcion()}, pero  {\ttfamily f\_funcion()}
+llama a {\ttfamily g\_funcion()} a mitad de camino para que obtener el resultado de {\ttfamily g\_funcion()} así
+como todas  las demás  operaciones extras.\\
+
+
+
+
+Ahora construimos un decorador que recibe una función con argumentos definidos. Para este caso usaremos tipos de argumentos {\ttfamily*args} y {\ttfamily**kwargs}.\\
+
+
+Ilustramos con un ejemplo: Consideremos la función {\ttfamily descripción()}, que define un decorador que hará lo siguiente:  Imprimir el nombre de la función y los valores de sus argumentos. Ejecute la función con los argumentos. Imprimir el resultado de la ejecución  y devuelve la función modificada para  usar:
+
+\hspace{-2.5cm}{\ttfamily \scriptsize descripción.py}  \vspace{-0.5cm}
+\begin{lstlisting}
+	def descripción(func):
+	def nueva_función(*args, **kwargs):
+	print('Función en ejecución:',func.__name__)
+	print('Documetación:',func.__doc__)
+	print('Argumentos posicionales:',args)
+	print('Argumentos en palabra-clave:', kwargs)
+	resultado = func(*args, **kwargs)
+	print('Resultado:', resultado)
+	return resultado
+	return nueva_función
+\end{lstlisting}
+
+
+Definamos una función sencilla con argumento, para ilustrar la aplicación,  por ejemplo la función suma:
+
+\begin{lstlisting}
+	>>> def suma(a, b):
+	return a + b
+\end{lstlisting}
+
+Ahora tenemos todas las funciones para ilustrar la aplicación. Una forma de aplicar esta técnica puede ser la manual, como en el ejemplo anterior {\ttfamily descripción(suma(7,8))}), pero lo ideal y Pythonico es usar el operador {\ttfamily @} seguido del nombre del decorador:
+
+\begin{lstlisting}
+	In[]:
+	>>> @descripción
+	def suma(a, b):
+	return a + b
+	
+	>>> suma(7,8)
+	Función en ejecución: suma
+	Documetación: None
+	Argumentos posicionales: (7, 8)
+	Argumentos en palabra-clave: {}
+	Resultado: 15
+	15
+\end{lstlisting}
+Al ejecutar {\ttfamily suma(7,8)},  la nueva función {\ttfamily suma()}, da el resultado con información extra (la decoración de {\ttfamily suma()}).\\
+
+% pendiente con la impresion con >>> o con la consola
+
+Esta función no tiene argumentos en nombre-valor. Ahora construimos una función {\ttfamily g\_usuarios()} para aplicamos este decorador y visualizar como ingresar los argumentos tipo {\ttfamily**kwargs}:
+
+\begin{lstlisting}
+	In[]:
+	>>> def g_usuarios(x,y,**usuario):
+	"""realizar alguna tarea"""
+	usuario["x"]=x
+	usuario["y"]=y
+	return usuario
+\end{lstlisting}
+
+Decoramos la función  {\ttfamily g\_usuarios()}:
+
+\begin{lstlisting}
+	In[]:
+	>>> @descripción
+	def g_usuarios(x,y,**usuario):
+	"""realizar alguna tarea"""
+	usuario["x"]=x
+	usuario["y"]=y
+	return usuario
+\end{lstlisting}Calculada la decoración de  {\ttfamily g\_prueba()}, ahora usamos esta nueva función decorada: 
+
+\begin{lstlisting}
+	In[]:
+	>>> g_usuarios(7,8,palabra="valor")
+	Función en ejecución: g_usuarios
+	Documetación: realizar alguna tarea
+	Argumentos posicionales: (7, 8)
+	Argumentos en palabra-clave: {'palabra': 'valor'}
+	Resultado: {'palabra': 'valor', 'x': 7, 'y': 8}
+	{'palabra': 'valor', 'x': 7, 'y': 8}
+\end{lstlisting}
+
+En este ejemplo se ilustra los dos tipos de argumentos usados con la función decoradora. Los argumentos posicionales y los palabra-clave; y  el resultado en este caso un diccionario. \\
+
+A una función se le puede aplicar más de un decorador, veamos con un ejemplo; para ello construimos otra función decoradora, llamada {\ttfamily cuadrados()}:
+
+\begin{lstlisting}
+	In[]:
+	>>> def cuadrados(func):
+	def nueva_funcion(*args, **kwargs):
+	resultado = func(*args, **kwargs)
+	return resultado*resultado
+	return nueva_funcion
+\end{lstlisting}
+
+Le aplicamos dos decoraciones a la función {\ttfamily suma()}, {\ttfamily descripción()} y  {\ttfamily cuadrados()}:
+
+\begin{lstlisting}
+	In[]:
+	>>> @cuadrados	
+	@descripción
+	def suma(a, b):
+	return a + b
+\end{lstlisting}
+
+Y evaluamos la función decorada:
+
+\begin{lstlisting}
+	In[]:	
+	>>> suma(2,3)
+	Función en ejecución: suma
+	Documetación: None
+	Argumentos posicionales: (2, 3)
+	Argumentos en palabra-clave: {}
+	Resultado: 5
+	25
+\end{lstlisting}
+
+El operador {\ttfamily @} actúa en orden, primero se ejecuta el decorador que está justo encima la función  y luego
+el que está encima de las dos.  Cualquier orden dará el mismo {\bf resultado final}, pero el proceso respecto a los pasos
+intermedios cambian:
+
+\begin{lstlisting}
+	@descripción
+	@cuadrado
+	def suma(a, b):
+	return a + b
+\end{lstlisting}Aplicamos y ejecutamos:
+
+\begin{lstlisting}
+	In[]:
+	>>>suma(2,3)
+	Función en ejecución: nueva_funcion
+	Documetación: None
+	Argumentos posicionales: (2, 3)
+	Argumentos en palabra-clave: {}
+	Resultado: 25
+	25
+\end{lstlisting}El resultado final es el mismo, en este caso es 25; pero en los pasos intermedios el proceso es diferente, en el primer procedimiento se observe el {\ttfamily Resultado: \!5} y en el segundo  procedimiento  se observa el {\ttfamily Resultado: \!25}.
+
+
+
+\section{Variables globales  y locales}
+% Namespaces and Scope
+
+En Python, las variables esencialmente permiten etiquetar y almacenar datos y objetos. Las variables pueden almacenar  números, cadenas, listas, diccionarios, funciones o cualquier otro tipo de estructura de datos.
+Al definir una variable, le darás un nombre. Luego puede usar ese nombre más adelante en su código para recuperar los datos u objeto que representa.
+
+En Python, hay dos tipos principales de variables: las variables globales y  las variables locales.
+Las variables globales son variables declaradas fuera de una función, estas tienen alcance global. Esto significa que vez declarada la variable global, se puede acceder a ella en cualquier parte del programa, incluso dentro de las funciones. Y la variables locales son las variables declaradas dentro de una función. 
+
+Cuando asigna un nuevo valor a una variable, Python sobrescribe el valor más reciente y lo reemplaza por el nuevo. Por ejemplo: 
+
+\begin{lstlisting}
+	In[]:
+	>>> nombre = "carlos davila"
+	>>> nombre = "Carlos Dávila H"
+\end{lstlisting}En la primera línea de código, asignamos el valor de {\ttfamily {}"{}carlos davila{}"{}} a la variable {\ttfamily nombre}. Luego, en la siguiente línea asignamos el valor {\ttfamily {}"{}Carlos Dávila H{}"{}} a la a la variable {\ttfamily nombre}. 
+
+
+Al imprimimos el valor de la variable global:
+
+\begin{lstlisting}
+	In[]:
+	>>> print(nombre)
+	Carlos Dávila H
+\end{lstlisting}Se obtiene el último valor o el valor actualizado.\\
+
+
+Las variables globales en general se usan para definir valores constantes que se necesitan en todo el programa. Un buen ejemplo de esto podría ser una variable que almacena el número máximo de intentos de inicio de sesión que se permiten antes de bloquear una cuenta. Debido a que esta variable se usará en toda la aplicación, es más fácil mantenerla como una variable global que pasarla como un argumento en todas las funciones que la necesiten.\\
+
+Respecto a las variables locales, declaradas dentro de una función tienen alcance solo dentro de la función. Esto significa que solo se puede acceder a estas variables dentro de la función en la que están declarados. 
+
+Visualicemos  con  a un ejemplo simple el funcionamiento de las variables locales y globales en Python:
+
+Consideramos un archivo {\ttfamily variables.py} conteniendo:
+
+\hspace{-2.6cm}{\ttfamily \scriptsize variables.py}  \vspace{-0.5cm}
+\begin{lstlisting}
+	# Creamos una función, para definir una variable local con el 
+	# mismo nombre de la variable global
+	nombre = "Carlos Dávila H"   # Variable global
+	
+	def saludo():
+	nombre = "María"
+	print(f"Hola {nombre}")
+	
+	saludo()
+	print(f"La variable global es: {nombre}")
+\end{lstlisting}
+
+Al ejecutar el programa, se llama a la función  {\ttfamily saludo()},  y devuelve el valor {\ttfamily  Hola  María}, que es el resultado en la cadena a imprimir con la variable local {\ttfamily nombre}, y que tiene el  valor de {\ttfamily {}"{}María{}"{}} dentro de la función.\vspace{0.08cm}
+
+{\ttfamily\scriptsize\noindent Out[]: \vspace{-0.3cm}	
+	{\color{blue} 
+		\begin{verbatim}
+			Hola María
+			La variable global es: Carlos Dávila H		
+		\end{verbatim}
+}}
+
+Sin embargo, cuando se imprime la variable global {\ttfamily nombre} fuera de la función, su valor es el mismo, es decir {\ttfamily {}"{}Carlos Dávila H{}"{}}. Esto se debe a que la variable local {\ttfamily nombre} dentro de la función no tiene ningún efecto sobre la variable global del mismo nombre. La variable local nombre solo existe dentro de la función y no afecta el valor de la variable global.\\
+
+Para modificar una variable global dentro de una función, debe hacer uso de la sentencia simple de Python {\ttfamily {}"{}global{}"{}}. Ilustremos  con un ejemplo; supongamos que tenemos una variable global llamada {\ttfamily contador} que inicialmente tiene un valor de 0. Y necesitamos crear una función que aumente su valor en 1 cada vez se llame. La función  se puede escribir de la siguiente manera:
+
+\hspace{-2.6cm}{\ttfamily \scriptsize contador.py}\vspace{-0.5cm}	
+\begin{lstlisting}
+	contador = 0
+	def aumentar_contador():
+	contador += 1
+	print(contador)
+	
+	aumentar_contador()
+\end{lstlisting}
+
+En este ejemplo la variable {\ttfamily contador = 0} es una  variable global, y el contador 
+{\ttfamily contador+ = 1} dentro de la función es local. Al ejecutar el programa genera error, debido a que {\ttfamily contador} no esta previamente definido dentro de la función y no hay un conectivo con la variable global {\ttfamily contador = 0},\vspace{0.08cm}
+
+{\ttfamily\scriptsize\noindent Out[]: \vspace{-0.3cm}	
+	{\color{red} 	
+		\begin{verbatim}
+			Traceback (most recent call last):
+			File "C:/Users/IDLE/Variuables locales y globales.py", line 74, in <module>
+			aumentar_contador()
+			File "C:/Users/IDLE/Variuables locales y globales.py", line 71, in aumentar_contador
+			contador += 1
+			UnboundLocalError: cannot access local variable 'contador' where it is not associated with
+			a value		
+		\end{verbatim}
+}}
+
+
+Para resolver este problema se hace uso de la clave {\ttfamily {}"{}global{}"{}}, dentro de la función:
+
+\hspace{-2.6cm}{\ttfamily \scriptsize contador.py}\vspace{-0.5cm}	
+\begin{lstlisting}
+	contador = 0
+	def aumentar_contador():
+	global contador
+	contador += 1
+	print(contador)
+	
+	aumentar_contador()
+	aumentar_contador()
+\end{lstlisting}
+
+De esta forma se le indica a Python que use la variable {\ttfamily global contador}, y así la función modifica   
+la variable contador cada vez que se llame.\vspace{0.08cm}
+
+{\ttfamily\scriptsize \noindent Out[]:\vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			1
+			2			
+		\end{verbatim}
+}}
+Si no se indica  {\ttfamily global} dentro de una función, Python usa  la variable  local. Desaparece una vez que se completa la función.\\
+
+
+En resumen, para modificar una variable global dentro de una función en Python, debemos usar la palabra clave {\ttfamily {}"{}global{}"{}}. Sin embargo, aunque la palabra clave  {\ttfamily {}"{}global{}"{}} nos permite modificar una variable global dentro de una función, no se recomienda su uso en exceso. En su lugar, es mejor pasar la variable como argumento de la función y devolver el resultado.\\
+
+
+% https://elblogpython.com/tutoriales-python/palabra-clave-global-en-python/ 
+
+
+Python incorpora dos funciones {\ttfamily locals()} y {\ttfamily globals()}, para acceder al contenido de variables. Esta información es proporcionada en diccionarios, donde las {\ttfamily claves} son los nombres de las variables y los {\ttfamily valores} son los valores de las variables:
+
+\noindent {\bf locals()}  devuelve un diccionario con las variables locales (namespace).
+
+\noindent {\bf globals()} devuelve un diccionario con las  variables globales (namespace).\\
+
+En el siguiente ejemplo se muestra el uso de las dos funciones:
+
+\begin{lstlisting}
+	>>> def saludo():
+	nombre = "Maria"
+	print(f"Hola {nombre}")
+	print("Variables locales: ", locals())
+	print("\nVariables globales: ",globals())
+\end{lstlisting}
+Al ejecuta se obtiene:
+\begin{lstlisting}
+	>>> saludo()
+	Hola Maria
+	Variables locales: {'nombre': 'Maria'}
+	
+	# formateado para la presentación
+	Variables globales: {'__name__': '__main__', '__doc__': None,
+		'__loader__': <class '_frozen_importlib.BuiltinImporter'>,
+		'__builtins__': <module 'builtins' (built-in)>,
+		'__file__': 'C:/Users/Variables locales y globales.py',
+		'nombre': 'Carlos Dávila H',
+		'saludo': <function saludo at 0x000001F4C066AAC0>,
+		'contador': 2,
+		'aumentar_contador':
+		<function aumentar_contador at 0x000001F4C066AB60>}
+\end{lstlisting}Se observa:  Variables locales dentro de la función  {\ttfamily saludo()}  solo {\ttfamily nombre = {}"{}Maria{}"{}}. Variables globales: {\ttfamily nombre= {}'{}Carlos Dávila H{}'{}} y un número de otras cosas.\\
+
+En general, se recomienda evitar el uso de variables globales en proyectos grandes y complejos. En lugar de ello, se recomienda usar funciones y clases (ver sección \ref{clases}) para encapsular el código y evitar comportamientos inesperados.
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 
+		En resumen, una variable local es aquella que está definida dentro de una función y solo puede ser accedida dentro de esa función. Por otro lado, una variable global es aquella que está definida fuera de una función y puede ser accedida desde cualquier lugar en el código. La única diferencia entre una variable local y una global es su ámbito de acción.
+	}
+\end{minipage}
+\vspace{0.2cm}
+
+
+
+
+
+
+\subsection{El guión bajo  \_\!\!\_  en funciones}
+
+
+Los nombres de variables que comienzan y terminan con dos guiones bajos (\_\!\!\_) están reservados para el uso de Python, por lo que no es recomendable emplearlos para construir sus variables. Este patrón de nomenclatura fue elegido porque parecía poco probable que fuera a ser seleccionado por los desarrolladores de aplicaciones para su propio variables.
+
+Por ejemplo, el nombre cualquier función  es representado por la variable del sistema  {\ttfamily función.\_\!\!\_name\_\!\!\_}, y
+la cadena de documentación de la función por {\ttfamily función.\_\!\!\_doc\_\!\!\_}:
+
+\begin{lstlisting}
+	In[]:
+	>>> def especial():
+	"""Esta es una función especial de prueba.""" 
+	print('Nombre de la función:', especial.__name__)
+	print('Cadena de documentación: ', especial.__doc__)
+	
+	>>> muestra()
+	Nombre de la función: especial
+	Cadena de documentación: Esta es una función especial de prueba.
+\end{lstlisting}
+
+
+Como ve en la impresión de las variables globales en la sección anterior, se observa en el diccionario de salida que al programa principal se le asigna el nombre  especial de {\ttfamily '\_\!\!\_name\_\!\!\_': '\_\!\!\_main\_\!\!\_}.
+
+
+
+
+\section{Resumen}
+Mejorar...
+En este capítulo se enseñó a definir funciones,  pasar argumentos a las funciones para que realicen su trabajo. Se estudio los argumentos posicionales, de nombre-valor, y una cantidad arbitraria de argumentos.  Estudiamos funciones que muestran resultados y funciones que devuelven valores. Aprendiste a usar funciones con listas, diccionarios, sentencias {\ttfamily if} y bucles {\ttfamily while}. 
+También estudio cómo almacenar sus funciones en archivos separados llamados módulos, con el fin facilitar su uso. Finalmente, dan las ideas para  diseñar sus funciones para que sus programas sigan estando bien estructurados y lo más fáciles de leer posible para usted y otros.\\
+
+Uno de tus objetivos como programador debería ser escribir código simple que haga lo que quieres, y las funciones te ayudarán a lograrlo. Le permiten escribir bloques de código y dejarlos en disponibles una vez que funcionen bien. Cuando sabes que una función hace su trabajo correctamente, puedes confiar en que seguirá funcionando y pasará a tu siguiente tarea de codificación.
+
+Las funciones le permiten escribir código una vez y luego reutilizarlo tantas veces como sea necesario. Cuando necesitas ejecutar el código en una función, sólo debe hacer  una llamada de una línea y la función hará su trabajo. Cuando necesita modificar el comportamiento de una función, sólo tiene que modificar un bloque de código y su cambio tendrá efecto en todos los lugares donde haya realizado una llamada a esa función.
+
+El uso de funciones hace que sus programas sean más fáciles de leer; los  nombres  descriptivos de funciones resumen lo que hace cada parte de un programa. Leer una serie de llamadas a funciones le brinda una idea mucho más rápida de lo que hace un programa que leer una larga serie de bloques de código.
+
+Las funciones también hacen que su código sea más fácil de probar y depurar, cuando la mayor parte
+del trabajo de su programa se realiza mediante un conjunto de funciones, cada una de las cuales tiene un
+trabajo específico, es mucho más fácil probar y mantener el código que ha escrito.
+
+Puede escribir un programa separado que llame a cada función y pruebe si cada función funciona en todas las situaciones que pueda encontrar. Cuando tu lo hagas esto, puede estar seguro de que sus funciones funcionarán correctamente cada vez que haga un llamado.  En el Capítulo \ref{Cap9}, se estudiarán un tipo especial llamado clases. Las clases combinan funciones y
+datos en un paquete ordenado que se puede utilizar de manera flexible y eficiente.\\
+
+
+
+En este capítulo se hizo mención de  módulos como archivos para escribir funciones, ahora en el próximo capítulo \ref{Cap8}, se estudiara con mayor detalle los módulos, paquetes y Programas.
+
+
+
+% https://tutorial.recursospython.com/modulos-y-paquetes/
+% https://pythondiario.com/2019/01/modulos-y-paquetes-en-python.html
+% https://docs.python.org/es/3/tutorial/modules.html
+
+% El método del diccionario .get()
+%  https://geekflare.com/es/defaultdict-in-python/      try y except 
+% La sintaxis general para usar el get() el método es dict.get(key,default_value) donde dict es un objeto de diccionario válido en Python. 
+
+
+%\rotatebox[origin=c]{5}{texto siguiente esta rotado 33 grados respecto al centro}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%          Capitulo              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%                 Módulos y la declaración de importación
+

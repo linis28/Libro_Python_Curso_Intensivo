@@ -1,0 +1,706 @@
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Configurando Python  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+\chapter{Configurando Python}\label{Cap2}\hypertarget{Cap2}{}
+
+
+\begin{wrapfigure}{r}{0.51\textwidth} 
+	\vspace{-25pt}	\begin{center} \includegraphics[width=0.5\textwidth]{../Logos_de_Python/configuracionA2}
+	\end{center}\vspace{-30pt} %\caption{Python 3} 
+\end{wrapfigure} El primer paso para trabajar con cualquier lenguaje de programación es configurar las herramientas necesarias para su funcionamiento. La mayoría de los desarrolladores usan un editor de código, como IDLE de Python, Spyder, VS Code o un IDE o una GUI; estas herramientas  autocompletan el código y resaltar los errores de sintaxis. Además, los IDEs y algunos editores de código proporcionan acceso a un amplio conjunto de complementos para mejorar y facilitar el de desarrollo del trabajo.\\
+
+
+
+Es recomendable instalar un editor de texto, el que considere ideal para desarrollar su trabajo en Python. En lo personal recomiendo el IDLE de Python por su sencillez y facilidad al instalar y manipular; sin embargo el distribuidor Anaconda ofrece IDEs y editores como  como Spyder,  Jupyter o  Jupyter Notebook, y VS code para Python y R.  Estos editores reconocen las palabras claves o propias del lenguaje; por ejemplo, reconoce  que   {\ttfamily {print()}}  es el nombre de una función y muestra esa palabra en un color específico,  además  reconoce que   {}"{}¡Hola mundo Python!{}"{   }   no es código Python, y muestra esa frase en un color diferente al de un comando. Esta característica se llama resaltado de sintaxis, y es muy didáctica para entender la estructura del código.\\
+
+
+
+El Shell o Intérprete\footnote{\scriptsize{En informática, el shell o intérprete de órdenes (o comandos) un el programa informático que provee una interfaz de usuario para acceder a los servicios del sistema operativo. Si usas una terminal o una ventana de terminal, el programa que lee lo que Usted escribe y muestra los resultados al ejecutar es llamado programa shell.  El shell de Windows se llama cmd.} } de Python es un entorno o programa en el que podemos ejecutar comandos del lenguaje uno a uno, o fragmentos de código  y sin necesidad de introducirlos dentro de un programa. Se puede escribir una instrucción o  comando y el intérprete da un resultado. También funciona como calculadora, para ejecutar fragmentos o partes de un programa,  como un instrumento para interactuar directamente con bases de datos. 
+
+
+
+En este capítulo, se configurará el entorno de desarrollo integrado para el aprendizaje de Python (IDLE). El mismo se usará para enseñar Python y crear algunas aplicaciones. También se configurará el entorno Visual Studio Code para crear y ejecutar un archivo de Python.  Y al final de este capítulo, tendrá instaladas en su equipo las herramientas necesarias para avanzar en su objetivo de compilar aplicaciones con Python.
+
+
+\section{Configurando su entorno de programación}
+
+Python difiere ligeramente en sistemas operativos diferentes, por lo que debes tener pendientes
+algunas consideraciones al instalar y configurar. En las siguientes secciones se indican los pasos necesarios para 
+configurar Python correctamente en su sistema.
+
+\section*{Versiones de Python}
+
+Cada lenguaje de programación evoluciona a medida que surgen nuevas ideas y tecnologías; los desarrolladores de Python continuamente han hecho que el lenguaje sea más versátil y potente. Para escribir esta guía, se usa la versión  3.11.7 de Python, y todo el contenido se debe ejecutar en ésta versión o posterior. 
+
+%  Si ya tiene un editor de texto instalado y sabe cómo configurarlo para ejecutar programas Python, puedes utilizar ese editor en su lugar.
+
+
+\subsection*{Ejecutar fragmentos de código en la terminal de Windows}\label{terminal}
+
+Puede ejecutar el intérprete de Python (Shell) en la terminal de Window, lo que le permitirá probar
+fragmentos de código Python sin tener que guardar y ejecutar un programa completo.
+A lo largo de este libro, verá fragmentos de código similares a este:
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}\vspace{0.15cm}	
+	{\color{black} 	
+		\begin{verbatim}
+			>>> print("Hola Python interpreter!")
+			¡Hola Python interpreter!		
+		\end{verbatim}
+}}
+Python es un lenguaje de programación multiplataforma, lo que significa que se ejecuta en
+los principales sistemas operativos. Cualquier programa Python que escribas debería ejecutarse
+en cualquier computadora moderna que tenga Python instalado. Sin embargo, los métodos
+para configurar Python varían ligeramente  en los diferentes sistemas operativos.
+
+\subsection{Configurar Python en su sistema}
+
+En esta sección, se enseña cómo configurar Python en su sistema operativo.
+
+Primero debe verificar si hay una versión reciente de Python instalada en su sistema, en caso de no tener un versión reciente 
+es recomendable actualizarla. Luego descarga e instalarás el IDLE o VS Code. Estos son los únicos dos pasos que son diferentes para cada sistema operativo.
+
+
+Se darán las instrucciones necesarias para este proceso en  cada  sistema operativo, por lo que al final tendrá un entorno de 
+programación para Python confiable.
+
+\subsection{Python en Windows}
+
+% Tipo de programa	Shell  
+
+%
+
+Windows por ahora no viene con Python, por lo que probablemente necesitarás descargarlo e
+instalarlo (luego descarge e instale el IDLE o el VS code).
+
+\subsection{Instalación de Python}\label{instalarPY} 
+
+Primero, verifique si Python está instalado en su sistema. Abre el cmd\footnote{\scriptsize{El Símbolo del sistema de Windows (en inglés: 'Command Prompt', también conocido como cmd.exe o simplemente cmd) es el intérprete de comandos en OS/2 y sistemas basados en Windows NT (incluyendo Windows 2000, Windows XP, Windows Server 2003, Windows Vista, Windows 7, Windows 8, Windows 8.1, Windows 10 y Windows 11).}} (Command Prompt) de window. En la  terminal de Windows, ingrese el comando {\bf{python}} en minúsculas,  y ejecuta (haciendo clic). Si obtienes un  mensaje de Python ({\bf{\tiny $>$\!\! $>$\!\! $>$}}) en respuesta, Python está instalado en su sistema. 
+Si usted ve un mensaje de error que le indica que  {\bf{python}}  no es un comando reconocido,  o si se abre la tienda de Microsoft y Python no está instalado, cierre; y proceda a descargar un instalador oficial que usar la versión de Microsoft.\\
+
+
+
+Si Python no está instalado en su sistema, o si tiene una versión anterior a Python 3.9, es necesario descargar  Python para
+window con una versión actualizada. Valla a la web oficial \href{https://www.python.org}{\color{vino} {\ttfamily \scriptsize https://python.org} }
+y seleccione en el enlace 
+\href{https://www.python.org/downloads/}{\color{vino}Descargas}, debe aparecer un botón para descargar la última versión de Python compatible con su sistema. Haga clic en ese botón, debe comenzar a descargar automáticamente del archivo correcto.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.30]{../Logos_de_Python/Instalando_PY}
+	\caption[Instalando Python en Window]{Instalando Python 3.11 en Window.}
+	\label{Instalando_Py}
+\end{figure} 
+
+Después de haber descargado el archivo, debe ejecutar el instalador (figura \ref{Instalando_Py}). Asegúrese de seleccionar la opción Agregar Python a ruta (PATH), que  facilitará la configuración correcta de su sistema.
+
+
+
+%  Sin ubicación. En las secciones siguientes, ejecutará el archivo.py  y  solucionará los problemas en cualquier caso que no funcione.
+
+
+\subsection{Python en una sesión de terminal (cmd)}
+
+Para ejecutar Python en una sesión de terminal (cmd), se abre la cmd y se ingresa el comando {\bf{python}} en minúsculas (figura \ref{cmd}):
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.275]{../Logos_de_Python/cmd}
+	\caption[Python en una sesión de terminal]{Python en la terminal de Windows}
+	\label{cmd}
+\end{figure}
+
+Debe aparecer un mensaje de Python ({\bf{\tiny $>$\!\! $>$\!\! $>$}}):
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}\vspace{-0.17cm}	
+	{\color{black} 	
+		\begin{verbatim}
+			C:\Users\Linis>python
+			Python 3.11.7  (main, Mar  1 2023, 18:18:15) [MSC v.1916 64 bit (AMD64)] on win32
+			Type "help", "copyright", "credits" or "license" for more information.
+			>>>
+		\end{verbatim}
+}}
+\vspace{-0.17cm}\noindent lo que significa que Windows ha encontrado la versión de Python que acaba de instalar.\\
+
+
+% NOTA: Si no ve este resultado o algo similar, consulte las instrucciones de configuración más detalladas en el Apéndice A.\\
+
+Ahora probamos con un fragmento de código: ingrese la siguiente línea en su sesión de Python:
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}\vspace{-0.17cm}	
+	{\color{black} 	
+		\begin{verbatim}
+			>>> print("¡Hola intérprete de Python!")
+			¡Hola intérprete de Python!
+			>>> 
+		\end{verbatim}
+}}
+\vspace{-0.17cm}\noindent 
+Deberías ver el resultado:  ¡Hola intérprete de Python!. \\
+
+Cada vez que desee ejecutar un fragmento de código Python en cmd, debe abrir  el Command Prompt e 
+iniciar una sesión de terminal Python.  Para cerrar la sesión terminal de Python, presione CTRL-Z y luego presione ENTER, o ingrese el comando exit().
+
+% manual   https://www.mclibre.org/consultar/python/otros/python-idle.html
+
+\subsection{Python en Windows con IDLE}
+
+En Windows, IDLE se distribuye junto con el intérprete de Python, es decir, al instalar Python en Windows también se instala IDLE.
+
+Para usar el programa, debe ir al directorio donde se instaló el programa (Python/IDLE) y usar IDLE. Otra opción es buscar con Windows (LUPA en barra de tareas) y escribir IDLE, se mostrará el programa: 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.275]{../Logos_de_Python/IDLE_2}
+	\caption[Integrated DeveLopment Environment for Python]{Buscar IDLE en Windows}
+	\label{IDLE_2}
+\end{figure}
+
+
+
+Para ejecutarlo basta con hacer clic  una vez en IDLE(Python 3.11), y aparece una ventana como esta:
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.35]{../Logos_de_Python/Python3}
+	\caption[Integrated DeveLopment Environment for Python]{IDLE(Python 3.11)}
+	\label{Python3}
+\end{figure}
+\noindent Los tres símbolos {\bf{\tiny $>$\!\! $>$\!\! $>$}} son el prompt del Shell o el símbolo que nos indica que podemos empezar
+a escribir órdenes o comandos. Por ejemplo la orden básica:
+% https://xn--jesusnuez-r6a.com/wp-content/uploads/Introducci%C3%B3n-al-Shell-de-Python.pdf
+\begin{lstlisting}
+	>>> print("¡Hola mundo Python!")
+\end{lstlisting}al ejecutar dando Enter, se imprime en pantalla  (figura \ref{Python3}) el mensaje que se le indica:
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			¡Hola mundo Python!		
+		\end{verbatim}
+}}\vspace{-0.1cm}
+
+IDLE tiene dos tipos de ventana principales (figura \ref{Python3}), la ventana del shell y la ventana del editor. Es posible tener múltiples ventanas de edición simultáneamente. En Windows y Linux, cada una tiene su propio menú principal. Cada menú documentado indica con cuál tipo de ventana está asociada. 
+
+El menú de archivo (Shell y Editor),  menú  editar (Shell y Editor), menú de formato (solo ventana del Editor), menú ejecutar (solo ventana Editor), menú de shell (solo ventana de shell), menú de depuración (solo ventana de shell), menú de ventana (shell y editor), Menú de ayuda (shell y editor). Puede consultar un \href{https://www.mclibre.org/consultar/python/otros/python-idle.html}{\color{vino}  manual} en la Web  o visitar la página oficial de Python  \href{https://docs.python.org/es/3/library/idle.html}{\color{vino}  {\ttfamily \scriptsize https://docs.python.org/es/3/library/idle.html}}  para mayor detalles.\\
+
+
+
+Colores en los programas\\
+
+
+Tanto en el entorno interactivo como al editar un programa, IDLE colorea el texto de acuerdo con su sintaxis. Los colores ayudan a identificar los distintos tipos de elementos y a localizar errores:
+
+Las palabras reservadas de Python (las que forman parte del lenguaje) se muestran en color naranja.
+Las cadenas de texto se muestran en verde.
+Las funciones se muestran en púrpura.
+Los resultados de las órdenes se escriben en azul.
+Los mensajes de error se muestran en rojo. \\
+
+\subsubsection{IDLE como editor de programas Python}
+
+La ventana principal de IDLE es un entorno interactivo de Python, el Shell de Python en la que se pueden escribir órdenes de Python a la derecha del símbolo de petición (en inglés, prompt {\bf{\tiny $>$\!\! $>$\!\! $>$}}). Al pulsar Enter, el IDLE ejecutará la orden inmediatamente. Si la orden produce algún resultado, éste se mostrará en color azul sin el símbolo {\bf{\tiny $>$\!\! $>$\!\! $>$}} (figura \ref{Python3}); al terminar de ejecutar la orden, IDLE vuelve a mostrar el símbolo de prompt ({\bf{\tiny $>$\!\! $>$\!\! $>$}}), en espera de una nueva orden.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.45]{../Logos_de_Python/archivoPy}
+	\caption[IDLE un editor de programas]{IDLE es también un editor de programas}
+	\label{archivoPy}
+\end{figure}
+
+El Shell es muy sencillo y fácil para ejecutar fragmentaros de código; pero además, la ventana del editor (figura \ref{archivoPy}) también  permite redactar programas y guardarlos como archivos .py,  y ejecutarlos; el resultado se muestra en el Shell en color azul sin el símbolo {\bf{\tiny $>$\!\! $>$\!\! $>$}} (figura \ref{IDLE_shell}):
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.45]{../Logos_de_Python/IDLE_shell}
+	\caption[Shell de Python]{Resultado en el Shell de ejecutar un archivo .py}
+	\label{IDLE_shell}
+\end{figure}
+
+
+En este texto o manual de Python se usa IDLE para ejecutar fragmentos y algunos programas, por su facilidad y sencillez de la aplicación; en lo personal en cursos para principiantes recomiendo esta herramienta por considerarla muy didáctica para logar el objetivo de enseñar, sin perder tiempo en explorar otros IDEs. No obstantes,  debe conocer otros IDEs a medida que avance en el aprendizaje. 
+
+
+
+\subsection{Python en Windows con Visual Studio Code}
+
+En ésta sección aprenderás a  configurará el entorno de desarrollo Visual Studio Code para Python; y se enseñará a usarlo para crear y ejecutar un archivo de Python. Este entorno también se puede usar  para enseñar  Python y crear muchas aplicaciones; sin embargo, me parece más apto y fácil para principiantes iniciar con IDLE. \\
+
+Al final de este capítulo tendrá las herramientas necesarias para instalar en su equipo con VS Code o IDLE, y avanzar en su objetivo de compilar aplicaciones con Python.\\
+
+
+%  	https://es.wikipedia.org/wiki/Visual_Studio_Code
+%	https://code.visualstudio.com/
+%	https://visualstudio.microsoft.com/es/
+
+
+
+
+
+
+
+
+
+Windows por ahora no viene con Python, por lo que probablemente necesitarás descargarlo e
+instalarlo; en la sección \ref{instalarPY} se describe como descargar e instalar Python en Windows (luego descargue  e instale VS Code).\\
+
+A  continuación se describe como descargar e instalar VS Code, y algunas configuraciones específicas.
+
+\subsection*{Instalación de Visual Studio Code}
+
+Puede descargar un instalador de \href{https://code.visualstudio.com}{\color{vino} VS Code} en {\ttfamily \scriptsize  https://code.visualstudio.com},  dando clic en el botón   \href{https://code.visualstudio.com/docs/?dv=win64user}{\color{vino} Descargar para Windows}, ejecute el instalador. Ahora continuamos la configuración de VS Code para Python.
+
+
+\subsubsection{Ejecución de un programa .py}
+
+Con una versión reciente de Python y VS Code instalada, ya casi estás listo para ejecutar el primer programa 
+Python escrito en un editor de texto. Pero antes debe instalar la extensión Python para VS Code.
+
+\subsubsection{Instalación de la extensión Python para VS Code}
+
+VS Code funciona con muchos lenguajes de programación diferentes; para  trabajar como programador de Python, necesitará instalar una 
+extensión Python. Esta extensión agrega soporte para escribir, editar y ejecutar Programas Python.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.35]{../Logos_de_Python/VSCode}
+	\caption[Visual Studio Code]{Visual Studio Code}
+	\label{VSCode}
+\end{figure}
+Para instalar la extensión Python, haga clic en el icono Administrar, que parece
+como un engranaje en la esquina inferior izquierda de la aplicación VS Code (óvalo rojo en la figura \ref{VSCode}).
+
+En el menú que aparece, haga clic en Extensiones. Ingrese Python en el cuadro de búsqueda y haga clic en
+Extensión de Python. Si ve más de una extensión llamada Python, elija el suministrado por Microsoft (óvalo verde en figura \ref{VSCode}). 
+Haga clic en Instalar e instale cualquier herramientas  adicional que su sistema necesita para completar la instalación.
+Si tú ves un mensaje que necesita instalar Python, y ya lo ha tiene, puede ignorarlo.
+
+
+\subsubsection*{Ejecutando un archivo .py} 
+
+Antes de escribir su primer programa Python en  VS Code, cree una carpeta llamada {\ttfamily  VScode\_trabajo} en su escritorio para sus proyectos. Se recomienda usar letras minúsculas y guiones bajos para los espacios en los nombres de archivos y carpetas, porque Python usa estas convenciones de nomenclatura. Puede crear esta carpeta en otro lugar que no sea el escritorio, pero será más fácil seguir algunos pasos posteriores si guarda la carpeta {\ttfamily VScode\_trabajo} directamente en su escritorio.
+
+Abra VS Code (cierre la pestaña de inicio aún está abierta), y cree un archivo  haciendo clic en Archivo Nuevo. Guarde el archivo como  {\ttfamily  mi\_programa.py}, en la carpeta {\ttfamily  VScode\_trabajo}, este es su primer archivo .py.  La extensión .py le dice a VS Code que su archivo está escrito en Python y le indica cómo ejecutar el programa y resaltar el texto de una manera útil.
+
+Después de guardar el archivo, escriba en la siguiente línea del editor la siguiente instrucción:  {\ttfamily print("¡Hola mundo Python!")}.
+
+Para ejecutar el programa, seleccione {\ttfamily Run} sin depurar (figura \ref{VSCode2}).
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.35]{../Logos_de_Python/VSCode2}
+	\caption[Ejecutando mi primer programa Python]{Ejecutando mi primer programa Python}
+	\label{VSCode2}
+\end{figure}
+
+Debe aparecer una pantalla de terminal en la parte inferior de la ventana de VS Code, mostrando el resultado de su programa: {\ttfamily ¡Hola mundo Python!}.\\
+
+Probablemente verá algún resultado adicional que muestre el intérprete de Python que se utilizó para ejecutar su programa. Si desea simplificar la información que se muestra para que solo  aparezca el resultado de su programa puede ver la sección \ref{Simplif}. \\
+
+
+
+
+\subsubsection*{Problemas}
+
+
+
+Si no ve este resultado, es posible que algo haya salido mal en el programa. Verifique cada carácter en la línea que ingresó. Los lenguajes de programación esperan una sintaxis muy específica y, si no la proporciona, obtendrá errores. 
+
+
+Si no puede ejecutar {\ttfamily mi\_programa.py}, aquí hay algunos sugerencias  que puede probar, y además sirven para solucionar cualquier problema de programación:
+
+Cuando un programa contiene un error importante, Python muestra un rastreo, que es un informe de error. Python revisa el archivo e intenta identificar el problema. Verifique el rastreo; podría darle una pista sobre qué problema impide que se ejecute el programa.
+
+
+\subsubsection*{Solicite ayuda en línea de la comunidad Python}
+
+No se preocupe si está molestando a programadores experimentados. Cada  programador se ha quedado atascado en algún momento, y la mayoría de los programadores están y estaremos encantados de ayudarle a configurar su sistema correctamente. 
+
+Mientras puedas describir claramente lo que estás intentando hacer, lo que ya has intentado y los resultados
+estás recibiendo, es muy probable que alguien pueda ayudarte. Como se mencionó en la introducción, la comunidad Python es muy amigable y
+da la bienvenida a los principiantes.
+
+Python debería funcionar bien en cualquier computadora moderna.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+Una vez que corra el programa {\ttfamily\scriptsize  mi\_programa.py}, ya puedes comenzar su aprendizaje con Python en VS Code.  
+
+\subsubsection{Ejecutar programas .py desde una terminal cualquiera}
+
+Ejecutarás la mayoría de tus programas directamente en tu editor de texto. Sin embargo, a veces es útil 
+ejecutar programas desde una terminal, como la terminal de VS Code o Windows. Por ejemplo, es posible que necesite  ejecutar un programa existente sin editarlo. 
+Puedes hacer esto en cualquier sistema con Python instalado, si sabes cómo para acceder al directorio 
+donde está almacenado el archivo del programa.  Para probar esta situación, asegúrate de haber guardado el archivo {\ttfamily  mi\_programa.py} en la carpeta {\ttfamily  VScode\_trabajo} de tu escritorio.
+
+
+\subsubsection{En Windows}
+
+Describiremos como ejecutar en la terminal de Windows, pero es la misma situación en la terminal de VS Code. 
+
+Debe abrir una nueva ventana de terminal {\bf cmd} para navegar a la carpeta {\ttfamily VScode\_trabajo}  y  ejecutar el archivo {\ttfamily {Mi\_programa.py}}, a través de comandos.   
+
+
+Primero, use el comando {\bf {cd }} para ir a la carpeta {\ttfamily VScode\_trabajo}, que se encuentra en la carpeta {\ttfamily Escritorio}. El comando {\bf {dir}} (directorio), le muestra todos los archivos que existen en el directorio actual. Ahora  use el comando {\bf {dir}} (directorio) para verificar que el archivo {\ttfamily  mi\_programa1.py} está en la carpeta actual. Luego escriba la instrucción\label{pagi11}  {\ttfamily python  mi\_programa1.py}  en la terminal y ejecute (Enter):
+%  C:\> cd ..   baja un nivel de carpeta
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}\vspace{-0.1cm}	
+	{\color{black} 	
+		\begin{verbatim}
+			C:\>cd Users\Escritorio\VScode_trabajo
+			C:\Users\Escritorio\VScode_trabajo>
+			C:\Users\Escritorio\VScode_trabajo>dir
+			Mi_programa1.py
+			
+			C:\Users\Escritorio\VScode_trabajo>python Mi_programa1.py
+			¡Hola mundo Python!
+			
+			C:\Users\Escritorio\VScode_trabajo>
+		\end{verbatim}
+}}
+
+
+La mayoría de sus programas funcionarán bien directamente desde su editor. Sin embargo, a medida que su trabajo se vuelve más muy largos y  complejo, se hace necesario correr algunos de sus programas o fragmentos de código desde una terminal.   
+
+
+
+\subsection{Algunas configuraciones adicionales en VS Code}
+%  %%%%%%%%%%%%%%%%%%%  Del apéndice B  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Ser un mecanógrafo rápido no es tan importante como mucha gente piensa en
+programar, pero conocer su editor y saber usarlo si que lo hace más eficientemente.\\
+
+En la sección anterior se instaló VS Code y se agregó la extensión Python. En esta sección se darán instrucciones 
+para configurar algunas preferencias  y atajos para trabajar su código en VS Code de  manera  eficiente y cómoda para su agrado.\\
+
+%\subsection{Trabajar de manera eficiente con VS Code}
+
+%\subsubsection{Configurar VS Code}
+
+Hay algunas formas de cambiar los ajustes de configuración predeterminados para VS Code. Algunos cambios se pueden 
+realizar a través de la interfaz y otros requerirán cambios en los archivos de configuración (ejemplo .json), estos  cambios 
+tendrán efecto  sólo en los archivos dentro la carpeta que contiene el archivo de configuración, y  mientras  que  otros casos  afectarán  todo lo que haces en VS Code.  Por ejemplo, si tiene un archivo de configuración en su carpeta {\ttfamily VScode\_trabajo},
+esas configuraciones solo afectarán los archivos en esa carpeta (y sus subcarpetas). Esta es una buena característica,
+de VS Code, porque significa que puedes tener configuraciones  específicas del proyecto que anulan la configuración global.
+
+\subsubsection{Usar tabulaciones y espacios}\label{Tab}
+
+Si utiliza  combinación de tabulaciones y espacios en su código, puede causar problemas que son difíciles de diagnosticar  en
+sus programas. Cuando se trabaja en un archivo .py con la extensión Python instalada, VS Code está configurado para insertar cuatro espacios,
+cada vez que presione la tecla {\bf{TAB}}. Si estás escribiendo  su propio código y
+tienes la extensión Python instalada, probablemente nunca tendrás problemas con tabulaciones y espacios.
+Sin embargo, puede ser que su instalación de VS Code no esté configurada correctamente; o que en algún momento debas  trabajar en un archivo que sólo tiene tabulaciones o una mezcla de  tabulaciones y espacios. Si en algún momento sospecha de problema con 
+tabulaciones y espacios, consulte la barra de estado en la parte inferior de la ventana de VS Code y haga clic en {\bf{Espacios}}  o  tabulaciones. Aparecerá un menú desplegable que le permitirá cambiar de tabulaciones y a espacios.  También puedes cambiar la sangría predeterminada y convertir toda la sangría en el archivo a tabulaciones o espacios.
+
+Si estás analizando algún código y no estás seguro de la sangría consta de tabulaciones o espacios, es muy práctico resaltar varias
+líneas de código,  esto hace que los caracteres de espacios en blanco invisibles sean visibles; y cada espacio aparecerá
+como un punto, y cada tabulaciones se mostrará como una flecha.\\
+
+
+\begin{minipage}[t]{0.90\textwidth} 
+	{\scriptsize
+		En programación, se prefieren los espacios a las tabulaciones, porque los espacios se interpretan
+		sin ambigüedades por todos las software que trabajan con archivos de código; mientras que el ancho de tabulación
+		se puede ser interpretado	de manera diferente por diferentes software, lo que conduce a errores que pueden ser extremadamente difíciles diagnosticar.}
+\end{minipage}
+\vspace{0.2cm}
+
+
+\subsection{Cambiar el tema del color}
+
+VS Code usa un tema oscuro de forma predeterminada. Si desea cambiar esto, haga clic en el Menú Archivo,  selecciona {\bf{Preferencias}}  y elija {\bf {Tema de color}}. Aparecerá una lista desplegable que le permitirá elegir un tema color de su agrado.
+
+\subsubsection{Configuración del indicador de longitud de línea}\label{llongitud}
+
+La mayoría de los editores le permiten configurar una señal visual, generalmente es una línea vertical, para mostrar
+donde debe terminar sus líneas de código. En la comunidad Python, la convención limite de longitud líneas es 79 caracteres o menos. 
+
+Para configurar esta característica, haga clic en Archivo y selecciona en Preferencias ajustes o configuración. Ahora aparece un cuadro de diálogo, escriba reglas (Rulers). Verás una configuración para Editar reglas;  haga clic en el enlace etiquetado como {\ttfamily{Edit in settings.json}}. Y en el archivo que aparece, agregue la siguiente configuración:\\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-2.1cm}	settings
+	
+	\hspace{-1.5cm}.json \vspace{-0.7cm}	
+	{\color{black} 	
+		\begin{verbatim}
+			"editor.rulers": [
+			80
+			]		
+		\end{verbatim}
+}}
+
+
+Esto agregará una línea vertical en la ventana de edición en  posición  extremo de 80 caracteres. 
+Puedes tener más de una línea vertical; por ejemplo, si quieres
+una línea adicional de 120 caracteres, el valor para su configuración sería
+[80, 120]. Si no ve las líneas verticales, asegúrese de haber guardado la configuración del
+archivo; es posible que también deba salir y volver a abrir VS Code para que se realicen los efectos de cambios en algunos sistemas.
+
+Este proceso también se puede configurar con "{}axTokenizationLineLength{}"  revisar en internet.
+
+\subsubsection{Simplificando la salida}\label{Simplif}
+
+De forma predeterminada, VS Code muestra la salida de sus programas en la
+terminal, en la parte inferior; sin embargo, esta salida incluye los comandos que se están utilizando para ejecutar el archivo. 
+Para muchas situaciones, esto es ideal, pero podría distraer más de lo que deseas cuando estás 
+aprendiendo Python por primera vez. 
+
+
+
+Para simplificar el resultado, cierre todas las pestañas que están abiertas en VS Code y
+salga de VS Code. Inicie VS Code nuevamente y abra la carpeta que contiene los archivos Python en los que 
+estás trabajando; este podría ser simplemente la carpeta {\ttfamily {VScode\_trabajo}}
+donde se guarda su primer archivo: {\ttfamily { mi\_programa.py}}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.30]{../Logos_de_Python/launch}
+	\caption[Creando un archivo launch.json]{Creando un archivo {\ttfamily {launch.json}}.}
+	\label{launch}
+\end{figure}
+
+
+Ahora haga clic en el icono {\ttfamily {Ejecutar/Depurar}} (Run/Debug),  un triángulo que parece en la barra de herramienta lateral;   luego en el enlace {\ttfamily {Ejecución y depuración}} haga clic en {\ttfamily {cree un archivo launch.json}} (Figura \ref{launch}); y  seleccione la  opción que aparece para {\ttfamily {Python}} y {\ttfamily {Archivo de Python}}.
+
+Ahora en el archivo {\ttfamily {launch.json}} que se abre, haga el siguiente cambio:  {\ttfamily {"{}integratedTerminal"{}}} por {\ttfamily {"{}internalConsole"{}}}.  Guarde los cambios del archivo {\ttfamily launch.json} (Figura \ref{launc2}).
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.30]{../Logos_de_Python/launc2}
+	\caption[Configurando {\ttfamily{"{}integratedTerminal"{}}} por {\ttfamily{"{}internalConsole"{}}}]
+	{Cambiando {\ttfamily{"{}integratedTerminal"{}}} por {\ttfamily{"{}internalConsole"{}}}.}
+	\label{launc2}
+\end{figure} 
+Aquí, hemos cambiando la configuración de la consola de Terminal integrada a consola interna.
+
+
+Después de guardar el archivo de configuración, abra un archivo .py como {\ttfamily {Mi\_programa.py}}   y ejecútelo presionando {\bf{CTRL-F5}}.  En el panel de salida de VS Code, haga clic en {\ttfamily {Consola de depuración}} (si aún no está seleccionada). Debes ver sólo la salida  de su programa (Figura \ref{launc2}), y cada vez que ejecute un programa la salida debe actualizarse.
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Advertencia1}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize La consola de depuración es de sólo lectura. No funcionará para archivos que usan la función input(),
+		que utilizará en el Capítulo \ref{Cap5}. Cuando necesite ejecutar estos programas, debe cambie la configuración de la consola nuevamente al Terminal integrado predeterminado, o puede ejecutar estos programas en una ventana de terminal separada como se describe en “Ejecución de Python Programas desde una terminal” en la página \pageref{pagi11}.}
+\end{minipage}
+\vspace{0.2cm}
+
+\subsection{Explorando más personalizaciones}
+
+Puede personalizar VS Code  para facilitar y hacer más eficiente el trabajo. Hay  herramientas sorprendentes  que se pueden personalizar,  
+comience a explorar las opciones disponibles en Preferencias, y luego elija Configuración. Verá una lista titulada de uso común; haga clic en cualquiera de los subtítulos para ver algunas formas común que pueda modificar su instalación del Código VS. 
+Consulte  manuales y vídeos en la Web para obtener referencias, tómese un tiempo para ver si hay alguna configuración  útil para usted,  pero no se quede en este tema de su editor, pues el objetivo usar el editor para ¡Aprender  Python!.  
+
+\subsection{Atajos de código VS}
+
+Todos los editores e IDE ofrecen formas eficientes de realizar tareas comunes que todos
+debe hacer al escribir y mantener el código. Por ejemplo, puedes fácilmente
+sangrar una sola línea de código o un bloque completo de código; puedes mover fácilmente un bloque de líneas hacia arriba o hacia
+abajo en un archivo.
+
+Hay demasiados atajos para describirlos completamente aquí. Esta sección
+comparte solo algunos que probablemente te resulten útiles mientras escribes sus primeros
+archivos de Python. Si terminas usando un editor diferente a VS Code, asegúrate
+aprenderá a realizar estas mismas tareas de manera eficiente en el editor que haya elegido.
+
+\subsection{Identando Bloques de código con sangría y sin sangría}
+
+Para identar un bloque completo de código, resáltelo y presione {\bf\scriptsize CTRL-]}. 
+Para quitar la sangría de un bloque de código, resáltelo y presione {\bf\scriptsize CTRL-]}.
+
+\subsection{Comentar bloques de código}
+
+Para deshabilitar temporalmente un bloque de código, puede resaltar el bloque y
+coméntalo para que Python lo ignore. Resalte la sección de código a comenta (ignorar) y presione  {\bf\scriptsize CTRL-/}. 
+
+Las líneas seleccionadas son comentadas con una almohadilla  {\ttfamily {\#}} con sangría al mismo nivel de
+línea de código, para indicar que estos no son comentarios regulares. Cuando quieres
+para habilitar este bloque de código, resalte el bloque y vuelva a emitir el mismo comando.
+
+\subsection{Mover líneas hacia arriba o hacia abajo} 
+
+A medida que sus programas se vuelven más complejos, es posible que desee mover un
+bloque de código hacia arriba o hacia abajo dentro de un archivo. Para hacerlo, resalte el código que desee
+para mover y presione: {\bf {}\scriptsize ALT-flecha hacia arriba}. La misma  combinación de teclas con la flecha hacia abajo
+moverá el bloque hacia abajo en el archivo.
+
+Si estás moviendo una sola línea hacia arriba o hacia abajo, puedes hacer clic en cualquier parte
+esa linea; No es necesario resaltar toda la línea para moverla.
+
+\subsection{Ocultar el Explorador de archivos}
+
+El explorador de archivos integrado en VS Code es realmente conveniente. Sin embargo, puede
+puede distraerte cuando escribes código y puede ocupar un espacio valioso en
+una pantalla más pequeña. El comando {\bf\scriptsize CTRL-B}, alterna la visibilidad del panel del explorador de archivos.
+
+
+\subsection{Encontrar atajos adicionales}
+
+Trabajar eficientemente en un entorno de edición requiere práctica, pero también
+requiere intención. Cuando esté aprendiendo a trabajar con código, intente notarlas tareas 
+que haces repetidamente. Cualquier acción que realice en su editor probablemente tenga un
+atajo; Si hace clic en elementos del menú para realizar tareas de edición, busque
+los atajos para esas acciones. Si estás cambiando entre su teclado
+y el mouse con frecuencia, busque los atajos de navegación que le impiden
+alcanzar el mouse con tanta frecuencia.
+
+Puede ver todos los atajos de teclado en VS Code haciendo clic en el Código y
+luego Preferencias y luego eligiendo (métodos abreviado de teclado) Atajos de teclado. Puedes usar la
+barra de búsqueda para encontrar un acceso directo en particular, o puede desplazarse por la lista para
+encontrar atajos que puedan ayudarle a trabajar de manera más eficiente.
+
+Recuerde, es mejor centrarse en el código en el que está trabajando y evite dedicar demasiado tiempo a las herramientas que está utilizando.
+
+
+
+
+
+
+
+
+% https://wiki.python.org.ar/pep/
+\section{Propuesta de Mejora de Python (PEPs)}\label{pep8}
+%\addcontentsline{toc}{section}{Propuesta de Mejora de Python (PEPs)}
+% Eric Matthes\\
+%   https://es.python.org/      https://www.python.org.ar/
+
+La comunidad de usuarios de Python ha adoptado una guía de estilo que facilita la lectura del código y la consistencia entre programas de distintos usuarios. Esta guía no es de seguimiento obligatorio, pero es altamente recomendable. El documento completo se denomina Propuesta de Mejora de Python (PEPs, Python Enhancement Proposal), es la guía de estilo para Python, \href{https://elpythonista.com/zen-de-python}{\color{vino}código Pythónico}.
+
+
+En ésta sección se hace una breve exposición de las recomendaciones necesarias al empezar a escribir código Python, y a medida que sea necesario introduciremos las recomendaciones que sean necesarias.
+
+\subsection*{Reglas del Zen de Python}
+\addcontentsline{toc}{section}{Reglas del Zen de Python}
+% https://www.wikiwand.com/es/Tim_Peters
+El Zen de Python es una colección de 20 principios de software que influyen en el diseño del
+Lenguaje de Programación Python, de los cuales 19 fueron escritos por Tim Peters\footnote{\scriptsize{Tim Peters es un desarrollador de software estadounidense conocido por la creación del algoritmo de ordenación híbrido Timsort y por sus importantes contribuciones al lenguaje de programación Python y su implementación original CPython. Como usuario de CPython antes de la versión 1.0, formó parte del grupo de los primeros usuarios que contribuyeron al diseño detallado del lenguaje en sus primeras etapas}} en junio de 1999. 
+
+Si queremos escribir código Python que luzca profesional, debemos seguir las recomendaciones del Zen de Python, las  propuesta de mejora de Python, para que nuestros algoritmos sean más elegantes y simples. De aplicarse correctamente el código se convierte {\bf{Código  "Pythónico}}.
+
+
+\subsection*{Diseñando su estilo de código en Python}  % Styling Your Code    de quien 
+
+Ahora que vas a  empezar  a escribir  programas, es muy buena idea aprender a diseñe su código de manera consistente. Debe hacer lo posible para que su código sea muy fácil leer. Los códigos fácil de leer permiten hacer seguimiento de lo que hace el programas y permite que otros programadores entiendan rápido su código.
+
+Los programadores de Python han acordado una serie de convenciones de estilo, para garantizar que los códigos estén estructurado aproximadamente de la misma manera. Una vez que sabes escribir código Python limpio, deberías poder entender la estructura general
+del código Python escrito por cualquier programador, siempre que sigan las mismas pautas.  Si esperas convertirte en un programador profesional en algún momento, debes a seguir estas pautas para desarrollar buenos hábitos.
+
+\subsection{La guía de estilo}\label{PEP}
+% https://blog.carreralinux.com.ar/2016/09/convertir-tabulaciones-en-espacios-viceversa/
+
+Una de las  Propuesta de Mejora de Python más antiguos es el PEP 8, que instruye a los programadores de Python sobre cómo diseñar su código. La \href{https://peps.python.org/pep-0008/}{\color{vino}PEP 8} es bastante largo, pero gran parte se relaciona con estructuras de codificación más complejas que las que hemos tratado hasta ahora.  La guía de estilo de Python se escribió entendiendo que el código se lee con más frecuencia de lo que se escribe. Escribirás tu código una vez, y luego comienza a leerlo a medida que comienza a depurar. Cuando agrega funciones a un programa, pasarás más tiempo leyendo tu código. Cuando compartes tu código con otros programadores, ellos también lo leerán. Dada la opción entre escribir código que sea más fácil de escribir, o codificar
+un código  que sea más fácil de leer, los programadores de Python casi siempre lo alentarán para escribir código que sea más fácil de leer.
+
+Las siguientes pautas le ayudarán escriba código claro desde el principio.
+
+\subsubsection{Indentación}
+
+La PEP 8 recomienda utilizar cuatro espacios de sangría por nivel, que en Python se conoce como indentación. Usando
+cuatro espacios mejoran la legibilidad y dejando espacio para múltiples niveles de indentación en cada línea.
+
+
+En un documento de procesamiento de textos, la gente suele utilizar tabulaciones en lugar de
+espacios para indentación. Esto funciona bien para documentos de procesamiento de textos, pero el
+el intérprete de Python se confunde cuando las tabulaciones se mezclan con espacios. 
+Cada  editor de texto proporciona una configuración que le permite usar la tecla TAB pero luego convierte
+cada tabulación  en un número determinado de espacios. Definitivamente deberías usar tu tecla TAB,
+pero asegúrese de que su editor esté configurado para insertar espacios en lugar de tabulaciones en
+su documento.
+
+Mezclar tabulaciones y espacios en su archivo puede causar problemas muy
+difícil de diagnosticar. Los editores de texto utilizados para desarrollo web a veces no comparten el mismo criterio en cuanto a la cantidad de espacios a los que equivale una tabulación. Por tal motivo, a veces un archivo escrito en un editor XX y que se visualiza de manera correcta en el mismo, otro editor YY lo muestra de forma diferente. Este inconveniente suele ser crítico para programadores Python, lenguaje que requiere de una indentación precisa. Es conveniente convertir tabulaciones en espacios y viceversa de manera que si nos encontramos con archivos que presenten estas características, no representen mayor problema para el trabajo.
+
+
+
+
+\subsubsection{Longitud de la línea}
+
+Muchos programadores de Python recomiendan que cada línea sea menor que
+80 caracteres. Históricamente, esta directriz se desarrolló porque la mayoría de las computadoras
+sólo podía contener 79 caracteres en una sola línea en una ventana de terminal. Actualmente, las personas
+pueden colocar líneas mucho más largas en sus pantallas, pero existen  otras razones
+para cumplir con la longitud de línea estándar de 79 caracteres. Los programadores profesionales suelen tener varios archivos abiertos en la mismo pantalla, y usar la longitud de línea estándar les permite ver líneas completas
+en dos o tres archivos que están abiertos uno al lado del otro en la pantalla. La PEP 8 también recomienda
+que limites todos tus comentarios a 72 caracteres por línea, porque algunas de las herramientas que generan documentación automática para proyectos más grandes agregan caracteres de formato al comienzo de cada
+línea comentada.
+
+Las pautas de la PEP 8 para la longitud de la línea no son estrictas, y algunos equipos prefieren un límite de 99 caracteres. 
+No te preocupes demasiado por la longitud de la línea en su código,  pero tenga en cuenta que las personas que están trabajando
+en colaboración casi siempre siguen las pautas de PEP 8. 
+La mayoría de los editores permiten configurar una señal visual, normalmente una línea vertical en la pantalla, que muestra
+los esos límites.
+
+
+En la sección \ref{llongitud}  muestra cómo configurar su editor de texto VS Code para que siempre inserte cuatro
+espacios cada vez que presiona la tecla TAB y muestra una guía vertical para ayudarlo a seguir el límite de 79 caracteres.
+
+
+\subsubsection{Líneas en blanco}
+
+Para agrupar visualmente partes de su programa, utilice líneas en blanco. Deberías usar
+líneas en blanco para organizar tus archivos, pero no lo hagas en exceso. 
+Siguiendo los ejemplos proporcionados en este libro, deberías lograr un equilibrio adecuado.
+
+Por ejemplo, si tiene cinco líneas de código que crean una lista y luego otras
+tres líneas que hacen algo con esa lista, es apropiado colocar una
+línea en blanco entre las dos secciones. Sin embargo, no debes colocar tres o cuatro
+líneas en blanco entre las dos secciones. Las líneas en blanco no afectarán la forma en que se ejecuta su código, pero sí afectarán la legibilidad de su código. El intérprete de Python usa indentación  horizontal para interpretar el significado de su código, ignorando el espaciado vertical.
+
+\subsubsection*{Otras pautas de estilo}
+
+La PEP 8 tiene muchas recomendaciones de estilo adicionales, pero la mayoría de las
+las pautas se refieren a programas más complejos que los tratados hasta ahora. A medida que aprendamos estructuras más complejas de Python, se dará  las directrices de PEP 8.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Ejercicios}\label{tarea2.1}
+
+Los ejercicios de esta sección  de naturaleza exploratoria. A partir del Capítulo \ref{Cap3}, se presentan desafíos que resolverás con los conocimientos que hayas recibido.
+
+\begin{enumerate}[2.3.1]
+	\item Es importante explorar la página de oficial de Python:  \href{https://python.org}{\color{vino}https://python.org}, seguro encontrara algún tema de interés, y a medida que se familiarice con Python, está  página le resultará más útil.
+	
+	\item Errores tipográficos en {\ttfamily{mi\_programa}}: abra el archivo  {\ttfamily{mi\_programa.py}} que acaba de crear. Escriba un error en algún 	lugar de la línea y ejecute el programa, por ejemplo escribir {\ttfamily{Print("Hola Mundo Python")}}, o   {\ttfamily{print("Hola Mundo Python)}}. 	Genera un error tipográfico,  intente entender el mensaje de error. 
+	
+	
+	\item Habilidades: Si tuvieras grandes habilidades para programación, ¿qué construirías?
+	Estás a punto de aprender a programar. Si tienes un objetivo final en mente, podrás
+	tener un uso inmediato para sus nuevas habilidades; ahora es un buen momento para escribir breves
+	descripciones de lo que quieres crear. 
+\end{enumerate}
+
+
+Siempre que quieras comenzar un nuevo proyecto, es un buen hábito llevar un Cuaderno con las "{}ideas{}" que se presentan. Pruebe ahora,  tome un tiempo para describir al menos un programas que desea crear, y escribas sus ideas, es genial.
+
+
+
+
+
+
+\subsection{Resumen}
+
+En este capítulo se ha introducido de forma general algunas definiciones y conceptos sobre Python,  y se instaló
+Python en su sistema operativo. También instaló un  editor de texto o IDE, para facilitar la escritura de código Python. 
+
+Se ejecutó fragmentos de código Python en una sesión de terminal y ejecutó su primer programa, {\ttfamily mi\_programa.py}. 
+Probablemente también haya aprendido un poco sobre cómo solucionar algunos problemas.\\
+
+
+En el próximo capítulo, se estudia  los diferentes tipos de datos que usará en sus programas Python, y comenzará a usar variables; los datos numéricos y se introducen los Strings o cadenas de caracteres.
+
+
+
+%%%%%%%%%%%%%%%%%%   Inicio de Capitulo 3 %%%%%%%%%%%%%%%%%%%%%%%%

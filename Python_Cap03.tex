@@ -1,0 +1,3803 @@
+
+
+%%%%%%%%%%%%%%%%%%   Inicio de Capitulo 3 %%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+\chapter{Variables y Tipos de Datos Simples}{\label{Cap3}}\hypertarget{Cap3}{}
+% tomado de  Eric Matthes
+
+% E:\A A Mi texto de Python\Logos_de_Python
+
+%  https://es.wikibooks.org/wiki/Manual_de_LaTeX/Inclusi%C3%B3n_de_gr%C3%A1ficos/Texto_alrededor_de_figuras
+%  \includegraphics[scale=0.25]{../Logos_de_Python/logo2}
+
+\begin{wrapfigure}{r}{0.65\textwidth} 
+	\vspace{-25pt}	\begin{center} \includegraphics[width=0.65\textwidth]{../Logos_de_Python/Bienvenidos}
+	\end{center}\vspace{-30.5pt} %\caption{Python 3} 
+\end{wrapfigure} Como en la mayoría de los lenguajes de programación de alto nivel, Python se compone de una serie de elementos que alimentan su estructura.  En este capítulo  estudiaremos lo básico del lenguaje, como las variables y los valores que pueden tomar; en este caso, los valores son los diferentes tipos de datos con los que puedes representar las variables en su archivos de programas en Python. Ademas, se ejecutará su primer  programa en Python, que denominaremos {\ttfamily Hola\_Mundo.py}, como es costumbre en la comunidad Python, y otros lenguajes al iniciarse en el mundo de la programación.\\
+
+
+Pero antes de iniciar con esta sección, es necesario  verificar si ya tienes una versión reciente de Python  instalada en su computadora; si no  tienes, debe instalar una versión. También se recomienda instalar un editor de texto para trabajar con sus programas en Python. Yo  le recomiendo {\bf{Shell}} el IDLE de Python o un IDE como Anaconda y usar un  editor como Spyder.  Estos editores reconocen las palabras claves o propias del lenguaje; por ejemplo, reconoce  que   {\ttfamily   print()}   es el nombre de una función y muestra esa palabra en un color,  además  reconoce que    {}"¡Hola mundo Python!" {} no es código Python, y muestra esa frase en un color diferente. Esta característica se llama resaltado de sintaxis, y es muy didáctica para entender la estructura de su código.\\
+
+
+Para correr un código o programa Python, existen dos formas. Podemos escribir líneas de código en el intérprete en una sesión interactiva (línea a línea)  y obtener una respuesta del intérprete para cada línea (sesión interactiva) o bien podemos escribir el código de un programa en un archivo de texto con extensión .py  y ejecutarlo.\\
+
+{\bf{Ejecutar fragmentos de código Python}}\\
+
+Puede ejecutar el intérprete de Python en terminal window, lo que le permitirá probar fragmentos de 
+código Python sin tener que guardar y ejecutar un programa completo. Sin embargo, Yo trabajo con el editor del IDLE Shell 3.11.5 de Python, y ejecutaré  fragmentos de código para mostrar conceptos particulares de manera más eficiente, tanto en la terminal Shell como en un archivo .py, cuando sea necesario.  De esta forma cuando veas  tres corchetes angulares ({\bf{\scriptsize$>$\!\! $>$\!\! $>$}},  el prompt) en una lista de códigos, estás viendo el código en la sesión terminal. 
+
+A lo largo de este libro, encontraras  fragmentos de código similares al siguiente:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> print("¡Hola, aquí el intérprete de Python!")
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize   
+	{\hspace{-0.65cm}}Out[]:{\color{blue}
+		
+		{\hspace{-0.65cm}}¡Hola, aquí el intérprete de Python!}} \\
+
+En este caso  {\ttfamily In[]}  indica entrada del código y {\ttfamily Out[]} indica la salida, el resultado luego de ejecutar el código presionando {\bf\scriptsize ENTER} o {\bf\scriptsize RUN}.\\
+
+
+Con el editor de texto Shell para el caso de crear  programas simple como el llamado ¡Hola, Mundo!,
+que se ha convertido en un elemento básico para iniciarse a programar en algún lenguaje;  hay una larga tradición en el
+mundo de la programación con  el mensaje ¡Hola, Mundo! para imprimir en pantalla como primer programa en el nuevo lenguaje. Este  
+programa tan simple tiene un propósito muy importante, y es  que si se ejecuta correctamente en su sistema, entonces 
+cualquier programa en lenguaje que escriba debería funcionar también.\\
+
+{\bf{Ejecutando un archivo .py (Hola\_Mundo.py)}}\\
+
+Cuando se ejecuta un archivo Python (.py) en la terminar  .py,  indica que el archivo es un programa en Python; luego, su editor ejecuta el archivo a través del intérprete de  Python, que lee el programa y determina qué significa cada palabra en el mismo. Por ejemplo, cuando el intérprete encuentra la palabra   {\ttfamily print("dentro")} seguido de paréntesis, imprime en la pantalla lo que esté dentro de los paréntesis.   Para ejemplificar esta situación,  consideremos el archivo simple  {\ttfamily  Hola\_Mundo.py}, que  contiene el siguiente código: 
+{\ttfamily print("¡Hola, Mundo!")}\\
+
+Al  ejecuta este archivo, se obtiene el siguiente  resultado:\\
+
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			"¡Hola, Mundo!"
+		\end{verbatim}
+}}
+
+
+
+{\bf{Comentarios en Python}}\\
+\addcontentsline{toc}{section}{Comentarios de Python en línea}
+
+Los comentarios son una característica extremadamente útil en la mayoría de los lenguajes de programación.
+Todo lo que has escrito en tus programas hasta ahora es código Python.
+A medida que sus programas se vuelven más largos y complicados, debe agregar
+notas dentro de sus programas que describen su enfoque general hacia del
+problema que estás resolviendo. Un comentario le permite escribir notas en su idioma hablado,  dentro de sus programas.\\
+
+{\bf ¿Cómo se escriben comentarios? }\\
+\addcontentsline{toc}{section}{ ¿Cómo se escriben comentarios?}
+
+En Python, el símbolo numeral  {\ttfamily \#}  se usa para indica un comentario. Todo lo que sigue después de {\ttfamily \#}, el intérprete de Python lo ignora en su código. Por ejemplo, en un archivo de programa digamos {\ttfamily Comentario.py}  conteniendo: 
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	# Saluda a todos.
+	print("¡Hola gente de Python!")
+	
+\end{lstlisting}
+
+Python ignora la primera línea y ejecuta la segunda.\\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			¡Hola gente de Python!
+		\end{verbatim}
+}}
+
+
+
+
+{\bf ¿Qué tipo de comentarios debería escribir?}\\
+
+
+La razón principal para escribir comentarios es explicar lo que se supone que hace el código, 
+y cómo funciona. Cuando estás concentrado en un proyecto, sabes  cómo encajan todas las piezas; sin embargo 
+después de un tiempo fuera del proyecto, al regresar  probablemente habrá olvidado algunos  detalles. Este  inconveniente se evita escribiendo  comentarios claros, y seguro le ahorrara un tiempo preciado. Es muy importante resumir claramente su enfoque general.
+
+Si quieres convertirte en un programador profesional y colaborar con otros programadores,
+debes escribir comentarios significativos. Hoy en día, la mayoría de programa (software) se escribe de forma colaborativa o en equipo, 
+ya sea por un grupo de empleados en una empresa o un grupo de personas que trabajan juntas en un proyecto de código abierto.
+
+Los programadores expertos esperan ver comentarios en el código, por lo que es mejor empezar
+agregando comentarios descriptivos a sus programas ahora. 
+
+
+Los comentarios en su código son uno de los hábitos más beneficiosos que puede formar como
+un nuevo programador. Cuando estés decido a  escribir un comentario, pregúntate si
+puede  considerar varios enfoques antes de encontrar una manera razonable de que el código; si es así, escribe un comentario sobre tu solución.  Es más fácil eliminar comentarios adicionales más tarde que volver atrás y escribir comentarios. 
+
+De ahora en adelante usaré comentarios en ejemplos a lo largo de este libro para ayudar a explicar secciones de código.
+
+
+Iniciamos la próxima sección con los comentarios en Python y continuación de código en la misma línea. 
+
+\section{Comentarios  con  {\ttfamily \#}}   %   entender  comprensión   mantenimiento reutilización  bloque de código
+
+Un comentario es un fragmento de texto que se incluyen en el código fuente de un programa, y que son ignorados por los compiladores e intérpretes; es decir, no se ejecutan ni afectan al funcionamiento del programa en sí. El propósito general del comentario es dar explicaciones, aclaraciones o notas referentes al código escrito, con la finalidad de facilitar la comprensión de la lógica y estructura del código, tanto para el programador mismo,  como para futuros lectores. Son una herramienta que permite a los programadores comunicarse y dejar notas explicativas dentro del código fuente.
+
+
+En Python los comentarios van seguidos después del símbolo numeral {\ttfamily \#}, hasta el final de la línea, son comentarios por línea. Todo lo que está después de {\ttfamily \#} en la línea  es ignorado por intérprete.  Generalmente se utilizan en una sola línea para añadir notas breves o aclaraciones sobre código. 
+
+El carácter Hashtag ({\ttfamily \#}) tiene varios nombres, hash, sharp, almohadilla, numeral y otros. En informática hashtag se refiere a una cadena de caracteres alfanuméricos formada por una o varias palabras concatenadas y precedidas por el símbolo almohadilla ( {\ttfamily \#}). Es una palabra del inglés que podemos traducir como "etiqueta". Origen de la palabra inglesa que compone de dos partes: hash, con el significado de almohadilla o numeral y tag, que significa etiqueta.  \\ 
+
+
+Ilustremos comentarios en Python con algunos ejemplos:
+%\hspace{-2.5cm}{\ttfamily \scriptsize curso.py}  \vspace{-0.5cm}
+\begin{lstlisting}
+	In[]:		
+	>>> # La siguiente fórmula calcula los segundos en un día:
+	>>> # seg/min * 60 min/h * 24
+	>>> segundos_por_día = 60*60*24
+	>>> segundos_por_día
+	86400
+\end{lstlisting}	
+
+También se puede hacer comentario en la misma línea del código:  
+
+\begin{lstlisting}
+	>>> segundos_por_día = 86400 #  Cálculo de total de segundos en un día.
+	>>> segundos_por_día = 60*60*24
+	>>> segundos_por_día
+	86400
+\end{lstlisting}
+
+
+% how do you feel about using # (pound) for groups. As in #barcamp [msg]?7​
+
+Python no tiene comentarios para varias líneas. Debes comenzar explícitamente cada comentario por línea o sección con un {\ttfamily \#}.
+
+% https://es.wikipedia.org/wiki/Hashtag
+
+
+Y una nota final, si el símbolo  numeral {\ttfamily  \#} está dentro de una cadena de texto, toma su significado original de {\ttfamily  \#}, veamos en el siguiente ejemplo:
+\begin{lstlisting}
+	>>> print("¡Las comillas hacen que el símbolo # sea inofensivo,
+	y adquiriere su significado de carácter original!.")
+\end{lstlisting}
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			¡Las comillas hacen que el # sea inofensivo, y adquiriere 
+			su significado de carácter original!. 			
+		\end{verbatim}
+}}
+
+
+\section{Continuar una línea de código {\ttfamily \textbackslash}}
+
+
+Los programas son más legibles cuando las líneas son razonablemente cortas y claras. Recordemos que sugerencia  para la longitud máxima de línea es de 80 caracteres, pero no es estricto. Si no puedes escribir todo lo que necesita en esa longitud, puedes usar el carácter {\ttfamily \textbackslash}  (barra invertida) que significa continuación del código  en la misma línea. Su sintaxis muy sencilla, solo debe poner   {\ttfamily \textbackslash}   al final de una línea, y Python lo entenderá como si todavía estuvieras en la misma línea.
+
+Por ejemplo, si quisiera construir una cadena larga a partir de otras más pequeñas, podría hacerlo en pasos, con ayuda del operador {\ttfamily +=}:
+
+\begin{lstlisting}
+	>>> alfabeto = ''  # cadena  vacía
+	>>> alfabeto += 'abc defg'
+	>>> alfabeto += 'hij klmnop'
+	>>> alfabeto += 'qrs tuv'
+	>>> alfabeto += 'wxyz'
+	>>> alfabeto 
+	abc defghij klmnopqrs tuvwxyz'
+\end{lstlisting}
+
+O podría hacerlo en un solo paso, usando el carácter de continuación:
+
+\begin{lstlisting}
+	>>> alfabeto = 'abcdefg' + \
+	'hij klmnop' + \
+	'qrs tuv' + \
+	'wxyz'
+	>>> alfabeto
+	'abcdefghij klmnopqrs tuvwxyz'               
+\end{lstlisting} 
+
+La continuación de línea también es necesaria si una expresión de Python abarca varias líneas, por ejemplo en una operación de calculo:
+\begin{lstlisting}
+	>>> 1 + 2 + \
+	3 + 3 + \
+	6+ 2
+	17
+\end{lstlisting}
+
+
+
+
+
+\subsection{Ejercicios}
+Ejercicios 
+\begin{enumerate}[2.3.1]
+	
+	\item Agregar comentarios: Elija dos de los programas que ha escrito y agregue al menos un comentario a cada uno.
+	Si no tienes nada específico que escribir debido a que sus programas son demasiado simples en este punto,
+	simplemente agregue su nombre y el fecha actual en la parte superior de cada archivo de programa. 
+	Luego escriba una oración que describa lo que hace el programa.
+	
+\end{enumerate}
+
+
+
+
+
+\section{Variables, nombres y objetos}
+
+%  de Bill Lubanovic
+
+\begin{wrapfigure}{l}{0.47\textwidth} 
+	\vspace{-25pt}\begin{center} \includegraphics[width=0.48\textwidth]{../Logos_de_Python/variable02}
+	\end{center}\vspace{-35pt} %\caption{Python 3} 
+\end{wrapfigure}En esta sección  comenzaremos analizando los tipos de datos integrados más simples de Python: booleanos, números enteros, flotantes (números con decimales), y string (cadenas). Cada tipo tiene sus reglas específicas para su uso, y la computadora lo maneja de manera diferente. En Python, todo elemento: valores booleanos, enteros, flotantes, cadenas e incluso grandes estructuras de datos, funciones y programas,  son  tratados como un objeto.\\
+
+Podemos interpretar un objeto  como una caja de plástico transparente que contiene un dato (Figura \ref{Caja1}). El objeto tiene un tipo, tal como booleano o entero, que determina qué se puede hacer con el dato.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.55]{../Logos_de_Python/Caja1}
+	\caption{Caja transparete}
+	\label{Caja1}
+\end{figure} 
+
+Siguiendo con la comparación del ejemplo de la caja, podemos considerar una caja etiquetada como "{}Cerámica", esta información  le diría ciertas cosas (probablemente sea pesado, y no lo dejes caer al suelo). De manera similar, en Python, si un objeto tiene el tipo entero, Usted sabe que puedes agregarlo a otro entero. El tipo también determina si el valor del dato contenido en la caja  puede ser cambiado (mutable), 
+o es constante (inmutable). Piense en un objeto inmutable como una caja cerrada con un
+ventana transparente: puedes ver el valor pero no puedes cambiarlo. Por la misma analogía, un
+objeto mutable es como una caja abierta: no sólo puedes ver el valor dentro, sino que también puedes
+cambialo; sin embargo, no puedes cambiar su tipo de dato. 
+Python está fuertemente tipado, lo que significa que el tipo de un objeto no cambia, incluso
+si su valor es mutable.\\
+
+Los lenguajes de programación permiten definir variables. Estos son nombres que se refieren a valores en la memoria del equipo que puede definir para su uso en su programa. En Python, se usa la igualdad ($=$) para {\bf asignar} un valor a una variable, y se define de acuerdo con la siguiente sintaxis:\\
+
+{\ttfamily nombre\_de\_la\_variable = valor\_de\_la\_variable}\\
+
+Cada variable, tiene un nombre y un valor, el cual define a la vez el tipo de datos de la
+variable. Existe otro tipo de “variable”, denominada constante, la cual se utiliza para definir valores
+fijos, que no requieran ser modificados.
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize Todos aprendimos en la escuela primaria en matemáticas que $= $ significa igual a. ¿Por qué muchos lenguajes de computación, incluyendo Python, usan $=$ para la asignación? Una razón es que los teclados estándar carecen de alternativas lógicas como una tecla de flecha izquierda, y el símbolo  $= $ no parecía demasiado confuso. Además, en los programas de ordenador se utiliza la asignación mucho más que la igualdad.}
+\end{minipage}
+\vspace{0.2cm}
+
+El siguiente es un programa Python de dos líneas, en la primera asigna el valor entero 7 a la variable
+llamada {\ttfamily x}, y luego imprime el valor de {\ttfamily x} (actualizado):
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> x = 7    
+	>>> print(x)	
+\end{lstlisting}
+
+
+Al  correr este programa se obtiene:\\
+
+{\ttfamily\scriptsize\scriptsize \hspace{-0.65cm}Out[]{\color{blue} 
+		
+		\hspace{-0.65cm}7}}   \\
+
+
+Ahora, es el momento de hacer un análisis sobre las variables de Python: las variables son  sólo nombres. La asignación no copia un valor; simplemente asigna un nombre al objeto que contiene los datos. El nombre es una referencia a una cosa en lugar de la cosa misma. Piense en un nombre como una nota adhesiva (ver Figura \ref{Caja2}). 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.55]{../Logos_de_Python/Caja2}
+	\caption{Los nombres se pegan a los objetos \\
+		objeto $x$, valor 7}
+	\label{Caja2}
+\end{figure} 
+
+Probemos con el intérprete interactivo:  Como antes, asignemos el valor 7 al nombre $x$. Esto crea una caja  (objeto, variable) que contiene el valor entero 7.  Imprima el valor de {\ttfamily x}. Ahora le asignemos  a   {\ttfamily b} la   {\ttfamily x}, haciendo que {\ttfamily b}  también se pegue a la caja objeto que contiene 7. Imprima el valor de {\ttfamily b}.
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> x = 7    
+	>>> print(x)
+	
+\end{lstlisting}
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> b = x
+	>>> print(b)
+	
+\end{lstlisting}
+
+Al  correr este programa se obtiene:\\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.2cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			7
+		\end{verbatim}
+}}
+
+En Python, si quieres saber el tipo de objeto o variable con que está trabajando, se  usa la función {\ttfamily type(objeto)}. Ilustremos con algunos objetos o valores como 58, 99.9, "{}abc", (a, b), [a,b,"{}abc"]:\\
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> a = 58
+	>>> b = 99.9
+	>>> c = "abc"
+	>>> d = (a,b)
+	>>> e = [a,b,"abc"]
+	>>> print(type(a))
+	>>> print(type(b))
+	>>> print(type(c))
+	>>> print(type(d))
+	>>> print(type(e))
+\end{lstlisting}
+
+
+Al  ejecutar se obtiene:\\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.2cm}
+	{\color{blue} 	
+		\begin{verbatim}
+			<class 'int'>
+			<class 'float'>    
+			<class 'str'>
+			<class 'tuple'>
+			<class 'list'>
+		\end{verbatim}
+}}
+
+En éste resultado aparece una descripción del tipo, {\ttfamily class} y tipo de datos, una clase es la definición de un objeto; en el Capítulo  \ref{Cap9}  se estudiarán las clases con mayor detalle. En Python, "{}clase{}"{} y {}"{}tipo"{} significan prácticamente lo mismo.
+
+
+Los nombres de variables deben cumplir con algunas pautas y de manera estricta
+con las siguientes reglas: \\
+
+Pueden empezar con un carácter del tipo:\vspace{-0.2cm}
+\begin{list}{$\bullet$}{} 
+	\item letra minúsculas (de  a hasta z)
+	\item letra mayúsculas (de  A hasta Z)
+	\item Dígitos (0 a 9)
+	\item Guión bajo (\_) 	
+\end{list}
+
+Romper algunas de estas reglas provocará errores, y otras ocasiones  simplemente te ayudará a escribir un código  más fácil de leer y comprender. 
+
+Los  siguientes  nombres son ejemplos válidos:
+\begin{list}{$\bullet$}{}  
+	
+	\item a
+	\item a1 
+	\item a\_b\_c\_\_95
+	\item \_abc
+	\item \_1a
+	
+\end{list}
+
+Mientras que los nombres que se muestran a continuación no son válidos:
+
+\begin{list}{$\bullet$}{}  	
+	\item 1
+	\item 1a 
+	\item 1\_a 	
+\end{list}  
+
+Los nombres no pueden comenzar con un dígito, por ejemplo: {\ttfamily 3\_x = 58}, genera error. Y muy importante tener pendiente que  Python trata los nombres que comienzan con un subrayado o guión bajo ({\ttfamily \_})  como casos especiales (que puede leer en el Capítulo  \ref{Cap9}).\\
+
+Además,  se recomienda seguir las siguientes pautas: 
+\begin{list}{$\bullet$}{}  
+	
+	\item No se permiten espacios en los nombres de las variables, pero se pueden utilizar guiones bajos.
+	para separar palabras en nombres de variables. Por ejemplo, {\ttfamily mensaje\_saludo}  funciona
+	pero el {\ttfamily mensaje saludo}  provocará errores. 
+	
+	\item Evite el uso de palabras clave de Python y nombres de funciones como nombres de variables. Por ejemplo, no utilice la palabra   {\ttfamily print}   como nombre de variable; Python lo ha reservado para un propósito programático particular. (Ver "{}Palabras reservadas de Python{}"{} en la página \pageref{palabras}, y funciones integradas” en la página pendiente  \ref{funciones integradas}.)	
+	
+	\item Es recomendable que los nombres de las variables sean cortos pero descriptivos. 
+	
+	Por ejemplo, {\ttfamily nombre}  es mejor que  {\ttfamily n}, {\ttfamily nombre\_estudiante} es mejor que {\ttfamily n\_e}, y {\ttfamily longitud\_nombre} es mejor que {\ttfamily longitud\_de\_nombre\_personas}.
+	
+	\item Tenga cuidado al utilizar la letra minúscula l y la letra mayúscula O
+	porque podrían confundirse con los números 1 y 0. 	
+	
+\end{list}
+
+Con la práctica  se aprenderá a crear  nombres ideales para variables, especialmente a medida que sus programas se vuelven más interesantes y complejos. Y mejorará con la experiencia al escribir y leer  código  de  propios de otras personas, y entenderá la necesidad de usar nombres significativos.
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 		
+		Las variables de Python que hemos  usando hasta ahora están en minúsculas, y no generará 
+		errores si usa letras mayúsculas, pero las letras mayúsculas en los nombres de variables tienen significados especiales que analizaremos en capítulos posteriores.}
+\end{minipage}
+\vspace{0.2cm}
+
+Finalmente, no use ninguno de estos para nombres para nombres de variables, porque son palabras reservadas de Python, y son usadas en la sintaxis de Python:\\
+
+\noindent{\ttfamily{Palabras reservadas de Python}}\vspace{-0.25cm}
+{\ttfamily\scriptsize\scriptsize 
+	{\color{blue} 	 	
+		\begin{verbatim}
+			False   class     finally   is         return
+			None    continue  for       lambda     try
+			True    def       from      nonlocal   while
+			and     del       global    not        with
+			as      elif      if        or         yield
+			assert  else      import    pass
+			break   except    in        raise
+		\end{verbatim}
+}}\label{palabras}  
+
+A  medida que vamos avanzando  iremos usando estas palabras.\\
+
+
+
+%{\bf{Comentarios por organizar Las variables son etiquetas  pendientes}}\\
+
+
+Es mejor pensar en las variables como etiquetas que puedes asignar a valores. También se puede decir que una variable hace
+referencia a un determinado valor. Esta distinción probablemente no importe mucho en sus programas iniciales, pero 
+vale la pena aprenderlo más temprano que tarde. En algún momento verás comportamiento inesperado de una variable y 
+una comprensión precisa de cómo funcionan las variables le ayudará a identificar lo que sucede en su código.\\
+
+{\bf Constantes en Python:}\\
+\addcontentsline{toc}{section}{Constantes en Python}
+
+Una constante es una variable cuyo valor es fijo (no cambia) en todo el programa. Python no tiene tipos de constantes internas, pero los programadores usan las letras mayúsculas para indicar que la variable debe ser tratada como una constate. Por ejemplo: 
+
+{\ttfamily\scriptsize\scriptsize{ 	
+		\begin{lstlisting}%[frame=single]
+			
+			MAX_CONECCIONES = 5000
+			
+		\end{lstlisting}
+}}
+
+
+Como una sugerencia para seguir las pautas de los programadores  y la guía de estilo de Python, cuando se trate de una constante en su código escriba el nombre de la variable en mayúsculas; es decir, todas las cadenas en mayúsculas se deben usar para constantes, y no para variables.\\
+
+
+{\bf Asignación múltiple:}\\
+\addcontentsline{toc}{section}{Asignación múltiple}
+
+En Python se puede asignar mas de una variable en una misma línea de código. Esto  ayuda a 
+reducir el tamaño del programa  y hace mas fácil de leer; esta técnica se usa  frecuentemente cuando
+se inicializa un conjunto de números. Para ilustrar inicializamos tres variables en cero, digamos {\ttfamily x, y,  z}: 
+
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> x, y, z = 7, 3, 5
+	>>> print(x,y,z)
+	7 3 5
+	
+\end{lstlisting}Sólo se necesita separar los nombre de las  variables con comas, y  de la misma forma los valores se separan con comas, y Python asigna cada valor a la variable respectivamente. Siempre que el número de valores coincida con el número de variables, Python los asignará correctamente.
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Ejercicios}\label{Tarea3}
+
+Escriba un programa separado para realizar cada uno de estos ejercicios. Guardar cada programa
+con un nombre de archivo que sigue las convenciones estándar de Python, usando 
+letras minúsculas  y guiones bajos, como {\ttfamily{mensaje\_simple.py}} y  {\ttfamily{mensajes\_simples.py}}.
+
+\begin{enumerate}[2.3.4]	
+	\item Mensaje simple: asigne un mensaje a una variable y luego imprima el mensaje.
+	
+	\item Mensajes simples: asigne un mensaje a una variable e imprima ese mensaje.
+	Luego cambie el valor de la variable a un nuevo mensaje e imprima el nuevo mensaje.
+\end{enumerate}
+
+
+
+
+
+
+
+\section{Números}\label{Numeros}
+
+
+
+\begin{wrapfigure}{l}{0.5\textwidth} 
+	\vspace{-25pt}	\begin{center} \includegraphics[width=0.48\textwidth]{../Logos_de_Python/datos01}
+	\end{center} \vspace{-35pt}%\caption{Python 3} 
+\end{wrapfigure} En algún momento tendrás que trabajar con números, por eso comenzamos considerando las diferentes
+formas de tipos numéricos en Python. En matemáticas distinguimos entre  números naturales ($\mathds{N}$), enteros ($\mathds{Z}$), números racionales ($\mathds{Q}$), números iracionales ($\mathds{I}$),  números reales ($\mathds{R}$ ) y los números complejos ($\mathds{C}$).  Estos son conjuntos infinitos de números ó de cardinalidad del continuo.
+
+Las operaciones difieren entre estos conjuntos. Por ejemplo, la división habitual de dos números en $\mathds{Z}$ podría no dar como resultado un entero: púes no está definido en $\mathds{Z}$.
+
+En Python, como en muchos otros lenguajes informáticos, tenemos tipos numéricos: el tipo numérico {\ttfamily int}, que es un subconjunto finito de  $\mathds{Z}$, el tipo numérico {\ttfamily float}, que es un subconjunto finito de $\mathds{R}$ , y el  tipo {\ttfamily complex}, que es un subconjunto finito de $\mathds{C}$. Python trata estos números de  maneras diferentes, dependiendo de cómo se utilizan. 
+
+
+\subsection{Números Enteros}
+
+Veamos primero cómo Python gestiona los números enteros, porque son los más sencillos para trabajar.
+Se puede hacer cálculos en la terminal (Py) con números enteros, en este caso  Python actúa como una calculadora  operando con  suma {\ttfamily(+)}, resta {\ttfamily(-)}, multiplicación {\ttfamily(*)}, división  {\ttfamily(/)},  y el operador  exponencial  que usan  dos asteriscos {\ttfamily(**)}, en este caso la ejecución simplemente  retorna el resultado de la operación. Ejemplo, una suma de dos enteros:
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 2 + 3
+	
+\end{lstlisting}El resultado de la operación es:\\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			5
+		\end{verbatim}
+}}
+
+A continuación se presenta una tabla con ejemplos de operadores aritméticos:
+
+\begin{center}
+	\noindent Table \ref{Tabla01}. Operadores Aritméticos:\\
+	\addcontentsline{toc}{section}{Operadores Aritméticos}	
+	{\footnotesize{{%\scriptsize 
+				\hspace{-0.7cm}	
+				\begin{tabular}{c l l l l}	% white
+					\multicolumn{1}{|>{\columncolor{azul2}} l }{\color{black}\bf Símbolo}& 
+					\multicolumn{1}{|>{\columncolor{azul2}} l }{\color{black}\bf Significado}& 
+					\multicolumn{1}{|>{\columncolor{azul2}} l }{\color{black}\bf Ejemplo}& 
+					\multicolumn{1}{|>{\columncolor{azul2}} l }{\color{black}\bf Resultado} \\ 
+					{\bf\scriptsize{+}}   & Suma            & a = 10 + 5    & a  es igual a \hfill 15     \\
+					-   & Resta           & a = 12 - 7    & a  es igual a \hfill  5     \\
+					-	& Negación        & a = -5        & a  es igual a \hfill -5     \\
+					*   & Multiplicación  & a = 7 * 5     & a  es igual a \hfill 35     \\
+					**  & Exponente       & a = 2 ** 3    & a  es igual a \hfill  8     \\
+					/  & División         & a = 12.5 / 2  & a  es igual a  \hfill 6.25  \\
+					// & División entera  &a = 12.5 // 2   & a  es igual a  \hfill 6.0   \\                  
+					\arrayrulecolor{vino}\hline    
+				\end{tabular}\label{Tabla01} 		
+				%  	\vspace{0.2cm} 
+	}}} \\
+\end{center}Ahora seguimos algunos  ejemplos de cálculos sencillos con Python actuando como una calculadora. En un archivo .py que contiene las siguientes operaciones:
+
+\begin{lstlisting}%[frame=single]	
+	In[]:
+	print(2 + 3)
+	print(7-3)	
+	print(3 / 2)
+	print(3 ** 2)
+	
+\end{lstlisting}Al correr el programa se obtiene:\\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.03cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			5
+			4
+			1.5
+			9
+		\end{verbatim}
+}}
+
+Python también admite el orden de las operaciones, por lo que puedes usar múltiples
+operaciones en una expresión. 
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 2 + 3*4	
+	
+\end{lstlisting}
+
+El resultado de la operación es:\\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			14
+		\end{verbatim}
+}}
+
+También puede utilizar paréntesis para modificar el orden de operaciones para que Python
+pueda evaluar su expresión de acuerdo con lo que se específica. Por ejemplo:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> (2 + 3)*4	
+	
+\end{lstlisting}
+
+El resultado de la operación es:\\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			20
+		\end{verbatim}
+}}
+
+
+Puede incluir tantos números y operadores como desee:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> 5 + 9 + 3
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			17
+		\end{verbatim}
+}}
+
+
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> 4 + 3 - 2 - 1 + 6	
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			10
+		\end{verbatim}
+}}
+
+Una secuencia de dígitos especifica un número entero positivo, si pones un signo + antes de los dígitos, 
+el número sigue siendo el mismo:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 123
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			123
+		\end{verbatim}
+}}
+
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> +123
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			123
+		\end{verbatim}
+}}
+
+
+Para especificar un número entero negativo, se inserta un signo – antes de los dígitos, ver en el siguiente ejemplo:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> -123
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			-123
+		\end{verbatim}
+}}
+
+
+Como una nota de estilo en entre los números y operadores, no es necesario que haya un espacio (entre cada número y operador), pero es más elegante a la hora de presentar:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 5+9 + 3
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			17
+		\end{verbatim}
+}}
+\vspace{-0.5cm}
+\begin{flushleft}
+	Simplemente se ve mejor y es más fácil de leer.
+\end{flushleft}
+\vspace{-0.15cm}	             %    \vfill  
+Para operar con la multiplicación es semejante al proceso de la suma  y sencillo, veamos algunos  ejemplos:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 6 * 7
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			42
+		\end{verbatim}
+}}
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 6*7*2*3
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			252
+		\end{verbatim}
+}}
+
+
+{\bf ¿Qué tamaño tiene un entero en Python?}\\
+
+En Python 2, el tamaño de un entero estaba limitado a 32 bits. Este era suficiente espacio para almacenar
+cualquier número entero entre {\ttfamily –2.147.483.648} y {\ttfamily 2.147.483.647}.  Un {\ttfamily long} tenía aún más espacio: 64 bits, lo que permitía valores desde {\ttfamily –9.223.372.036.854.775.808}  a 
+{\ttfamily 9.223.372.036.854.775.807}. Ahora, en Python 3,  un entero puede tener cualquier tamaño, incluso mayores a 64 bits. Por lo tanto, puedes escribir cosas como 10**100 que se llama un googol (googol el nombre original de Google, y      \href{https://www.quora.com/What-was-Google-called-before-it-became-Google}{\color{vino} googol}
+es el nombre usado por los matemáticos para hacer referencia a 10 elevado a 100)
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> googol = 10**100
+	>>> googol	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			100000000000000000000000000000000000000000000000000000000000000000000000000000000
+			000000000000000000000000
+		\end{verbatim} 
+}}
+\vspace{-0.65cm}
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	
+	>>> googol * googol	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 		
+		\begin{verbatim}
+			10000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+			0000000000000000000000000000
+		\end{verbatim}
+}} 
+\vspace{-0.35cm}
+En muchos lenguajes, intentar esto provocaría algo llamado overflow, donde
+el número necesitaría más espacio del que le permitía la computadora, lo que provocaría varios
+efectos no deseados. Python maneja enormes números enteros sin problemas.
+
+
+
+
+Podemos cree que cualquier secuencia de dígitos en Python es un número entero literal, sin embargo las secuencias que empiezan en con el cero, como el número {\ttfamily 05}  en Python genera error:  
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	05		
+\end{lstlisting}
+
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{red} 	
+		\begin{verbatim}
+			SyntaxError: leading zeros in decimal integer literals are not permitted;
+			use an 0o prefix for octal integers
+		\end{verbatim}
+}}
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Advertencia1}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 
+		Esta es la primera vez que ve una excepción de Python: un error de programa.
+		En este caso, es una advertencia de que 05 es un "token no válido". Este error se explicará
+		en la página \pageref{CeroB} referente a "{}Bases"{}. Verás muchos más ejemplos
+		de excepciones en el Capítulo \ref{Cap10}, porque son el error principal de Python debido al  
+		mecanismo de manipulación.}
+\end{minipage}
+\vspace{0.2cm}
+
+
+
+
+
+\subsection{Números Floats o punto flotante}
+
+Python llama Floats o números de punto flotante a cualquier número con punto decimal o número decimal.  Es decir, los números en punto flotante se componen de dos parte, la parte entera y la parte decimal. Los floats se manejan de manera similar a los números enteros: puede usar los operadores {\ttfamily  (+, –, *, /, //, **,  \%) } y función {\ttfamily divmod()}, que devuelve cociente y resto de la división. 
+Ejemplo:
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> divmod(8,5)
+	(1, 3)  	
+\end{lstlisting}
+
+El término punto flotante  se utiliza en la mayoría de los lenguajes de programación, y se refiere al hecho de que un punto decimal puede aparecer en cualquier posición de un número.\\ 
+
+
+Para convertir otros tipos  a flotantes, se  utiliza la función {\ttfamily float()}. Y como en el caso de la función {\ttfamily int()} que los booleanos actúan como  números enteros, aplicando {\ttfamily float()} se obtiene  un número con punto decimal, un flotante:
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> float(True)
+	>>> float(False)	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			1.0
+			0.0
+		\end{verbatim}
+}}
+
+
+Y para convertir un número entero en un flotante simplemente   {\ttfamily float()} lo convierte  un número con punto decimal:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> float(98)
+	>>> float('99')
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			98.0
+			99.0
+		\end{verbatim}
+}}
+
+Y puede convertir una cadena de dígitos ("98.6") que puede  ser un valor flotante válido (dígitos,
+signos, decimal, expenecial) a un flotante real:
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> float('98.6')
+	>>> float('1.0e4')
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[12]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			98,6
+			10000.0
+		\end{verbatim}
+}}
+
+Todo lenguaje de programación debe estar cuidadosamente diseñado para gestionar adecuadamente los números decimales, de modo que los números obedezcan  un comportamiento apropiado, sin importar dónde aparezca el punto decimal. En Python  se puede usar punto flotante sin preocuparse de su comportamiento. Simplemente se ingresan los números a usar y Python mostrará  probablemente el resultado que se espera: Veamos algunos ejemplos:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 0.1 + 0.1
+	>>> 0.2 + 0.2
+	>>> 2 * 0.1
+	>>> 2 * 0.2
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[12]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			0.2
+			0.4
+			0.2
+			0.4
+		\end{verbatim}
+}}
+
+Sin embargo, tenga en cuenta que a veces puede obtener un número arbitrario de
+decimales en tu respuesta, como sucede en el siguiente ejemplo:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 0.2 + 0.1
+	>>> 3 * 0.1
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[12]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		
+		\begin{verbatim}
+			0.30000000000000004
+			0.30000000000000004
+		\end{verbatim}
+}}
+
+Esto sucede en todos los lenguajes y no es motivo de preocupación. Python intenta
+encontrar una manera de representar el resultado con la mayor precisión posible, lo que a veces es
+difícil dado que las computadoras tienen que representar internamente números binarios (operaciones binarias con números periódicos en base 2). Por ahora ignore los decimales adicionales; que al  desarrollar  proyectos de la Parte II, se tratará los lugares adicionales en los decimales, siempre y cuando sea necesario.
+
+
+\subsubsection*{Base de un sistema numérico}
+\addcontentsline{toc}{section}{Base de un sistema numérico}
+
+Introducimos este tema para darle una breve información al respecto. Una base de un sistema numérico es la cantidad de dígitos que se usan para formar el sistema numérico.  El  sistema que usamos en la vida diaria es sistema decimal,  tiene diez dígitos, que son los símbolos numéricos  que conocemos: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9; a partir de estos formamos todos los números del sistema decimal.  Por ejemplo, luego de los dígitos, se forma el 10, que es una decena. Después de las unidades vienen las “decenas”, de esta forma  10 significa "{}1 decena y 0 unidades{}" {}(no hay un dígito que represente el "{}diez{}"{} en el sistema decimal). Y Continua  11, 12, hasta 19, y uno más para alcanzar dos decenas,  formando el 20 (2 decenas y 0 unidades), y así sucesivamente. 
+
+En la base 2 (binario), los únicos dígitos son 0 y 1. Los dígitos 0 y 1 en este sistema son igual que en el sistema decimal. Sin embargo, en base 2, si sumas un 1 más  1, obtienes 10  (1 binario  más 0 unidades). En el sistema ternario se usan tres dígitos, y su base es 3;  en el sistema Octal se usan ocho dígitos, y su base es  8; y en el sistema Hexadecimal se usan 16 dígitos, y su  base es 16. Los dígitos en el sistema Hexadecimal son  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a,b, c, d, e y f.  \\ 
+
+
+Tal vez sólo necesites el sistema decimal, y nunca tengas que usar  otras bases, pero es muy posible que las encuentre otras bases en algún código Python en cualquier momento de su vida como programador. \\
+
+Claramente los números enteros son decimales y su base es 10 (a menos que use un prefijo para especificar otra
+base). En Python, además de la base  decimal puedes expresar números enteros en tres bases:
+
+\begin{list}{$\bullet$}{}  
+	
+	\item {\ttfamily 0b o 0B} para binario (base 2).
+	\item {\ttfamily 0o o 0O} para octal (base 8).
+	\item {\ttfamily 0x o 0X} para hexadecimal (base 16).
+\end{list}
+
+
+El intérprete  imprime como números enteros decimales. Probemos cada una de estas bases.
+Primero, un simple decimal 10, que significa 1 decena y 0 unidades:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 10	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			10
+		\end{verbatim}
+}}
+
+Ahora, un binario 10 (base dos), que significa 1 binario (binario) y 0 unidades:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 0b10	
+\end{lstlisting}\label{CeroB}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			2
+		\end{verbatim}
+}}
+
+Un  Octal  10 (base 8), que significa 1 octal (octal) y 0 unidades:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 0o10	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			8
+		\end{verbatim}
+}}
+
+Un hexadecimal 10 (base 16), que significa 1 hexadecimal (hexadecimal) y 0 unidades:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 0x10	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			16
+		\end{verbatim}
+}}
+
+
+Observe, un {\ttfamily 0xa} es un 10 (decimal), y un {\ttfamily 0xf} es un  15 (decimal). Si suma 1 a {\ttfamily 0xf} y obtienes {\ttfamily 0x10} que es el 16 (decimal). 
+
+Esta sección de bases numéricas es solo como una información general, para dar a conocer que existen otros sistemas numéricos,  útil en operaciones a nivel de bits; pero en este curso no se tratara más este tema. 
+
+%{\bf ¿Por qué utilizar una base diferente a 10?}\\
+% Es útil en operaciones a nivel de bits, que se describen en el Capítulo 7 \ref{Cap7}, junto con más detalles sobre cómo convertir números de una base a otra.\\
+
+
+
+
+
+% Variables y tipos de datos simples 27   Variables and Simple Data Types 27
+
+
+\subsection{Operaciones con Enteros y flotantes}
+
+Cuando divides dos números cualesquiera, incluso si son números enteros que dan como resultado un
+número entero, siempre obtendrás un decimal (floats):
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> 4/2	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		
+		\begin{verbatim}
+			2.0
+		\end{verbatim}
+}}
+
+
+Si mezclas un número entero y un flotante en cualquier otra operación, obtendrás un
+flotante:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> 1 + 2.0
+	>>> 2 * 3.0
+	>>> 3.0 ** 2	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 		
+		\begin{verbatim}
+			3.0
+			6.0
+			9.0
+		\end{verbatim}
+}}
+
+Si mezcla tipos numéricos, Python a veces intentará convertirlos automáticamente para flotante:
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 4 + 7.0
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 		
+		\begin{verbatim}
+			11.0
+		\end{verbatim}
+}}
+
+Cuando se mezcla operaciones con números enteros o flotantes y  booleano, el valor False se trata como 0 o 0,0,  y 
+True se trata como 1 o 1.0:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	# Genera entero y float
+	>>> True + 2
+	>>> False + 5.0
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue}		
+		\begin{verbatim}
+			3
+			5.0
+		\end{verbatim}
+}}
+
+
+La división es un poco más interesante porque viene en dos modalidades:
+\hfill  El símbolo  {\ttfamily /}, realiza la división en  punto flotante (número decimal), mientra que {\ttfamily //} realiza la división  parte entera (truncando). Incluso si estás dividiendo un número entero entre un número entero, al usar {\ttfamily /} te dará un punto flotante resultado, ver ejemplo siguiente:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 9/5
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			1.8
+		\end{verbatim}
+}}
+
+
+La división parte entera da un entero (el cociente) como resultado, desechando cualquier resto, ver en el siguiente ejemplo:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 19 // 5
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:	
+	{\color{blue} 	
+		\begin{verbatim}
+			3
+		\end{verbatim}
+}}
+
+\hspace{-0.65cm}Observe que el resto en la división es 4, y la parte residual que
+es 8 no aparecen en esta operación.\\
+
+Dividir por cero con cualquier tipo de división provoca una excepción en Python:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 5/0
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{red} 	
+		\begin{verbatim}
+			Traceback (most recent call last):
+			File "<stdin>", line 1, in <module>
+			ZeroDivisionError: division by zero
+		\end{verbatim}
+}}
+\vspace{-0.15cm}
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> 7 // 0	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{red} 	
+		\begin{verbatim}
+			Traceback (most recent call last):
+			File "<stdin>", line 1, in <module>
+			ZeroDivisionError: integer division or modulo by z
+		\end{verbatim}
+}}
+
+Todos los ejemplos anteriores utilizaron números enteros. Pero también se puedes mezclar números enteros y variables a las que se les han asignado valores enteros:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> x = 95	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			95
+		\end{verbatim}
+}}
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> x - 3	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			92
+		\end{verbatim}
+}}
+
+Observe, cuando escribimos  {\ttfamily x - 3}, no asignamos el resultado a {\ttfamily x}, por lo que el valor de {\ttfamily x} no
+cambia:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> x	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			95
+		\end{verbatim}
+}}
+
+Si queremos cambiar el valor de {\ttfamily x}, debemos asignar el valor de la siguiente 
+forma:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> x = x - 3
+	
+\end{lstlisting}
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> x	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			92
+		\end{verbatim}
+}}
+
+Esto generalmente confunde a los programadores principiantes, debido a nuestro grado de arraigado
+al entrenamiento escolar en matemáticas,  que el símbolo  {\ttfamily =}  indica  igual. En Python, la expresión
+en el lado derecho de {\ttfamily =} se calcula primero y luego se asigna a la variable en el lado izquierdo. Entonces, cuando corre:
+
+\begin{lstlisting}%[frame=single]
+	In[]:	
+	>>> x = x - 3	
+\end{lstlisting}
+Python está calculando la resta en el lado derecho, y mantiene el resultado en una variable temporal, que  luego asigna a  {\ttfamily x} en el lado izquierdo de la igualdad ({\ttfamily =}).  También se puede combinar los operadores aritméticos con asignación, poniendo el operador antes  de la igualdad ({\ttfamily =}). Aquí, {\ttfamily  x -= 3} es como escribir {\ttfamily x = x - 3}, veamos el ejemplo siguiente:
+
+\begin{lstlisting}%[frame=single]
+	In[]:	
+	>>> x = 95
+	>>> x-= 3
+	>>> x
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			92
+		\end{verbatim}
+}}
+
+Para  {\ttfamily x = x + 8}, se escribe como sigue:
+
+\begin{lstlisting}%[frame=single]
+	In[]:
+	>>> x+= 8
+	>>> x	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			100
+		\end{verbatim}
+}}
+
+Para la multiplicación el caso es semejante, para {\ttfamily  x = x * 2}, se escribe como sigue: 
+
+\begin{lstlisting}%[frame=single]
+	In[]:	
+	>>> x *= 2
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			200
+		\end{verbatim}
+}}
+
+Ahora se muestra un ejemplo de división en punto flotante, para el calculo de  {\ttfamily  x = x / 3}, se obtiene:
+
+\begin{lstlisting}%[frame=single]
+	In[]:	
+	>>> x /= 3
+	>>> x
+	
+\end{lstlisting}
+\vspace{-0.25cm}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:	
+	{\color{blue} 	
+		\begin{verbatim}
+			66.66666666666667
+		\end{verbatim}
+}}
+
+
+\hspace{-0.65cm}Asignemos el número  13  a  {\ttfamily x} y luego probemos la operación   {\ttfamily x = x // 4}  (floating-point division):
+
+\begin{lstlisting}%[frame=single]
+	In[]:	
+	>>> x = 13
+	>>> x //= 4
+	>>> x
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			3
+		\end{verbatim}
+}}
+
+El carácter  {\hspace{0.1cm}}{\ttfamily \%} tiene múltiples usos en Python. Cuando está entre dos números, produce
+el resto de dividir el primer número por el segundo:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 9 % 5	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			4
+		\end{verbatim}
+}}
+
+A continuación se explica cómo obtener el cociente (truncado) y el resto a la vez, mediante la función {
+	\ttfamily divmod( , )}:
+
+\begin{lstlisting}%[frame=single]
+	In[]:	
+	>>> divmod(9,5)
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			(1, 4)
+		\end{verbatim}
+}}
+
+
+
+\hspace{-0.65cm}De lo contrario, debemos calculado por separado:
+
+\begin{lstlisting}%[frame=single]
+	In[]:
+	>>> 9 // 5
+	>>> 9 % 5
+	
+\end{lstlisting}
+Hemos introducido una nueva función {\ttfamily divmod( , )} que recibe los números enteros 9 y 5 y devuelve un resultado de dos elementos en un objeto llamado tupla. Las tuplas estudiaran con detalle en el Capítulo \ref{Cap4}, y las funciones en el Capítulo \ref{Cap7}.\\
+
+
+{\bf {Guiones bajos en números}}\\
+
+Cuando escribes números largos, puedes agrupar dígitos usando guiones bajos 
+para hacer que los números grandes sean más legibles. Cuando imprime un número que se ha definido usando guiones bajos, Python imprime  sólo los dígitos:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> edad_universo = 14_000_000_000
+	>>> print(edad_universo)	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		
+		\begin{verbatim}
+			14000000000
+		\end{verbatim}
+}}
+
+Python ignora los guiones bajos al almacenar este tipo de valores.
+Incluso si no agrupa los dígitos de tres en tres, el valor no se verá afectado.
+Para Python, 1000 es lo mismo que 1\_000, que es lo mismo que 10\_00. Esta característica funciona tanto para números enteros como flotantes.\\
+
+
+{\bf Conversiones de tipos}\\
+
+Para cambiar otros tipos de datos de Python a un número entero, use la función {\ttfamily int()}. Esta función dá
+como resultado el número entero y descarta la parte fraccionaria. El tipo de datos más simple de Python es el booleano, que sólo tiene dos valores, {\ttfamily True} (Verdadero) y  {\ttfamily  False} (Falso). 
+
+Un  valor booleano se puede convertir  en número entero, mediante  la función {\ttfamily int()}; así, True  y False representan los valores 1 y 0, respectivamente.  En el siguiente ejemplo se muestra:
+
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> int(True)	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			1
+		\end{verbatim}
+}}
+
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> int(False)	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			0
+		\end{verbatim}
+}}
+
+Para convertir un número de punto flotante en un número entero la función {\ttfamily int()}  simplemente elimina la parte  decimal:
+
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> int(98.6)	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			98
+		\end{verbatim}
+}}		
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> int(1.0e4)	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			10000
+		\end{verbatim}
+}}
+
+Finalmente, aquí hay un ejemplo de cómo convertir una cadena de texto  que contiene sólo dígitos, posiblemente con signos  {\ttfamily +} o {\ttfamily -}:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> int('-23')	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			-23
+		\end{verbatim}
+}}
+En la próximo sección se desarrolla todo lo referente a cadenas de texto o string.
+
+Convertir un número entero en un número entero no cambia nada pero tampoco hace daño:
+
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> int(12345)	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			12345
+		\end{verbatim}
+}}
+
+Si intentas convertir algo que no parece un número, obtendrás una excepción:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> int('99 botellas de cerveza en la pared')
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{red} 	
+		\begin{verbatim}
+			Traceback (most recent call last):
+			File "<pyshell#1>", line 1, in <module>
+			print(int('99 botellas de cerveza en la pared'))
+			ValueError: invalid literal for int() with base 10: '99 botellas de cerveza en la pared'
+		\end{verbatim}
+}}
+
+
+
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> int('')	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{red} 	
+		\begin{verbatim}
+			Traceback (most recent call last):
+			File "<pyshell#2>", line 1, in <module>
+			print(int(''))
+			ValueError: invalid literal for int() with base 10: ''	
+		\end{verbatim}
+}}
+
+
+La cadena de texto anterior comenzó con dígitos válidos (99), pero continuó
+con otros caracteres que la función {\ttfamily int()} simplemente no soporta.\\
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 
+		Estudiaremos las excepciones en el Capítulo  \ref{Cap10}. Por ahora, sólo debes saber que así es como
+		Python le alerta que se ha producido un error, en lugar de bloquear el sistema, como podrían hacer otros  lenguajes. En lugar de suponer que las cosas siempre salen bien, mostraré muchos ejemplos de excepciones a lo largo de este libro, para que puedas ver lo que hace Python cuando hay un error en el programa.}
+\end{minipage}
+\vspace{0.2cm}
+
+Nota importante, {\ttfamily int()} generará números enteros a partir de flotantes o  cadenas  (string) de dígitos (enteros), pero no manejará cadenas que contengan puntos decimales o exponentes, ilustremos esto con ejemplos:
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	# string decimal	
+	>>> int('98.6')	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{red} 	
+		\begin{verbatim}
+			Traceback (most recent call last):
+			File "<pyshell#23>", line 1, in <module>
+			int("25.6")
+			ValueError: invalid literal for int() with base 10: '98.6'
+		\end{verbatim}
+}}
+
+
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	# String exponencial	
+	>>> int('3e10')	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{red} 	
+		\begin{verbatim}
+			Traceback (most recent call last):
+			File "<pyshell#26>", line 1, in <module>
+			int("3e10")
+			ValueError: invalid literal for int() with base 10: '3e10'
+		\end{verbatim}
+}}
+
+
+
+
+
+{\bf Importancia de los operadores y Orden algebraico (reglas de precedencia):}\\
+
+En Python, como en la mayoría de los lenguajes, la multiplicación tiene
+mayor prioridad que la suma, por lo que la operación {\ttfamily 2 + 3 * 4 }, dará como resultado   14, veamos el siguiente ejemplo: 
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> 2 + 3 * 4	
+\end{lstlisting}
+
+
+Hay un conjunto reglas de precedencia que se presentan en la tabla \ref{precedencia}; sin embargo, lo mas recomendable es usar los paréntesis, es la forma más fácil y clara para agrupar el código como desea que se realice el cálculo: \label{precedencia}
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> 2 + (3 * 4)
+	14
+	
+\end{lstlisting}
+
+De esta manera, cualquiera que lea el código no necesita adivinar su intención ni buscar las reglas de precedencia.
+
+
+
+
+
+\subsection{Números Complejos}
+
+En construcción ....
+
+Como {\ttfamily 1j}
+
+\section{Ejercicios}\label{Tarea4}
+
+Ejercicios 
+\begin{enumerate}[3.3.8]
+	
+	\item Número ocho: Escribe las operaciones suma, resta, multiplicación y división 
+	que cada una dé como resultado el número 8. 
+	Asegúrese de adjuntar sus operaciones en llamadas {\ttfamily{print()}} para ver los resultados.
+	Deberías crear cuatro líneas que se vean así: {\ttfamily{print(5+3)}} Su resultado debe ser de cuatro líneas,
+	con el número 8 apareciendo una vez en cada línea.
+	
+	\item  Número favorito: Use una variable para representar su número favorito. Luego,
+	con esa variable, crea un mensaje que revele su número favorito. Imprima ese mensaje.
+	
+\end{enumerate}
+
+
+
+
+\subsubsection{Funciones básicas, Funciones matemáticas}
+
+Python tiene las funciones matemáticas habituales, como raíces cuadradas, logaritmos , cosenos, etc. Estudiaremos estas funciones en  la sección \ref{matem}, en el que también analizamos los usos de Python en la ciencia.
+
+En construcción ... 
+
+https://docs.python.org/es/3/library/functions.html  tiene las funciones integradas en Python
+
+
+
+
+
+\section{Strings o cadenas de caracteres}
+% \addcontentsline{toc}{section}{Strings o cadenas de caracteres}
+
+
+\begin{wrapfigure}{l}{0.5\textwidth} 
+	\vspace{-25pt}	\begin{center} \includegraphics[width=0.48\textwidth]{../Logos_de_Python/cadenas01}
+	\end{center}\vspace{-35pt} %\caption{Python 3} 
+\end{wrapfigure}  Los no programadores suelen pensar que los programadores deben ser buenos en matemáticas porque
+trabajan con números. En realidad, la mayoría de los programadores trabajan mucho más con cadenas de texto
+que los números. El pensamiento lógico (¡y creativo!) suele ser más importante que las habilidades matemáticas.
+
+
+En la mayoría de los programas se definen y se recopilan diferentes tipos de datos como información importante,   
+que luego debe ser  clasificada y tratarla de acuerdo al tipo  y a las necesidades.  
+Python 3, puede contener caracteres de cualquier lengua escrita del mundo, además de muchos símbolos, esto se debe 
+a su compatibilidad con el estándar Unicode (Unicode standard  \ref{Unicode}).  La implementación esa norma
+fue una gran razón para su separación de Python 2, y una buena razón para usar la versión 3 de Python.\\
+
+Una  cadena o  strings es una serie o secuencia de caracteres. En Python todo lo que esté entre 
+comillas se considera un strings;  y muy importante, se puede usar comillas simples o dobles. Para ilustrar mostraremos  los siguientes ejemplos (ASCII):
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	# Comillas simple y dobles	
+	>>> "Esto es un strings"   
+	>>> 'Esto también es un strings'	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Esto es un strings   
+			Esto también es un strings
+		\end{verbatim}
+}}
+
+
+El intérprete interactivo hace eco de las cadenas con  comillas simples, pero todas son tratadas exactamente
+igual  por Python. \\
+
+
+\noindent{\bf¿Por qué tener dos tipos de comillas?} 
+El objetivo principal es que puedas crear cadenas que contienen caracteres en comillas. Puedes tener comillas simples dentro de cadenas en comillas dobles, o comillas dobles dentro de cadenas entre comillas simples,   veamos  algunos ejemplos: 
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	>>> 'Le dije a mi amigo: "¡Python es mi lenguaje favorito!"'	
+	>>> "El lenguaje 'Python' lleva el nombre de Monty Python, no de serpiente."
+	>>> "Una de las fortalezas de Python es su comunidad diversa y solidaria."
+	
+\end{lstlisting}
+
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Le dije a mi amigo: "¡Python es mi lenguaje favorito!"
+			El lenguaje 'Python' lleva el nombre de Monty Python, no de serpiente.
+			Una de las fortalezas de Python es su comunidad diversa y solidaria.
+		\end{verbatim}
+}}
+
+
+A diferencia de otros lenguajes, las cadenas en Python son inmutables.  No puedes cambiar una cadena
+luego de crearla, pero puedes hacer copias completas o partes de una cadena para obtener el mismo efecto. 
+Python se refiere a los valores que no pueden cambiar como inmutable.
+
+También puedes utilizar tres comillas simples ('{}'{}') o tres comillas dobles ("{}"{}"). Su uso más común es crear cadenas multiline, es decir varia lineas de texto; mientras que  para cadenas cortas no son muy útiles. Veamos su uso con  el  poema clásico de Edward Lear:
+Introducimos línea por línea (sesión de lineas) del poema en el intérprete interactivo;  se escribe  la primera línea (enter) y el intérprete espera hasta que ingresamos las comillas triples al final, luego ejecutamos; y imprimimos  la cadena {\ttfamily print(poema)}.
+Consideremos la variable {\ttfamily poema}, definida como: 
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	poema = """There was a Young Lady of Norway,
+	Who casually sat in a doorway;          
+	When the door squeezed her flat,
+	She exclaimed, "What of that?"
+	This courageous Young Lady of Norway."""
+	
+	print(poema)
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			There was a Young Lady of Norway,
+			Who casually sat in a doorway;          
+			When the door squeezed her flat,
+			She exclaimed, "What of that?"
+			This courageous Young Lady of Norway.
+		\end{verbatim}
+}}
+
+
+
+Si intentamos construir esta cadena con una o dos comillas el interprete genera error:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	# comillas doble
+	>>> poem = ""There was a young lady of Norway,	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{red} 	
+		\begin{verbatim}		
+			SyntaxError: unexpected indent
+		\end{verbatim}
+}}
+\vspace{-0.35cm}
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	# comilla simple	
+	>>> poem ="There was a young lady of Norway,	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{red} 	
+		\begin{verbatim}		
+			SyntaxError: incomplete input
+		\end{verbatim}
+}}
+
+Si tiene varias líneas entre comillas triples, se conservarán los caracteres de la cadena hasta final de la última línea; además, si tiene espacios iniciales o finales, también se conservarán:
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	# Con espacios 
+	>>> poem2 = '''I do not like thee, Doctor Fell.
+	The reason why, I cannot tell.
+	But this I know, and know full well:
+	I do not like thee, Doctor Fell. '''
+	>>> print(poem2)
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			I do not like thee, Doctor Fell.
+			The reason why, I cannot tell.
+			But this I know, and know full well:
+			I do not like thee, Doctor Fell.
+			
+		\end{verbatim}
+}}
+
+
+\subsection{El Método {\ttfamily title()}, {\ttfamily lower()} y {\ttfamily upper()}}	%\subsection{El uso Métodos con Stings} %     Changing Case in a String with Methods
+
+
+
+Una de las tareas más simples y común que se puede hacer  en las cadenas es cambiar de minúsculas a mayúscula o 
+viceversa. Veamos un ejemplo, considere un archivo  de programa {\ttfamily  nombre.py}   con el siguiente contenido:
+
+\hspace{-2.15cm}{\ttfamily \scriptsize nombre.py}  \vspace{-0.55cm}
+\begin{lstlisting}%[frame=single]
+	
+	nombre = "caRlos dávila"
+	print(nombre.title())	
+\end{lstlisting}
+En este caso, el nombre de la variable es {\ttfamily  nombre}  y  se refiere a la cadena en minúscula o desordenado 
+"{}caRlos dávila".   Luego, en el llamado con {\ttfamily   print()}  se observa  que  aparece  un nuevo elemento {\ttfamily title()}, después de la variable {\ttfamily  nombre} y seguido por un punto. Este nuevo elemento  es llamado método (method title()); un método es una acción que Python puede realizar sobre un objeto (o dato, en este caso una cadena), y no es más que  una función de Python que puede aplicar sobre un determinado objeto para presentar  un cambio en el valor de variable;  pero sin alterar el valor de la variable {\ttfamily nombre}.  El punto (.) después de  {\ttfamily nombre} en  {\ttfamily nombre.title()} le dice a Python que ejecute método  {\ttfamily title()} sobre  el objeto  {\ttfamily nombre} (observe el método  siempre lleva los paréntesis). En el capítulo \ref{Cap7} se estudiará más sobre los método de Python, por ahora veamos como aplicar algunos métodos sobre las cadenas.\\
+
+%Esa información se proporciona entre paréntesis. La función {\ttfamily title()} no necesita cualquier información adicional, por lo que sus paréntesis están vacíos. método title() actúe el nombre de la variable. 
+
+Al ejecutar el archivo  {\ttfamily nombre.py},   se observa resultado:\\
+
+{\ttfamily\scriptsize\scriptsize {\color{blue}   
+		\hspace{-0.65cm}Carlos Dávila}} \\
+
+{\bf El método {\ttfamily title()}}: 	
+
+El método {\ttfamily title()} cambia cada palabra en la cadena, ahora cada palabra comienza con mayúscula y es seguido por minúsculas; es decir, el método convierte una cadena en Formato Título. Este método es muy  útil,  por ejemplo, si queremos que un programa reconozca los valores de entrada: Carlos, CARLOS, CaRloS y caRlos, como el mismo nombre, y muéstrelos todos como Carlos, veamos un ejemplo:
+
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	nombre = "cArlos DáViLa"
+	print(nombre.title())
+\end{lstlisting}
+
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	
+	{\color{blue} 
+		\hspace{-0.65cm}Carlos Dávila}} \\	
+
+También hay otros métodos útiles disponibles para tratar el caso. Por ejemplo, puede cambiar una cadena a letras mayúsculas o minúsculas:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:	
+	nombre = "cArlos dáViLa"
+	print(nombre.upper())
+	print(nombre.lower())
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			CARLOS DÁVILA
+			carlos dávila
+		\end{verbatim}
+}}
+
+{\bf El método {\ttfamily lower()}}: 	
+
+El método {\ttfamily lower()}  es particularmente útil para almacenar datos.  Normalmente no puedes confiar en las mayúsculas que proporcionan tus usuarios, por lo que es conveniente convertir las cadenas a minúsculas antes de almacenarlas. Y luego podrás mostrar la información, utilizando el caso  más apropiado.
+
+%  Tarea 1
+
+
+
+%  logo ninos
+%  https://www.freepik.es/search?format=search&query=ninos%20animados%20funciones%20matematicas%20informatica%20
+
+
+
+\subsection{Usar variables dentro de una cadenas: {\ttfamily f-strings}}
+
+
+A partir de la versión 3.6 de Python, se añadió (PEP 498), una nueva notación para cadenas llamada {\ttfamily {}"{}f{}"{}}-cadenas, que hace más sencillo introducir variables y expresiones en las cadenas. Una {\ttfamily {}"{}f{}"{}}-cadenas contiene variables y expresiones entre llaves "\{\}" que se sustituyen directamente por su valor. Las {\ttfamily {}"{}f{}"{}}-cadenas reconocen porque comienzan por una letra {\ttfamily f} antes de las comillas de apertura.\\
+
+
+
+
+
+Ilustraremos con un ejemplo; supongamos que necesite utilizar tres variables para representar el nombre, 
+apellido y  edad respectivamente, y luego combinar esos valores para mostrar el nombre completo y su edad:
+
+\begin{lstlisting}%[frame=single]
+	In[]:
+	>>> primer_nombre = "Carlos"
+	>>> segundo_nombre = "Enrrique"
+	>>> edad = 29
+	>>> nombre_completo = f"{primer_nombre} {segundo_nombre} tiene {edad} \
+	años de edad."
+	>>> print(nombre_completo)
+\end{lstlisting}
+
+Para insertar el valor de una variable en una {\ttfamily {}"{}f{}"{}}-cadena, se coloca la letra {\ttfamily f}   inmediatamente
+las comillas de apertura, y cada vez que se llame una variable se coloca entre llaves; es decir los nombres de cualquier variable que desee utilizar dentro de la cadena debe ir entre llaves.  Python reemplazará cada variable con su valor cuando se muestra la cadena. Estas cadenas se llaman {\ttfamily f-strings}. La {\ttfamily f} es para formato, porque Python formatea la cadena reemplazando el nombre de cualquier variable entre llaves con su valor. El resultado del código anterior es:\\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			CarLos Enrrique tiene 29 años de edad.
+		\end{verbatim}
+}}
+
+
+Con los {\ttfamily f-strings} se pueden redactar mensajes completos utilizando la información asociada a la variable (actualizadas o dinámicas); como se muestra con el siguiente ejemplo:
+
+
+\hspace{-2.35cm}{\ttfamily \scriptsize ejemplo.py}\vspace{-0.5cm}
+\begin{lstlisting}%[frame=single]
+	
+	# Asignamos los valores a las dos variables	
+	nombre, apellido = "caRlos", "dáVila"
+	
+	nombre_completo = f"{nombre} {apellido}"
+	print(nombre_completo)
+	print(nombre_completo.title())
+	
+	# Método title() aplicado individual a cada cadena
+	saludo_individual = f"Hola, {nombre.title()} {apellido.title()}. \
+	¿Cómo va el curso?"
+	print(saludo_individual)
+	
+	# Método title() aplicado  a un f-strings
+	saludo_completo = f"Hola, {nombre_completo.title()}. ¿Cómo va el curso?."
+	print(saludo_completo)
+\end{lstlisting}
+{\ttfamily\scriptsize\noindent Out[]:\vspace{-0.25cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			caRlos dáVila
+			Carlos Dávila
+			Hola, Carlos Dávila. ¿Cómo va el curso?
+			Hola, Carlos Dávila. ¿Cómo va el curso?
+		\end{verbatim}
+}}
+
+
+
+
+
+La variable  {\ttfamily nombre\_completo},  presenta la frase completa formada por los valores de las dos variables de entrada,  en este caso es el nombre completo (entrada en datos brutos); y el método {\ttfamily title()} que se usa le dá formato de título a la cadena, en este contexto al nombre y apellido. 
+
+En este caso se presenta dos formas para trabajar una cadena: una es aplicando individualmente a cada cadena,  y la segunda es aplicado a un {\ttfamily f-strin}; aquí  se muestra la  habilidad y ahorro de trabajo del programador.
+
+%{\bf Tabla de métodos pendientes, de siguiendo2}\label{Tabla2} \ref{tablla2}\\
+
+% Tarea 1
+
+\section*{Ejercicios 3.3}
+\addcontentsline{toc}{section}{Ejercicios 3.3}
+Guarde cada uno de los siguientes ejercicios como un archivo separado, con un nombre como nombre\_casos.py. 
+
+
+\begin{enumerate}[3.3.1]
+	
+	\item Mensaje personal: Use una variable para representar el nombre de una persona e imprima
+	un mensaje para esa persona. Su mensaje debe ser simple, como "Hola Carlos", ¿Te gustaría aprender algo de Python hoy?
+	
+	\item Casos de nombres: Use una variable para representar el nombre de una persona,  luego imprima
+	el nombre de esa persona en minúsculas, mayúsculas y en formato de título.
+	
+	\item Cita famosa 1: Encuentre una cita de una persona famosa que admire. Imprime la cita y el nombre de su autor.
+	Su salida debe parecerse a la siguiente, incluidas las comillas:
+	Albert Einstein dijo una vez: "{}Una persona que nunca cometió un error nunca probó algo nuevo".
+	% “A person who never made a mistake never tried anything new.”
+\end{enumerate}
+
+\subsection{Salto de línea, tabulaciones y espacios en blanco} %  con tabulaciones o nuevas líneas
+
+Python te permite  escapar (escapar con {\bf\scriptsize\textbackslash}) del significado de algunos caracteres dentro de cadenas para lograr efectos que de otro modo sería difícil de expresar. Al anteponer un carácter con una barra invertida ({\scriptsize \bf\textbackslash}), le das un significado especial. La secuencia de escape más común es {\ttfamily \textbackslash n},  que significa comenzar una nueva línea. Otra secuencia de escape importante es {\ttfamily \textbackslash t }, que significa tabulación un texto. Con esto puedes crear cadenas multilínea a partir de una cadena en una sola línea. (cadenas crudas). Y un comentario más, si necesita una barra invertida, 
+simplemente escriba dos de ellas, ejemplo:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[ ]:
+	>>> discurso = "barra invertida: \\" 
+	>>> print(discurso)
+\end{lstlisting}
+
+
+{\ttfamily\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			barra invertida: \
+		\end{verbatim}
+}} 
+
+En programación, los espacios en blanco se refieren a cualquier carácter que no se pueda imprimir, como
+espacios, tabulaciones y símbolos de final de línea. Los espacios en blanco se pueden usar para organizar
+la salida de tal modo que sea más fácil de leer por los usuarios.
+
+A continuación se ejemplifica como añadir tabulaciones  con {\ttfamily \textbackslash t} en un texto: 
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> print("Python")
+	>>> print("\tPython")		
+	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			Python
+			Python
+		\end{verbatim}
+}} 
+
+Para  pasar a otra línea en una cadena o añadir una nueva línea, se usa la sentencia o instrucción  {\ttfamily \textbackslash n}, que le indica a Python que continué en la otra línea, veamos un  ejemplo: 
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> print("Los lenguajes:\nPython\nC\nJavaScript")	 	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			Los lenguajes:
+			Python
+			C
+			JavaScript
+		\end{verbatim}
+}} 
+% más tabulaciones en un texto
+\noindent También puede combinar  tabuladores (tabs)  con nuevas líneas en una cadena. 
+
+La instrucción  {\ttfamily \textbackslash n\textbackslash t} le indica a Python ir a una nueva línea y empezar en esa nueva línea con una tabulación. En el siguiente ejemplo se ilustra su aplicación con cuatro líneas tabuladas:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> print("Los lenguajes:\n\tPython\n\tC\n\tJavaScript") 	
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			Los lenguajes:
+			Python
+			C
+			JavaScript
+		\end{verbatim}
+}} 
+
+
+\noindent Se puede emplear el uso de tabulaciones y nuevas línea, cuando se producen muchas líneas de salida con pocas líneas de código, para visualizar el resultado de manera clara.
+
+
+\subsection{Eliminación de espacios en blanco}\label{espacio_Blanco}  
+
+Los espacios en blanco  adicionales en una cadena puede generar confusión en el programa. Para los programadores  {\ttfamily "Python{}"{}} y {\ttfamily "Python {}"{}} se ven más o menos iguales. Pero para el programa son dos cadenas distintas. Python detecta los espacios extras en blanco y lo considera significativo a menos que usted indique lo contrario.  Es importante tomar en cuenta los espacios en blanco en una cadena, debido a que algunas veces será necesario comparar dos cadenas, para determinar si son iguales.  
+
+%and  considers it significant unless you tell it otherwise.  %  len(uno)==len(uno1)
+
+Un ejemplo simple pero importante, consiste en verificar los nombres de usuario de las personas cuando
+inician sesión en un sitio web. Los espacios en blanco adicionales pueden resultar confusos en 
+muchas  situaciones. Afortunadamente, Python facilita la eliminación de espacios en blanco 
+de la datos que ingresan las personas.  
+
+
+Python puede buscar espacios en blanco adicionales en los lados derecho e izquierdo de una cadena. 
+Con el método  {\ttfamily  rstrip()}, Python asegura que no exista ningún espacio en blanco en el lado 
+derecho de una cadena, ejemplo:      %  banda = strip
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	# Un espacio adicional a la derecha de la cadena 
+	>>> mi_lenguaje_favorito = 'python '
+	>>> mi_lenguaje_favorito
+	'python '
+	# Elimina el espacio a la derecha de la cadena, tempotalmente
+	>>> favorite_language.rstrip()
+	'python'
+\end{lstlisting}
+
+El método {\ttfamily rstrip()} actúa sobre la variable {\ttfamily mi\_lenguaje\_favorito}, y  muestra la cadena sin espacio, pero no cambia la variable, sólo se elimina temporalmente. Si pides el valor  de {\ttfamily mi\_lenguaje\_favorito} nuevamente,
+la cadena se muestra igual que cuando se ingresó,  con su espacio en blanco adicional. Para eliminar el espacio
+en blanco de la cadena de forma permanente, debe  asociar el valor eliminado con el nombre de la variable,
+a continuación se ilustra con un ejemplo:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	# Elimina el espacio a la derecha de la cadena, en forma definitiva
+	>>> mi_lenguaje_favorito = favorite_language.rstrip()
+	>>> mi_lenguaje_favorito
+	'python'
+\end{lstlisting}
+
+
+
+El cambio del valor de una variable es muy frecuente  en programación. Así es como se puede 
+actualizar el valor de una variable a medida que se ejecuta un programa, o en respuesta a la entrada del usuario. También puedes eliminar espacios en blanco del lado izquierdo de una cadena usando el  método {\ttfamily lstrip()}, o desde ambos lados a la vez usando {\ttfamily strip()}:  
+
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	# Dos espacio adicionales a la izquierda y derecha de la cadena 
+	>>> mi_lenguaje_favorito = ' python '
+	>>> mi_lenguaje_favorito
+	' python '
+	# Elimina el espacio a la izquierda de la cadena, tempotalmente
+	>>> favorite_language.rstrip()
+	'python '	
+	# Elimina los espacio en ambos lados de la cadena, tempotalmente
+	>>> favorite_language.cstrip()
+	'python'
+	# Elimina los espacio en ambos lados de la cadena, en forma definitiva
+	>>> mi_lenguaje_favorito = favorite_language.rstrip()
+	>>> mi_lenguaje_favorito
+	'python'
+\end{lstlisting} 
+
+
+En el mundo real, estas funciones de eliminación de espacios en blanco se utilizan con mayor frecuencia para limpiar la entrada del usuario antes de que se almacene en un programa.
+
+% tarea 
+
+
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize
+		Recuerde que la cadenas son objetos inmutable. Hasta ahora hemos visto que los métodos actúan sobre las variables y hacen cambios temporales en el valor, pero no cambian la variable, para lograr un cambio en la variable hay que asignar nuevamente el valor tratado con el método.}
+\end{minipage}
+\vspace{0.2cm}
+
+\section*{Ejercicio 3.3 continuación}\label{Tarea}
+
+
+
+\begin{enumerate}[3.3.4]
+	
+	
+	\item Eliminación de espacios: Utilice una variable para representar el nombre de una persona y
+	incluya algunos espacios en blanco al principio y al final del nombre.
+	Asegúrese de utilizar cada combinación de caracteres, "{}{\bf\ttfamily{\textbackslash}}t{}" {} y {} "{}{\bf\ttfamily{\textbackslash}}n {}", al menos una vez. 	Imprima el nombre una vez, para que se muestre el espacio en blanco alrededor del nombre. 	Luego imprima el nombre usando cada una de las tres funciones para eliminar, \ttfamily{lstrip()},	\ttfamily{rstrip()} y \ttfamily{strip()}.
+	
+\end{enumerate} 
+
+
+\subsection{Eliminación de prefijos}%{Removing Prefixes}
+
+Cuando se trabaja con cadenas, otra tarea común es eliminar un prefijo. Considere una URL con el prefijo común {\ttfamily https://}; y suponga que necesitamos  eliminar este prefijo, por lo que podemos centrarnos solo en la parte de la URL que los usuarios deben ingresar en una barra de direcciones. Aquí se explica cómo hacerlo:
+
+\begin{lstlisting}%[frame=single]
+	In[]:	
+	>>> nombre_url = "https://nostarch.com"
+	>>> nombre_url.removeprefix("https://")
+	'nostarch.com'
+\end{lstlisting}
+
+
+\noindent Se ingresa el nombre de la variable seguido de un punto y luego el método
+{\ttfamily .removeprefix()}. Dentro del paréntesis, ingresa el prefijo que deseas eliminar de la cadena original,
+en este caso es {\ttfamily "https://{}"{}}.
+
+Al igual que los métodos anteriores, {\ttfamily removeprefix()} deja la
+cadena original sin cambios. Si desea mantener el nuevo valor con el prefijo
+eliminado, debe reasignar  a la variable original o asignar a una nueva
+variable:
+
+\begin{lstlisting}%[frame=single]
+	
+	In[]:
+	>>> otra_url = nombre_url.removeprefix('https://')
+	'nostarch.com'
+\end{lstlisting}
+
+Cuando ve una URL en una barra de direcciones y la parte {\ttfamily https://} no se muestra,
+el navegador probablemente esté usando un método como {\ttfamily removeprefix()}.
+
+
+
+\subsection{Eliminación de sufijos}%{Removing Prefixes}
+
+
+Python también tiene un método para eliminar los sufijos de las cadenas, se deja como ejercicio al lector eliminar 
+el sufijo de la siguiente  cadena {\ttfamily "python\_notes.txt"{}}. 
+Tiene la misma metodología que se aplicó con {\ttfamily .removeprefix()}:
+
+\begin{lstlisting}%[frame=single]
+	In[]:	
+	variable =  "python_notes.txt"
+	variable
+	'python_notes.txt'
+	variable.removesuffix("txt")
+	'python_notes'
+\end{lstlisting}
+
+
+
+\section*{Ejercicio 3.3 continuación}\label{Tarea3}
+
+\begin{enumerate}[3.3.5]
+	
+	\item Extensiones de archivo: Python tiene un método {\ttfamily{removesuffix()}} que funciona exactamente
+	como {\ttfamily{removeprefix()}}. 
+	
+	Asigne el valor {\ttfamily{'python\_notes.txt'}} a una variable llamada
+	{\ttfamily{nombre\_archivo}}. Luego use el método {\ttfamily{removesuffix()}} para mostrar el nombre del archivo sin
+	la extensión del archivo, como lo hacen algunos exploradores de archivos.
+	
+\end{enumerate}
+
+\subsection{Evitar errores de sintaxis con cadenas}%{Avoiding Syntax Errors with Strings}
+
+Un tipo de error que puede ver con cierta regularidad es un error de sintaxis. Un error de sintaxis se produce  cuando Python no reconoce un fragmento o  sección de su programa como código válido de  Python. Por ejemplo, si utiliza un apóstrofe dentro comillas simples, producirá un error. Esto sucede porque Python interpreta
+todo entre la primera comilla simple y el apóstrofe como cadena. Luego intenta interpretar el resto del texto como código Python, lo que provoca errores.
+
+A continuación se explica cómo utilizar correctamente las comillas simples y dobles. 
+Guardar este programa como  {\ttfamily ejemplo.py} y luego ejecútelo:
+
+
+\hspace{-2.1cm}{\ttfamily \scriptsize apostrofe}\vspace{-0.25cm}
+
+\hspace{-1.2cm}{\ttfamily \scriptsize .py}\vspace{-0.77cm}
+\begin{lstlisting}%[frame=single]
+	
+	message = "Uno de los puntos fuertes de Python (Python's) 
+	es su comunidad diversa."
+	print(mensaje)
+\end{lstlisting}
+
+El apóstrofe (comillas simles) aparece dentro de un conjunto de comillas dobles, por lo que el intérprete Python no tiene problemas para leer la cadena correctamente:\\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			Uno de los puntos fuertes de Python (Python's) es su comunidad diversa.
+		\end{verbatim}
+}} 
+
+Sin embargo, si usa comillas simples, Python no puede identificar dónde  finaliza la cadena:
+
+\begin{lstlisting}%[frame=single]
+	
+	>>> mensaje = 'Una de las fortalezas de Python (Python's) 
+	es su comunidad diversa.'
+\end{lstlisting}
+
+Si corre desde la terminal el error sera:\\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{red} 	
+		\begin{verbatim}		
+			mensaje = 'Una de las fortalezas de Python (Python's) es su comunidad diversa.'
+			SyntaxError: unmatched ')'
+		\end{verbatim}
+}}
+
+
+\noindent{\ttfamily\scriptsize SyntaxError: Error de sintaxis: inigualable}\\
+
+Y si corre el archivo  {\ttfamily apostrofe.py}, el resultado que puedes ver es el error ocurre justo después de la ejecución: \\
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			SyntaxError: unterminated string literal (detected at line 1)
+		\end{verbatim}
+}} 
+
+Observe que en el resultado puedes ver que el error ha sido detectado en la línea 1, y posiblemente se trata de una cadena (literal) que no  se ha definido bien. 
+
+En general este error de sintaxis indica que el intérprete no reconoce  un fragmento del código como código Python válido y cree que el problema podría ser una cadena que no está entre comillas correctamente.
+
+Los errores pueden provenir de una gran variedad de origen, a medida que se avance en el curso irán surgiendo errores que se comentaran, y se  resolverán. Es muy posible que se presenten  errores de sintaxis con frecuencia a medida que aprende a escribir código Python de forma adecuado.\\
+
+
+
+
+Los errores de sintaxis son también  el tipo de error menos específico, por lo que pueden ser difíciles y frustrante identificar y corregir.  Pero la perseverancia siempre vence.
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Sugerencia}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize La función de resaltado de sintaxis de su editor debe ayudarle a detectar algunos errores de sintaxis
+		rápidamente mientras escribe sus programas. Si ve el código Python resaltado como si fuera Inglés resaltado o como si fuera código Python, probablemente tenga un código que no coincide en comillas en algún lugar de su archivo.}
+\end{minipage}
+\vspace{0.2cm}
+
+
+
+\subsection{Notas importantes y cadenas vacías}
+
+% {\bf con Bill Lubanoviv }\\
+
+El {\ttfamily print()} elimina las comillas de las cadenas e imprime su contenido.
+
+Si tiene varias líneas entre comillas triples, se conservarán los caracteres hasta el final de línea.
+Si tiene espacios iniciales o finales, también se conservarán.\\
+
+Y muy importante, existe una diferencia entre la salida del {\ttfamily print()} y el eco automático
+realizado por el intérprete interactivo (salida cruda, código de Python):
+
+\begin{lstlisting}
+	In[]:
+	>>> poem2 = '''No me agrada, Doctor Fell.
+	La razón por la cual, no puedo decirlo.
+	Pero esto lo sé, y lo sé muy bien:
+	No me agrada, doctor Fell.
+	
+	'''
+	>>>poem2
+\end{lstlisting}
+
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			'No me agrada, Doctor Fell.\n   La razón por la cual, no puedo decirlo.\n
+			Pero esto lo sé, y lo sé muy bien:\n   No me agrada, doctor Fell.\n\n   '
+		\end{verbatim}
+}}
+\noindent Observe con detalle, las nuevas líneas se indican con {\ttfamily \textbackslash n}, y los espacios se cuentan después de {\ttfamily \textbackslash n}, en este caso son tres espacios. 
+
+\begin{lstlisting}
+	In[]:	
+	>>> print(poem2) 
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			No me agrada, Doctor Fell.
+			La razón por la cual, no puedo decirlo.
+			Pero esto lo sé, y lo sé muy bien:
+			No me agrada, doctor Fell.
+			
+		\end{verbatim}
+}} 
+
+\noindent Esta salida se muestra en pantalla y es para el usuario; mientras que la salida anterior es para la maquina, motivo por el que observa las sentencia  {\ttfamily \textbackslash n} y las comillas.\\
+
+
+
+
+{\bf ¿Por qué necesitarías una cadena vacía?}\\
+
+Un string o cadena que no tiene ningún carácter pero es perfectamente válida, y es llamada cadena vacía. Se puede crear una cadena vacía con cualquiera de las comillas antes mencionadas:
+
+\begin{lstlisting}
+	In[]:
+	>>> a = ''
+	>>> b = ""
+	>>> c = ''''''
+	>>> c = """"""
+\end{lstlisting}
+
+La salida para máquina se vera unas comillas simple, y para usuario o pantalla una cadena de longitud cero.
+También puede crear una cadena con un número definido de espacios en blanco.
+
+Algunas veces es necesario  construir una cadena a partir de otras cadenas, y es necesario empezar desde cero.
+Ilustremos con una aplicación sencilla:
+
+\begin{lstlisting} 
+	In[]:	
+	>>> botellas = 99
+	>>> base = ''
+	>>> base += 'inventario actual: '
+	>>> base += str(botellas)
+	>>> base
+	'inventario actual: 99'
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			'inventario actual: 99'
+		\end{verbatim}
+}}       
+
+
+% >>>  print(99, 'botellas', 'sería suficiente.') 99 botellas serían suficientes.
+
+Si no desea el espacio o la nueva línea, verá cómo evitarlos en \ref{xxx}.
+
+
+
+\subsection{Convertir tipos de datos usando str()}
+
+Puede convertir otros tipos de datos de Python en cadenas usando la  función {\ttfamily  str()}, veamos con algunos ejemplos:
+
+\begin{lstlisting} 
+	
+	In[]:
+	>>> str(98.6)
+	'98.6'
+	>>> str(1.0e4)
+	'10000.0'
+	>>> str(True)
+	'True'
+\end{lstlisting}
+
+En este ejemplo, convierte los dos primeros que son  float y el segundo que es  booleano en cadenas.\\
+
+La función {\ttfamily str()} de Python convierte un objetos (que no es cadena) cadenas; esta es otra forma para crear cadenas.
+
+
+
+\subsection{Concatenar con  {\ttfamily +}} 
+
+El operador {\ttfamily +} se puede usar para concatenar cadenas; si embargo, las palabras salen en la consola unidas sin un espacio, a menos que deje un espacio en alguna de las cadenas definidas. Python no agrega espacios al concatenar cadenas, por ejemplo:
+
+\begin{lstlisting} 
+	In[]:	
+	>>> "Carlos" + "Enrrique"
+	'CarlosEnrrique'
+	# Se deja un espacios después Carlos.
+	>>> "Carlos " + "Enrrique"
+	"Carlos Enrrique"
+\end{lstlisting}
+
+También se pueden combinar cadenas (no con variables de cadena, no funciona y genera error) simplemente colocando una cadena seguida de la otra, como se muestra en el siguiente ejempo: 
+
+\begin{lstlisting} 
+	In[]:	
+	# un espacio en blanco despues de Carlos
+	>>> "Carlos " "Dávila"
+	'Carlos Dávila'
+\end{lstlisting}
+
+\subsection{Multiplicar cadenas con *}
+
+Se puede multiplicar una cadena utilizando el operador {\ttfamily *}. El proceso se expone a continuación.
+
+\begin{lstlisting} 
+	In[]:
+	# Sin espacio en blanco
+	>>> saludo = 'Hola' * 4 
+	saludo
+	'HolaHolaHolaHola'
+	# Con un espacio en blanco después de Hola 
+	>>> saludo2 = 'Hola ' * 4 
+	saludo2
+	'Hola Hola Hola Hola '
+	# Con un espacio en blanco después de Hola, y un salto de línea al final 
+	>>> saludo3 = 'Hola ' * 4 + '\n'
+	saludo
+	'Hola Hola Hola Hola '
+	
+	# Con un espacio en blanco y un salto de línea antes de Hola,  cuatro veces   
+	>>> saludo3 = '\nHola ' * 4
+	saludo3
+	'\nHola \nHola \nHola \nHola '
+	print(saludo3)
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			
+			Hola
+			Hola
+			Hola
+			Hola		
+		\end{verbatim}
+}} 
+\noindent La salida se ve un espacio  después de {\ttfamily Hola}, y un salto de línea  como se codificó. \\
+
+Ahora usando estos operadores dentro de la sentencia  {\ttfamily print()}: 
+\begin{lstlisting} 
+	inicio = 'Epa ' * 4 + '\n'
+	medio = 'Hey ' * 3 + '\n'
+	fin = 'Hola.'
+	print(inicio + inicio + medio + fin)
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[4]:\vspace{-0.15cm}	
+	{\color{blue} 	
+		\begin{verbatim}		
+			Epa Epa Epa Epa 
+			Epa Epa Epa Epa 
+			Hey Hey Hey 
+			Hola.
+		\end{verbatim}
+}} 
+
+Se imprime la concatenación de las cadenas:  {\ttfamily inicio + inicio + medio + fin} con {\ttfamily print()} usando el operador {\ttfamily +}.
+
+
+\subsection{Extraer un carácter o subcadena con índice  {\ttfamily[]}}
+
+En Python, una cadena de texto son secuencias de caracteres, y puede contener caracteres especiales o alfanuméricos. Se puede extraer una subcadena de una cadena con una técnica comúnmente llamada "slicing", la cual se refiere a dividir la cadena original en "{}rebandas"{} por medio de índices o la posición de un carácter de la cadena original.  Consideremos la siguiente cadena:
+
+%>>> cadena = "Curso intensivo de Python" 
+\begin{lstlisting}
+	In[]:	
+	>>> cadena = "abcdefghijkl"
+\end{lstlisting}
+
+Para comprender el tratamiento de cadena con índices, consideramos la siguiente tabla:
+\begin{center}
+	\noindent Table \ref{Tabla02}\label{Tabla02}. Cadena y posición de caracteres:\\
+	\vspace{0.1cm}
+	{ \footnotesize        %\scriptsize 
+		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+			\hline
+			string &
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf a}\vline& 
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf b}\vline & 
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf c}& 
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf d}&
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf e}& 
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf f}\vline& 
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf g}& 
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf h}&
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf i}& 
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf j}& 
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf k}& 
+			\multicolumn{1}{|>{\columncolor{white}} l }{\color{green}\bf l}\vline\\ 
+			\hline
+			índice& 0 & 1 & 2	 & 3 & 4 & 5 & 6&7&8&9&10&11\\
+			\hline
+			índice&-12 & -11 & -10 & -9 & -8 & -7 & -6&-5&-4&-3&-2&-1\\
+			\hline
+	\end{tabular}  } 
+\end{center}
+
+Aquí se muestra la cadena y los índices o posiciones de los caracteres de la cadena debajo.
+Observe que los índices pueden ser positivos (hacia la derecha) o negativos (hacia la izquierda). Los índices positivos van desde el inicio de la cadena hasta el final contando a partir de la posición 0 hasta la posición 11, que es el último carácter de la cadena, y la cadena tiene 12 caracteres;  y los índices negativos van del final de la cadena al inicio, contando desde -1 que es el último  hasta -12 que es el primero.\\
+
+
+
+Para obtener un solo carácter de una cadena, se  especifique su posición o  desplazamiento entre corchetes después del nombre de la cadena. La primera posición  es 0, el siguiente es 1, y así sucesivamente. El último carácter de la cadena (a la derecha) se puede especificar con –1 para que no tenga que contar; yendo hacia la izquierda son –2, –3, y así sucesivamente, como se observa en la tabla \ref{Tabla02}.\\
+
+Para obtener un solo carácter de una cadena, especifique su desplazamiento entre corchetes después del
+nombre de la cadena. 
+
+\begin{lstlisting}
+	In[]:
+	>>> cadena = "abcdefghijkl"
+	>>> cadena[0]
+	'a'
+	>>> cadena[1]
+	'b'
+	>>> cadena[-1]
+	'l'
+	>>> cadena[-2]
+	'k'
+	>>> cadena[11]
+	'l'
+	>>> cadena[5]
+	'f'
+\end{lstlisting}
+
+Si especifica una posición que sea mayor o menor la longitud de la cadena (recuerde, los desplazamientos van
+de 0 a  –1 (el último)), obtendrás una excepción:
+
+\begin{lstlisting}
+	
+	>>> cadena[20]
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.15cm}	
+	{\color{red} 	
+		\begin{verbatim}		
+			Traceback (most recent call last):
+			File "<pyshell#1>", line 1, in <module>
+			cadena[20]
+			IndexError: string index out of range
+		\end{verbatim}
+}} 
+
+En Python es posible acceder a partes específicas de una cadena de textos; también llamadas subcadenas.
+Una subcadena se puede definir como una secuencia de caracteres dentro de una cadena. 
+
+Para ejemplificar consideremos la siguiente cadena:
+
+
+\begin{lstlisting}
+	In[]:
+	>>> bienvenida = "Bienvenido al curso intensivo de Python 3"
+\end{lstlisting}
+
+En esta cadena, se puede visualizar las siguientes subcadenas: {\ttfamily  "Bienvenido", "{}curso{}" {} y {} "{}intensivo de Python"{}}.\\
+
+
+% Python tiene otras dos estructuras de secuencia: tuplas y listas. Estos pueden contener cero o más elementos; y además,  los elementos pueden ser de diferentes tipos. De hecho, cada elemento puede ser cualquier objeto de Python. Esto le permite crear estructuras tan profundas y complejas como desee.\\
+
+Para obtener una subcadena hay  diferentes métodos y formas, como para verificar si una subcadena existe,  obtener el índice de una cadena y mucho más. Python considera el índice de la cadena con la siguiente sintaxis: 
+
+\noindent{\ttfamily cadena[inicio:final:pasos]}, donde:\\
+
+
+\noindent{\ttfamily inicio}: El índice inicial donde empezará la subcadena. Por defecto es 0.
+
+\noindent{\ttfamily final}: El índice final, donde terminará la subcadena. Por defecto, es -1.
+
+\noindent {\ttfamily paso o salto}: Número que indicara los saltos que seguirá la secuencia o subcadena. Por defecto es 1.
+
+
+La función   incluirá caracteres desde la posición  inicial  hasta uno antes del final. Si no especifica el inicio, la función usa 0 (el comienzo), si no especifica el final,la función usará  el final  de la cadena.\\
+\begin{itemize}
+	\item[]  {\ttfamily cadena[:]} extrae la secuencia completa de principio a fin.
+	
+	\item[] {\ttfamily  cadena[inicio:]} especifica desde la posición inicial hasta el final.
+	
+	\item[] {\ttfamily  cadena[:final]} especifica  desde el principio hasta uno antes del final.
+	
+	\item[]  {\ttfamily cadena[inicio:final]} indica desde la posición inicial hasta la posición uno antes del final.
+	
+	\item[]  {\ttfamily cadena[inicio:final:paso]} extrae desde el desplazamiento inicial hasta la posición uno antes del final, saltando caracteres por paso.
+\end{itemize}
+
+
+A continuación se exponen algunos ejemplos de subcadenas.\\
+
+En el siguiente ejemplo extaemos los primeros n caracteres de una cadena en Python.  Veamos con los primeros 19 caracteres de la cadena:
+
+{\ttfamily  bienvenida = "Bienvenido al curso intensivo de Python 3"{}}; 
+
+\noindent en este caso  se puede hacer con el siguiente código:  {\ttfamily bienvenida[:19]}, que toma por defecto  iniciar en cero; o especificando el inicio como 0: {\ttfamily bienvenida[0:19]}, ambos casos funcionan iguales.
+
+\begin{lstlisting}
+	
+	In[]:
+	# De la  posición inicial a la 19, comenzando en cero por defecto.
+	>>> bienvenida[:19]
+	'Bienvenido al curso'
+\end{lstlisting}
+
+\noindent En el siguiente ejemplo, se extrae toda la cadena, del inicio al final:
+
+\begin{lstlisting}
+	
+	In[]:
+	>>> bienvenida[:]
+	'Bienvenido al curso intensivo de Python 3'
+\end{lstlisting}
+
+\noindent Dos ejemplos más desde una posición determinada al final:
+
+\begin{lstlisting}
+	In[]:	
+	# De la  posición 20 hasta el final.
+	>>> bienvenida[20:]
+	'intensivo de Python 3'
+	# De la  posición 10 hasta el final:
+	>>> bienvenida[10:]
+	' al curso intensivo de Python 3'
+\end{lstlisting}
+
+
+
+\noindent Ahora ejemplos de subcadenas, con caracteres entre la posición inicial como 14 a la  25 (recuerde que Python no incluye la última posición):
+
+\begin{lstlisting}
+	In[]:	
+	# De la posición 14 hasta la posición 25.
+	>>> bienvenida[14:25]
+	'curso inten'
+\end{lstlisting}
+
+Si desea un tamaño de paso (salto) mayor que 1, se debe especificar  después de dos puntos, como se muestra en la siguiente:
+
+\begin{lstlisting}
+	In[]:
+	# Del principio hasta el final, en pasos de 2 caracteres:
+	>>> bienvenida[::2]
+	'Bevnd lcroitniod yhn3'
+\end{lstlisting}
+
+
+\noindent De la posición  4 al 35, en pasos de 3:
+
+\begin{lstlisting}
+	In[]:	
+	>>> bienvenida[4:35:3]
+	'vi  r tsoey'
+\end{lstlisting}
+
+\noindent De la posición 17 hasta el final, en pasos de 4:
+
+\begin{lstlisting}
+	In[]:	
+	>>> bienvenida[17::4]
+	'sns Po'
+\end{lstlisting}
+
+
+\noindent Del inicio a la posición 21(uno antes del 21), en pasos de 5:
+
+\begin{lstlisting}
+	In[]:	
+	>>> bienvenida[:21:5]
+	'Be ui'
+\end{lstlisting}
+
+Ahora con posiciones negativas:
+
+\begin{lstlisting}
+	
+	In[]:	
+	#Desde 35 antes del final hasta el final:
+	>>> bienvenida[-35:]
+	'nido al curso intensivo de Python 3'
+\end{lstlisting}
+
+
+
+
+\begin{lstlisting}
+	In[]:	
+	# Del once antes del final hasta el final:
+	>>> bienvenida[-11:]
+	'de Python 3'
+	#De la posición 10 a la posición -11(uno antes de la posición -11).
+	>>> bienvenida[10:-11]
+	' al curso intensivo '
+\end{lstlisting}
+
+
+\noindent Observe la diferencia con el ejemplo anterior, en el que comenzando en –11 se obtiene la {\ttfamily d} en esa  posición; sin embargo, finalizando en –11 se obtiene el valor en la posición  –12, uno antes del último indicado.\\
+
+Veamos con otro ejemplo, extraemos 8 antes del final (es -8)  a 1 antes del final(es -1, uno antes de -1):
+
+\begin{lstlisting}
+	In[]:
+	# De la  posición -8 hasta uno antes de del final(uno antes de -1).
+	bienvenida[-8:-1]
+	'Python '
+	# De la  posición -8 hasta el final.
+	bienvenida[-8:]
+	'Python 3'
+\end{lstlisting}
+
+
+\noindent Observe la diferencia entre estos dos ejemplos, en {\ttfamily bienvenida[-8:-1]} no se incluye el 3 (de Python 3) uno antes del último, para incluir el último se deja por defecto: {\ttfamily bienvenida[-8:]}. \\
+
+
+Ahora un caso interesante, si usamos  pasos negativos el proceso actúa hacia atrás. Veamos algunos ejemplos:  
+
+
+\begin{lstlisting}
+	In[]:	
+	>>> lenguaje = "Python 3"
+	>>> [-1::-1]
+	'3 nohtyP'
+\end{lstlisting}
+Esto comienza al final (en -1) y termina al principio, de uno en uno (invertido). Este mismo resultado también 
+se puede  obtener usando el siguiente código:
+
+\begin{lstlisting}
+	In[]:
+	>>> lenguaje[::-1] 
+	'3 nohtyP'
+\end{lstlisting}
+
+\noindent En este caso la cadena que resulta es invertida; es decir, comienza del final y termina al principio con paso de 1 en uno (hacia atrás por el paso negativo).\\
+
+El siguiente ejemplo debe observa con mayor atención {\ttfamily  bienvenida[0::-1]}, como se invierte el proceso debido al paso negativo, el inicio en cero y  sigue hacia atrás; pero no hay más.  
+Solo se muestra el primer carácter de la cadena. 
+
+\begin{lstlisting}
+	In[]:	
+	>>> bienvenida[0::-1]
+	'B'
+\end{lstlisting}
+
+En el siguiente ejemplo {\ttfamily  bienvenida[2::-1]}, el proceso se invierte, se inicia en 2 ( en la {\bf{e}} de  {\ttfamily "Bienvenido al curso intensivo de Python 3"{}}  y  sigue hacia atrás: 
+
+\begin{lstlisting}
+	In[]:
+	>>> bienvenida[2::-1]
+	'eiB'
+\end{lstlisting}
+
+Para finalizar con las posiciones negativas (invertidas), consideremos tres ejemplos más, el primero iniciando en la posición -50:
+
+\begin{lstlisting}
+	In[]:
+	# se muestra toda 	
+	>>> bienvenida[-50:]
+	'Bienvenido al curso intensivo de Python 3'
+\end{lstlisting}
+
+Observe, debe empezar en la posición 50 antes del final, pero la cadena solo tiene 41 caracteres; es decir,  
+empieza antes de iniciar, y se imprime toda.
+
+La siguiente cadena se muestra vacía, por la misma razón; empieza en posición 50 antes del final,  y llegar a la posición -45, pero la cadena solo tiene 41 caracteres de longitud:
+
+\begin{lstlisting}	
+	In[]:  
+	# vacía	
+	>>> bienvenida[-51:-45]
+	''
+\end{lstlisting}
+
+La situación es análogo para posiciones mayores que la longitud de la cadena. La siguiente cadena va del inicio  hasta la posición 70,  pero la cadena solo tiene 41 caracteres de longitud: 
+
+\begin{lstlisting}
+	In[]:
+	# se muestra toda
+	>>> bienvenida[:70]
+	'Bienvenido al curso intensivo de Python 3'
+	
+\end{lstlisting}
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Advertencia1}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 
+		Muy importante, tener  pendiente que el indexado de una cadena de texto siempre empieza en 0 y termina 
+		en una unidad menos de la longitud de la cadena.
+	}
+\end{minipage}
+\vspace{0.2cm}
+
+
+
+
+
+
+
+
+%Tarea con negativos
+
+\subsection{Longitud de una cadena con len}\label{longitud}
+
+
+La longitud de una cadena se define como el número de caracteres que la forman. 
+Esta propiedad es muy usada por los programadores. Python tiene una colección de funciones integradas 
+para manipular cadena y otros objetos, y una de éstas  es la función {\ttfamily len()} que cuenta  
+el número de caracteres de una cadena (la longitud de la cadena), veamos:
+
+\begin{lstlisting}
+	In[]:
+	>>> len("Python")
+	6
+\end{lstlisting}
+
+Si la cadena es vacía, su longitud es cero:
+
+\begin{lstlisting}
+	In[]:	
+	# cadena vacía
+	>>> vacío = ""
+	>>> len(vacío)
+	0
+\end{lstlisting}
+
+
+
+En el  Capítulo \ref{Cap4} se describe  otros tipos de secuencia que son compatibles también  {\ttfamily len()}, como tuplas y listas; si embargo, hay  funciones que son específicas para las cadenas, métodos propios de las cadenas. 
+
+%\subsection{Dividir con split() y unir con join()} {\bf Esta sección no va aquí}
+
+\subsubsection{Dividir con split()}\label{cadena01}
+
+La función {\ttfamily split()} es  una {\bf función integrada de Python}; un método para dividir una cadena en una lista de cadenas más pequeñas o subcadenas.  
+
+Una lista en Python es una secuencia de valores, separados por comas y entre corchetes, un ejemplo de lista: {\ttfamily lista = ["{}uno", "{}otro", 3, 7.8, "{}list{}"{}]}, los elementos de esta lista son tres cadenas, un número entero y un float (punto flotante). En el capítulo \ref{Cap4} se aborda el estudio sobre  listas. Por ahora sólo conocemos de manera general que es una lista.\\
+
+{\ttfamily split()} es un método que divide  una cadena en una lista de cadenas,  de acuerdo con algún separador indicado como argumento. La sintaxis para usar esta  función es la siguiente:  {\ttfamily cadena.split('argumentos')}. En el capítulo \ref{Cap7}  se estudian las funciones y métodos con más detalles.\\
+
+En el siguiente ejemplo, se divide la cadena con el método {\ttfamily split()}, y se usa la coma (',') como argumento 
+separador de la cadena:
+
+\begin{lstlisting}
+	In[]:	
+	>>> cadena = "consigue guantes, mascarilla, dale vitaminas al gato,
+	llame una ambulancia"
+	>>> len(cadena) 
+	74        
+	>>> cadena.split(',')
+	# una lista:
+	['conseguir guantes', 'mascarilla', 'darle vitaminas al gato',
+	'llame una ambulancia']
+\end{lstlisting}
+
+\noindent Observe, todos los elementos de la lista son cadenas.\\
+
+En caso de no especificar un separador, {\ttfamily split()} utiliza cualquier secuencia de caracteres de espacios en blanco: nuevas líneas, espacios o tabulaciones.
+
+\begin{lstlisting}
+	In[]:
+	>>> binvenida = "Bienvenido al curso intensivo de Python 3"	
+	>>> bienvenida.split()
+	['Bienvenido', 'al', 'curso', 'intensivo', 'de', 'Python', '3']
+\end{lstlisting}
+
+Es importante tener presente  que las funciones en Python  necesitan los paréntesis, así es como Python reconoce el llamando de una función.
+
+
+
+\subsubsection{Combinar join()}
+
+La función {\ttfamily join()} funciona como lo opuesto a  {\ttfamily split()}; es decir, transforma una {\bf lista} de cadenas en una cadena.  Sin embargo,  es importante resaltar que esta función sólo actúa con una lista de cadenas (método exclusiva para cadenas), cualquier otro caso genera error.
+
+La nueva cadena formada con {\ttfamily join()}, sigue la siguiente sintaxis:
+
+\noindent{\ttfamily{"parámetro unificador".join("lista)"{}}}. Veamos con algunos ejemplos:  
+
+\begin{lstlisting}
+	In[]:	
+	# Consideremos la siguiente lista formada apatir de la cadena con split()
+	# de acuerdo con el separador (,)
+	>>> lista01 = cadena.split(",")
+	>>> lista01
+	['consigue guantes', 'mascarilla', 'dale vitaminas al gato', 'llame
+	una ambulancia']
+	
+	# Nueva cadena formada con join(), parámetro unificador la  coma (,)
+	>>> cadena_nueva = ",".join(lista01)
+	>>> cadena_nueva
+	'consigue guantes, mascarilla, dale vitaminas al gato, llame una ambulancia'
+\end{lstlisting}
+
+
+\noindent En este caso resulta una cadena formada por las cadenas de la lista, subcadena unidas por comas. Un segundo ejemplo, con parámetro separador igual a un espacio en blanco:
+
+\begin{lstlisting}
+	In[]:	
+	# Cadena bienvenida	dividida en una lista02
+	>>> bienvenida = "Bienvenido al curso intensivo de Python 3"	
+	>>> lista02  = bienvenido.split()
+	>>> lista02
+	['Bienvenido', 'al', 'curso', 'intensivo', 'de', 'Python', '3']
+	
+	# Nueva cadena formada con join() con las cadenas de la lista 02
+	>>> cadena_nueva02 = " ".join(lista02)
+	>>> cadena_nueva02
+	'Bienvenido al curso intensivo de Python 3'
+	
+	print(cadena_nueva02)
+\end{lstlisting}
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[]:\vspace{-0.3cm}	
+	
+	{\color{blue} 	
+		\begin{verbatim}
+			Bienvenido al curso intensivo de Python 3	
+		\end{verbatim}
+}}
+\noindent Observe, la nueva cadena se formó separando las cadenas de la lista02 con un unificador igual a un 
+espacio en blanco.\\
+
+Se puede usar cualquier carácter valido como unificador, y cualquier carácter como separador que se encuentre en la 
+cadena a dividir.
+
+
+\subsection{Resumen: Algunos Métodos de Strings}
+
+%\subsubsection{Caso y alineación, otras funciones de cadena integradas}
+
+
+%\subsection{Algunas funciones integradas de Pytho}
+
+
+% Operations on strings and string methods
+%{\textcolor[gray]{0.8}{Gris Claro  }}
+Python tiene una gran colección de métodos o funciones integradas  para manipular cadena de caracteres. 
+
+A continuación exponemos algunos  de los métodos  más comunes, con cada método se deja un ejemplo  como ejercicio para correrlo y analizarlo:
+
+%\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 
+		Debido a que las cadenas son inmutables, ninguno de estos métodos  hacen cambios en  
+		la cadena original. Cada método toma el valor de la cadena, lo aplica   y
+		devuelve el resultado como una nueva cadena.}
+\end{minipage}
+%\vspace{0.2cm}
+
+\vspace{0.3cm}
+
+El método {\ttfamily isidentifier()} en Python es un método de cadena que se utiliza para verificar si una cadena cumple con las reglas de nomenclatura de identificadores en Python. Muy útil al validar nombres de variables, funciones o clases u otro identificador  antes de utilizarlos en tu código.
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Sugerencia}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize Reglas para identificadores válidos en Python:
+		
+		Deben comenzar con una letra (a-z, A-Z) o un guión bajo (\_).
+		
+		El resto de los caracteres pueden ser letras, dígitos (0-9) o guiones bajos (\_).
+		
+		No pueden contener espacios en blanco u otros caracteres especiales como \@, \$, \%, etc.
+		
+		No pueden ser palabras reservadas de Python (como {\ttfamily if}, {\ttfamily while{}}, {\ttfamily for}, etc.).		
+	}
+\end{minipage}
+\vspace{0.2cm}
+
+
+
+
+{\fcolorbox{red}{white}{ 
+		
+		\begin{minipage}{14cm}
+			
+			\vspace{0.4cm}	
+			\begin{center}
+				{\bf{Resumen de Método de strings.1}}  
+			\end{center}	
+			
+			
+			{\ttfamily\scriptsize{ 
+					
+					Cadena para aplicar métodos:
+					
+					cadena = {\color{green} {}"{}Hola, bienvenidos al curso de Python 3, con un pequeño esfuerzo y constancia lograrás su 
+						propósito. Éxito en este curso intensivo{}"{}.}\\
+					
+					
+					
+					{ \color{blue} Divide la cadena con el separador especificado en subcadenas y la devuelve en una lista.}\\	
+					Aplicación: 
+					
+					txt = cadena.split(" ")
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					
+					.count('texto'):
+					
+					{ \color{blue} Devuelve el número de veces que aparece un valor especificado en una  cadena.}\\
+					Aplicación: 
+					
+					txt = cadena.count('{}en{}')
+					
+					{\color{red!70!blue} print}(txt)\\
+					
+					
+					
+					.endswith('texto'):
+					
+					{ \color{blue}
+						Devuelve True si la cadena termina con el valor especificado.}\\
+					Aplicación: 
+					
+					txt = cadena.endswith('{}Bienvenido{}')
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					
+					.islower("{}cadena{}"):
+					
+					{ \color{blue}
+						Devuelve True si todos los caracteres de la cadena están en minúsculas.}\\
+					Aplicación: 
+					
+					txt = cadena.islower()
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					.find("{}texto{}"):
+					
+					{ \color{blue}
+						Busca en la cadena un valor específico y devuelve la posición donde se 
+						encontró por primera vez.}	
+					
+					Aplicación: 
+					
+					txt = cadena.find("{}curso{}")
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					.isalnum(): 
+					
+					{ \color{blue}
+						Devuelve True si todos los caracteres de la cadena son alfanuméricos}
+					
+					Aplicación: 
+					
+					txt = cadena.isalnum()
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					
+					
+					.rfind("{}texto{}"):
+					
+					{ \color{blue}
+						Busca en la cadena un valor específico y devuelve la última posición 
+						donde se encontró{}.}
+					
+					Aplicación: 
+					
+					txt = cadena.rfind({}"{}curso{}"{})
+					
+					{\color{red!70!blue}print}(txt)\\		
+					
+			}}
+			
+		\end{minipage}
+		
+}}
+
+
+
+
+
+
+
+
+
+{\fcolorbox{red}{white}{ 
+		
+		\begin{minipage}{14cm}
+			
+			\vspace{0.4cm}	
+			\begin{center}
+				{\bf{Resumen de Método de strings.2}}
+			\end{center}	
+			
+			
+			{\ttfamily\scriptsize{  	 
+					
+					
+					.rindex("texto"): 
+					
+					{ \color{blue} 
+						Busca en la cadena un valor específico y devuelve la última posición 
+						donde se encontró.}	
+					
+					Aplicación: 
+					
+					txt = cadena.rfind("{}intensivo{}"{})
+					
+					{\color{red!70!blue}print}(txt)\\			
+					
+					
+					
+					.index("texto"): 
+					
+					{ \color{blue}
+						Busca en la cadena un valor específico y devuelve la posición donde se encontró.}
+					
+					Aplicación: 
+					
+					txt = cadena.rfind("{}intensivo")
+					
+					{\color{red!70!blue}print}(txt)\\			
+					
+					
+					
+					.startswith('texto'):
+					
+					{ \color{blue}
+						Devuelve True si la cadena comienza con el valor especificado. }
+					
+					Aplicación: 
+					
+					txt = cadena.startswith({}"{}Hola{}"{})
+					
+					{\color{red!70!blue}print}(txt)\\			
+					
+					
+					
+					.capitalize(): 
+					
+					{ \color{blue}
+						Convierte el primer carácter a mayúsculas. }
+					
+					Aplicación: 
+					
+					txt = cadena.capitalize()
+					
+					{\color{red!70!blue}print}(txt)\\			
+					
+					
+					
+					.upper():
+					
+					{ \color{blue}
+						Convierte una cadena a mayúsculas. }	
+					
+					Aplicación: 
+					
+					txt = cadena.upper()
+					{\color{red!70!blue}print}(txt)\\			
+					
+					.lower(): 
+					
+					{ \color{blue}
+						Devuelve una cadena a minúsculas. }
+					
+					Aplicación: 
+					
+					txt = cadena.lower()
+					
+					{\color{red!70!blue}print}(txt)\\				 
+					
+					
+					.swapcase(): 
+					
+					{ \color{blue}	Intercambia mayúsculas y minúsculas y viceversa.}
+					
+					Aplicación: 
+					
+					txt = cadena.swapcase()
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					.title(): 
+					
+					{ \color{blue} Convierte el primer carácter de cada palabra a mayúsculas. }
+					
+					Aplicación: 
+					
+					txt = cadena.title()
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					.isspace():  
+					
+					{ \color{blue}Devuelve True si todos los caracteres de la cadena son espacios en blanco.}
+					
+					Aplicación: 
+					
+					txt = cadena.isspace():
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					
+			}}	  
+			
+		\end{minipage} 
+}}
+
+
+
+
+
+
+
+
+
+
+
+{\fcolorbox{red}{white}{ 
+		
+		\begin{minipage}{14cm}
+			
+			\vspace{0.4cm}	
+			\begin{center}
+				{\bf{Resumen de Método de strings.3}}
+			\end{center}	
+			
+			{ \ttfamily\scriptsize{ 		
+					
+					
+					
+					
+					.replace("texto1","texto1"):	
+					
+					{ \color{blue}
+						Devuelve una cadena donde un valor especificado se reemplaza 
+						con otro valor. }
+					
+					Aplicación 1: 
+					
+					txt = cadena.replace("Hola","Saludo Muchachos")
+					
+					{\color{red!70!blue}print}(txt)\\	
+					
+					
+					Aplicación 2:
+					
+					nombre = 'Davila'
+					
+					txt = nombre.replace('a', 'a´',1)  \# Una sola vez, o n-veces, en la cadena.
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					
+					Ahora trabajaremos con algunas funciones de alineación del diseño. La cadena está alineada dentro del número total especificado de espacios, en este caso son 50.
+					
+					Cadena de prueba:\\
+					
+					{\color{green}cadena = "bienvenido al curso intensivo de Python 3...{}"{}}
+					\vspace{0.3cm}
+					
+					.center(número):  
+					
+					{ \color{blue}
+						Devuelve una cadena centrada en el número de espacios dados. }
+					
+					Aplicación: 
+					
+					txt = cadena.center(20)
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					.center(50, "{}="): 
+					
+					{ \color{blue} Una copia de la cadena centrada entre los caracteres señalados. }	
+					
+					Aplicación: 
+					
+					txt = cadena.center(50, "{}=")  
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					
+					.rjust(50, "{}="):  
+					
+					{ \color{blue}Una copia de la cadena alineada a la derecha. }	
+					
+					Aplicación: 
+					
+					txt = cadena.rjust(50, "{}=")  
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					
+					.ljust(50, "{}="): 
+					
+					{ \color{blue} Una copia de la cadena alineada a la izquierda. }	
+					
+					Aplicación: 
+					
+					txt = cadena.ljust(50, "{}=")  
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					.lstrip():  
+					
+					{ \color{blue}Devuelve una versión recortada por la izquierda de la cadena (elimina espacios en blanco de la izquierda).}
+					
+					Aplicación: 
+					
+					txt = cadena.lstrip()
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					
+					
+					.isalnum():  
+					
+					{ \color{blue}Devuelve True si todos los caracteres de la cadena son alfanuméricos.}	
+					
+					Aplicación: 
+					
+					txt = cadena.isalnum()
+					
+					{\color{red!70!blue}print}(txt)\\
+					
+					
+					
+			}}
+		\end{minipage} 
+} }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{\fcolorbox{red}{white}{ 
+		
+		\begin{minipage}{14cm}
+			
+			\vspace{0.4cm}	
+			\begin{center}
+				{\bf{Resumen de Método de strings.4}}
+			\end{center}	
+			
+			{ \ttfamily   	{\scriptsize{ 			
+						
+						
+						
+						.isalpha(): 
+						
+						{ \color{blue} Devuelve True si todos los caracteres de la cadena son letras.}
+						
+						Aplicación: 
+						
+						txt = cadena.isalpha()
+						
+						{\color{red!70!blue}print}(txt)\\
+						
+						
+						
+						
+						.isascii(): 
+						
+						{ \color{blue} Devuelve True si todos los caracteres de la cadena son caracteres ASCII.}	
+						
+						Aplicación: 
+						
+						txt = cadena.isascii()
+						
+						{\color{red!70!blue}print}(txt)\\
+						
+						
+						
+						.isdecimal(): 
+						
+						{ \color{blue}  Devuelve True si todos los caracteres de la cadena son decimales.}	
+						
+						Aplicación: 
+						
+						txt = cadena.isdecimal()
+						
+						{\color{red!70!blue}print}(txt)\\		
+						
+						
+						.isdigit(): 
+						
+						{\color{blue} Devuelve True si todos los caracteres de la cadena son dígitos. }
+						
+						Aplicación: 
+						
+						txt = cadena.isdigit()
+						
+						{\color{red!70!blue}print}(txt)\\
+						
+						.isidentifier(): 
+						
+						{ \color{blue}		
+							Devuelve True si la cadena es un identificador. }
+						
+						Aplicación: 
+						
+						txt = cadena.isidentifier(): 
+						
+						{\color{red!70!blue}print}(txt)\\
+						
+						
+						
+						.islower():  
+						
+						{\color{blue} 			
+							Devuelve True si todos los caracteres de la cadena son minúsculas. }
+						
+						Aplicación: 
+						
+						txt = cadena.islower()
+						
+						{\color{red!70!blue}print}(txt)\\	
+						
+						.isnumeric(): 
+						
+						{ \color{blue} Devuelve True si todos los caracteres de la cadena son numéricos. }	
+						
+						Aplicación: 
+						
+						txt = cadena.isnumeric()
+						
+						{\color{red!70!blue}print}(txt)\\
+						
+						
+						.isprintable():  
+						
+						{ \color{blue} Devuelve True si todos los caracteres de la cadena son imprimibles. }	
+						
+						Aplicación: 
+						
+						txt = cadena.isprintable()
+						
+						{\color{red!70!blue}print}(txt)\\
+						
+						
+						
+						.isspace(): 
+						
+						{ \color{blue} Devuelve True si todos los caracteres de la cadena son espacios en blanco. }
+						
+						Aplicación: 
+						
+						txt = cadena.isspace()
+						
+						{\color{red!70!blue}print}(txt)\\
+						
+						
+						
+						
+						
+			}}}
+			
+			
+\end{minipage} }}
+
+
+
+
+
+
+
+
+
+{\fcolorbox{red}{white}{ 
+		
+		\begin{minipage}{14cm}
+			
+			\vspace{0.4cm}	
+			\begin{center}
+				{\bf{Resumen de Método de strings.5}}
+			\end{center}	
+			
+			{ \ttfamily   	{\scriptsize{ 		
+						
+						
+						
+						
+						.istitle():  
+						
+						{ \color{blue}Devuelve True si la cadena sigue las reglas de un título. }	
+						
+						Aplicación: 
+						
+						txt = cadena.istitle()  
+						
+						{\color{red!70!blue}print}(txt)\\
+						
+						
+						
+						
+						.isupper(): 
+						
+						{ \color{blue} Devuelve True si todos los caracteres de la cadena son mayúsculas.}	
+						
+						Aplicación: 
+						
+						txt = cadena.isupper()  
+						
+						{\color{red!70!blue}print}(txt)\\
+						
+						
+						.zfill(15):  
+						
+						{ \color{blue} Una copia de la cadena rellena con ceros a la izquierda hasta alcanzar la
+							longitud final indicada. }	
+						
+						Aplicación: 
+						
+						txt = cadena.zfill(15) 
+						
+						{\color{red!70!blue}print}(txt)\\
+						
+						
+						
+						
+			}}}
+			
+			
+\end{minipage} }}
+{\vspace{0.25cm}}
+
+% https://www.w3schools.com/python/python_ref_functions.asp
+
+Python tiene muchas más métodos  de cadena y funciones aplicadas a las cadenas aquí  se ha mostrado un buen número  de ellas, para  más detalles ir a la  \href{https://docs.python.org/es/3/library/stdtypes.html#string-methods}{\color{vino} documentación estándar}.
+
+
+\section{Resumen}
+
+Este capítulo se estudió  variables, números, y cadenas en Python.  Aprendió a usar nombres de variables descriptivas y resolver errores de nombre y errores de sintaxis cuando surgen. Se enseñó a escribir comentarios explicativos para que su código sea más fácil de leer para usted y otros. Empezó  a trabajar con números enteros y flotantes y aprendió algo sobre las formas en que puede trabajar con datos numéricos.  Se enseñó a construir y  mostrar cadenas o string, en minúsculas, mayúsculas y en formato de título. Empezó  a usar espacios en blanco para organizar salida ordenadamente y aprendió a eliminar elementos innecesarios de un cadena. \\
+
+Ahora se inicia el Capítulo \ref{Cap4}, en el que se estudiará cómo almacenar  colecciones de información en
+estructuras de datos llamadas tuplas, listas y diccionarios y conjuntos. 
+
+
+
+
+
+
+\subsection{Ejercicios}
+Ya estas en condiciones de resolver algunos  ejercicios sencillos referentes a esta sección.
+
+
+
+\begin{enumerate}[3.5.1]
+	
+	\item Eliminación de nombres: utilice una variable para representar el nombre de una persona y
+	incluya algunos espacios en blanco al principio y al final del nombre. 	Asegúrese de utilizar cada combinación de caracteres, "{}{\bf\ttfamily{\textbackslash}}t{}"{} y {}"{}{\bf\ttfamily{\textbackslash}}n{}", al menos una vez. 
+	Imprima el nombre una vez, para que se muestre el espacio en blanco alrededor del nombre. 
+	Luego imprima el nombre usando cada una de las tres funciones para eliminar,  {\ttfamily{lstrip()}},	 {\ttfamily{rstrip()}} y {\ttfamily{strip()}}.
+	
+	\item Extensiones de archivo: El método {\ttfamily{removesuffix()}} que funciona exactamente
+	como {\ttfamily{removeprefix()}}.  	Asigne el valor {\ttfamily{'python\_notes.txt'}} a una variable llamada
+	nombre del archivo. Ahora, aplicando el método {\ttfamily{removesuffix()}} muestre el nombre del archivo sin
+	la extensión del archivo, como lo hacen algunos exploradores de archivos.
+	
+	\item Dividir una cadena en lista por varios separadores, y unir las cadenas de una lista (formada solo por de cadenas)  con unificadores validos como: espacios lineas y otros caracteres. 
+	
+	\item Escriba o  calcule las siguientes rebanadas de la cadena sin usar Python, y compare su respuesta con la que genera Python. 
+	
+	{\ttfamily cadena = "{}Probando con rebanadas{}"{}} 
+	
+	cadena[3:5:-1]    (vacío)
+	
+	cadena[8:5:-1]    (si 3 espacios) 
+	
+	cadena[-3:5:-1]   (si hay) 
+	
+	cadena[-8:5:-1]   (si para cadenas grandes)
+	
+	cadena[-3:-5:-1]  (resulta dos)
+	
+	
+	\item  Slices: Utilizando uno de los programas que escribió en este capítulo, agregue varias
+	líneas al final del programa que hagan lo siguiente:
+	
+	Imprimir el mensaje: Los primeros tres elementos de la lista son:. 
+	Luego use una rebanada corte para imprimir los primeros tres elementos de la lista de ese programa.
+	
+	Imprimir el mensaje: Los tres elementos del medio de la lista son:.
+	Luego usa un corte para imprimir tres elementos del medio de la lista.
+	
+	Imprimir el mensaje: Los últimos tres elementos de la lista son:. 
+	Luego use una rebanada o corte para imprimir los últimos tres elementos de la lista.
+	
+\end{enumerate}
+
+
+
+

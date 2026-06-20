@@ -1,0 +1,1304 @@
+
+
+
+\chapter{Archivos y Excepciones}{\label{Cap10}}\hypertarget{Cap10}{}
+
+
+\begin{wrapfigure}{l}{0.5\textwidth} 
+	\vspace{-25pt}	\begin{center} \includegraphics[width=0.525\textwidth]{../Logos_de_Python/archivos4}
+	\end{center}\vspace{-35pt} %\caption{Python 3} 
+\end{wrapfigure}Ahora que dominas las nociones básicas y algunas habilidades, es hora de comenzar a escribir  programas que sean relevantes y útiles. En este capitulo se estudiara cómo a manejar los errores para que sus programas no fallen cuando se encuentran con situaciones inesperadas. Se estudiaran las {\ttfamily excepciones}, que son
+objetos especiales que Python crea para gestionar los errores que surgen mientras se ejecuta un programa.
+
+También se inicia el trabajo con archivos de grandes cantidades de datos para analizar rápidamente, que sus programas necesitan. Se tratarán los archivos {\ttfamily json}, que le permite guardar datos del usuario para que no se pierdan cuando el programa deje de ejecutarse.
+
+Se enseñara a  trabajar con archivos y guardar datos, de tal forma que sus programas sean más fáciles
+para que la gente los use. Los usuarios podrán elegir qué datos introducir y cuándo
+entrar en él. Las personas podrán ejecutar su programa, trabajar un poco y luego
+cerrar el programa y continuar donde lo dejaron. Manejar las excepciones le ayudará afrontar situaciones cuando los archivos no existen,  y a solucionar otros problemas que pueden causar que sus programas colapsen. Esto hará que sus programas sean más robustos cuando encuentran datos incorrectos, ya sea que provengan de errores inocentes o de intentos maliciosos de causar daños a  sus programas. 
+
+Con Las habilidades que aprenderá en este capítulo harán que sus programas sean más aplicables, utilizable y estables.
+
+\section{Leer un archivo}
+
+Una cantidad increíble de datos está disponible en archivos de texto, estos pueden contener 
+datos meteorológicos, datos de tráfico, datos socioe-conómicos, datos de mensajes, obras literarias y más.
+La lectura de un archivo es particularmente útil en aplicaciones de análisis de datos, pero
+también es aplicable a cualquier situación en la que se quiera analizar o modificar la información
+almacenada en un archivo. Por ejemplo, puedes escribir un programa que lee el contenido de un archivo de texto y reescribe el archivo con el formato que permite que un navegador lo muestre. 
+
+Cuando quieras trabajar con la información de un archivo de texto, el primer paso
+es leer el archivo en la memoria. Luego podrá revisar todos los archivos
+contenidos a la vez o revise el contenido línea por línea.
+
+\subsection{Leer el contenido de un archivo}
+
+Para comenzar, necesitamos un archivo con algunas líneas de texto. Empecemos con un archivo
+que contiene el número $\pi$  con 30 decimales, con 10 decimales por línea:
+
+\hspace{-2.5cm}{\ttfamily \scriptsize  numero}
+
+\vspace{-0.2cm}
+\hspace{-2.1cm}{\ttfamily \scriptsize\_pi.txt}\vspace{-0.84cm}
+\begin{lstlisting}
+	3.1415926535
+	8979323846
+	2643383279
+\end{lstlisting}
+
+Para probar los siguientes ejemplos debe ingresar estas líneas en un
+editor de texto y guarde el archivo como \href{https://ehmatthes.github.io/pcc\_3e}{\color{vino}{\ttfamily numero\_pi.txt}}, o puede descargar el archivo en los recursos del libro a través del link. 
+Debe guarda el archivo en el mismo directorio donde almacenará los programas del trabajo que esta desarrollando.
+
+El siguiente programa abre el archivo, lo lee e imprime el contenido en pantalla:
+
+\hspace{-2.5cm}{\ttfamily \scriptsize leer\_}
+
+\vspace{-0.2cm}
+\hspace{-2.5cm}{\ttfamily \scriptsize archivo.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	from pathlib import Path
+	ruta = Path('numero_pi.txt')
+	contents = ruta.read_text()
+	print(contents)
+\end{lstlisting}
+
+
+Para trabajar con el contenido de un archivo, necesitamos indicarle a Python la ruta del archivo. Una ruta es la ubicación exacta de un archivo o carpeta en un sistema. 
+
+Python proporciona un módulo llamado {\ttfamily pathlib} que facilita el trabajo con archivos y
+directorios, sin importar el sistema operativo en se encuentre trabajando. Un módulo que proporciona 
+una funcionalidad específica de como es llamada la librería, de aquí el nombre {\ttfamily pathlib}.
+
+Comenzamos importando la clase  {\ttfamily Path}  desde la librería {\ttfamily pathlib}.
+Hay muchas cosas que puedes hacer con un objeto {\ttfamily Path} que apunta a un archivo. Por ejemplo, puedes comprobar que el archivo existe antes de trabajar con él, leer el contenido del archivo o escribir algún dato nuevo
+en el archivo. Aquí, construimos un objeto {\ttfamily Path} que representa el archivo {\ttfamily numero\_pi.txt},
+que asignamos a la variable {\ttfamily ruta}. Dado que este archivo se guarda en el mismo directorio que el {\ttfamily leer\_archivo.py} que estamos escribiendo, el nombre del archivo es todo lo que {\ttfamily Path} necesita para 
+acceder al archivo.
+
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize %	https://es.wikipedia.org/wiki/Comando_(tecla)
+		NOTA: VS Code busca los archivos en la carpeta que se abrió más recientemente. Si estás usando VS
+		Código, comience abriendo la carpeta donde almacena los programas de este capítulo.}
+\end{minipage}
+\vspace{0.2cm}
+
+Una vez que tenemos un objeto {\ttfamily Path} que representa {\ttfamily numero\_pi.txt}, usamos el método {\ttfamily read\_text()} para leer todo el contenido del archivo. El contenido del archivo es devuelto como una sola cadena, que asignamos a la variable. Cuando se imprime el valor del contenido, vemos el contenido completo del archivo de texto en pantalla:
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			3.1415926535
+			8979323846
+			2643383279			
+		\end{verbatim}
+}}
+
+La única diferencia entre esta salida y el archivo original es la
+línea en blanco adicional al final de la salida. La línea en blanco aparece porque
+{\ttfamily read\_text()} devuelve una cadena vacía cuando llega al final del archivo; esta cadena vacía aparece como una línea en blanco. Podemos eliminar la línea en blanco adicional usando {\ttfamily rstrip()} en el contenido
+cadena:
+\begin{lstlisting}
+	from pathlib import Path
+	ruta = Path('numero_pi.txt')
+	contenido = ruta.read_text()
+	contenido= contenido.rstrip()
+	print(contenido)
+\end{lstlisting}
+
+En la sección \ref{espacio_Blanco} se estudio el método {\ttfamily strip()} de Python, que elimina
+cualquier carácter de espacio en blanco del lado derecho de una cadena. Y así la salida
+coincide exactamente con el contenido del archivo original.
+
+
+También podemos eliminar el carácter de nueva línea final cuando leemos el contenido del archivo, aplicando el método {\ttfamily strip()}  inmediatamente después de llamar la lectura del texto():
+
+\begin{lstlisting}
+	contenido = ruta.read_text().rstrip()
+\end{lstlisting}
+
+Esta línea le dice a Python que llame al método {\ttfamily read\_text()} en el archivo que estamos
+trabajando,  aplica el método {\ttfamily  rstrip()} a la cadena que lee y que  la  devuelve limpia, luego se asigna a la variable contenido.
+
+Este enfoque se llama encadenamiento de métodos y verá que se usa con frecuencia
+en programación.
+
+
+
+\subsection{Rutas de archivos relativas y absolutas}
+
+Cuando pasas un nombre de archivo simple como {\ttfamily numero\_pi.txt}  a  {\ttfamily Path}, Python busca en el directorio donde está almacenado el archivo que se está ejecutando actualmente (es decir, su archivo de programa.py).
+Algunas veces, dependiendo de cómo organices su trabajo, el archivo que quieres abrir tal vez no se encuentra en el mismo directorio que el archivo del programa. Por ejemplo, puedes almacenar los archivos de su programa en una carpeta llamada {\ttfamily trabajo\_py}; y dentro de {\ttfamily trabajo\_py}, es posible que tenga otra carpeta llamada {\ttfamily archivos\_texto} para distinguir los archivos de su programa de los archivos de texto que está manipulando. 
+
+Aunque los archivos en {\ttfamily archivos\_texto}  están en  {\ttfamily trabajo\_py},  Python no busca los archivo de este directorio si se le pasa solo el nombre a {\ttfamily Path} de un archivo en  {\ttfamily archivos\_texto}, no funcionará porque Python solo buscará en {\ttfamily trabajo\_py}, y se detendrá allí; no continuará ni buscará en otro directorio.
+
+Para que Python abra archivos desde un directorio distinto de aquel donde está almacenado el archivo de su programa, debe proporcionar la ruta correcta.
+
+
+Hay dos formas principales de especificar rutas en programación.
+
+Una ruta de archivo relativa le dice a Python que busque una ubicación determinada relativa al directorio donde está almacenado el archivo del programa que se está ejecutando actualmente. Dado que {\ttfamily archivos\_texto} está dentro de {\ttfamily trabajo\_python}, necesitamos crear una ruta que comience con el directorio {\ttfamily archivos\_texto} y termine con el nombre del archivo. 
+
+A continuación se explica cómo construir esta ruta:
+\begin{lstlisting}
+	ruta = Path('archivos_texto/nombre_del_archivo.txt')
+\end{lstlisting}
+
+También puedes decirle a Python exactamente dónde está el archivo en tu computadora, independientemente de dónde esté almacenado el programa que se está ejecutando, a ésta forma se llama ruta de archivo absoluta. 
+
+Puede utilizar una ruta absoluta en caso de que la ruta relativa no funcione. Por ejemplo, si ha colocado {\ttfamily archivos\_texto} en alguna carpeta que no sea {\ttfamily trabajo\_py}, pasándole simplemente a la función  {\ttfamily Path()} la ruta  {\ttfamily "{}archivos\_texto/nombre\_del\_archivo.txt{}"{}} no funcionará porque Python solo buscará esa ubicación dentro de  {\ttfamily trabajo\_py}. Deberá escribir una ruta absoluta para aclarar dónde desea que busque Python. Las rutas absolutas suelen ser más largas que las relativas porque comienzan en la carpeta raíz de su sistema:
+% ruta2 = Path('C:/AAA_Todo_2023/Algo_Python/numero.txt')
+\begin{lstlisting}
+	ruta = Path('C:/trabajo_py/archivos_texto/nombre_del_archivo.txt')
+\end{lstlisting}
+
+Usando rutas absolutas, se puede leer archivos desde cualquier ubicación de su sistema. Por ahora, es más fácil almacenar archivos en el mismo directorio que los archivos de su programa, o en una carpeta como {\ttfamily archivos\_texto} dentro del directorio que almacena sus archivos de programa.\\
+
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 
+		Los sistemas Windows utilizan una barra invertida ({\scriptsize {\bf $\backslash$}}) para las rutas de los archivos,  en lugar de una barra diagonal ({\ttfamily/}); pero en Python se  utilizan barras diagonales. 
+		La librería {\ttfamily pathlib} utilizará automáticamente la representación correcta de la ruta cuando interactúe con su sistema o el sistema de cualquier usuario.}
+\end{minipage}
+\vspace{0.2cm}
+
+
+
+\subsection{Accediendo a las líneas de un archivo}
+
+
+Cuando trabaja con un archivo de texto, es muy posible que requiera examinar cada línea del archivo. 
+Tal vez necesite cierta información en el archivo, o que quieras modificar el texto del 
+archivo de alguna manera. Por ejemplo, necesitas leer un archivo de datos meteorológicos 
+y trabajar con cualquier línea que incluye la palabra {\ttfamily soleado} en la descripción del clima de ese día. 
+En un informe de noticias, puede buscar cualquier línea con una  etiqueta específica y reescribir esa 
+línea con un tipo de formato.
+
+Puede utilizar el método {\ttfamily splitlines()} de cadenas, para convertir una cadena larga en un lista con todas las
+líneas y luego use un bucle {\ttfamily for} para examinar cada línea del archivo, una a la vez:
+
+\begin{lstlisting}
+	from pathlib import Path
+	ruta = Path('numero_pi.txt')
+	contenido = ruta.read_text()
+	lineas = contenido.splitlines()
+	i=1
+	for linea in lineas:
+	print(f"línea {i}:",linea)
+	i += 1
+\end{lstlisting}
+
+Comenzamos leyendo todo el contenido del archivo, como hicimos antes.
+Si planea trabajar con líneas individuales en un archivo, puede que no es necesario eliminar ningún espacio en blanco al leer el archivo. El método {\ttfamily splitlines()} devuelve una lista de todas las líneas del archivo, de aquí podemos recuperar la información, mediante el {\ttfamily for .. in}  que recorre estas líneas e imprimimos cada una:
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			línea 1: 3.1415926535
+			línea 2:   8979323846
+			línea 3:   2643383279
+		\end{verbatim}
+}}  
+
+Como no hemos modificado ninguna de las líneas, el resultado coincide con el
+archivo de texto original exactamente.
+
+\subsection{Trabajar con el contenido de un archivo}
+
+Después de haber leído el contenido de un archivo en la memoria, puede hacer lo que quieras con esos datos, 
+así que exploremos brevemente los dígitos de pi. Primero, vamos a crear una cadena única  que contenga todos los dígitos del archivo sin espacios en blanco en él:
+
+\hspace{-2.0cm}{\ttfamily \scriptsize cadena}
+
+\vspace{-0.2cm}
+\hspace{-1.7cm}{\ttfamily \scriptsize \_pi.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	from pathlib import Path
+	ruta = Path('numero_pi.txt')
+	contenido = ruta.read_text()
+	lineas = contenido.splitlines()	
+	cadena_pi = ''
+	for linea in lineas:
+	cadena_pi += linea
+	print(cadena_pi)
+	print("Longitud:",len(cadena_pi))
+\end{lstlisting}
+
+Comenzamos leyendo el archivo {\ttfamily cadena\_pi} y almacenando cada línea de dígitos en una lista, como en el ejemplo anterior. Luego creamos una variable, {\ttfamily cadena\_pi}, para contener los dígitos de pi. Escribimos un bucle que suma cada línea de dígitos a {\ttfamily cadena\_pi}. Imprimimos esta cadena y mostramos cuánto la longitud de la cadena:
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			3.1415926535  8979323846  2643383279
+			Longitud: 36			
+		\end{verbatim}
+}}
+
+La variable {\ttfamily cadena\_pi} contiene el espacio en blanco que estaba en el lado izquierdo de los dígitos en cada línea, pero podemos deshacernos de eso usando {\ttfamily lstrip()} en cada línea:
+\begin{lstlisting}
+	...
+	cadena_pi = ''
+	for linea in lineas:
+	cadena_pi += linea.lstrip()
+	print(cadena_pi)
+	print("Longitud:",len(cadena_pi))
+\end{lstlisting}
+Ahora tenemos una cadena que contiene pi con 30 decimales. La cadena tiene 32 caracteres porque también incluye el 3 inicial y un punto decimal:
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			3.141592653589793238462643383279
+			Longitud: 32			
+		\end{verbatim}
+}}
+
+
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 
+		Cuando Python lee un archivo de texto, interpreta todo el texto del archivo como una cadena. Si lees un número y quieres trabajar con ese valor en un contexto numérico, tendrás que convertirlo a un número entero usando la función {\ttfamily int()} o a un valor flotante usando la función {\ttfamily float()}.}
+\end{minipage}
+\vspace{0.2cm}
+% 
+
+
+\subsection{Archivos grandes: un millón de dígitos}
+
+Hasta ahora, nos hemos centrado en analizar un archivo de texto que contiene sólo tres líneas, pero el código de estos ejemplos 
+funcionaría bien en archivos mucho más grandes. Si comenzamos con un archivo de texto que contiene el número {\ttfamily $\pi$} 
+con 1.000.000 de decimales, en lugar de los 30 que tenemos en el archivo {\ttfamily cadena\_pi}, podemos crear una única cadena 
+que contenga todos estos dígitos. No necesitamos cambiar nuestro programa en absoluto, excepto pasarle un archivo diferente.
+Imprimiremos solo los primeros 50 decimales, para no tener que ver un millón de dígitos en la terminal:
+
+\hspace{-2.2cm}{\ttfamily \scriptsize cadena\_}
+
+\vspace{-0.2cm}
+\hspace{-2.0cm}{\ttfamily \scriptsize pi.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	from pathlib import Path
+	ruta = Path('millon_digitos_pi.txt')
+	contenido = ruta.read_text()
+	lineas = contenido.splitlines()	
+	cadena_pi = ''
+	for linea in lineas:
+	cadena_pi += linea.lstrip()
+	print(f"{cadena_pi[:52]}","...")
+	print("Longitud:",len(cadena_pi))
+\end{lstlisting}
+
+El resultado muestra que efectivamente tenemos una cadena que contiene 1.000.002 dígitos del número $\pi$:
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			3.14159265358979323846264338327950288419716939937510...
+			Longitud: 1000002			
+		\end{verbatim}
+}}
+
+Python no tiene un límite inherente a la cantidad de datos con los que puedes trabajar; puede trabajar 
+con tantos datos como la memoria de su sistema pueda manejar.
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 
+		Para ejecutar este programa (y muchos de los ejemplos que siguen), deberá descargar
+		los recursos disponibles en  \href{https://ehmatthes.github.io/pcc_3e}{\color{vino} https://ehmatthes.github.io/pcc\_3e}}
+\end{minipage}
+\vspace{0.2cm}
+
+
+Es interesante conocer si una secuencia particular de números se encuentra en el número $\pi$, como por ejemplo la fecha 
+de cumpleaños de una persona, o algo semejante. 
+Podemos usar el programa que acabamos de escribir para averiguar si su cumpleaños aparece en algún lugar del primer millón de dígitos de $\pi$. Podemos hacer esto expresando cada cumpleaños como una cadena de dígitos y viendo si esa cadena aparece en cualquier lugar de  {\ttfamily cadena\_pi}:    % print(type(pi_string))
+
+\hspace{-2.5cm}{\ttfamily \scriptsize cumpleanos}
+
+\vspace{-0.2cm}
+\hspace{-2.5cm}{\ttfamily \scriptsize \_en\_pi\_.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	...
+	pi_string  = ''	
+	for linea in lineas:
+	pi_string += linea.strip()
+	
+	cumpleaños = input("Ingrese la fecha de su cumpleaño, en forma mmddyy: ")
+	if cumpleaños in pi_string:
+	print("¡Su cumpleaños aparece en el primer millón de dígitos de pi!")
+	else:
+	print("¡Su cumpleaños no aparece en el primer millón de dígitos de pi!")
+\end{lstlisting}
+
+Probemos con mi fecha de cumpleaños. Primero solicitamos el cumpleaños del usuario y luego verificamos si esa cadena está en {\ttfamily pi\_string}.
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Ingrese la fecha de su cumpleaño, en forma mmddyy: 281164
+			¡Su cumpleaños aparece en el primer millón de dígitos de pi!		
+		\end{verbatim}
+}}
+
+Mi fecha de cumpleaños aparece en el  primer millón de dígitos del numero el número $\pi$. 
+
+Una vez que haya leído de el archivo, puede analizar su contenido de casi cualquier forma que pueda imaginar.
+
+
+\subsection{Escribir en un archivo}
+
+Una de las formas más sencillas de guardar datos es escribirlos en un archivo. Cuando escribe texto en un archivo, la salida seguirá estando disponible después de cerrar la terminal que contiene la salida de su programa. 
+Puede examinar el resultado después de que un programa termine de ejecutarse y también puede compartir los archivos de resultado con otras personas.
+También puedes escribir programas que lean el texto en la memoria y vuelvan a trabajar con él más tarde.
+
+\subsection{Escribir una sola línea}
+
+Una vez que haya definido una ruta, puede escribir en un archivo usando el método {\ttfamily write\_text()}.
+Para ilustrar cómo funciona esto, escribiremos un mensaje simple y lo guardaremos en un archivo en lugar de imprimirlo en la pantalla:
+
+
+\hspace{-2.5cm}{\ttfamily \scriptsize escribir}
+
+\vspace{-0.2cm}
+\hspace{-2.2cm}{\ttfamily \scriptsize \_texto.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	from pathlib import Path
+	ruta = Path('escribir_texto.txt')
+	ruta.write_text("Me gusta programar en Python")
+\end{lstlisting}
+
+El método {\ttfamily write\_text()} toma un único argumento, que es la cadena que desea escribir en el archivo. 
+Este programa no tiene salida de terminal, pero si abre el archivo {\ttfamily escribir\_texto.txt}, encontrara el texto escrito:
+
+{\ttfamily\scriptsize\scriptsize 
+	{\color{black} 	
+		\begin{verbatim}
+			Me gusta programar en Python		
+		\end{verbatim}
+}}
+
+Este archivo se comporta como cualquier otro archivo en su computadora. Puedes abrirlo,
+escribir un texto nuevo en él, copiarlo, pegarlo, etc.
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize  Python sólo puede escribir cadenas en un archivo de texto. Si desea almacenar datos numéricos
+		en un archivo de texto, primero deberá convertir los datos al formato de cadena usando la
+		función {\ttfamily str()}.}
+\end{minipage}
+\vspace{0.2cm}
+
+
+
+
+\subsection{Escribir varias líneas}
+
+El método  {\ttfamily write\_text()} hace algunas cosas detrás de escena. Si el archivo que
+la ruta indica no existe, crea ese archivo. Además, después de escribir la cadena
+al archivo, se asegura de que el archivo esté cerrado correctamente. Archivos que no están cerrados
+correctamente puede dar lugar a datos faltantes o dañados.
+
+Para escribir más de una línea en un archivo, necesita crear una cadena que contenga
+todo el contenido del archivo y luego llame a  {\ttfamily write\_text()} con esa cadena.
+
+Ilustramos con el mismo archivo anterior {\ttfamily escribir\_texto.txt}, para escribir varias líneas en el archivo:
+
+\begin{lstlisting}
+	from pathlib import Path
+	contenido = "Me gusta programar en Python.\n"
+	contenido += "Estoy creando un juego nuevo.\n"
+	contenido += "Se trata de un juego de fútbol.\n"
+	path = Path('escribir_texto.txt')
+	path.write_text(contenido)
+\end{lstlisting}
+
+Para este caso definimos una variable llamada {\ttfamily contenido} que almacenará todo el contenido en el
+archivo. En la siguiente línea, usamos el operador{\ttfamily += } para agregar a esta cadena. 
+Puede hacer esto tantas veces como sea necesario para crear cadenas de cualquier longitud.
+En este caso incluimos el carácter de una nueva línea al final de cada línea, para asegurarnos
+cada declaración aparece en su propia línea. Si ejecuta este código y  abre el archivo  {\ttfamily escribir\_texto.txt}, encontrara las líneas en el archivo de texto:
+
+{\ttfamily\scriptsize\scriptsize 	
+	{\color{black} 	
+		\begin{verbatim}
+			Me gusta programar en Python.
+			Estoy creando un juego nuevo.
+			Se trata de un juego de futbol.		
+		\end{verbatim}
+}}
+
+
+También puede utilizar espacios, tabulaciones y líneas en blanco para dar formato a su
+salida, tal como lo ha estado haciendo con la salida basada en terminal. No hay
+límite a la longitud de sus cadenas, y esta es la forma como muchos documentos son creados 
+y generados por computadora.
+
+
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Advertencia1}}  %[width=\textwidth]
+	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize  Tenga cuidado al usar el método {\ttfamily write\_text()} en una ruta.  Si el archivo ya existe, el método 
+		{\ttfamily write\_text()} borrará el contenido y actualizará el archivo, escribiendo el nuevo contenido en el archivo. 
+		Más adelante en este capítulo, aprenderá a comprobar si un archivo existe usando la declaración  {\ttfamily pathlib} y {\ttfamily Path()} para la ruta del archivo.}
+\end{minipage}
+\vspace{0.2cm}
+
+
+\section{Excepciones}
+
+Python utiliza objetos especiales llamados excepciones para gestionar los errores que surgen durante la ejecución de un programa. Cada vez que ocurre un error que hace que Python no esté seguro de qué hacer a continuación, crea un objeto de excepción. Si escribe código que maneje la excepción, el programa continuará ejecutándose. Si no maneja la excepción, el programa se detendrá y mostrará un rastreo, que incluye un informe de la excepción que se generó.
+
+Las excepciones se manejan con bloques {\ttfamily try-except}. Es un bloque que le indica a Python hacer algo, pero también le dice a Python qué hacer si se genera una excepción. Cuando utiliza bloques  {\ttfamily try-except}, sus programas continuarán ejecutándose incluso si las cosas empiezan a salir mal. En lugar de rastreos, que pueden resultar confusos de leer para los usuarios, los usuarios verán mensajes de error amigables que usted haya escrito.
+
+\subsection{Manejo de la excepción ZeroDivisionError}
+
+Veamos un error simple que hace que Python genere una excepción. Seguro sabes que la división por cero no esta definida, pero para ilustra una excepción de Python,  generemos una división por cero:  
+\begin{lstlisting}
+	>>> print(5/0)
+\end{lstlisting}
+Python no puede hacer esta operación, por lo que obtenemos un rastreo (última llamada  más recientes):
+
+{\ttfamily\scriptsize \noindent Out[]:\vspace{-0.3cm}	
+	{\color{red} 	
+		\begin{verbatim}
+			Traceback (most recent call last):
+			File "<pyshell#29>", line 1, in <module>
+			print(5/0)
+			ZeroDivisionError: division by zero
+		\end{verbatim}
+}}
+
+
+El error informado en el rastreo, {\ttfamily ZeroDivisionError}, es un objeto de excepción. Python crea este tipo de objeto en respuesta a una situación en la que no puede hacer lo que le pedimos. Cuando esto sucede, Python detiene el programa y nos dice el tipo de excepción que se generó. Podemos utilizar esta información para modificar nuestro programa. Le diremos a Python qué hacer cuando ocurra este tipo de excepción; de esa manera, si vuelve a suceder, estaremos preparados. 
+
+\subsection{Usando bloques try-except}
+
+Cuando se sabe que puede ocurrir un error determinado, se puede escribir un bloque  {\ttfamily try-except} para
+manejar la excepción que podría surgir. Le dices a Python que intente ejecutar
+algún código, y usted le dice qué hacer si el código da como resultado un tipo particular
+de excepción. Esto es lo que constituye un bloque  {\ttfamily try-except} para manejar la excepción {\ttfamily ZeroDivisionError} 
+
+
+\begin{lstlisting}
+	try:
+	print(5/0)
+	except ZeroDivisionError:
+	print("¡No se puede dividir por cero!")
+\end{lstlisting}
+
+Observe, dentro del bloque {\ttfamily try-except}, ponemos la línea que puede causar el error, en este caso {\ttfamily print(5/0)} causa el error. 
+
+Si el código en un bloque  {\ttfamily try} funciona, Python omite el bloque {\ttfamily except}. Si el código
+en el bloque {\ttfamily try} provoca un error, Python busca un bloque {\ttfamily except} cuyo error coincide con el que se generó y ejecuta el código en ese bloque.
+
+En este ejemplo, el código en el bloque {\ttfamily try} produce un {\ttfamily ZeroDivisionError},
+entonces Python busca un bloque {\ttfamily except} que le indique cómo responder. Y Python ejecuta el código en ese bloque y
+el usuario ve un mensaje de error amigable en lugar de un rastreo:
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm}Out[4]:\vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			¡No se puede dividir por cero!
+		\end{verbatim}
+}}
+Si el código fuese  más largo después del bloque {\ttfamily try-except}, el programa continuaría
+ejecutándose porque le dijimos a Python cómo manejar el error. 
+
+
+\subsection{Uso de excepciones para evitar fallas}
+
+Manejar los errores correctamente es de especial importancia cuando el programa tiene
+más trabajo por hacer después de que se produzca el error. Esto sucede a menudo en programas
+que solicitan a los usuarios su opinión. Si el programa responde apropiadamente a una entrada no válida,
+puede continuar solicitando otras entradas válidas en lugar de fallar y detenerse.
+
+Ilustremos con un ejemplo en el que se detecta un error y el programa continúa ejecutándose.
+Para ello desarrollaremos  una calculadora simple que solo haga divisiones:
+
+%\hspace{-2.11cm}{\ttfamily \scriptsize calculadora.py}  \vspace{-0.5cm}
+
+\hspace{-2.2cm}{\ttfamily \scriptsize calcula}
+
+\vspace{-0.2cm}
+\hspace{-2.0cm}{\ttfamily \scriptsize dora.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	print("Ingrese dos números para dividirlos")
+	print("Ingrese 'q' para salir del programa.")
+	while True:
+	primer_número = input("\nPrimer número: ")
+	if primer_número == 'q':
+	break
+	segundo_número = input("Segundo número: ")
+	if segundo_número == 'q':
+	break
+	respuesta = int(primer_número)/int(segundo_número)
+	print(respuesta)
+\end{lstlisting} 
+
+Este programa solicita al usuario que ingrese el primer número, si el usuario no ingresa {\ttfamily {}"{}q{}"{}} para salir, el programa solicita el segundo número.  Luego dividimos estos dos números para obtener una respuesta. 
+Este programa no hace nada para manejar los errores, por lo que si ingresa el cero en el segundo número 
+genera una falla al dividir por cero:
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Ingrese dos números para dividirlos
+			Ingrese 'q' para salir del programa.
+			
+			Primer número: 7
+			Segundo número: 0
+		\end{verbatim}
+}}
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{red} 	
+		\begin{verbatim}
+			Traceback (most recent call last):
+			File "C:\Users\Linis\Desktop\IDLE\Excepcion.py", line 25, in <module>
+			respuesta = int(primer_número)/int(segundo_número)
+			ZeroDivisionError: division by zero		
+		\end{verbatim}
+}}
+
+El programa falla y no es bueno permitir que los usuarios vean los rastreos debido a los errores. Los usuarios 
+no técnicos se sentirán confundidos, y en un entorno malicioso los atacantes aprenderán más de lo que usted desea. Por ejemplo, sabrán el nombre de su archivo de programa y verán  parte del código que no funciona correctamente. En ocasiones, un atacante experto puede utilizar esta información para determinar qué tipo de ataques utilizar contra su código.
+
+
+\subsection{El bloque else}
+
+Podemos hacer que este programa sea resistente a los posibles errores, ajustando la línea donde podría producir errores en un bloque {\ttfamily try-except}. El error ocurre en la línea que realiza la división, así que ahí es donde colocaremos el bloque {\ttfamily try-except}. Este ejemplo también incluye un bloque {\ttfamily else}. Cualquier código que dependa del buen funcionamiento del bloque {\ttfamily try} se ejecutara  correctamente en el bloque {\ttfamily else}, y continuará el programa:
+
+
+\hspace{-2.2cm}{\ttfamily \scriptsize calcula}
+
+\vspace{-0.2cm}
+\hspace{-2.0cm}{\ttfamily \scriptsize dora.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	print("Ingrese dos números para dividirlos")
+	print("Ingrese 'q' para salir del programa.")
+	while True:
+	primer_número = input("\nPrimer número: ")
+	if primer_número == 'q':
+	break
+	segundo_número = input("Segundo número: ")
+	if segundo_número == 'q':
+	break
+	try:
+	respuesta = int(primer_número)/int(segundo_número)
+	except ZeroDivisionError:
+	print("Cuidado, la división por cero no está definida!")
+	else:
+	print(respuesta)
+\end{lstlisting}
+
+En este caso, si la operación de división es exitosa, usamos el bloque {\ttfamily else} para imprimir el resultado.
+Si el bloque {\ttfamily try} no tiene éxito debido a un error de división por cero, el bloque {\ttfamily except} le indica a Python cómo responder cuando surge el error {\ttfamily ZeroDivisionError}. Y se imprime  un mensaje más claro diciéndole al usuario cómo evitar este tipo de error. El programa continúa ejecutándose y el usuario no vera el mensaje de rastreo:
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Ingrese dos números para dividirlos
+			Ingrese 'q' para salir del programa.
+			
+			Primer número: 5
+			Segundo número: 0
+			Cuidado, la división por cero no está definida!
+		\end{verbatim}
+}}
+
+El único código que debería ir en un bloque {\ttfamily try} es el código que podría causar el error, la excepción a plantear. 
+A veces tendrás código adicional que debería ejecutar solo si el bloque {\ttfamily try} fue exitoso; este código va en el 
+bloque  {\ttfamily else}.
+
+El bloque  {\ttfamily except} le dice a Python qué hacer en caso de que surja una determinada excepción
+cuando intenta ejecutar el código en el bloque  {\ttfamily try}.\\
+
+Al anticipar las posibles fuentes de errores, puede escribir programas sólidos
+que continúan ejecutándose incluso cuando encuentran datos no válidos y faltan recursos. 
+Su código será resistente a errores de usuarios inocentes y posibles ataques maliciosos.
+
+
+\subsection{Manejo de la excepción FileNotFoundError}
+
+Un problema común al trabajar con archivos es el manejo de archivos faltantes; puede suceder que el archivo que  buscas puede estar en una ubicación diferente, o tal vez el nombre del archivo puede estar mal escrito, o es posible que el archivo no exista en absoluto. Todas estas situaciones se pueden tratar con un bloque {\ttfamily try-except}.
+
+Intentemos leer un archivo que no existe. El siguiente programa intenta
+leer el contenido de {\ttfamily Alicia en el país de las maravillas}, pero no he guardado el archivo  {\ttfamily alice.txt} en el mismo directorio que {\ttfamily alice.py}:
+
+\hspace{-2.5cm}{\ttfamily \scriptsize alice.py}  \vspace{-0.5cm} 
+\begin{lstlisting}
+	from pathlib import Path
+	path = Path('alice.txt')
+	contenido = path.read_text(encoding='utf-8')
+\end{lstlisting}
+
+Observe que estamos usando el método  {\ttfamily read\_text()} de manera  diferente al caso anterior. El argumento de codificación ({\ttfamily encoding={}"{}utf-8{}"{}}) es necesario cuando la codificación predeterminada del sistema no coincide con la codificación del archivo que se está leyendo. Es probable que esto suceda al leer un archivo que no se creó en su sistema. 
+
+Si Python no puede leer un archivo faltante, genera una excepción:
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{red}
+		\begin{verbatim}		 	
+			Traceback (most recent call last):
+			File "C:\Users\Linis\Desktop\IDLE\excepcion.py", line 51, in <module>
+			contents = path.read_text(encoding='utf-8')
+			File "C:\Users ... \Python311\Lib\pathlib.py", line 1058, in read_text
+			with self.open(mode='r', encoding=encoding, errors=errors) as f:
+			File "C:\Users ... \Lib\pathlib.py", line 1044, in open
+			return io.open(self, mode, buffering, encoding, errors, newline)
+			FileNotFoundError: [Errno 2] No such file or directory: 'alice.txt'
+		\end{verbatim}
+}}
+Este es un rastreo más largo comparado con los que hemos visto anteriormente, así que veamos cómo se pueden entender rastreos más complejos. Por lo general es mejor comenzar del final del rastreo. En la última línea, podemos ver que se generó una excepción {\ttfamily FileNotFoundError}. Esto es importante porque nos dice qué tipo de excepción que debemos usar en el bloque {\ttfamily except} que escribiremos.
+
+Continuando hacia atrás en el rastreo, ahora en el inicio podemos ver que el error ocurrió en la línea 51 del archivo {\ttfamily excepcion.py}. La siguiente línea muestra la línea de código que causó el error.  
+El resto del rastreo muestra parte del código de las librerías que participan en la apertura y lectura de archivos.
+
+Por lo general, no es necesario leer ni comprender todas estas líneas en un rastreo. Para manejar el error que se genera, el bloque {\ttfamily try} comenzará con la línea que se identificó como problemática en el rastreo.
+
+En este ejemplo,  la línea es la que contiene el método {\ttfamily read\_text()}:
+
+\begin{lstlisting}
+	from pathlib import Path
+	ruta = Path('alice.txt')
+	try:
+	contents = ruta.read_text(encoding='utf-8')
+	except FileNotFoundError:
+	print(f"Lo sentimos, el archivo {ruta} no existe.")
+\end{lstlisting}
+
+En este ejemplo, el código en el bloque {\ttfamily try} genera {\ttfamily FileNotFoundError}, un error debido a que no encuentra el archivo, por lo que escribimos un bloque {\ttfamily except} que coincide con ese error. Luego, Python ejecuta el código en ese bloque cuando no encuentra el archivo, y muestra el resultado indicado que debe ser más claro para el usuario, que el mensaje del rastreo:
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Lo sentimos, el archivo alice.txt no existe.	
+		\end{verbatim}
+}}
+
+El programa no tiene nada más que hacer si el archivo no existe, por lo que esto es todo el resultado que vemos.
+
+Con este ejemplo se ve la idea de cómo manejar las excepciones, y veamos cómo el manejo de excepciones puede ayudar cuando se trabaja con más de un archivo. 
+
+
+\subsection{Analizando texto}
+% Wonderland pais marabillas
+Puede analizar archivos de texto que contengan libros completos. Muchas obras literarias clásicas están disponibles como archivos de texto simples y son de dominio público. Los textos utilizados en esta sección provienen del Proyecto  \href{https://gutenberg.org}{\color{vino} Gutenberg}. El Proyecto Gutenberg mantiene una colección de obras literarias que están disponibles para dominio público, y es un gran recurso si está interesado en trabajar con textos literarios en sus proyectos de programación.\\
+
+Busquemos el texto de Alicia en el país de las maravillas e intentemos contar el número
+de palabras en el texto. Para hacer esto, usaremos el método {\ttfamily split()} de la clase {\ttfamily str()}, que
+de forma predeterminada divide una cadena dondequiera que encuentre espacios en blanco:
+
+\begin{lstlisting}
+	from pathlib import Path
+	ruta = Path('alice.txt')
+	try:
+	contenido = ruta.read_text(encoding='utf-8')
+	except FileNotFoundError:
+	print(f"Lo sentimos, el archivo {ruta} no existe.") 
+	else:
+	# Cuente el número aproximado de palabras en el archivo:
+	palabras = contenido.split()
+	num_palabras = len(palabras)
+	print(f"El archivo {ruta} tiene aproximadamente {num_palabras} \
+	palabras.")
+\end{lstlisting}
+
+
+El archivo {\ttfamily alice.txt} se ubicó en  directorio correcto, por lo que el bloque {\ttfamily try}
+funciona bien. Tomamos el contenido de la cadena, que ahora contiene todo el
+texto de Alicia en el país de las maravillas, como una cadena larga y usando el método  {\ttfamily split()} para producir una
+lista de todas las palabras del libro; luego con la función  {\ttfamily len()} aplicada sobre la lista nos da el número de palabras del texto original. Por último imprimimos una declaración que informa cuántas palabras se encontraron en el archivo. 
+Este código se coloca en el bloque {\ttfamily else}, porque este  funciona solo si el código en el bloque {\ttfamily try} se ejecuta con éxito.
+
+El resultado nos dice cuántas palabras hay en {\ttfamily alice.txt}:
+
+{\ttfamily\scriptsize\scriptsize 
+	{\color{blue} 	
+		\begin{verbatim}
+			El archivo archivo_de_texto\alicia.txt tiene aproximadamente 29594 palabras.
+		\end{verbatim}
+}}
+
+
+El recuento es un poco alto porque la información adicional la proporciona el
+editor en el archivo de texto utilizado aquí, pero es una buena aproximación del tamaño del texto  
+Alicia en el país de las maravillas.
+
+\subsection{Trabajar con múltiples archivos} 
+
+Agreguemos más libros para analizar, pero antes construimos una función que llamaremos {\ttfamily cuenta\_palabras()}, con la mayor parte de
+este programa. Esto hará que sea más fácil ejecutar el análisis para varios libros:
+
+\hspace{-2.5cm}{\ttfamily \scriptsize cuenta\_}
+
+\vspace{-0.2cm}
+\hspace{-2.5cm}{\ttfamily \scriptsize palabras.py}\vspace{-0.84cm} 
+\begin{lstlisting}
+	from pathlib import Path
+	def cuenta_palabras(ruta):
+	"""Cuente el número aproximado de palabras en un archivo."""
+	try:
+	contenido = ruta.read_text(encoding='utf-8')
+	except FileNotFoundError:
+	print(f"Lo sentimos, el archivo {ruta} no existe.")
+	else:
+	# Cuente el número aproximado de palabras en el archivo:
+	palabras = contenido.split()
+	num_palabras = len(palabras)
+	print(f"El archivo {ruta} tiene aproximadamente {num_palabras} palabras.")
+	ruta = Path('alice.txt')
+	cuenta_palabras(ruta)
+\end{lstlisting}
+
+La mayor parte de este código no ha cambiado. Solo se ubico en el cuerpo de la función {\ttfamily cuenta\_palabras()}. Es un buen hábito mantener los comentarios actualizados cuando se modifica un programa, por lo que el comentario también se cambió a una cadena de documentación y se reformuló ligeramente.
+Ahora podemos escribir un bucle corto para contar las palabras de cualquier texto que queramos analizar. 
+Hacemos esto almacenando los nombres de los archivos que queremos analizar en una lista y luego llamamos a {\ttfamily cuenta\_palabras()} para cada archivo de la lista. Intentaremos contar las palabras de Alicia en el país de las maravillas, Siddhartha, Moby Dick y Little Women (Mujercitas). Todos  están disponibles en el dominio público. Se han dejado intencionalmente algunos textos fuera del directorio 
+que contiene la función {\ttfamily cuenta\_palabras()}, para que podamos ver qué tan bien el programa maneja un archivo faltante:
+
+\hspace{-2.3cm}{\ttfamily \scriptsize cuenta\_}
+
+\vspace{-0.2cm}
+\hspace{-2.5cm}{\ttfamily \scriptsize palabras.py}\vspace{-0.84cm} 
+\begin{lstlisting}
+	from pathlib import Path
+	def cuenta_palabras(ruta):
+	"""Cuente el número aproximado de palabras en un archivo."""
+	try:
+	contenido = ruta.read_text(encoding='utf-8')
+	except FileNotFoundError:
+	print(f"Lo sentimos, el archivo {ruta} no existe.")
+	else:
+	# Cuente el número aproximado de palabras en el archivo:
+	palabras = contenido.split()
+	num_palabras = len(palabras)
+	print(f"El archivo {ruta} tiene aproximadamente {num_palabras} \
+	palabras.")
+\end{lstlisting}
+
+Los nombres de los archivos se almacenan como cadenas simples. Luego, cada cadena se convierte en un objeto 
+{\ttfamily Path}, antes de la llamada a {\ttfamily cuenta\_palabras()}. El archivo {\ttfamily siddhartha.txt} que falta no tiene ningún efecto sobre el resto de la ejecución del programa:
+
+\begin{lstlisting}
+	nombre_archivos = ['alicia.txt','archivo_de_texto/alicia.txt',
+	'archivo_de_texto/numero_pi.txt','siddhartha.txt',
+	'moby_dick.txt','little_women.txt']
+	
+	for nombre_archivo in nombre_archivos:
+	ruta = Path(nombre_archivo)
+	cuenta_palabras(ruta)
+\end{lstlisting}
+
+El uso del bloque {\ttfamily try-except} en este ejemplo proporciona dos ventajas importantes. 
+Evitamos que nuestros usuarios vean un rastreo y dejamos que el programa continúe analizando los textos
+que puede encontrar. 
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Lo sentimos, el archivo alicia.txt no existe.
+			El archivo archivo_de_texto\alicia.txt tiene aproximadamente 29594 palabras.
+			El archivo archivo_de_texto\numero_pi.txt tiene aproximadamente 3 palabras.
+			Lo sentimos, el archivo siddhartha.txt no existe.
+			Lo sentimos, el archivo moby_dick.txt no existe.
+			Lo sentimos, el archivo little_women.txt no existe.
+		\end{verbatim}
+}}
+
+Si no detectamos el {\ttfamily FileNotFoundError} que genera {\ttfamily siddhartha.txt}, el usuario verá un rastreo completo y el programa dejará de ejecutarse después de intentar analizar Siddhartha. Nunca analizaría Moby Dick o Mujercitas.
+
+\subsection{Fallando silenciosamente}
+
+En el ejemplo anterior, informamos a nuestros usuarios que algunos de los archivos no estaban disponibles. Pero no es necesario que informe todas las excepciones que detecte. Algunas  veces, necesita  que el programa falle silenciosamente cuando se produzca una excepción y continúe como si nada hubiera pasado. Para hacer que un programa falle silenciosamente, se debe escribir un bloque {\ttfamily try} como de costumbre, pero le dices explícitamente a Python que en el bloque {\ttfamily except} no haga nada. Python tiene la declaración {\ttfamily pass} que le dice  no hacer nada en un bloque:
+
+\begin{lstlisting}
+	def contar_palabras(ruta):
+	"""Cuenta el número aproximado de palabras en un archivo."""
+	try:
+	
+	except FileNotFoundError:
+	pass
+	else:
+	
+\end{lstlisting}
+
+La única diferencia entre este código y el anterior es la declaración  {\ttfamily pass}, en el bloque excepto. Ahora, cuando se genera un {\ttfamily FileNotFoundError}, el código del bloque {\ttfamily except} se ejecuta, pero no sucede nada. No se produce ningún rastreo, y no hay ningún resultado en respuesta al error que se generó. 
+
+
+
+\begin{lstlisting}
+	def cuenta_palabras(ruta):
+	"""Cuenta el número aproximado de palabras en un archivo."""
+	try:
+	contenido = ruta.read_text(encoding='utf-8')
+	except FileNotFoundError:
+	pass
+	# print(f"Lo sentimos, el archivo {ruta} no existe.")
+	else:
+	# Cuente el número aproximado de palabras en el archivo:
+	palabras = contenido.split()
+	num_palabras = len(palabras)
+	print(f"El archivo {ruta} tiene aproximadamente {num_palabras} palabras.")
+\end{lstlisting}
+
+El Usuario ven el recuento de palabras de cada archivo que existe, pero no ven indicación alguna sobre archivos 
+que no encontró:
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			El archivo archivo_de_texto\alicia.txt tiene aproximadamente 29594 palabras.
+			El archivo archivo_de_texto\numero_pi.txt tiene aproximadamente 3 palabras.
+		\end{verbatim}
+}}
+
+La declaración de  {\ttfamily pass} también actúa como marcador de posición. Es un recordatorio de que
+estás eligiendo no hacer nada en un punto específico de la ejecución de su programa
+y que tal vez quieras hacer algo allí más tarde. Por ejemplo, en este programa podríamos decidir escribir el nombre de los archivos no disponibles en un archivo {\ttfamily archivos\_faltantes.txt}. Nuestros usuarios no verán este archivo, pero podremos leer el archivo y resolver el problema de los textos que faltan.
+
+
+\subsection{Decidir qué errores informar}
+
+¿Cómo saber cuándo informar un error a tus usuarios y cuándo permitirle que el programa falle silenciosamente? 
+
+Si los usuarios necesitan saber qué textos  deben ser analizados, podrían agradecerle un mensaje que les informe por qué algunos textos
+no fueron analizados. Si los usuarios esperan ver algunos resultados pero no es importante el 
+libro debe ser analizado, es posible que no necesiten saber que  textos no están disponibles. 
+
+Brindar a los usuarios información que no buscan puede disminuir el uso de su programa. 
+Las estructuras de manejo de errores de Python puede darle un control detallado sobre cuánto compartir con los usuarios cuando
+las cosas van mal; depende de su  decisión de  cuánta información quiere compartir con los usuarios.
+
+El código bien escrito y probado adecuadamente no es muy propenso a errores internos, como errores de sintaxis o lógicos. Pero cada vez que su programa depende de algo externo como la entrada del usuario, la existencia de un archivo o la disponibilidad de una conexión de red, existe la posibilidad de que se produzca una excepción.
+Un poco de experiencia le ayudará a saber dónde incluir el manejo de bloques de excepciones en su programa
+y cuánto informar a los usuarios sobre errores que surjan.
+
+
+\section{Almacenamiento de datos}
+
+Muchos de sus programas pedirán a los usuarios que introduzcan ciertos tipos de información.
+Podría permitir a los usuarios almacenar preferencias en un juego o proporcionar datos para una visualización.
+Cualquiera que sea el enfoque de su programa, almacenará la información que los usuarios proporcionan, en estructuras de datos como listas y diccionarios. Cuando los usuarios cierran el programa, por lo general  quieres guardar la información que ingresaron. 
+
+En Python una forma sencilla de almacenar sus datos es mediante el {\bf módulo {\ttfamily json}}. El  módulo {\ttfamily json} le permite convertir estructuras de datos simples de Python en cadenas con formato de archivo {\ttfamily JSON} y luego cargar los datos de ese archivo a la vez que se ejecuta el programa. También puedes usar el módulo {\ttfamily json}  para compartir datos entre diferentes programas de Python. Aún mejor, el formato de datos {\ttfamily JSON} no es específico de Python, por lo que puedes compartir datos que almacenas en este  formato{\ttfamily JSON} con personas que trabajan en muchos otros lenguajes de programación. El formato es útil, portátil  y es fácil de aprender.
+
+%  https://www.freecodecamp.org/espanol/news/que-es-un-archivo-json-ejemplo-de-codigo-en-javascript/
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 
+		El formato JSON (JavaScript Object Notation) se desarrolló originalmente para JavaScript.  	
+		Es un formato estándar para datos que se destaca por ser ligero y rápido (por tanto muy útil para desarrollos web). Los datos en formato JSON pueden ser utilizados  prácticamente por todos los lenguajes de programación (Java, C, C++, PHP, JavaScript, Python, etc.). Los archivos JSON son simples archivos de texto con extensión {\ttfamily.json}. Por ejemplo un nombre de archivo podría ser {\ttfamily usuarios.json} ó {\ttfamily ciudad.json}. Un archivo {\ttfamily.json} se puede crear con cualquier editor de texto plano. Hay que tener cuidado de usar siempre texto plano. Ten en cuenta que procesadores de texto avanzados como Microsoft Word no trabajan con texto plano y por tanto no serán útiles para trabajar con archivos {\ttfamily.json}.}
+\end{minipage}
+\vspace{0.2cm}
+
+Como programador, no puedes prescindir del formato  JSON. La mayoría de las APIs están ahora escritas en JSON en lugar de XML.
+Sin embargo, desde sus inicios se ha convertido en un formato común utilizado por muchos lenguajes, incluido Python.
+JSON fue inicialmente concebido para JavaScript, pero muchos otros lenguajes de programación lo soportan  gracias a su naturaleza independiente del lenguaje; además han desarrollado librerías específicas para trabajar con archivos {\ttfamily .json}. Python también tiene su librería  {\ttfamily json}, para trabajar con estos  archivos. Y proporciona métodos como:  {\ttfamily json.dumps()} para convertir un objeto en una cadena de texto JSON, y {\ttfamily json.loads()} para convertir una cadena existente en JSON. En la siguiente sección veremos algunas aplicaciones con estos métodos.
+
+
+\subsection{Los métodos json.dumps() y json.loads()}
+
+Vamos a escribir un programa corto que almacene un conjunto de números y otro programa
+que lea estos números en la memoria. El primer programa usará el método {\ttfamily json.dumps()} para almacenar el conjunto de números dados (estructurara de datos Python, objeto lista, diccionario, etc), en formato {\ttfamily JSON}; y el segundo programa usará el método {\ttfamily json.loads()}, para crear un objeto Python.
+
+
+La función {\ttfamily json.dumps()} toma un argumento, el objeto y lo
+convierte al formato {\ttfamily JSON}, y devuelve una cadena, que luego la podemos escribir en un archivo de datos:
+
+
+\hspace{-2.4cm}{\ttfamily \scriptsize json\_}
+
+\vspace{-0.2cm}
+\hspace{-2.4cm}{\ttfamily \scriptsize escribir.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	from pathlib import Path
+	import json
+	numeros = [2.4, 4.2, 5, 6, 3, 15]
+	ruta = Path('archivo_de_texto/numeros.json')
+	contenenido = json.dumps(numeros)
+	ruta.write_text(contenenido)
+\end{lstlisting}
+Primero importamos el módulo {\ttfamily json} y  creamos una lista de números para
+trabajar. Luego elegimos un nombre del archivo  que almacenar la lista de números. Se acostumbra utilizar la extensión 
+de archivo {\ttfamily .json} para indicar que los datos se almacena en formato {\ttfamily JSON}. 
+A continuación se usa la función {\ttfamily json.dumps()}
+para generar una cadena que contiene la representación {\ttfamily JSON} de los
+datos con los que estamos trabajando. Una vez que tengamos esta cadena, la escribimos en el archivo
+usando el mismo método {\ttfamily  write\_text()} que usamos antes.
+
+Este programa no tiene salida, pero podemos abrir el archivo {\ttfamily numeros.json} desde Python y verlo. Los datos se almacenan en un formato similar al de Python: [2.4, 4.2, 5, 6, 3, 15].\\
+
+Ahora escribiremos el otro programa que usa el método {\ttfamily json.loads()} para leer la lista nuevamente en la memoria:
+
+\hspace{-2.1cm}{\ttfamily \scriptsize json\_}
+
+\vspace{-0.3cm}
+\hspace{-2.1cm}{\ttfamily \scriptsize leer.py}\vspace{-0.92cm}
+\begin{lstlisting}
+	from pathlib import Path
+	import json
+	numeros = [2.4, 4.2, 5, 6, 3, 15]
+	ruta = Path('archivo_de_texto/numeros.json')
+	contenenido = json.dumps(numeros)
+	ruta.write_text(contenenido)
+	
+	contenido = ruta.read_text()
+	numeros = json.loads(contenido)
+	print(numeros)
+\end{lstlisting}
+
+Nos aseguramos de leer del mismo archivo que escribimos, en este caso {\ttfamily numeros.json}. Dado que el archivo de datos es solo un archivo de texto con un formato específico, podemos leerlo con el método {\ttfamily read\_text()}. Luego pasamos el contenido del archivo ({{\ttfamily json.dumps(numeros)}) al método {\ttfamily json.loads()}. Esta función toma una cadena con formato  {\ttfamily JSON} y devuelve un objeto Python (en este caso, una lista), que asignamos a la variable {\ttfamily numeros} ({\ttfamily = json.loads(contenido)}). 
+	
+	Finalmente, imprimimos la lista de números recuperada y vemos que es la misma lista creada en {\ttfamily json\_escribir.py}:
+	
+	{\ttfamily\scriptsize\scriptsize 	
+		\hspace{-0.65cm} \vspace{-0.3cm}	
+		{\color{blue}			
+			\begin{verbatim}
+				[2.4, 4.2, 5, 6, 3, 15]
+			\end{verbatim}
+	}}
+	
+	Esta es una forma sencilla de compartir datos entre dos programas. 
+	
+	\subsection{Guardar y leer datos proporcionados por el usuario}
+	
+	En Python guardar datos con el módulo {\ttfamily json} es muy útil cuando se trabaja con datos generados o proporcionados por el usuario, porque si no almacenas la información del usuario de alguna manera, la perderás cuando el programa cierre.  
+	Veamos un ejemplo en el que le pedimos al usuario su nombre la primera vez que ejecuta un programa y luego le recordamos con su nombre cuando regrese a ejecutar el programa. Comencemos almacenando el nombre del usuario:
+	
+	\hspace{-2.5cm}{\ttfamily \scriptsize registro.py}  \vspace{-0.5cm}
+	\begin{lstlisting}
+		from pathlib import Path
+		import json
+		
+		nombre_de_usuario = input("¿Cuál es su nombre? ")
+		ruta = Path('archivo_usuario.json') 
+		contenido = json.dumps(nombre_de_usuario) 
+		ruta.write_text(contenido) 
+		print(f"¡Te recordaremos cuando regreses, {nombre_de_usuario}!")
+	\end{lstlisting}
+	
+	En este programa primero se solicita el nombre del usuario,  lo asignamos a la variable {\ttfamily nombre\_de\_usuario} y lo almacenamos los datos que acabamos de recopilar en un archivo de nombre  {\ttfamily archivo\_usuario.json}. Luego imprimimos un mensaje informando al usuario que hemos almacenado su información:
+	
+	{\ttfamily\scriptsize\scriptsize 
+		\hspace{-0.65cm} \vspace{-0.3cm}	
+		{\color{blue} 	
+			\begin{verbatim}
+				¿Cuál es su nombre? Linis
+				¡Te recordaremos cuando regreses, Linis!
+			\end{verbatim}
+	}}
+	
+	Ahora escribimos un nuevo programa que saluda al usuario cuyo nombre ha sido almacenado:
+	
+	\hspace{-2.4cm}{\ttfamily \scriptsize saludo\_}
+	
+	\vspace{-0.3cm}
+	\hspace{-2.4cm}{\ttfamily \scriptsize usuario.py}\vspace{-0.84cm}
+	\begin{lstlisting}
+		from pathlib import Path
+		import json
+		ruta = Path('archivo_usuario.json')
+		
+		contenido = ruta.read_text()
+		nombre_de_usuario = json.loads(contenido)
+		print(f"¡Bienvenido de nuevo, {nombre_de_usuario}!")
+	\end{lstlisting}
+	
+	Lee el contenido del archivo de datos ({\ttfamily archivo\_usuario.json}) y luego usamos el método {\ttfamily  json.loads()} para asignarle los datos recuperados a la variable {\ttfamily nombre\_de\_usuario}. 
+	Ya que hemos recuperado el nombre del usuario, podemos darle la bienvenida al usuario con un saludo personalizado:
+	
+	{\ttfamily\scriptsize\scriptsize 
+		\hspace{-0.65cm} \vspace{-0.3cm}	
+		{\color{blue} 	
+			\begin{verbatim}
+				¡Bienvenido de nuevo, Linis!
+			\end{verbatim}
+	}}
+	
+	Necesitamos combinar estos dos programas en un solo archivo. Cuando alguien
+	ejecuta {\ttfamily json\_recuerda.py}, queremos recuperar el nombre del usuario de la memoria si es
+	posible; de lo contrario, le solicitaremos el nombre al usuario y lo almacenaremos en el archivo {\ttfamily archivo\_usuario.json} para la próxima vez.
+	
+	Hay muchos métodos útiles que se  pueden usar con los objetos instanciados de la clase {\ttfamily Path()}.  
+	Por ejemplo, el método {\ttfamily exists()} devuelve {\ttfamily True} si el archivo o carpeta existe y {\ttfamily False} si no existe. 
+	
+	Con ayuda de este método, podemos  escribir un bloque {\ttfamily try-except} para responder apropiadamente en caso de que el archivo  {\ttfamily archivo\_usuario.json} no exista: 
+	
+	\hspace{-2.6cm}{\ttfamily \scriptsize json\_}
+	
+	\vspace{-0.25cm}
+	\hspace{-2.6cm}{\ttfamily \scriptsize recuerda.py}\vspace{-0.86cm}
+	\begin{lstlisting}
+		from pathlib import Path
+		import json
+		ruta = Path('archivo_usuario.json')
+		if ruta.exists():
+		contenido = ruta.read_text()
+		nombre_de_usuario = json.loads(contenido)
+		print(f"¡Bienvenido de nuevo, {nombre_de_usuario}!")
+		else:
+		nombre_de_usuario = input("¿Cuál es su nombre? ")
+		contenido = json.dumps(nombre_de_usuario) 
+		ruta.write_text(contenido)
+		print(f"¡Te recordaremos cuando regreses, {nombre_de_usuario}!")
+	\end{lstlisting}
+	
+	
+	Si el archivo  {\ttfamily ruta.exists()}  existe, cargamos el nombre de usuario e imprimimos un saludo personalizado
+	al usuario. Si el archivo {\ttfamily archivo\_usuario.json} no existe, solicitamos el nombre de usuario y almacenamos el valor que ingresa el usuario.  Y también imprimimos un mensaje al usuario donde le indicamos que lo recordaremos cuando regresen. Cualquiera que sea el bloque que se ejecute, el resultado es un nombre de usuario y un saludo. 
+	
+	Si es la primera vez que se ejecuta el programa, este es el resultado:
+	
+	{\ttfamily\scriptsize\scriptsize 
+		\hspace{-0.65cm} \vspace{-0.3cm}	
+		{\color{blue} 	
+			\begin{verbatim}
+				¿Cómo te llamas? linis
+				¡Te recordaremos cuando regreses, Linis!	
+			\end{verbatim}
+	}} \noindent De lo contrario:
+	
+	{\ttfamily\scriptsize\scriptsize 
+		\hspace{-0.65cm} \vspace{-0.3cm}	
+		{\color{blue} 	
+			\begin{verbatim}
+				¡Bienvenido de nuevo, Linis!
+			\end{verbatim}
+	}}
+	\noindent Este es el resultado que ve si el programa ya se ejecutó al menos una vez. \\
+	
+	Aunque los datos en este ejemplo son  una cadena simple, el programa funcionaría igual de bien con cualquier dato que pueda convertirse a una cadena con formato {\ttfamily JSON}.
+	
+	\section{Refactorización}       % Refactoring
+	
+	Al finalizar un programa y verificar que el código funciona bien, pero seguro se puede mejorar, por ejemplo  dividiéndolo en una serie de funciones que tienen tareas específicas. Este proceso se llama {\bf \ttfamily refactorización}. La refactorización hace que su código sea más limpio, más fácil de entender y de extender o ampliar.
+	
+	Podemos {\ttfamily refactorizar} el módulo {\ttfamily json\_recuerda.py} moviendo la mayor parte del código a una o más funciones. Como el objetivo del módulo {\ttfamily json\_recuerda.py} es saludar al usuario, podemos transformar todo el código existente a una función llamada {\ttfamily saludo\_usuario()}:
+	
+	\hspace{-2.5cm}{\ttfamily \scriptsize saludo\_}
+	
+	\vspace{-0.2cm}
+	\hspace{-2.5cm}{\ttfamily \scriptsize usuario.py}\vspace{-0.88cm}
+	\begin{lstlisting}
+		from pathlib import Path
+		import json
+		
+		def saludo_usuario():
+		"""Saludar al usuario por su nombre."""
+		ruta = Path('refactor_usuario.json')
+		if ruta.exists():
+		contenido = ruta.read_text()
+		nombre_de_usuario = json.loads(contenido)
+		print(f"¡Bienvenido de nuevo, {nombre_de_usuario}!")
+		else:
+		nombre_de_usuario = input("¿Cuál es su nombre? ")
+		contenido = json.dumps(nombre_de_usuario) 
+		ruta.write_text(contenido)
+		print(f"¡Te recordaremos cuando regreses, {nombre_de_usuario}!")
+		
+		saludo_usuario()
+	\end{lstlisting}
+	
+	
+	Ahora estamos usando una función, debemos reescribimos los comentarios como una cadena de documentación que indique claramente qué hace  o    cómo actúa actualmente la función. Este archivo es un poco más limpio, pero la función {\ttfamily saludo\_usuario()} hace más que solo saludar al usuario, también recupera el nombre de usuario almacenado si existe y si no existe solicita el nombre del usuario. 
+	
+	Refactoricemos la función {\ttfamily saludo\_usuario()}, para que no realice tantas tareas diferentes. Comenzaremos moviendo el código para recuperar el nombre del usuario almacenado a una función:
+	
+	
+	\hspace{-2.5cm}{\ttfamily \scriptsize saludo\_}
+	
+	\vspace{-0.2cm}
+	\hspace{-2.5cm}{\ttfamily \scriptsize usuario.py}\vspace{-0.84cm}
+	\begin{lstlisting}
+		from pathlib import Path
+		import json
+		
+		def devolver_almacenar_usuario(ruta):
+		"""Obtener el nombre del usuario almacenado si está disponible."""
+		if ruta.exists():
+		contenido = ruta.read_text()
+		nombre_de_usuario = json.loads(contenido)
+		return nombre_de_usuario
+		else:
+		return None
+		
+		def saludo_usuario():
+		"""Saludar al usuario por su nombre."""
+		ruta = Path('refactor_usuario.json')
+		nombre_de_usuario = devolver_almacenar_usuario(ruta)
+		if  nombre_de_usuario:
+		print(f"¡Bienvenido de nuevo, {nombre_de_usuario}!")
+		else:
+		nombre_de_usuario = input("¿Cuál es su nombre? ")
+		contenido = json.dumps(nombre_de_usuario) 
+		ruta.write_text(contenido)
+		print(f"¡Te recordaremos cuando regreses, {nombre_de_usuario}!")
+		
+		saludo_usuario() 
+	\end{lstlisting}
+	
+	
+	
+	La nueva función {\ttfamily devolver\_almacenar\_usuario()} tiene un propósito claro, como se indica
+	en la cadena de documentación. Esta función recupera el nombre del usuario si lo encuentra almacenado y lo devuelve. Si se le pasa
+	el objeto {\ttfamily ruta} a la función  {\ttfamily devolver\_almacenar\_usuario()}
+	y no existe, la función devuelve nada (\ttfamily None)}. 
+
+Esta es una buena práctica: una función debería devolver el valor que espera o nada. Esto nos permite realizar una prueba simple 
+con el valor de retorno de la función.  Si el intento de recuperar un nombre de usuario  es exitoso, se imprime el mensaje de bienvenida al usuario; si no es exitoso se solicitamos el nuevo nombre de usuario.
+
+Deberíamos refactorizar un bloque más de código de {\ttfamily saludo\_usuario()}}. Si el nombre de usuario
+no existe, debemos mover el código que solicita el nuevo nombre de usuario a una función dedicada a ese fin:
+
+
+\hspace{-2.6cm}{\ttfamily \scriptsize refactorizar}
+
+\vspace{-0.2cm}
+\hspace{-2.5cm}{\ttfamily \scriptsize \_saludo.py}\vspace{-0.82cm}
+\begin{lstlisting}
+from pathlib import Path
+import json
+
+def devolver_almacenar_usuario(ruta):
+"""Obtener nombre de usuario almacenado si está disponible."""
+. . .
+
+def obtener_nuevo_usuario(ruta):
+"""Solicitar un nuevo nombre de usuario."""
+nombre_de_usuario = input("¿Cuál es tu nombre? ")
+contenido = json.dumps(nombre_de_usuario)
+ruta.write_text(contenido)
+return nombre_de_usuario
+
+def saludo_usuario():
+"""Saluda al usuario por su nombre."""
+ruta = Path('nombre de usuario.json')
+nombre_de_usuario = devolver_almacenar_usuario(ruta)
+if nombre_de_usuario:
+print(f"¡Bienvenido de nuevo, {nombre_de_usuario}!")
+else:
+nombre_de_usuario = obtener_nuevo_usuario(ruta)
+print(f"¡Te recordaremos cuando regreses, {nombre_de_usuario}!")
+
+saludo_usuario()
+\end{lstlisting}
+
+Cada función en esta versión final de {\ttfamily json\_recuerda.py} tiene un propósito único y claro. Llamamos a {\ttfamily saludo\_usuario()}, y esa función imprime un mensaje apropiado: da la bienvenida a un usuario existente o saluda a un nuevo usuario. Para ello, llama a {\ttfamily devolver\_almacenar\_usuario()}, que es responsable únicamente de recuperar el nombre del usuario almacenado, si existe. Finalmente, si es necesario que {\ttfamily saludo\_usuario()} llame a {\ttfamily obtener\_nuevo\_usuario()}, que es responsable únicamente de obtener un nuevo nombre de usuario y almacenarlo.
+
+Esta distribución del trabajo es una parte esencial para escribir un código claro que sea fácil de mantener y extender.
+
+
+\section{Resumen}
+
+En este capítulo, se enseñó  a trabajar con archivos. A leer el
+contenido completo de un archivo y luego trabajar con el contenido línea por línea, en caso de ser 
+necesario. A escribir todo el texto que quieras en un archivo. También trabajó con las excepciones,  y cómo tratar las excepciones que probable se generen en sus programas. 
+
+Finalmente, se enseñó almacenar objetos como estructuras de datos en Python, para guardar la información que usuarios proporcionan, evitando tener que empezar de nuevo cada vez que ejecutan un programa. 
+
+
+
+
+
+En el próximo capítulo \ref{Cap11}, se inicia una introducir  con algunas formas eficientes de probar su código.
+Estas pruebas ayudarán a confiar en que el código que desarrollas, te ayudará a identificar
+errores que se introducen a medida que continúa desarrollando los programas que ha escrito.
+
+
+
+
+
+
+\section{revisar Bill}
+
+Bill
+
+%\hypertarget{etiqueta}{texto de llegada}
+%\hyperlink{etiqueta}{texto del enlace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Una gran mayoría de las aplicaciones y plataformas web dependen de su lenguaje, incluido el motor de búsqueda de Google, YouTube, y el sistema de transacciones orientado a la web de la Bolsa de Nueva York (NYSE)\href{https://www.cursosaula21.com/que-es-python/}{\color{vino} }
+En definitiva, sabes que el lenguaje debe ser realmente importante cuando se encarga de impulsar un sistema bursátil. De hecho, la NASA lo utiliza cuando programan sus equipos y maquinaria espacial.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Linea color azul:
+
+{\centering{\color{blue}\rule{\linewidth}{0.75mm}} }
+
+
+
+%   https://www.blurb.es/book-dimensions   23  a 22  por 15 a 16  
+
+
+
+
+
+%  

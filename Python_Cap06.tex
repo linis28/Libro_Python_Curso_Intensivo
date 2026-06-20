@@ -1,0 +1,2067 @@
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Módulos, Paquetes y Programas}{\label{Cap8}}\hypertarget{Cap8}{}
+
+% Introducción
+
+\begin{wrapfigure}{l}{0.61\textwidth} 
+	\vspace{-25pt}	\begin{center} \includegraphics[width=0.62\textwidth]{../Logos_de_Python/ModuPaque}
+	\end{center}\vspace{-29pt} %\caption{Python 3} 
+\end{wrapfigure} En Python un módulo es un {\ttfamily archivo.py} que puede contener código,  variables,  conjuntos de funciones codificadas, clases, etc. Así, cada {\ttfamily archivo.py} se denomina módulo en Python. Además, un módulo puede ser usado por otros módulos; y estos módulos, a la vez, pueden formar parte de un paquete (package), que es una carpeta o directorio que contiene {\ttfamily archivos.py}. En Python para que una carpeta pueda ser considerada un paquete, debe contener un archivo de inicio llamado {\ttfamily \_\!\_init\_\!\_.py}. Este archivo, no necesita contener ninguna instrucción, puede estar completamente vacío.  El objetivo de toda esta jerarquía de archivos, es simplemente organizar en módulos los programas muy grandes, agrupados en elementos relacionados,  para facilitar el mantenimiento y la lectura los mismos. \\
+
+Los módulos permiten organizar el código, y los paquetes sirven para organizar los módulos. Los paquetes son tipos especiales de módulos (ambos son de tipo módulo) que permiten agrupar módulos relacionados,  que resultan de dividir grandes programas en módulos, agrupando elementos relacionados. Los módulos se corresponden a nivel físico con los archivos, mientras que los paquetes se representan mediante directorios o carpetas.\\
+
+Python incluye una inmensa cantidad de módulos y paquetes en su instalación, que se conoce como librería estándar (aún más grande es la desarrollada por la comunidad\label{comunidad}, de la que hablaremos más adelante). Ahora que sabemos como se organizan, podemos iniciar el aprendizaje sobre módulos y paquetes; conceptos fundamentales cuando nuestros proyectos crecen y dejan de ser simples códigos.
+
+
+
+
+%En el entorno gráfico de los sistemas operativos modernos, el directorio se denomina metafóricamente carpeta y de hecho se representa con un icono con esta figura. Esta imagen se asocia con el ambiente administrativo de cualquier oficina, donde la carpeta de cartón encierra las hojas de papel (representando a los archivos de datos) de un expediente. En informática, un directorio​ o carpeta​ es un contenedor virtual en el que se almacenan un grupo de archivos informáticos y posiblemente otros subdirectorios, atendiendo a su contenido, a su propósito o a cualquier criterio que decida el usuario. Técnicamente, el directorio almacena información acerca de los archivos que contiene: como los atributos de los archivos o dónde se encuentran físicamente en el dispositivo de almacenamiento.
+
+
+% https://es.wikipedia.org/wiki/Directorio#:~:text=En%20inform%C3%A1tica%2C%20un%20directorio%E2%80%8B,criterio%20que%20decida%20el%20usuario.
+
+
+
+\section{Módulos}
+
+
+Ahora pasamos a otro nivel, creando nuestros propios módulos, usaremos código Python en más de un archivo, y accedemos a un módulo desde otro módulo.\\
+
+Empecemos creando un módulo llamado {\ttfamily modulo\_prueba.py}, que contiene las siguientes líneas:
+
+\hspace{-2.1cm}{\ttfamily \scriptsize modulo\_}
+
+\vspace{-0.2cm}
+\hspace{-2.3cm}{\ttfamily \scriptsize prueba.py}\vspace{-0.86cm}
+\begin{lstlisting}
+	print("Este es mi módulo de prueba")
+	def suma(a, b):
+	"""Esta función suma dos numeros"""
+	return a + b
+\end{lstlisting}
+Al ejecutarlo se obtiene:
+
+{\ttfamily\scriptsize\scriptsize 
+	\hspace{-0.65cm} \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Este es mi módulo de prueba		
+		\end{verbatim}
+}}Sin embargo, hay una función definida en el módulo, que queda disponible en el programa.
+
+
+Una vez definido un módulo puede ser usado o importado en otro módulo. Para importar el código de otros módulos se usa la declaración de {\ttfamily import}, esta sentencia hace que todo el contenido (código y objetos) del módulo importado estén disponibles para en nuestro programa. 
+
+
+\subsection{Declaración {\ttfamily import}}
+
+El uso más simple de la declaración {\ttfamily import} es importar un módulo, la sintaxis es la siguiente: {\ttfamily import nombre\_módulo}, el nombre del archivo Python se escribe sin la extensión {\ttfamily .py}. 
+
+Ilustremos con el siguiente ejemplo: Simulemos una estación meteorológica, generando datos y reportes meteorológico informativos para imprimir. Creamos el programa principal en un módulo llamado {\ttfamily pronostico\_tiempo.py}, que imprime el informe (reporte), y  otro módulo con una función {\ttfamily descripción} que calcula y devuelve el informe del tiempo.
+
+Construimos el programa principal {\ttfamily pronostico\_tiempo.py}:
+
+\hspace{-2.7cm}{\ttfamily \scriptsize pronostico}
+
+\vspace{-0.2cm}
+\hspace{-2.3cm}{\ttfamily \scriptsize \_tiempo.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	import reporte
+	tiempo = reporte.descripción()
+	print("Tiempo del día:", tiempo)
+\end{lstlisting}
+Este archivo, en la primera linea importa el módulo {\ttfamily reporte}, y en la segunda llama la función {\ttfamily descripción()}.
+
+Ahora construimos el módulo {\ttfamily reporte.py}: 
+
+\hspace{-2.3cm}{\ttfamily \scriptsize reporte.py}  \vspace{-0.52cm}
+\begin{lstlisting}
+	def descripción(): 
+	"""Reporte aleatorio del tiempo, semejantes a pronósticos"""
+	from random import choice
+	posibilidades = ['lluvias fuertes', 'lluvioso', 'nublado', 'niebla',
+	'soleado',   'lluvia helada', 'granizo']
+	return choice(posibilidades) 
+\end{lstlisting}
+
+En este módulo se define la función  {\ttfamily descripción()}, que devuelve un resultado aleatorio de una lista de cadenas que llamamos posibilidades. Este es el resultado que el programa principal imprimirá.\\
+
+Los dos archivos deben estar en el mismo directorio (carpeta), para que al ejecutar el archivo {\ttfamily pronostico\_tiempo.py} como programa principal, Python acceda al módulo de {\ttfamily reporte} y ejecute la función {\ttfamily descripción}. 
+Para ello, creamos un directorio llamado {\ttfamily paquete}, para  almacenar los módulos.\\
+
+Ejecutamos el módulo  {\ttfamily pronostico\_tiempo.py} y se obtiene:\vspace{0.08cm}
+
+{\ttfamily\scriptsize\noindent Out[]:\vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Tiempo del día: soleado	
+		\end{verbatim}
+}}
+
+Observe, en este módulo se ha usado importaciones en dos lugares diferentes:
+
+\begin{itemize}
+	\item[\ding{51}]  El programa principal  {\ttfamily pronostico\_tiempo.py} importó el módulo 
+	
+	{\ttfamily reporte.py}.
+	\item[\ding{51}]  Del módulo {\ttfamily reporte.py}, la función {\ttfamily descripción()} importó del módulo  {\ttfamily random} la opción {\ttfamily choice}, una función estándar de Python.
+\end{itemize}
+Además,  se utilizó la declaración {\ttfamily import} en dos dos maneras diferentes:
+\begin{itemize}	
+	\item[\ding{51}] El programa principal ejecutó {\ttfamily import reporte} y luego llamó 
+	
+	{\ttfamily reporte.descripción()} y lo asignó a la variable {\ttfamily tiempo}.
+	\item[\ding{51}] La función {\ttfamily descripción()} del archivo {\ttfamily reporte.py}, importa  del módulo  {\ttfamily random} la función  {\ttfamily choice}, que  luego ejecuta y devuelve como {\ttfamily choice(posibilidades)}.
+\end{itemize}
+
+En el primer caso, importamos todo el módulo {\ttfamily reporte.py}, pero solo necesitábamos la función {\ttfamily descripción()}, que lo llamamos usando como prefijo el nombre del archivo que contiene la función: {\ttfamily reporte.descripción()}. Después de ejecutar la declaración {\ttfamily import reporte}, todo el contenido del módulo {\ttfamily reporte.py} esta disponible para el programa principal, siempre y cuando se le llame. 
+Al llamar un contenido de un módulo, con el nombre del módulo evitamos conflictos desagradables entre nombres, pues es posible que halla una función, en este caso  {\ttfamily descripción()} en algún otro módulo, y pueda ser llama por error.\\
+
+En el segundo caso, estamos dentro de una función y sabemos que no hay otro objeto llamado {\ttfamily choice},
+por lo que importamos la función  {\ttfamily choice()} directamente desde el módulo {\ttfamily random}. 
+
+Este código también podría haberse escrito  con el siguiente fragmento, que devuelve resultados aleatorios semejante al anterior:
+
+\begin{lstlisting}
+	def descripción():
+	import random
+	posibilidades = ['lluvias fuertes', 'lluvioso', 'nublado', 'niebla',
+	'soleado', 'lluvia helada', 'granizo']
+	return random.choice(posibilidades) 
+\end{lstlisting}
+
+Son muchos aspectos en programación, se debe eligir el estilo que te parezca más claro. El nombre de la función con el módulo ({\ttfamily random.choice}) es más seguro pero requiere escribir un poco más.\\
+
+En estos ejemplos se muestran variaciones en la función {\ttfamily descripción()}, pero no
+dónde se realizar la importación,  en todos se importa dentro de la función; sin embargo, también 
+se puede hacer la importación de {\ttfamily random} fuera de la función:
+
+\begin{lstlisting}
+	>>> importar random
+	>>> def descripción():
+	posibilidades = ['lluvias fuertes','lluvioso','nublado','niebla',
+	'soleado', 'lluvia helada','granizo']
+	return random.choice(posibilidades)
+	>>> descripción()
+	'niebla'
+	>>> descripción()
+	'lluvias fuertes'
+\end{lstlisting}
+
+Debe considerar hacer la importación fuera de la función si el código importado se  
+utilizará varias veces en el programa (global), y dentro de la función si sólo se limitará  a la función.
+
+\noindent Algunas personas prefieren poner todas sus importaciones en la parte superior del archivo,
+sólo para que todas las dependencias de su código queden explícitas. De cualquier manera funciona.
+
+
+
+\subsubsection{Importar un módulo con otro nombre}  
+
+%Cambiando los Nombres con as
+
+Puedes importar un módulo con el mismo nombre, o puede importarlo utilizando un alias del nombre que sea más técnico o más
+corto. Para este caso, puede usar la declaración {\ttfamily as} seguido por el nombre que desea usar como alias. Por ejemplo podemos importamos {\ttfamily reporte} como  {\ttfamily rt}:
+
+\hspace{-2.5cm}{\ttfamily \scriptsize un\_alias.py}  \vspace{-0.48cm}
+\begin{lstlisting}		
+	import reporte as rt
+	tiempo= rt.descripción()
+	print("Tiempo del día:", tiempo)	
+\end{lstlisting}	
+
+{\ttfamily\scriptsize\noindent Out[]: \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Tiempo del día:	lluvia	
+		\end{verbatim}
+}}
+El alias del módulo seguido de {\ttfamily as}, queda ligado directamente al módulo importado.\\
+
+Por otro lado, puedes importar una o más partes de un módulo. Cada parte puede mantener su nombre original o puedes darle un alias.
+
+Ya sabemos que para importar módulos en Python basta con usar la palabra reservada  {\ttfamily import}, seguida del nombre del módulo; de esta forma Python importara todo el contenido  del modulo en un namespace\footnote{Un namespace no tiene una traducción demasiado elegante en español, pero tal vez la más literal sea espacio de nombres. Un espacio de nombres es un sistema donde cada objeto (variable, función, etc.) tiene un nombre único.} o espacio de nombres, diferente del actual. Es decir, no podrás acceder a las funciones del modulo directamente, sino que tendrás que escribir el nombre del módulo seguido del nombre de la función requerida y separados por un punto. 
+
+Por ejemplo, el código {\ttfamily import math} importa el módulo {\ttfamily math} ({\ttfamily<{}class {}'{}module{}'{}>{}}) de la librería estándar de Python, y podemos utilizar todas las funciones de este módulo ({\ttfamily sin()}, { \ttfamily log()}, { \ttfamily pow()},  { \ttfamily sqrt()},  etc.) pero indicando primero nombre del módulo separado por un punto, para la función seno: {\ttfamily math.sin()},  para la función raíz: {\ttfamily math.sqrt()}, etc. \\  
+
+Para continuar el proceso de aprendizaje, construyamos un módulo llamado {\ttfamily operaciones\_basicas.py}   conteniendo cuatro operaciones, suma , resta, producto y división:
+
+\hspace{-2.9cm}{\ttfamily \scriptsize operaciones}
+
+\vspace{-0.2cm}
+\hspace{-2.5cm}{\ttfamily \scriptsize \_basicas.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	def suma(a, b):
+	return a + b
+	
+	def resta(a, b):
+	return a - b
+	
+	def producto(a, b):
+	return a * b
+	
+	def division(a, b):
+	return a / b 
+\end{lstlisting}
+
+Al importar este modulo con {\ttfamily import operaciones\_basicas}, hace que todo el contenido del módulo este disponible para el programa. No obstante, podemos importar únicamente los objetos que nos interesen; por ejemplo, suponga que solo necesitamos del módulo, las funciones suma y producto; en este caso la sintaxis es la siguiente: {\ttfamily from módulo import nombre\_función}, ejemplo:
+
+\begin{lstlisting}
+	from operaciones_basicas import suma 
+\end{lstlisting}
+
+o en caso de necesitar dos funciones, la separamos por coma:
+
+\begin{lstlisting}
+	In[]:
+	>>> from operaciones_basicas import suma, producto 
+	>>> suma(1,5)
+	6
+	>>> producto(2,5)
+	10
+\end{lstlisting}
+
+Se pueden importar varios objetos separándolos por comas.\\
+
+Además, también está la opción de asignar un nombre más corto al módulo o a las funciones (o cualquier objeto). Por ejemplo, podemos importar estas funciones con un alias (nombre técnico o  más corto), análogo al caso del módulo con alias. En este caso su sintaxis es la siguiente: {\ttfamily from módulo import funcion as alias}.
+
+Ilustramos con el siguiente ejemplo:
+\begin{lstlisting}
+	In[]:
+	>>> from operaciones_basicas import suma as s
+	>>> s(1,5)
+	6
+\end{lstlisting}
+El resultado es es mismo, solo que hemos cambiado el nombre por un alias más corto.\\
+
+Por último, si importamos un módulo externo. Y queremos conocer el namespace; la función {\ttfamily dir()} ({\ttfamily <class {}'{}builtin\_function\_or\_method{}'{}>{}}) nos permite ver los nombres de variables, funciones, clases, etc, existentes en nuestro namespace. Si probamos con un módulo vacío, podemos ver como tenemos varios nombres rodeados de {\ttfamily\_\!\_}. Se trata de nombres que Python crea por debajo.
+
+La función {\ttfamily dir()} también acepta parámetros de entrada, por lo que podemos pasarle el nombre módulo y nos dará la información sobre lo que contiene.\\
+
+La sentencia {\ttfamily import modulo} importa todo el código  del módulo dejándolo  disponible para el programa, excepto los que inician con un guión bajo {\ttfamily\_\!\_}. La mayoría de las veces los programadores de Python no usan esto ya que introduce en el intérprete un conjunto de nombres desconocido, posiblemente escondiendo algunas de las definiciones previas.
+
+
+\subsubsection{Trayectoria del módulo}
+%https://www.geeksforgeeks.org/creating-your-own-python-ide-in-python/?utm_source=geeksforgeeks&utm_medium=in_article_native&utm_campaign=foryou
+
+% GeeksforGeeks cursos muy buenos
+
+
+Es importante conocer la trayectoria o ruta de un módulo, por ejemplo, ¿Dónde buscar un módulo para 
+importarlo? Python utiliza una {\bf lista} de nombres de directorios y archivos comprimidos ({\ttfamily zip}) almacenados en el
+módulo {\ttfamily sys}\footnote{sys es un módulo Python integrado que contiene parámetros específicos del sistema, es decir, contiene variables y métodos que interactúan con el intérprete y también se rigen por él.} del estándar de Python (contiene las direcciones). 
+Además, siendo una lista  significa  se puede modificar o editar.
+
+El directorio de trabajo actual es el directorio en el que se encuentra el módulo o script principal de  Python, el que se está ejecutando.
+
+Python busca los módulos en las rutas indicadas  en el módulo {\ttfamily sys.path}\footnote{{\ttfamily sys.path} es una variable incorporada dentro del módulo {\ttfamily sys}. Contiene una lista de directorios (carpetas) en los que el intérprete buscará el módulo requerido.}. Es decir, cuando se importa un módulo, primero lo buscar en dichas carpetas.\\
+
+Con la sintaxis {\ttfamily print(sys.path)} puede ver la lista {\ttfamily sys.path}; en mi caso, la lista es la siguiente:
+
+\begin{lstlisting}
+	>>> import sys
+	>>> for ruta in sys.path:
+	print(ruta)
+	
+	C:\Users\Linis\Desktop\IDLE\Modulos_y_Paquetes
+	C:\WINDOWS\System32
+	\PythonSoftwareFoundation.Python.3.11\python311.zip
+	\PythonSoftwareFoundation.Python.3.11\DLLs
+	\PythonSoftwareFoundation.Python.3.11\Lib
+	\PythonSoftwareFoundation.Python.3.11\Lib\site-packages
+\end{lstlisting}
+La carpeta que contiene su proyecto, está incluida; en mi caso es Modulos\_y\_Paquetes.\\
+
+La primera línea de salida aparece en blanco, es una cadena vacía  {\ttfamily''}.  Para indicarle al intérprete que verifique primero en el directorio actual.
+
+Cuando se importa algún módulo o algo,  Python inicia la búsqueda en el directorio actual, y luego en otros directorios uno por uno; la primera coincidencia es la que usa. Esto significa que si existe un módulo llamado {\ttfamily random} en  esa ruta de búsqueda antes de la librería estándar, no podrá acceder al {\ttfamily random}  de librería estándar.
+
+Normalmente los módulos que importamos están en la misma carpeta, pero es posible acceder también a módulos ubicados en una subcarpeta (una ubicación distinta). En este caso, puede añadir la ruta en {\ttfamily sys.path},
+que quiere que Python busque, con la siguiente sintaxis,  la ruta se agrega en el primer item de la lista:
+\begin{lstlisting}
+	sys.path.insert(0, "/ruta/para/su/paquete/o/module")
+\end{lstlisting}	
+Como ejemplo, creamos un módulo en un directorio con nombre {\ttfamily subpaquete}, que a su vez se encuentra en un directorio llamado {\ttfamily paquete}, y se incluye en {\ttfamily sys.path} mediante la sintaxis: 
+%{\ttfamily sys.path.insert(0, "/ruta/para/su/paquete/o/module")},
+
+\begin{lstlisting}
+	In[]:
+	>>> sys.path.insert(0, "E/paquete/subpaquete")
+	>>> sys.path
+	['E/Paquete/SubPaquete', 'E:\\Paquete', 'C:\\WINDOWS\\System32', 
+	'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11'
+	.
+	.
+	.
+	'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11. 
+	x64__qbz5n2kfra8p0\\Lib\\site-packages']
+\end{lstlisting}	
+
+% Fuente: https://www.enmimaquinafunciona.com/pregunta/63729/como-anadir-un-modulo-python-a-syspath
+Una vez insertada la ruta, los módulos contenidos en el paquete podrán ser importados sin problema.\\
+
+
+Otra forma de agregar una ruta en la lista {\ttfamily sys.path} es con el método {\ttfamily sys.path.append()}, que agrega la lista al final:
+\begin{lstlisting}
+	>>> import sys
+	>>> sys.path.append(r'/ruta/de/su/modulo')
+	>>> sys.path
+	['E/Paquete/SubPaquete', 'E:\\Paquete', 'C:\\WINDOWS\\System32',  
+	.
+	. 
+	.
+	'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11.
+	\\Lib\\site-packages', '/ruta/de/tu/modulo', '/ruta/de/su/modulo']
+\end{lstlisting}
+
+Igualmente, una vez agreda la ruta, los módulos en el paquete podrán ser importado sin problema.
+
+
+
+%  https://pythondiario.com/2019/01/modulos-y-paquetes-en-python.html
+% Grafico bonito  Idea
+
+% Python escale aún más,
+% Ahora en la jerarquía de esta estructura podemos continuar un directorio que contiene varios módulos,  
+
+
+% Es importante notar que los módulos solamente son cargados una vez. Es decir, no importa el número de veces que llamemos a import mimodulo, que sólo se importará una vez. Si queremos que el módulo sea recargado, tenemos que ser explícitos, haciendo uso de reload. importlib.reload(mimodulo)
+
+
+
+\section{Paquetes}
+% Utilice la función os.path() para especificar la ruta del archivo en Python
+% Utilice la función pathlib.Path() para especificar la ruta del archivo en Python
+% Conceptos fundamentales  los módulos y paquetes en python, cuando nuestros proyectos crecen y dejan de ser simples funciones.
+% PyPi es el repositorio oficial de Python donde se almacenan todos los paquetes de Python. Una forma de verlo es como el Github para paquetes de Python.
+
+Ya hemos avanzado desde una sola línea de código a funciones de varias líneas, a programas independientes y a varios módulos en el mismo directorio. Ahora para continuar con esta estructura jerárquica, los  módulos se pueden  organizar en directorios de Python llamados paquetes.
+
+Un paquete (package) en Python es un directorio (carpeta) que contiene varios módulos y posiblemente también  subpaquetes, además y con carácter estricto debe contener un módulo especial con el nombre de {\ttfamily \_\!\_init\_\!\_.py}; este módulo le indica a Python debe tratar este {\bf directorio o subdirectorio como un paquete} de Python y  no de una como un simple carpeta. Así, que cualquier paquete de Python debe tener un módulo {\ttfamily \_\!\_init\_\!\_.py}; este módulo puede estar completamente vacío, aunque se pueden definir elementos que pertenezcan al paquete.  Para hacer que un módulo pertenezca a un  paquete, basta con copiar el módulo en el directorio del paquete.\\
+
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize 
+		El principal uso del módulo  {\ttfamily \_\!\_init\_\!\_.py} es inicializar paquetes de Python; es decir, configurar el comando de importación global. Generalmente se tratará de un archivo vacío.	
+	}
+\end{minipage}
+\vspace{0.2cm}
+
+%(aún más grande es la desarrollada por la comunidad Python)
+
+Python incluye una gran cantidad de módulos y paquetes en su instalación, a los que se conoce como librería estándar.\\
+
+
+Ilustremos con el anterior ejemplo de la estación meteorológica; esta vez simulemos la estación generando datos y reportes meteorológico informativos para imprimir, para el día y para la semana. 
+
+Creamos el programa principal {\ttfamily pronóstico\_tiempo.py},  un módulo que imprime el informe o reporte del pronóstico  diario y semanal. Agregamos las frases textuales del pronóstico: una para el día, y  otra para la semana próxima. 
+
+Una forma de estructurar este requerimiento es crear un directorio llamado paquete y dos módulos dentro de él: {\ttfamily diario.py} y {\ttfamily semanal.py}. Cada uno con una función llamada  {\ttfamily pronóstico}. 
+
+La versión diaria devuelve una cadena, seleccionada de una lista de posibilidades, y la versión semanal devuelve una lista con siete cadenas, seleccionadas de manera aleatoria de la lista de posibilidades.
+Se usa también la función {\ttfamily enumerate()}, para itera la lista con un bucle {\ttfamily for}, cada elemento de la lista es enumerado desde cero (por defecto), o a partir del número indicado.\vspace{0.15cm}
+
+Programa principal: 
+
+\hspace{-2.7cm}{\ttfamily \scriptsize  pronóstico}
+
+\vspace{-0.2cm}
+\hspace{-2.4cm}{\ttfamily \scriptsize \_tiempo.py}\vspace{-0.8cm}
+\begin{lstlisting}
+	from paquete import diario, semanal
+	print("Pronóstico del día: ", diario.pronóstico())
+	print("Pronóstico para la semana: ", )
+	for num, resul in enumerate(semanal.pronóstico(),1):
+	print(num, resul)
+\end{lstlisting}
+
+Módulo 1: {\ttfamily \scriptsize/paquete/diario.py}.
+
+\hspace{-2.20cm}{\ttfamily \scriptsize diario.py}  \vspace{-0.52cm}
+\begin{lstlisting}
+	def pronóstico():
+	'Pronóstico diario'
+	from random import choice
+	return choice(['lluvia fuertes','lluvioso','nublado','niebla',
+	'soleado','lluvia helada','granizo'])
+\end{lstlisting}
+
+Módulo 2: {\ttfamily \scriptsize/paquete/semanal.py}.
+
+\hspace{-2.30cm}{\ttfamily \scriptsize semanal.py}  \vspace{-0.5cm}
+\begin{lstlisting}
+	def pronóstico():
+	'Pronóstico  semanal'
+	semana = []
+	from random import choice
+	posibilidades = ['lluvia fuertes','lluvioso','nublado','niebla',
+	'soleado', 'lluvia helada','granizo']
+	for n in posibilidades:
+	dia = choice(posibilidades)
+	semana.append(dia)
+	return semana
+\end{lstlisting}
+
+Ahora sólo hace falta  el módulo {\ttfamily \_\!\_init\_\!\_.py} en el directorio paquete, para que Python lo trate como un paquete
+de Python y permita importar los módulos incluidos en el paquete;  puede estar vacío pero es necesario.
+
+Y ejecutamos el programa principal {\ttfamily pronóstico\_tiempo.py}:\vspace{0.07cm}
+
+{\ttfamily\scriptsize\noindent Out[]: \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Pronóstico del día:  lluvioso
+			Pronóstico para la semana: 
+			1 nublado
+			2 niebla
+			3 lluvioso
+			4 lluvioso
+			5 soleado
+			6 granizo
+			7 soleado
+		\end{verbatim}
+}}
+
+
+Y se obtiene lo que se quiere.
+
+
+\section{Librería estándar de Python}
+
+
+Una de las afirmaciones destacadas de Python es que tiene "baterías incluidas", una gran 
+librería de módulos estándar que realizan muchas tareas útiles y se mantienen separados para 
+evitar que se infle el lenguaje central. Cuando estás a punto de escribir código Python, vale la pena primero
+verificar si existe algún  módulo estándar que ya haga lo que necesita.\\
+
+Es sorprendente la frecuencia con la que encuentras pequeñas joyas en la librería estándar. además, Python también
+proporciona \href{https://docs.python.org/es/3/library/}{\color{vino} documentación autorizada para los módulos}, junto con un \href{https://docs.python.org/3.3/tutorial/stdlib.html}{\color{vino} tutorial}, en el sitio web de  Doug  Hellmann \href{http://pymotw.com/2/contents.html}{\color{vino} Módulo Python de la semana} y su libro \href{https://doughellmann.com/books/the-python-standard-library-by-example/}{\color{vino}The Python Standard Library by Example} (Addison-Wesley Professional), son guías muy útiles.\\ 
+
+
+En la siguiente sección trataremos algunos módulos  y funciones  de la librería estándar, que tienen usos genéricos y específicos, como el módulo {\ttfamily  collections} que contiene varios contenedores de datos llamados colecciones o collections en Inglés. 
+Revisamos algunos contenedores y funciones como {\ttfamily setdefault()}, {\ttfamily defaultdict()}, {\ttfamily Counter} y {\ttfamily OrderedDict()}. % defaultdict OrderedDict counter deque namedtuple enum.Enum 
+
+\subsection{Módulo collections: contenedores}
+%               default valor predeterminado
+
+%  dicc.items()  devuelve una lista de tuplas (key, valor) de diccionario
+
+% https://geekflare.com/es/defaultdict-in-python/
+
+Ya hemos hecho uso de la función {\ttfamily get()} para acceder los items de un diccionario, y vimos como evitar una excepción al intentar obtener con una clave inexistente, la función devuelve un valor predeterminado (página \pageref{valor_predet}).
+
+
+La función {\ttfamily defaultdict()} está integrada en la librería estándar de Python, dentro del módulo  \href{https://docs.python.org/es/3/library/collections.html#:~:text=Es\%20una\%20colecci\%C3\%B3n\%20donde\%20los,conteos\%20de\%20cero\%20o\%20negativos.}{\color{vino} {\ttfamily collections}}\footnote{\scriptsize{Este módulo implementa tipos contenedores de datos especializados que proporcionan alternativas a los contenedores integrados de uso general de Python, como dict, list, set, and tuple.}}. Es un tipo de  contenedor datos ({\ttfamily <class 'collections.defaultdict{}'{}>{}}). Y se comporta como cualquier otro diccionario Python, con excepción   del aspecto que tiene cuando se imprime, y lo más importante que no produce errores si intentas acceder a una clave que no existe,  en su lugar crea la clave. Siendo ésta la razón principal de su uso. La clave que se crea tiene valor predeterminado de forma nativa. 
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+	\centering\raisebox{\dimexpr\topskip-\height}{%
+		\includegraphics[scale=0.20]{../Logos_de_Python/Busquedas_R}}  %[width=\textwidth]	
+\end{minipage}%\hfill
+\begin{minipage}[t]{0.70\textwidth} 
+	{\scriptsize  En Python la función {\ttfamily defaultdict()} devuelve el valor predeterminado cuando la clave no está presente, y  agrega el par clave-valor al diccionario, que luego puede modificar. La función  {\ttfamily defaultdict()} es una subclase\label{subclase} del la clase dict (diccionario), por lo que hereda el comportamiento de un diccionario de Python.	
+	}
+\end{minipage}
+\vspace{0.2cm}
+
+
+\subsubsection{La función  setdefault()}
+
+La función {\ttfamily setdefault()} es semejante a la función {\ttfamily get()}, pero ésta función le asigna un elemento al diccionario, sí
+la clave no existe, veamos un ejemplo práctico:
+
+\begin{lstlisting}
+	>>> tabla_periódica = {'Hidrógeno': 1, 'Helio': 2}
+	>>> print(tabla_periódica)
+	{'Helio': 2, 'Hidrógeno': 1}
+\end{lstlisting}
+
+Si la clave no está en el diccionario, se utiliza el nuevo valor:
+
+\begin{lstlisting}
+	>>> Carbono = tabla_periódica.setdefault('Carbono', 12)
+	>>> Carbono
+	12
+	>>> tabla_periódica
+	{'Helio': 2, 'Carbono': 12, 'Hidrógeno': 1}
+\end{lstlisting}
+
+Si intentamos asignar un valor predeterminado diferente a una clave existente, se devuelve el valor original
+y no hace cambio alguno:
+
+\begin{lstlisting}
+	>>> Helio = tabla_periódica.setdefault('Helio', 947)
+	>>> Helio
+	2
+	>>> tabla_periódica
+	{'Helio': 2, 'Carbono': 12, 'Hidrógeno': 1}
+\end{lstlisting}
+
+
+\subsubsection{La función defaultdict()}
+
+La función {\ttfamily defaultdict()} es similar a la función {\ttfamily setdefault()}, pero ésta función específica un valor predeterminado para cualquier clave nueva que no se le asigne valor (faltante). Su {\bf argumento es una función}. 
+
+En el siguiente ejemplo, le pasamos como parámetro la función {\ttfamily int()}; al hacer el llamado de {\ttfamily defaultdict(int)} con cualquier valor faltante,   devolverá  el valor 0 (como número entero):
+
+\begin{lstlisting}
+	>>> from collections import defaultdict
+	>>> tabla_periodica = defaultdict(int)
+\end{lstlisting}
+%tabla_periodica02 = defaultdict(str)
+%tabla_periodica02
+%defaultdict(<class 'str'>, {})
+Ahora, cualquier valor faltante será un entero con el valor 0:
+
+\begin{lstlisting}
+	>>> tabla_periódico['Hidrógeno'] = 1
+	>>> tabla_periódica['Plomo']
+	0
+	>>> tabla_periódica
+	defaultdict(<clase 'int'>, {'Plomo': 0, 'Hidrógeno': 1})
+\end{lstlisting}
+
+El argumento de {\ttfamily defaultdict()} es una función que devuelve el valor que se le asignará a
+una clave faltante. 
+
+En el siguiente ejemplo, creamos una función que llamaremos { \ttfamily ni\_idea()}, al ejecutarla devuelve el valor {}"{}Nada{}"{}:
+
+\begin{lstlisting}
+	>>> from collections import defaultdict
+	>>> def ni_idea():
+	return 'Nada'
+	>>> diccionario_defaul = defaultdict(ni_idea)
+	>>> diccionario_defaul['A'] = 'Primera Letra'
+	>>> diccionario_defaul['B'] = 'Segunda letra'
+	>>> diccionario_defaul['A']
+	'Primera Letra'
+	>>> diccionario_defaul['B']
+	'Segunda letra'
+	>>> diccionario_defaul['C']
+	'Nada'
+	>>> diccionario_defaul
+	defaultdict(<function ni_idea at 0x0000023D4C8454E0>, 
+	{'A': 'Primera Letra', 'B': 'Segunda letra', 'C': 'Nada'})
+\end{lstlisting}
+
+Puede utilizar las funciones {\ttfamily str()}, {\ttfamily int()},  {\ttfamily list()} o {\ttfamily dict()} para devolver valores  predeterminados. Para esos tipos: {\ttfamily str()} devuelve {\ttfamily {}"{}"{}}, {\ttfamily int()} devuelve 0,  {\ttfamily list()} devuelve una lista vacía ({\ttfamily []}) y {\ttfamily dict()} devuelve un diccionario vacío ({\ttfamily \{\}}). \\
+%Si omite el argumento, el valor inicial de una nueva clave será  {\ttfamily None} (Ninguno).\\
+
+Además, puedes usar la función {\ttfamily lambda} para definir la función predeterminada dentro del
+llamado:
+
+\begin{lstlisting}	
+	>>> diccionario_defaul = defaultdict(lambda: 'Nada')
+	>>> diccionario_defaul['Carlos']
+	'Nada'
+\end{lstlisting}
+
+Por último, se puede crear un contador usando {\ttfamily int()} en la función {\ttfamily defaultdict()}:
+
+\begin{lstlisting}
+	>>> from collections import defaultdict
+	>>> contador_alimento = defaultdict(int)
+	>>> for alimento in ['pan','huevos', 'pan', 'huevos', 'pan', 'azucar']:
+	contador_alimento[alimento] += 1	
+	>>> for alimento, contador in contador_alimento.items():
+	print(alimento, contador)
+	pan 3
+	huevos 2
+	azucar 1
+\end{lstlisting}
+La función  {\ttfamily contador\_alimento = defaultdict(int)} se inicia en cero, cuando la clave no está en el diccionario, y crea la nueva clave con valor cero.
+
+Si {\ttfamily contador\_alimento} hubiese sido un diccionario normal en lugar de un
+{\ttfamily defaultdict}, Python habría generado una excepción cada vez que intentáramos incrementar
+un elemento del diccionario porque no se habría inicializado  ({\ttfamily contador\_alimento[alimento]}).
+Habríamos necesitado hacer un trabajo adicional, como se muestra a continuación:
+
+\hspace{-2.5cm}{\ttfamily \scriptsize contador.py}  \vspace{-0.5cm}
+\begin{lstlisting}
+	contador_dicc = {}
+	for alimento in ['pan','huevos', 'pan', 'huevos', 'pan', 'azucar']:
+	if not alimento in  contador_dicc:
+	contador_dicc[alimento] = 0
+	contador_dicc[alimento] += 1
+	for alimento, cuenta in contador_dicc.items():
+	print(alimento, cuenta)
+\end{lstlisting}
+Se inicializa el diccionario con cada alimento que se repite, y almacena la cuenta: 
+
+{\ttfamily\scriptsize\noindent Out[]: \vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			pan 3
+			huevos 2
+			azucar 1		
+		\end{verbatim}
+}}
+
+
+\subsubsection{La función Counter()}
+
+La librería estándar tiene una función que hace el trabajo del 
+ejemplo anterior y un poco más, se trata de la función {\ttfamily Counter()} del módulo {\ttfamily collections}:
+
+\begin{lstlisting}
+	>>> from collections import Counter
+	>>> desayuno = desayuno = ['pan','huevos', 'pan', 'huevos', 'pan', 'leche']
+	>>> contador_desayuno  = Counter(desayuno)
+	>>> contador_desayuno
+	Counter({'pan': 3, 'huevos': 2, 'leche': 1})
+\end{lstlisting}
+
+Y la función {\ttfamily most\_common()} (en {\ttfamily Counter()}) devuelve todos los elementos en orden descendente, o sólo devuelve cuenta del item superior si se le el valor de 1 como argumento:
+
+\begin{lstlisting}
+	>>> contador_desayuno.most_common()
+	[('pan', 3), ('huevos', 2), ('leche', 1)]
+	>>> desayuno_contador.most_common(1)
+	[('pan', 3)]
+\end{lstlisting}
+
+
+Además, se puede establecer operaciones entre contadores, como sumas, resta, etc. Primero, veamos nuevamente qué hay en {\ttfamily contador\_desayuno}:
+
+\begin{lstlisting}
+	>>> contador_desayuno
+	Counter({'pan': 3, 'huevos': 2, 'leche': 1})
+\end{lstlisting}
+
+Esta vez, crearemos una nueva lista llamada {\ttfamily lunch} y un contador llamado {\ttfamily contador\_lunch }:
+
+\begin{lstlisting}
+	>>> lunch = ['huevos', 'huevos', 'tocino']
+	>>> lunch_contador = Counter(lunch)
+	>>> lunch_contador
+	Counter({'huevos': 2, 'tocino': 1})
+\end{lstlisting}
+
+
+La primera forma de combinar los dos contadores es mediante la suma, usando {\ttfamily +}:
+
+\begin{lstlisting}
+	>>> contador_desayuno + lunch_contador 
+	Counter({'huevos': 4, 'pan': 3, 'leche': 1, 'tocino': 1})
+\end{lstlisting}
+
+Como es de esperar, suma los elementos en ambos diccionarios. 
+
+Ahora restas un contador de otro usando {\ttfamily -}. 
+Esta operación es útil por ejemplo,  desayunar con algo que no este en el almuerzo.
+
+\begin{lstlisting}
+	>>> contador_desayuno-lunch_contador
+	Counter({'pan': 3, 'leche': 1})
+\end{lstlisting}
+
+Y ahora, ¿qué podemos almorzar que no encuentre en el desayuno?:
+
+\begin{lstlisting}
+	>>> lunch_contador - desayuno_contador
+	Counter({'tocino': 1})
+\end{lstlisting}
+
+De manera similar a las operaciones con conjuntos en la sección  \ref{conjuntos}, puede obtener 
+elementos comunes utilizando la operación de intersección:
+
+\begin{lstlisting}	
+	>>> lunch_contador & contador_desayuno
+	Counter({'huevos': 2})
+\end{lstlisting}
+
+La intersección genera un elemento común ("huevos") con el recuento más bajo, dos en este caso. Esto tiene
+sentido: el desayuno  incluye 2 huevo, así que ese es el conteo común.
+Finalmente, puedes obtener todos los elementos usando el operador de unión {\ttfamily |}:
+
+\begin{lstlisting}
+	>>> lunch_contador | desayuno_contador
+	Counter({'pan': 3, 'huevos': 2, 'tocino': 1, 'leche': 1})
+\end{lstlisting}
+
+El elemento {}"{}huevos{}"{} volvió a ser común a ambos. A diferencia de la suma, la unión no agregó sus
+cuenta, pero selecciona  el que tiene mayor cantidad.
+
+\subsubsection{Ordenar por clave con OrderedDict()}
+
+Muchos de los ejemplos de código de los primeros capítulos en este libro demuestran que el
+orden de las claves en un diccionario no es predecible: puede agregar las claves a, b y c en ese
+orden, pero las claves  pueden devolverse como c, a, b, sin orden. Veamos un ejemplo:
+
+\begin{lstlisting}	
+	>>> chiflados = {'Moe': 'Un tipo listo, ¿eh?','Larry': '¡Ay!',
+		'Curly': '¡Nyuk nyuk!',}
+	>>> for chiflado in chiflados:
+	print(chiflado)
+	Moe
+	Larry
+	Curly
+\end{lstlisting}
+
+La función  {\ttfamily OrderedDict()} recuerda el orden de adición de claves y las devuelve en el mismo
+orden que lo hace un iterador. Ésta función crea una secuencia de tuplas (clave, valor):
+
+\begin{lstlisting}
+	>>> from collections import OrderedDict
+	>>> chiflados = OrderedDict({'Moe': 'Un tipo listo, ¿eh?',
+		'Larry': '¡Ay!',
+		'Curly': '¡Nyuk nyuk!',})
+	>>> print(chiflados)
+	OrderedDict([('Moe', 'Un tipo listo, ¿eh?'),('Larry', '¡Ay!'),
+	('Curly', '¡Nyuk nyuk!')])
+\end{lstlisting}
+
+
+Por ahora dejamos este tema hasta aquí. Si desea mayor información sobre el módulo  \href{https://docs.python.org/es/3/library/collections.html#:~:text=Es%20una%20colecci%C3%B3n%20donde%20los,conteos%20de%20cero%20o%20negativos.}{\color{vino} {\ttfamily collections}} se recomienda visitar la web oficial de Python:   
+
+\href{https://docs.python.org/es/3/library/collections.html}{\color{vino} {\ttfamily https://docs.python.org/es/3/library/collections.html}}
+
+
+\section{Imprimir con pprint()}
+
+
+%  revisar por si se trata de una funcion de veeja en internet
+
+Hasta ahora en todos lo ejemplos que hemos  utilizado la función  {\ttfamily print()} ({\ttfamily {}<{}built-in function print{}>{}}) para imprimir resultados, o simplemente escribiendo el nombre de la variable, en el  intérprete interactivo. Sin embargo, a veces los resultados no son los más fáciles para leer. A continuación prestamos una nueva función para imprimir en pantalla, y comparamos con {\ttfamily print()}. Se trata de {\ttfamily pprint()}, que genera  una impresión bonita:
+
+\begin{lstlisting}
+	>>> from pprint import pprint
+	>>> chiflados = OrderedDict({'Moe': 'Un tipo listo, ¿eh?',
+		'Larry': '¡Ay!',
+		'Curly': '¡Nyuk nyuk!',}})
+		\end{lstlisting}
+		La función  {\ttfamily	print()} simplemente arroja cosas por así:
+		\begin{lstlisting}
+>>> print(chiflados)
+OrderedDict([('Moe', 'Un tipo listo, ¿eh?'),('Larry', '¡Ay!'),
+('Curly', 'Nyuk nyuk!')])
+\end{lstlisting}
+
+\noindent Sin embargo, {\ttfamily pprint()} intenta alinear elementos para una mejor legibilidad:
+
+\begin{lstlisting}
+>>> pprint(chiflado)
+OrderedDict([('Moe', 'Un tipo listo, ¿eh?'),
+('Larry', '¡Ay!'),
+('Curly', '¡Nyuk nyuk!')])
+\end{lstlisting}
+
+Esta impresión es un poco más clara que la impresión que se logra con {\ttfamily print()}.
+
+
+\section{Resumen y ejercicios }
+pprint
+
+
+
+The Python 3 Standard Library by Example
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Clases y Objetos   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%       Capitulo    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Clases y Objetos}{\label{Cap9}}\hypertarget{Cap9}{}
+
+% https://atareao.es/pyldora/mejorando-tu-programacion-con-python-las-clases/
+% natural y inconscientes,
+% ¿Qué es un Objeto en Python?
+% interfaz
+
+\begin{wrapfigure}{l}{0.5\textwidth} 
+\vspace{-25pt}	\begin{center} \includegraphics[width=0.525\textwidth]{../Logos_de_Python/Clases}
+\end{center}\vspace{-35pt} %\caption{Python 3} 
+\end{wrapfigure}En Python todo es un objeto, desde números hasta módulos; y hemos estado tratando objetos de forma natural, y casi inconscientes de ello. Por ejemplo; cuando se crea una variable y le asignas un valor entero, ese valor es un objeto; una cadena de caracteres es un objeto; si creamos una función es un objeto; y así, las listas, tuplas, diccionarios, conjuntos, módulos etc, son objetos. \\ 
+
+Las clases son un concepto fundamental en la programación orientada a objetos, y se utilizan para modelar entidades del mundo real o abstracto en un programa de computadora. 
+
+En Pythonal escribir {\ttfamily num1 = 15}, se crea un objeto de tipo entero {\ttfamily {}<{}class {}'{}int{}'{}>{} }; de manera implícita se asigna un objeto a la variable {\ttfamily num1} de la clase entero. Este objeto pertenece a la clase entero; una clase  con características bien definidas, que le permiten interactúar unos con otros mediante mensajes que se trasmiten por medio operadores funcionales llamados métodos. Por ejemplo, el objeto entero con el valor 15, es un objeto que tiene implícito los  métodos suma y multiplicación. Si creamos  {\ttfamily num2 = 9}, es también un objeto del tipo entero, con las mismas características  que {\ttfamily num1} pero diferente.\\
+
+Cuando se crean objetos de una clase determinada, cada objeto queda automáticamente dotado del comportamiento general de esa clase; luego puedes darle a cada objeto cualquier característica única que desee.\\ 
+
+Una clase Python podría compararse por analogía con un esquema o plantilla para crear un nuevo objeto. Es un prototipo a partir del cual se crean objetos semejantes. Este prototipo  contiene la información, características y capacidades que tendrá el objeto que se ha creado a partir él. Y así todos los objetos creados a partir de ese  prototipo estarán agrupados en esa misma clase.
+
+Las clases son el núcleo de la programación orientada objetos, y son una especie de estructura de datos que agrupa un conjunto de funciones llamados métodos y variables(características) llamados atributos.
+
+
+
+\section{Clases en Python}\label{clases}
+
+
+En el Capítulo \ref{Cap2}, se comparó un objeto con una caja de plástico. Siguiendo ésta idea,  podemos decir que una clase es el molde que hace esa caja (un molde con el que se crean nuevos objetos de ese tipo). Por ejemplo, {\ttfamily str()}  es la clase incorporada de Python que crea objetos tipo cadena de caracteres; como  {}"{}gato{}"{} y  {}"{}saludo{}"{}. 
+
+Python tiene muchas otras clases integradas para crear otros tipos de objetos estándar, como  {\ttfamily tuple()},  {\ttfamily list()},  {\ttfamily dict()},  {\ttfamily int()}, {\ttfamily float()},  {\ttfamily str()}, etc, cada una definen una clase específica; y además, todas ellas pertenecen a la clase {\ttfamily type}\footnote{En Python una clase es un objeto de la clase  {\ttfamily type} ({\ttfamily {}<{}class {}'{}type{}'{}>{}}). Cada vez que se define una clase en Python, se crea automáticamente un objeto de la clase {\ttfamily type}.  Python usa {\ttfamily type} para crear otras clases.}. \\
+
+%  https://www.pythontutorial.net/python-oop/python-type-class/  
+
+Una clase en Python es una estructura de programación que permite definir un conjunto de métodos y atributos que describen un objeto o entidad. En el proceso de diseño de una clase debe tener en cuenta el principio de responsabilidad única, intentando que los atributos y métodos que contenga esa clase estén enfocados a un objetivo único y bien definido. 
+
+
+
+
+\subsection{Crear una Clase en Python}
+%  https://blog.hubspot.es/website/clases-python 
+%Piense en una clase como un conjunto de instrucciones sobre cómo crear una instancia.
+
+Para crear un objeto en Python, primero es necesario definir o crear una clase a la que pertenecerá el objeto.
+Una clase en Python se define mediante la palabra clave  {\ttfamily class}, seguida del nombre de la clase y dos puntos (:), luego el cuerpo de la clase; y por supuesto, todo el código del cuerpo debe estar indentado cuatro espacios, para indicar que está dentro de la clase, por ejemplo:
+
+\begin{lstlisting}
+>>> class Persona():
+pass
+\end{lstlisting}
+Esta es la clase más simple posible, una clase vacía. Pero es una clase:
+
+
+
+
+
+
+\begin{lstlisting}
+>>> type(Persona()) 
+<class '__main__.Persona'>
+>>> type(Persona) 
+<class 'type'>
+\end{lstlisting}
+
+
+
+
+
+
+
+\noindent Aquí introducimos la palabra reservada {\ttfamily pass}, que sirve para rellenar un espacio requerido por la sintaxis, no tiene ningún otro efecto, más que dejar en blanco la clase por el momento.  
+La declaración {\ttfamily pass} se usa cuando por algún motivo no se quiere definir la clase; esta declaración también se puede usar en funciones, estructuras de control, etc, con el mismo fin.
+
+
+\vspace{0.2cm}
+\begin{minipage}[t]{0.2\textwidth}
+\centering\raisebox{\dimexpr\topskip-\height}{%
+	\includegraphics[scale=0.20]{../Logos_de_Python/Advertencia}}  %[width=\textwidth]
+	\end{minipage}%\hfill
+	\begin{minipage}[t]{0.70\textwidth} 
+{\scriptsize  La forma más simple de definir una clase en Python es así,  
+	\begin{lstlisting}
+		class Persona:
+		pass
+	\end{lstlisting}sin paréntesis, esto indica que su clase no hereda de otra clase, por tanto no debe llevar paréntesis y tampoco parámetros. Sin embargo, cuando se requiere algo más complejo y usas herencia entonces, si debe llevar paréntesis y como parámetro  el nombre de la clase de la que heredas (ver sección \ref{Herencia}).}
+	\end{minipage}
+	\vspace{0.2cm}
+	
+	
+	Para crear un objeto a partir de una clase, simplemente se hace el llamado de la clase como si fuera una función:
+	%Al igual que con las funciones, necesitábamos escribir la palabra  {\ttfamily pass} para indicar que esta clase estaba vacía. Esta definición es el mínimo indispensable para crear un objeto. 
+	\begin{lstlisting}
+alguien  = Persona()
+\end{lstlisting}
+En este caso, la clase {\ttfamily Persona()} crea un objeto individual y lo asigna
+a la variable {\ttfamily alguien}. Pero la clase Persona esta vacía, por lo que el objeto {\ttfamily alguien} que creamos simplemente se queda ahí y no puede hacer nada más. \\
+
+La acción de crear un objeto a partir de clase, se le denomina {\bf instanciar una clase}; consiste en asignar la clase como valor a una variable, en este caso {\ttfamily alguien = Persona()}.  
+
+Generalmente podemos asumir que un nombre en mayúscula como {\ttfamily Persona()} se refiere a una clase, y un nombre en minúscula como {\ttfamily alguien} se refiere a una única instancia creada a partir de una clase, un objeto. \\
+
+
+Así que por el momento, tenemos una clase de nombre {\ttfamily Persona} vacía.  Pero ya tenemos una clase definida; la clase {\ttfamily Persona}. \\
+
+
+Al igual que las funciones, una clase también se permite comentarios. Los docstrings o comentarios multilínea  son simplemente cadenas de texto, que se utilizan para describir el propósito del código,  proveen una forma conveniente de documentar funciones, módulos, clases y métodos en Python. Los docstrings son opcionales, pero es recomendable debido a su  importancia para describen el propósito del código; además,  se  puede acceder a ellos mediante la función {\ttfamily help()} de Python o la declaración  {\ttfamily nombre.\_\!\_doc\_\!\_}, lo que facilita   entender el código. 
+
+Se ubican justo después de la declaración de la definición de clase, con su indentación correspondiente, ejemplo:
+
+\begin{lstlisting}
+>>> class Persona():
+""" Describe las habilidades y destrezas de un estudiante"""
+pass
+\end{lstlisting}
+Ésta clase no hace nada, solo tiene un comentario, un docstrings. 
+En realidad, nunca se definiría una clase como ésta; aquí es para facilitar el aprendizaje y avanzar hasta a  una clase que realmente sea útil.\\
+
+Continuando con la construcción de una clase; esta vez incluimos el {\bf método especial de inicialización} de objetos en Python {\bf {\ttfamily\_\!\_init\_\!\_}}:
+
+\begin{lstlisting}
+>>> class Persona():
+""" Describe las habilidades y destrezas de un estudiante"""
+def __init__(self):
+pass
+\end{lstlisting}
+
+Este método siempre se encontrará en las definiciones reales de clases de Python. El nombre especial {\ttfamily\_\!\_init\_\!\_}  en Python, es para el método que inicializa un objeto individual de ésta clase; y tiene como objetivo fundamental inicializar los atributos del objeto que creamos. Cuando se  define el método {\ttfamily\_\!\_init\_\!\_} en una clase, es obligatorio incluir el parámetro {\ttfamily self}, y debe ser el primer parámetro, antes que los demás. Éste parámetro especifica que se refiere al mismo objeto individual.  Aunque {\ttfamily self} no es una palabra reservada en Python, es de uso común.\\
+% El método {\ttfamily\_\!\_init\_\!\_()}, es un método especial que Python se ejecuta automáticamente 
+
+La clase que estamos construyendo todavía no crea un objeto que haga algo. Ahora le agregamos la variable {\ttfamily nombre} como parámetro al método de inicialización:
+
+\begin{lstlisting}
+>>> class Persona():
+""" Describe las habilidades y destrezas de un estudiante"""
+def __init__(self, nombre):
+self.nombre = nombre
+\end{lstlisting}
+
+Instanciamos la clase {\ttfamily Persona()}, pasandole una cadena {\ttfamily {}"{}Carlos Guerra{}"{}} como argumento  del parámetro {\ttfamily nombre} y lo asignamos a la variable {\ttfamily estudiante}:
+
+
+\begin{lstlisting}
+>>> estudiante = Persona('Carlos Guerra')
+\end{lstlisting}
+Ahora tenemos un objeto de la clase {\ttfamily Persona()} con un atributo, el parámetro nombre.
+
+Esta línea de código hace el siguiente trabajo:
+
+\begin{itemize}
+\item[] Crea un nuevo objeto en la memoria. Instanciar \ding{51}
+\item[] Llama al método {\ttfamily\_\!\_init\_\!\_()}  del objeto, pasándole al objeto  {\ttfamily estudiante} recién  creado como {\ttfamily self}  y el segundo argumento {}"{}Carlos Guerra{}"{} lo pasa como nombre. \ding{51}
+\item[] Almacena el valor del nombre en el objeto, {}"{}Carlos Guerra{}"{}. \ding{51}
+\item[] Devuelve el nuevo objeto. \ding{51}
+\item[] Añade la variable estudiante al objeto. \ding{51}	
+\end{itemize}
+
+Este nuevo objeto es como cualquier otro objeto en Python. Puedes usarlo como elemento de una lista,
+tupla, diccionario o conjunto. Puede pasarlo a una función como argumento y devolverlo como
+resultado. El objeto se guarda como {\ttfamily estudiante.nombre}  (atributo). Puedes leerlo y escribirlo directamente:
+
+\begin{lstlisting}
+>>> print("El estudiante: ", estudiante.nombre)
+El estudiante: Carlos Guerra
+\end{lstlisting}
+
+Las clases por sí mismas, no son más que modelos que nos servirán para crear objetos en concreto. Podemos decir que una clase, es el razonamiento abstracto de un objeto, mientras que el objeto{{ es su materialización.
+	
+	\subsection{Atributos y Métodos}\label{atributos}
+	% Los objetos almacenan información y realizan tareas!. 
+	% https://blog.hubspot.es/website/clases-python  
+	% atributos privados saldo bancario
+	% https://aprendepython.es/core/modularity/oop/   grafico y guias 
+	
+	
+	% El método constructor de las clases en Python ()    Si hablamos de métodos de una clase puede existir diferentes tipos de ellos. Pero el mas importante es el método constructor; el cual dicho nombre hace referencia a inicializar los atributos del objeto creado a partir  de la clase que lo posea. Por supuesto no es necesario que este método exista dentro de una clase para que la clase exista. Pero si es necesario para indicarle al interprete de Python que cuando se Instancia un objeto a dicha clase debe asignarle los argumentos que nosotros le damos al momento de la instancia. (inicialización de atributos)      Este método se escribe «init» y yo para recordarlo lo suelo asimilar con «inicializar». Una clase que posea este método creara el objeto con los «argumentos» para los atributos que se pasen al momento de la instancia.      El método __init__ NO RETORNA NINGÚN DATO Y ES OPCIONAL. Cuando decimos que no retorna ningún dato significa que a diferencia de otros métodos este no puede retornar valores luego de ejecutado.     Este método es llamado automáticamente al instanciar un objeto a la clase que tenga el constructor por lo que su uso es muy común y practico.
+	
+	
+	El cuerpo de la clase contiene atributos (datos o estado, características) y métodos (funciones o comportamiento) que se aplican a objetos específicos creados a partir de la clase. 
+	
+	Un atributo es una variable que se define dentro de una clase, que almacena datos o características del  objeto de esa clase. Es decir, los atributos se utilizan para representar características o propiedades de un objeto, como su estado actual, su identificador, su tamaño, su color, etc. Pueden ser de diferentes tipos de datos, como enteros, flotantes, cadenas, listas, diccionarios, entre otros. Además, los atributos pueden tener distintos niveles de visibilidad, que se especifican mediante los modificadores de acceso en la definición de la clase. Por defecto, los atributos son públicos en Python, lo que significa que puede accederse a ellos desde cualquier lugar del programa.  
+	
+	
+	En la definición de una clase, los atributos se definen como variables que se inicializan en el método  {\ttfamily\_\!\_init\_\!\_()}. Por ejemplo, en la clase Persona que definimos anteriormente, los atributos nombre y edad se pueden definir de la siguiente manera:
+	
+	\begin{lstlisting}
+		>>> class Persona():
+		""" Describe las habilidades y destrezas de un estudiante"""
+		def __init__(self, nombre,edad):
+		self.nombre = nombre
+		self.edad = edad 
+	\end{lstlisting}
+	
+	Los {\bf{métodos son funciones dentro de la clase}}\label{metodo}, y representan las tareas o acciones que el objeto es capaz de realizar. Por ejemplo, en la clase {\ttfamily Persona}, podemos definir un método que simule una actividad o acción que puede realizar, supongamos que el estudiante toca un instrumento musical, y que hace algún deporte.
+	Se puede definir como:
+	
+	\hspace{-2.5cm}{\ttfamily \scriptsize persona.py}  \vspace{-0.5cm}
+	\begin{lstlisting}
+		class Persona():
+		""" Describe las habilidades y destrezas de un estudiante"""
+		def __init__(self, nombre,edad):
+		self.nombre = nombre
+		self.edad = edad
+		
+		def arte(self):
+		print(f"{self.nombre} está Tocando un instrumento 'musical'.") 
+		
+		def deporte(self):
+		print(f"{self.nombre} está entrenando fútbol, \
+		y tiene {self.edad} anos de edad.")
+	\end{lstlisting}\label{persona}En esta clase he definido dos métodos, el método {\ttfamily arte()} y {\ttfamily deporte()}.\\
+	
+	
+	Observe, dentro de la definición de la clase {\ttfamily Persona}, se refieres los atributo  {\ttfamily nombre} y  {\ttfamily edad} como {\ttfamily self.nombre} y {\ttfamily self.edad}. Y al crear un objeto real como {\ttfamily estudiante}, se accede a ellos como {\ttfamily estudiante.nombre} y {\ttfamily estudiante.edad}.\\
+	
+	Instanciamos la clase con un estudiante específico. Observe, la clase tiene dos parámetros, nombre y edad, para instanciar es necesario pasarle los dos parámetros a la clase:
+	
+	\begin{lstlisting}
+		>>> juan = Persona("Juan García", 21)
+	\end{lstlisting}
+	En este ejemplo creamos el objeto {\ttfamily juan}. Al instanciar la clase,  Python llama al método {\ttfamily\_\!\_init\_\!\_()} en la clase {\ttfamily Persona} con los argumentos "Juan García{}"{} y 21. 
+	
+	El método crea una instancia que representa a esa persona en particular y establece los atributos de {\ttfamily nombre} y  {\ttfamily edad}  utilizando los valores que proporcionamos. Luego, Python devuelve la instancia que representa a esta persona. 
+	
+	\subsubsection{Accediendo a los atributos y métodos}
+	
+	Para acceder a los atributos de una instancia, se utiliza la notación de puntos. Accedemos al valor atributos de {\ttfamily nombre} y  {\ttfamily edad}  de {\ttfamily juan} escribiendo:
+	
+	\begin{lstlisting}
+		>>> juan.nombre
+		'Juan García'
+		>>> juan.edad
+		21
+	\end{lstlisting}
+	
+	La notación de puntos se usa con frecuencia en Python. Esta sintaxis demuestra cómo Python encuentra el valor de un atributo. Aquí, Python busca la instancia {\ttfamily juan}, y ubica el nombre del atributo asociado con juan. Este es el mismo atributo al que se hace referencia como {\ttfamily self.nombre} en la clase. Se usa el mismo enfoque para trabajar con el atributo {\ttfamily edad}, y cualquier otro. \\
+	
+	Para acceder a los métodos de una instancia, se llama al método por el nombre de la instancia seguido por el nombre del método con los paréntesis, y separados por un punto:  
+	
+	\begin{lstlisting}
+		>>> juan.arte()
+		Juan García está tocando un instrumento 'musical'.
+		>>> juan.deporte()
+		Juan García está entrenando fútbol y tiene 21 anos de edad.
+	\end{lstlisting}
+	
+	Cuando Python lee {\ttfamily juan.arte()} (o {\ttfamily juan.deporte()}), busca el método {\ttfamily arte()}   (o {\ttfamily deporte()}) en la clase {\ttfamily Persona} y ejecuta código.
+	Ahora juan hace la acción que le pedimos: 
+	
+	Juan García está tocando un instrumento 'musical'. 
+	
+	Juan García está entrenando fútbol y tiene 21 anos de edad.\\
+	
+	
+	El concepto de clase puede  extenderse a situaciones reales; por ejemplo, si ésta clase se escribiera para controlar un robot, estos métodos dirigirían movimientos que hacen el robot,  tocar un instrumento musical, hacer un deporte, etc. Usando clases se puedes modelar casi cualquier cosa.
+	
+	
+	Los objetos son capaces de interactuar y modificar los valores contenidos en sus campos o atributos (estado) a través de sus métodos (comportamiento).
+	
+	%Hay tres conceptos que son básicos para cualquier lenguaje de programación orientado a objetos: el encapsulamiento, la herencia y el polimorfismo
+	
+	
+	\section{Herencia}\label{Herencia}
+	% https://ellibrodepython.com/herencia-en-python
+	% https://pythones.net/clases-y-metodos-python-oop/
+	
+	
+	No siempre es necesario empezar escribir una clase desde cero, algunas veces se conoce o se ha escrito una clase que hace casi todo lo que necesita, y se ahorraría un tiempo y espacio se pudiéramos reutilizar ese código; es decir, si podemos crear una nueva clase a partir de la clase existente pero con algunos adicionales o cambios. 
+	
+	Un concepto de la programación orientada a objetos que permite crear una nueva clase a partir de otra clase existente es la {\bf{herencia}}; es un proceso mediante el cual se puede crear una clase que le permite  heredar atributos y métodos de otra clase. La clase original se llama padre, principal, superclase o clase base; y  la nueva clase se llama hija, subclase o clase derivada. La clase hija hereda de una clase padre  sus métodos y atributos. Además de ello, en una clase hija se puede sobreescribir los métodos o atributos, e incluso definir nuevos.
+	
+	% https://www.latex.um.es/curso_2000/sesiones/sesion5a.pdf
+	\begin{center}
+		\begin{picture}(300,110)
+			%	\put(0,0){\line(0,1){110}}
+			\put(125,95){\framebox(50,10)[c]{\tiny \bf clase }}
+			\put(125,80){\framebox(50,15)[c]{Principal} } % caja
+			\put(150,60){\line(0,1){20}}   % linea inclinada 
+			\put(50,60){\line(1,0){200}}   % linea  horizontal
+			
+			\put(50,40){\line(0,1){20}}
+			\put(25,30){\framebox(50,10)[c]{\tiny \bf Subclase }}
+			\put(25,15){\framebox(50,15)[c]{hija}}
+			
+			\put(150,40){\line(0,1){20}}
+			\put(125,30){\framebox(50,10)[c]{\tiny \bf Subclase }}
+			\put(125,15){\framebox(50,15)[c]{hija}}
+			
+			\put(250,40){\line(0,1){20}}
+			%\put(225,30){\framebox(50,10)[c]{\tiny \bf Subclase }}
+			%\put(225,15){\framebox(50,20)[c]{hija}}	
+			\put(225,30){\framebox(50,10)[c]{\tiny \bf Subclase }}
+			\put(225,15){\framebox(50,15)[c]{hija}}
+		\end{picture}
+	\end{center}
+	
+	
+	Es una excelente manera de reutilizar el código. Cuando se utiliza la herencia, la nueva clase puede usar automáticamente todo el código de la clase anterior pero sin copiar ningún de ello.
+	
+	\subsection{Herencia en Python}
+	
+	La herencia en Python como lenguaje de programación orientada a objetos, admite la herencia de clases mediante la creación de una clase hija que hereda los atributos y métodos de la clase padre. 
+	Para heredar una clase, simplemente se especifica el nombre de la clase padre dentro de los paréntesis después del nombre de la clase hija.\\
+	
+	Para fijar ideas, ilustraremos con ejemplos sencillo. Considere una clase vacía llamada  {\ttfamily Carro}, y  otra clase llamada {\ttfamily Spark}. Para definir una subclase heredera, se usa la misma palabra {\ttfamily class} de clase pero con el nombre de la clase principal dentro de los paréntesis:
+	
+	\begin{lstlisting}
+		>>> class Carro():
+		pass
+		>>> class Spark(Carro):
+		pass	
+	\end{lstlisting}
+	Aquí, la clase {\ttfamily Spark()} hereda todo lo de la clase  {\ttfamily Carro()}.\\
+	
+	A continuación, creamos un objeto de cada clase:
+	
+	\begin{lstlisting}
+		>>> vehiculo = Carro()
+		>>> spark = Spark()
+	\end{lstlisting}
+	
+	La clase hija es una especialización de una clase padre (o clase principal); el objeto llamado {\ttfamily spark} es una instancia de la clase {\ttfamily Spark}, pero también hereda todo lo que puede hacer la clase {\ttfamily Carro}. 
+	
+	%flata comentario sobre  bases... y subcalses....    aliasing, o renombrado,   Además de ello, una clase hija puede sobreescribir los métodos o atributos, o incluso definir unos nuevos.
+	
+	Podemos ver que la clase {\ttfamily Spark} es la hija de  {\ttfamily Carro} usando la sentencia  {\ttfamily\_\!\_bases\_\!\_} que se refiere la clase padre:
+	
+	\begin{lstlisting}
+		>>> print(Spark.__bases__)
+		(<class '__main__.Carro'>,)
+	\end{lstlisting} 
+	De manera similar podemos ver que clases descienden de una en concreto con {\ttfamily\_\!\_subclasses\_\!\_}:
+	\begin{lstlisting}
+		>>> print(Carro.__subclasses__())
+		[<class '__main__.Spark'>]
+	\end{lstlisting} 
+	Se puede crear una clase hija con tan solo pasarla como parámetro la clase de la que queremos heredar. \\
+	
+	Ahora probemos con clases que realmente hagan algo. Definimos una clase llamada {\ttfamily Vehiculo\_gasolina}, con un atributo {\ttfamily gasolina} y dos métodos {\ttfamily arrancar()} y {\ttfamily conducir()} como se muestra a continuación:
+	
+	\hspace{-2.6cm}{\ttfamily \scriptsize vehiculo}
+	
+	\vspace{-0.2cm}
+	\hspace{-2.8cm}{\ttfamily \scriptsize \_gasolina.py}\vspace{-0.84cm}
+	\begin{lstlisting}
+		class Vehiculo_gasolina():
+		"""Clase vehículo de gasolina."""
+		def __init__(self, gasolina):
+		self.gasolina = gasolina
+		print("Tenemos ", gasolina," litros")
+		
+		def arrancar(self):
+		if self.gasolina > 0:
+		print("Vehículo encendido!\n")
+		else:
+		print("No arranca")
+		
+		def conducir(self):
+		if self.gasolina > 0:
+		self.gasolina -= 1
+		print("Vehículo en movimiento...")
+		print("Quedan", self.gasolina, "litros\n")
+		else:
+		print("Sin combustible, vehículo parado.\n")
+	\end{lstlisting}
+	
+	
+	Para construimos una clase que describe el vehículo Spark modelo sedan, usamos la herencia; ya que clase a desarrollar  {\ttfamily Spark} tiene coincidencias  con la clase {\ttfamily vehiculo\_gasolina}:
+	
+	\hspace{-2.2cm}{\ttfamily \scriptsize Spark.py}  \vspace{-0.5cm}
+	\begin{lstlisting}
+		class Spark(Vehiculo_gasolina):
+		def __init__(self, gasolina):
+		self.gasolina = gasolina
+		def modelo(self):
+		print("Modelo Sedan")
+	\end{lstlisting}
+	
+	En este ejemplo se agregó un método en la clase hija que no está  presente en la clase principal.\\ 
+	
+	
+	Instanciamos la clase Spark(2) y la asignamos a la variable carrito: 
+	
+	\begin{lstlisting}
+		>>> carrito = Spark(2)
+		>>> carrito.arrancar()
+		Vehículo encendido!
+		>>> carrito.conducir()
+		Vehículo en movimiento...
+		Quedan 1 litros
+		>>> carrito.modelo()
+		Modelo Sedan
+	\end{lstlisting}
+	
+	En este caso se observa que la clase hija {\ttfamily Spark} heredó los métodos de la clase padre {\ttfamily Vehiculo\_gasolina}, y además tiene un método propio de la subclase {\ttfamily Spark}, el método {\ttfamily modelo()}.
+	
+	\subsection{Sobrescribir un método}
+	% sobreescrbir
+	%{\ttfamily Spark} debe ser diferente de {\ttfamily Vehiculo\_gasolina} de alguna manera; de lo contrario, no tiene sentido crear esa clase.
+	
+	% La clase hija puede heredar cualquier o todos los atributos y métodos de su clase principal, pero también es libre de definir nuevos atributos y métodos propios.
+	
+	
+	La clase hija hereda todo de su clase principal. Sin embargo tal vez es necesario modificar o reemplazar un método de la clase principal.  Si definimos un método en la clase hija con el mismo nombre de la clase padre, Python actualiza y se queda con método de la clase hija, incluyendo el método {\ttfamily\_\!\_init\_\!\_()}, es decir, se anula la acción del método en la clase padre. 
+	
+	Ilustremos con un ejemplo. Supongamos que necesitamos un vehículo eléctrico, y como la clase {\ttfamily Vehiculo\_gasolina} tiene casi todo lo que necesitamos, entonces  definimos el método {\ttfamily\_\!\_init\_\!\_()} y el método {\ttfamily conducir} en la clase hija, y usamos la herencia de la clase {\ttfamily vehiculo\_gasolina}, que coincide con el modelo:
+	
+	\hspace{-2.7cm}{\ttfamily \scriptsize electrico.py}  \vspace{-0.5cm}
+	\begin{lstlisting}
+		class Vehiculo_electrico(Vehiculo_gasolina):
+		"""Vehículo eléctrico."""
+		def __init__(self, gasolina):
+		self.gasolina = gasolina
+		carga = self.gasolina
+		print("\nTenemos ",carga,"% de carga eléctrica")
+		
+		def conducir(self):
+		if self.gasolina > 0:
+		self.gasolina -= 1
+		print("\nVehículo en movimiento...")
+		print("Queda", self.gasolina, "% de carga eléctrica")	
+		else:
+		print("\nSin carga eléctrica, vehículo parado.\n")
+	\end{lstlisting}
+	
+	Ahora instanciamos la clase {\ttfamily Vehiculo\_electrico()} y la asignamos a la variable carro:
+	
+	\begin{lstlisting}
+		>>> carro = Vehiculo_electrico(2)
+		Tenemos  2 % de carga eléctrica
+		>>> carro.arrancar()
+		Vehículo encendido.
+		>>> carro.conducir()
+		Vehículo en movimiento...
+		Queda 1 % de carga eléctrica
+	\end{lstlisting}
+	Observe, Python actualizó los métodos en la clase hija, anulando la acción de los  métodos {\ttfamily\_\!\_init\_\!\_()} y  {\ttfamily conducir()} de la clase padre.  
+	
+	Con ésta metodología se puede agregar o modificar los métodos que necesita la nueva clase,  y anular el comportamiento de la vieja clase. Esto se conoce como sobre escribir un método, que  consiste en redefinir una función o método  de la clase padre.
+	%   self.nombre = "Doctor " + nombre
+	
+	
+	\subsection{Referenciar \_\!\_init\_\!\_() con super()}}
+%  https://realpython.com/python-super/
+%  https://docs.python.org/3/library/functions.html#super
+% https://www.youtube.com/watch?v=hGmWyJ2oD78
+
+
+En la sección anterior vimos cómo se pueden agregar o modificar y hasta anular un método de la clase principal desde la clase hija. 
+
+Ahora supongamos que por algún motivo necesitamos un método que ha sido modificada en la clase hija (pero está de la clase padre), en este caso se puede usar la función {\ttfamily super()} para hacer referencia al método. \\
+El nombre {\ttfamily super()} proviene de una convención de llamar a la clase principal {\ttfamily SuperClase} y a la clase secundaria subclase.\\
+
+%\pageref{persona}
+
+Para ejemplificar usaremos la clase {\ttfamily Persona} del módulo {\ttfamily persona.py} en la sección \ref{atributos}, como la clase principal: 
+
+\begin{lstlisting}
+	class Persona():
+	""" Describe las habilidades y destrezas de un estudiante"""
+	def __init__(self, nombre,edad):
+	self.nombre = nombre
+	self.edad = edad
+	
+	def arte(self):
+	print(f"{self.nombre} está Tocando un instrumento 'musical'.") 
+	
+	def deporte(self):
+	print(f"{self.nombre} está entrenando fútbol, \
+	y tiene {self.edad} anos de edad.")
+\end{lstlisting}
+Y definimos una nueva clase llamada {\ttfamily EmailPersona} que representa una persona con una dirección de correo electrónico. En la clase hija, definimos un método {\ttfamily\_\!\_init\_\!\_()}, al definir este método en la clase hija, se  reemplaza el método  {\ttfamily\_\!\_init\_\!\_()} la clase padre, y este último ya no se llama automáticamente. Como resultado,  necesitamos llamarlo explícitamente. 
+
+\begin{lstlisting}
+	>>> class EmailPersona(Persona):
+	def __init__(self, nombre,edad,email):
+	super().__init__(nombre,edad)
+	self.correo = email
+\end{lstlisting}
+Con el método {\ttfamily Super()} se hace referencia al constructor de la clase padre. 
+
+Ahora instanciamos la clase {\ttfamily EmailPersona()} y la asignamos a la variable carlos:
+
+\begin{lstlisting}
+	>>> carlos = EmailPersona('Carlos Guerra',32, 'carlosguerra@gmail.com')
+\end{lstlisting}
+
+Accedemos  a los atributos de nombre y correo electrónico:
+
+\begin{lstlisting}
+	>>> carlos.email
+	'carlosguerra@gmail.com'
+	>>> carlos.nombre
+	'Carlos Guerra'
+\end{lstlisting}
+
+No debemos repetir código, si definimos la clase hija de la siguiente manera: 
+
+\begin{lstlisting}
+	class EmailPersona2(Persona):
+	def __init__(self, nombre,edad,email):
+	self.nombre = nombre
+	self.edad =edad
+	self.email = email
+\end{lstlisting}
+Estaremos repitiendo el código de la clase padre. Usando  {\ttfamily super()}se evita repetir el codigo de la clase padre en la clase hija {\ttfamily Persona}. Además, hay otro beneficio al usar {\ttfamily super()}, cuando se hace mantenimiento o cambios  futuros en {\ttfamily Persona},  se asegura que los atributos y métodos que {\ttfamily EmailPerson} hereda igualmente {\ttfamily Persona}.
+Es recomendado usar {\ttfamily super()} cuando la clase hija hace algo a su manera pero aún necesite algo de los padres (como en la vida real).\\
+
+
+\subsubsection{Sobrescribir un método con super()} % oeverride
+% https://www.youtube.com/watch?v=hGmWyJ2oD78
+% https://pythones.net/herencia-simple-y-multiple-python-oop/  didactico 
+% principio de especificacion, clase mas especializada, 
+
+Consideremos el mismo ejemplo, ahora con un método llamado {\ttfamily dato()} en la clase {\ttfamily Persona()}
+retornando el nombre completo:
+\begin{lstlisting}
+	class Persona():
+	""" Describe las habilidades y destrezas de una persona"""
+	def __init__(self, nombre, apellido, idt):
+	self.nombre = nombre
+	self.apellido = apellido
+	self.idt = idt
+	
+	def nombre_completo(self):
+	# txt = "{0} {1}: {2}"
+	# return txt.format(self.nombre, self.apellido, self.idt)
+	return f"{self.nombre} {self.apellido} :{self.idt}"
+	
+	def dato(self):
+	print(self.nombre_completo())
+\end{lstlisting}
+
+
+% print("Profesion: {1} {0} {2}".format(self.nombre,self.profesion,self.apellido))
+% print(f'Profesion: {self.profesion} {self.nombre} {self.apellido}')
+% print(f"Profesion: {self.profesion}")   
+
+En la clase hija definimos un método con el mismo nombre {\ttfamily dato()}, pero con otra acción, mostrar la profesión. Para que la clase hija herede toda la acción del método {\ttfamily dato()} del padre, se debe agregar {\ttfamily super().dato()} debajo de la definición del método {\ttfamily dato()} en la clase hija, como se muestra a continuación:
+
+\begin{lstlisting}
+	class trabajador(Persona):
+	def __init__(self, nombre, apellido, idt, prof):
+	super().__init__(nombre, apellido, idt)
+	self.profesion = prof
+	
+	def dato(self):
+	super().dato()
+	prof = f"{self.profesion}"
+	return  prof
+\end{lstlisting}
+
+De esta forma, la clase hija hereda la acción de la clase padre y su propia acción. instanciemos la clase hija:
+\begin{lstlisting}
+	>>> jose = trabajador("jose", "Puente", 18252131,"Ingeniero Civil")
+	>>> jose.dato()
+	jose Puente: 18252131
+	'Ingeniero Civil'
+\end{lstlisting} 
+
+Se obtiene el nombre completo y la profesión, como se quería. Se reutiliza el código de la clase padre y evitamos tener código duplicado. 
+
+Si no se agrega {\ttfamily super()} el método de la clase hija anula el método de la clase padre.
+
+
+
+
+
+
+
+% print(isinstance(jose,estudiante))   
+% print(isinstance(jose,Persona))   
+
+
+\subsection{Herencia Múltiple}
+% En pocas palabras, la función super() nos permite acceder a los métodos de la clase padre desde una de sus hijas
+
+
+
+En Python es posible realizar herencia múltiple. En secciones anteriores hemos visto como se podía crear  una clase hija que hereda de una clase padre, pudiendo hacer uso de sus métodos y atributos. La herencia múltiple es similar, pero una clase hija hereda de varias clases padre en vez de una sola:
+
+
+\begin{center}
+	\begin{picture}(300,110)
+		%	\put(0,0){\line(0,1){110}}
+		\put(125,95){\framebox(50,10)[c]{\tiny \bf clase 2}}
+		\put(125,80){\framebox(50,15)[c]{Principal} } % caja
+		\put(150,60){\line(0,1){20}}   % linea inclinada 
+		\put(50,60){\line(1,0){200}}   % linea  horizontal
+		
+		\put(50,60){\line(0,1){20}}
+		\put(25,95){\framebox(50,10)[c]{\tiny \bf clase 1 }}
+		\put(25,80){\framebox(50,15)[c]{Principal}}
+		
+		\put(150,40){\line(0,1){20}}
+		\put(125,30){\framebox(50,10)[c]{\tiny \bf Subclase }}
+		\put(125,15){\framebox(50,15)[c]{hija}}
+		
+		\put(250,60){\line(0,1){20}}
+		%\put(225,30){\framebox(50,10)[c]{\tiny \bf Subclase }}
+		%\put(225,15){\framebox(50,20)[c]{hija}}	
+		\put(225,95){\framebox(50,10)[c]{\tiny \bf clase 3}}
+		\put(225,80){\framebox(50,15)[c]{Principal}}
+	\end{picture}
+\end{center}
+Por un lado tenemos tres clases principales, Clase1, Clase2, y Clase3, y por otro tenemos la Clase\_hija que hereda de las tres. Por lo tanto, heredará todos los métodos y atributos de las tres.
+\begin{lstlisting}
+	class Clase1:
+	pass
+	
+	class Clase2:
+	pass
+	
+	class Clase3:
+	pass    
+	
+	class Clase_hija(Clase1, Clase2, Clase3):
+	pass
+\end{lstlisting}
+
+
+Ilustremos con ejemplos sencillos. Consideremos tres clase, una {\ttfamily Persona()}, {\ttfamily Encargado()} y {\ttfamily Estudiante()}, que representan características específicas, definida como sigue:
+
+\begin{lstlisting}
+	
+\end{lstlisting}
+
+Ésta clase representa una persona con nombre, apellido  y edad.  Y la clase encargado que representa una persona encargada de un departamento:  
+
+\begin{lstlisting}
+	class Encargado():
+	def __init__(self,nombre,apellido, código, departamento):
+	self.nombre = nombre
+	self.apellido = apellido
+	self.código = código
+	self.departamento = departamento
+\end{lstlisting}
+
+
+Ahora la clase {\ttfamily Estudiante()}. Observe un estudiante es una persona, así que puede crearse a partir de la clase persona, heredando atributos y métodos:  
+
+\begin{lstlisting}
+	class Estudiante(Persona):
+	def __init__(self,nombre, apellido, edad,clave,facultad):
+	super().__init__(nombre, apellido, edad)
+	self.clave=clave
+	self.facultad=facultad
+\end{lstlisting}
+
+Y suponga que un estudiante también puede ser encargado, y creamos una clase para estudiante encargado ({\ttfamily EstudianteEncargado()}), pero un estudiante es una persona y puede ser encargado, por lo que podemos crear la clase hija, a partir de las clases {\ttfamily Persona()} y {\ttfamily Encargado()}:
+Esta clase tendrá herencia múltiple, de dos clases padre o principales:
+
+\begin{lstlisting}
+	class EstudianteEncargado(Persona,Encargado):
+	def __init__(self,nombre, apellido, edad, código, departamento,
+	clave, facultad):
+	super().__init__(nombre, apellido, edad)
+	Encargado.__init__(self, nombre, apellido, código,
+	departamento)        
+	self.código = código
+	self.departamento=departamento
+	self.clave=clave
+	self.facultad=facultad
+\end{lstlisting}
+
+Observe, hay dos atributos que son iguales en las clase padre, Python toma los de la primera clase, y se escriben en orden.
+
+Instanciamos la clase hija y verificamos su funcionamiento:
+\begin{lstlisting}
+	>>> luis = EstudianteEncargado("Luis", "Guerra",23,1023,"Matematica","M121",
+	"Ingeniería")
+	>>> print("Nombre: ",luis.nombre,luis.apellido, " Clave: "luis.clave,
+	"Facultad: ", luis.facultad)
+	Nombre: Luis Guerra  Clave: M121  Facultad: Ingeniería
+\end{lstlisting}
+
+Aquí la clase hija heredo todo de las clases principales, como se quería.\\
+
+Por otro lado, también es posible  que una clase herede de otra clase y a su vez otra clase herede de la anterior:
+
+\begin{lstlisting}
+	class Clase1:
+	pass
+	
+	class Clase2(Clase1):
+	pass
+	
+	class Clase3(Clase2):
+	pass
+\end{lstlisting}
+
+
+
+
+
+\section{Una ilustración didáctica}
+
+
+Las clases se pueden implementar para representar muchas situaciones del mundo real. En esta sección construiremos un modelo simple de una clase,  pero de gran ayuda para entender el uso de clase, con los atributos y métodos, y la aplicación de la herencia.  Una vez que escribe una clase, pasará la mayor parte tiempo trabajando con instancias creadas a partir de esa clase; y una de las primeras tareas que se presenta es modificar los atributos o métodos asociados con una instancia en particular. 
+
+Se puede modificar los atributos de una instancia directamente o escribir métodos que actualicen los atributos de formas específicas.
+
+\subsection{Una clase Auto}
+
+Ejemplificamos con la clase Auto;  una  clase que represente un automóvil, que almacenará información sobre el tipo de automóvil con el que estamos trabajando y tendrá un método que resuma esta información:
+
+
+\hspace{-2.0cm}{\ttfamily \scriptsize auto.py}  \vspace{-0.5cm}
+\begin{lstlisting}
+	class Auto:
+	"""clase que intenta describir un automóvil."""
+	def __init__(self, marca, modelo, año):
+	"""Inicializar atributos para describir un automóvil."""
+	self.marca = marca
+	self.modelo = modelo
+	self.año = año
+	def descripcion(self):
+	"""Devuelve la descripción del vehículo en formato de título."""
+	nombre_largo = f"Tipo de vehículo: {self.marca} {self.modelo}\
+	{self.año}"
+	return  nombre_largo.title()
+\end{lstlisting}
+
+
+En la clase Auto, definimos el método  {\ttfamily \_\!\_init\_\!\_()}, con el parámetro {\ttfamily self}, seguido de  tres parámetros: {\ttfamily marca}, {\ttfamily modelo} y {\ttfamily año}. El método {\ttfamily \_\!\_init\_\!\_()} toma estos parámetros y los asigna a los atributos (variables dentro de la clase) que se asociarán con las instancias hechas a partir de esta clase. Cuando creamos una nueva instancia, por ejemplo {\ttfamily mi\_carrito}, necesitaremos especificar los valores de {\ttfamily marca}, {\ttfamily modelo} y {\ttfamily año} para la instancia.\\
+
+Definimos un método llamado {\ttfamily descripcion()}  que coloca el año, marca y modelo del vehículo en una cadena que describe claramente el automóvil. Esto evita que tengamos que imprimir el valor de cada atributo individualmente. 
+
+Para trabajar con los valores de atributos en este método, utilizamos {\ttfamily self.marca}, {\ttfamily self.modelo} y {\ttfamily self.año}.
+
+Creamos una instancia de la clase {\ttfamily Auto}, y la asignamos a la variable {\ttfamily mi\_carrito}. Luego llamamos el método {\ttfamily descripcion()} para ver qué tipo de auto tenemos:
+
+\begin{lstlisting}
+	In[]:
+	>>> mi_carrito = Auto("chebrolet","Spark", 2007)
+	>>> print(mi_carrito.descripcion())
+\end{lstlisting}
+{\ttfamily\scriptsize\noindent Out[]:\vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Tipo De Vehículo: Chevrolet Spark 2007 
+		\end{verbatim}
+}}
+
+Para hacer la clase más interesante, agreguemos un atributo que almacene el kilometraje total del automóvil y  que cambie con el tiempo. El atributo llamado {\ttfamily lectura\_kilometraje} que siempre comience con un valor de 0, como valor predeterminado para el atributo al crear una instancia.  Y también agregaremos un método {\ttfamily lectura\_kilometraje()} que nos permite leer el kilometraje del vehículo.
+
+Los atributos se pueden definir sin ser pasado como parámetros, y se pueden definir en el método {\ttfamily \_\!\_init\_\!\_()}, donde se les asigna un valor predeterminado.
+
+\hspace{-2.0cm}{\ttfamily \scriptsize auto.py}\vspace{-0.5cm}
+\begin{lstlisting}
+	class Auto:
+	"""clase que intenta describir un automóvil."""
+	def __init__(self, marca, modelo, año):
+	"""Inicializar atributos para describir un automóvil."""
+	self.marca = marca
+	self.modelo = modelo
+	self.año = año
+	self.kilometraje = 0
+	
+	def descripcion(self):
+	"""Devuelve la descripción del vehículo en formato de título."""
+	tipo_vehiculo = f"Tipo de vehículo: {self.marca} {self.modelo} \
+	{self.año}"
+	return  tipo_vehiculo.title()
+	
+	def lectura_kilometraje(self):
+	"""Imprime el kilometraje del automóvil."""        
+	print(f"Este auto tiene {self.kilometraje}  kilómetros.")
+	
+	mi_carrito = Auto("chevrolet","Spark", 2007)
+	print(mi_carrito.descripcion())
+	mi_carrito.lectura_kilometraje()
+\end{lstlisting}
+
+Esta vez, cuando Python llama al método {\ttfamily \_\!\_init\_\!\_()}  para crear una nueva instancia, almacena los valores de marca, modelo y año como atributos, como lo hizo en el ejemplo anterior. Luego Python crea un nuevo atributo llamado kilometraje y establece su valor inicial en 0. También tenemos un nuevo método llamado {\ttfamily lectura\_kilometraje()}  que facilita la lectura del kilometraje de un automóvil.\vspace{0.08cm}
+
+{\ttfamily\scriptsize\noindent Out[]:\vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Tipo De Vehículo: Chebrolet Spark 2007
+			Este auto tiene 0  kilómetros.
+		\end{verbatim}
+}}
+
+Una lectura de 0 kilómetros no es real, siempre tiene un kilometraje mayor que cero, así que necesitamos una forma  para cambiar el valor de este atributo. Hay varias formas para modificar los valores de atributos, presentamos de tres:
+
+Se puede cambiar el valor directamente a través de una instancia.
+
+Se puede establecer el valor a través de un método.
+
+Se puede incrementar el valor a través de un método (agregarle una cierta cantidad).
+
+
+Veamos cada uno de estos enfoques:
+
+Modificar el valor de un atributo directamente: La forma más sencilla de modificar el valor de un atributo es acceder al atributo directamente a través de una instancia. Aquí configuramos la lectura del kilometraje en la instancia  directamente igualándola al valor que se quiere, en este caso 25:
+
+\begin{lstlisting}
+	In[]:
+	>>> mi_carrito.kilometraje = 25
+\end{lstlisting}
+
+Usamos notación de puntos para acceder al atributo kilometraje del automóvil y establecemos su valor directamente. Esta línea le dice a Python que tome la instancia {\ttfamily mi\_carrito}, busque el atributo kilometraje en  ella y establezca el valor de ese atributo en 25:
+
+\begin{lstlisting}
+	In[]:
+	>>> mi_carrito.lectura_kilometraje()
+	Este auto tiene 25 kilómetros.			
+\end{lstlisting}
+
+Algunas veces se debe acceder a los atributos directamente como en este caso, pero otras veces se necesita escribir un método que actualice el valor internamente.\\
+
+Modificar el valor de un atributo mediante un método: Puede resultar útil disponer de métodos que actualicen determinados atributos. En lugar de acceder al atributo directamente, se pasa el nuevo valor a un método que maneja la actualización internamente.
+
+Para ilustrar este procedimiento agregamos dos método más, uno para actualizar el kilometraje,  
+que llamaremos {\ttfamily actualizar\_kilometraje()}, y el otro para registrar el combustible, que llamaremos 
+{\ttfamily depos\_combustible()}:
+
+
+\hspace{-2.0cm}{\ttfamily \scriptsize auto.py}\vspace{-0.5cm}
+\begin{lstlisting}
+	class Auto:
+	"""clase que intenta describir un automóvil."""
+	def __init__(self, marca, modelo, año):
+	"""Inicializar atributos para describir un automóvil."""
+	self.marca = marca
+	self.modelo = modelo
+	self.año = año
+	self.kilometraje = 0
+	self.combustible = 40
+	
+	. . .
+	
+	def actualizar_kilometraje(self, kilometraje):
+	"""
+	Establezca la lectura del kilometraje al valor indicado.
+	Rechazar el cambio si intenta hacer retroceder el kilometraje.
+	"""
+	if kilometraje >= self.kilometraje:
+	self.kilometraje = kilometraje
+	self.lectura_kilometraje()
+	else:
+	print("No puede retroceder el kilometraje!")
+	
+	def depos_combustible(self,combustible):
+	""" Informacion sobre deposito de combustible"""
+	if self.combustible > combustible:
+	falta =  self.combustible-combustible
+	print(f"Este auto le fantan {falta} litros de combustible.")
+	else:
+	print(f"Este auto está full: {self.combustible} litros de \
+	combustible.")        
+\end{lstlisting}
+
+
+
+Ahora la clase {\ttfamily Auto()} tiene dos método  más,  {\ttfamily actualizar\_kilometraje()} y {\ttfamily depos\_combustible()}.  El método  {\ttfamily actualizar\_kilometraje()}  toma un valor de kilometraje y lo asigna a {\ttfamily self.kilometraje}. Y además, extendemos el método {\ttfamily actualizar\_kilometraje()} para asegurar que nadie pueda revertir la lectura del kilometraje en un objeto instanciado.  De esta forma el método {\ttfamily actualizar\_kilometraje} comprueba que la nueva lectura tenga sentido para  modificando el atributo.
+Si el valor proporcionado para el kilometraje es mayor o igual al kilometraje existente (el atributo {\ttfamily self.kilometraje}), se actualiza  la lectura del {\ttfamily lectura\_kilometraje} al nuevo kilometraje. Si el nuevo kilometraje es menor
+que el kilometraje existente, recibirá una advertencia de que no puede retroceder  kilometraje. \\
+
+
+Por otro lado, el método {\ttfamily depos\_combustible()} es semejante al método  {\ttfamily actualizar\_kilometraje} 
+reciente, pero da información sobre el estado de combustible del vehículo. Es un método propio de los autos con combustible.  El atributo {\ttfamily self.combustible} se inicia con un valor predeterminado de 40, declarado en el método    {\ttfamily \_\!\_init\_\!\_()}, que es un estimado de los depósitos de vehículos pequeños. 
+Éste método toma el valor del combustible dado y lo compara con {\ttfamily self.combustible}.  Si {\ttfamily self.combustible} es mayor que el valor de combustible proporcionado, indica que el vehículo está full; si es menor indica la cantidad de combustible que hace falta para estar full.\\
+
+Nuevamente instanciamos la clase con {\ttfamily mi\_carrito}, llamamos el método  {\ttfamily actualizar\_kilometraje()} con 25 como argumento, se establece la lectura del kilometraje en 25 y el método  {\ttfamily lectura\_kilometraje()}, y seguido llamamos al método {\ttfamily depos\_combustible()} con 15 litros de combustible:
+
+\begin{lstlisting}
+	In[]:
+	>>> mi_carrito.actualizar_kilometraje(25)
+	Este auto tiene 25 kilómetros.
+	>>> mi_carrito.depos_combustible(15)
+	Este auto le fantan 25 litros de combustible.
+\end{lstlisting}
+
+En ambos métodos se modifica el valor de un atributo por medio de un método.\\
+
+Por último, modificamos un atributo mediante un método que incrementar el valor. 
+A veces se necesita incrementar el valor de un atributo en una cantidad determinada, en lugar de establecer un valor completamente nuevo. Supongamos recorrimos 100 kilómetros, desde el momento en que compramos el vehículo hasta el momento en que lo registramos.  Para este caso agregamos otro método {\ttfamily incremento\_kilometraje()}, que nos permite pasar la cantidad recorrida y agregar ese valor, a la lectura del kilometraje:
+
+\begin{lstlisting}
+	class Auto:
+	...
+	
+	def incremento_kilometraje(self, kilometros):
+	"""Suma la cantidad recorrida a la lectura del kilometraje."""
+	self.kilometraje+= kilometros        
+	return  self.kilometraje
+\end{lstlisting}
+
+El nuevo método {\ttfamily incremento\_kilometraje()} toma una cantidad de kilómetros y agrega este valor a {\ttfamily self.kilometraje}. Y suspendemos el llamado del método {\ttfamily self.lectura\_kilometraje()} con una {\ttfamily \#} en el método {\ttfamily actualizar\_kilometrajeaje()}.
+
+
+Nuevamente creamos la instancia {\ttfamily mi\_carrito} y configuramos su kilometraje en 25, llamando a {\ttfamily actualizar\_kilometraje()} y pasándole 25. Y finalmente, llamamos a {\ttfamily incremento\_kilometrajeaje()} y le pasamos 100 para agregar el kilometraje  recorrido entre la compra del auto y su matriculación, revisamos la lectura del kilometraje:
+
+\begin{lstlisting}
+	>>> mi_carrito.actualizar_kilometraje(25)	
+	>>> mi_carrito.incremento_kilometraje(100)
+	>>> mi_carrito.lectura_kilometraje()
+	Este auto tiene 125 kilómetros.
+\end{lstlisting}
+
+
+
+En resumen, hemos  construido la siguiente clase:
+
+
+\begin{lstlisting}
+	class Auto:
+	"""clase que intenta describir un automóvil."""
+	def __init__(self, marca, modelo, año):
+	"""Inicializar atributos para describir un automóvil."""
+	self.marca = marca
+	self.modelo = modelo
+	self.año = año
+	self.kilometraje = 0
+	self.combustible = 40
+	
+	def descripcion(self):
+	"""Devuelve un nombre descriptivo perfectamente formateado."""
+	nombre_largo = f"Tipo De Vehículo: {self.marca} {self.modelo} \
+	{self.año} " 
+	return  nombre_largo.title()
+	def lectura_kilometraje(self):
+	"""Imprime un estado del kilometraje del automóvil."""        
+	print(f"Este auto tiene {self.kilometraje} kilometros.")
+	
+	def actualizar_kilometraje(self, kilometraje):
+	"""
+	Establezca la lectura del kilometraje al valor indicado.
+	Rechazar el cambio si intenta hacer retroceder el kilometraje.
+	"""
+	if kilometraje >= self.kilometraje:
+	self.kilometraje = kilometraje
+	#self.lectura_kilometraje()
+	else:
+	print("No puede retroceder el kilometraje!")
+	
+	def depos_combustible(self,combustible):
+	""" Informacion sobre deposito de combustible"""
+	if self.combustible > combustible:
+	falta =  self.combustible-combustible
+	print(f"Este auto le fantan {falta} litros de combustible.")
+	else:
+	print(f"Este auto está full: {self.combustible} \
+	litros de combustible.")             
+	
+	def incremento_kilometraje(self, kilometraje):
+	"""Suma la cantidad indicada a la lectura del odómetro."""
+	self.kilometraje += kilometraje
+\end{lstlisting}Instanciando:
+
+\begin{lstlisting}
+	In[]:
+	>>> mi_carrito = Auto("chevrolet","Spark", 2007)
+	>>> print(mi_carrito.descripcion())
+	>>> mi_carrito.actualizar_kilometraje(25)
+	>>> mi_carrito.lectura_kilometraje()
+	>>> mi_carrito.incremento_kilometraje(100)
+	>>> mi_carrito.lectura_kilometraje()
+	>>> mi_carrito.depos_combustible(15)
+\end{lstlisting}Obtenemos el resultado:\vspace{0.08cm}
+
+{\ttfamily\scriptsize \noindent Out[]:\vspace{-0.3cm}	
+	{\color{blue} 	
+		\begin{verbatim}
+			Tipo De Vehículo: Chevrolet Spark 2007 
+			Este auto tiene 25 kilometros.
+			Este auto tiene 125 kilometros.
+			Este auto le fantan 25 litros de combustible.
+		\end{verbatim}
+}}
+
+
+
+Puede utilizar métodos como este para evitar que algún usuario de su programa actualicen valores como la lectura de algún evento; pero cualquier persona con acceso al programa puede configurar la lectura a cualquier valor, accediendo al atributo directamente. La seguridad eficaz requiere extrema atención a los detalles, además de comprobaciones básicas.
+
+
+
+\subsection{Aplicando Herencia}
+
+Ahora supongamos que necesitamos modelar un auto eléctrico. Pero un auto  eléctrico es sólo una característica específica del tipo de automóvil, por lo que podemos construir el modelo eléctrico  a partir de la clase {\ttfamily Auto}. Partiendo de la clase {\ttfamily Auto}, sólo tendremos que escribir código para los atributos y comportamientos específicos de los autos eléctricos. Comencemos con una versión simple para la clase {\ttfamily AutoElectrico()}, que hace todo lo que hace la clase {\ttfamily Auto()}:
+
+\hspace{-2.6cm}{\ttfamily \scriptsize Auto}
+
+\vspace{-0.2cm}
+\hspace{-2.6cm}{\ttfamily \scriptsize Electrico.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	class AutoElectrico(Auto):
+	"""Un modelo simple para representar un auto eléctrico."""
+	def __init__(self,marca, modelo, año):
+	"""Initializa los atributos de la clase padre."""
+	super().__init__(marca, modelo, año)
+\end{lstlisting}
+
+Probamos si la herencia funciona correctamente intentando crear un auto eléctrico con la misma
+información que proporcionaríamos al fabricar un vehículo normal. 
+Creamos una instancia de la clase {\ttfamily AutoElectrico()} y la asignamos a {\ttfamily auto\_electrico}. Esta línea llama al método {\ttfamily \_\!\_init\_\!\_()} definido en la clase {\ttfamily AutoElectrico}, que a su vez le dice a Python que llame al método {\ttfamily \_\!\_init\_\!\_()} definido en la clase principal {\ttfamily Auto} (mediante la función  {\ttfamily super()}).
+
+
+\begin{lstlisting}
+	In[]:
+	>>> auto_electrico = ElectricCar('Chevrolet', 'Elec', 2024)
+	>>> print(auto_electrico.descripcion())
+	Tipo De Vehículo: Chevrolet Elec 2024 
+\end{lstlisting} 
+
+Aparte del método  {\ttfamily \_\!\!\_init\_\!\!\_()},  no tenemos atributos ni otro método que sean propio de un auto eléctrico. En este punto solo asegurando de que el auto eléctrico  tiene los comportamientos de un auto en general.
+La instancia de {\ttfamily auto\_electrico} funciona igual que una instancia de {\ttfamily Auto}, por lo que ahora
+podemos empezar a definir atributos y métodos específicos de los auto eléctricos.
+
+\subsubsection{Definición de atributos y métodos para la clase secundaria}
+
+Una vez que tenga una clase secundaria que herede de una clase principal, puede agregar
+cualquier nuevo atributo y método necesario para diferenciar la clase secundaria
+de la clase padre.\\
+
+Agreguemos un atributo específico de los autos eléctricos (una batería por ejemplo)
+y un método para informar sobre este atributo; por ejemplo, que almacene el tamaño de la batería y que imprima una 
+descripción de la batería:
+
+\hspace{-2.6cm}{\ttfamily \scriptsize Auto}
+
+\vspace{-0.2cm}
+\hspace{-2.6cm}{\ttfamily \scriptsize Electrico.py}\vspace{-0.84cm}
+\begin{lstlisting}
+	class AutoElectrico(Auto):
+	"""Un modelo simple para representar un vehículos eléctrico."""
+	def __init__(self,marca, modelo, año):
+	"""Initializa los atributos de la clase padre."""
+	super().__init__(marca, modelo, año)
+	self.batería = 40
+	def descripcion_bateria(self):
+	"""Imprime una declaración que describe el tamaño de la batería."""
+	print(f"Este auto tiene una batería de {self.batería} kWh.")
+\end{lstlisting}
+
+Agregamos un nuevo atributo {\ttfamily self.batería} y establecemos su valor inicial en
+40. Este atributo se asociará con todas las instancias creadas a partir del
+Clase {\ttfamily AutoElectrico()} pero no se asociará con ninguna instancia de {\ttfamily Auto()}. 
+También agregamos un método llamado {\ttfamily descripcion\_batteria()} que imprime información sobre el
+batería. Cuando llamamos a este método, obtenemos una descripción muy específica para un auto eléctrico:
+
+\begin{lstlisting}
+	>>> auto_electrico = AutoElectrico('Chevrolet', 'Equinox', 2024)
+	>>> print(auto_electrico.descripcion())
+	Tipo De Vehículo: Chevrolet Equinox 2024
+	>>> auto_electrico.descripcion_bateria()
+	Este auto tiene una batería de 40 kWh.
+\end{lstlisting}\label{bateria40}
+
+No hay límite sobre cuánto puedes especializar la clase {\ttfamily AutoElectrico()}.
+Puede agregar tantos atributos y métodos como necesite para modelar un auto eléctrico
+con el grado de precisión que necesites. 
+
+Un atributo o método que podría pertenecer a cualquier automóvil y no a los autos eléctricos, se debe agregar a la clase {\ttfamily Auto()}, en lugar de agregarlo a la clase {\ttfamily AutoElectrico()}. De esta forma, cualquiera que use la clase {\ttfamily Auto()} tendrá esa funcionalidad disponible, y la clase {\ttfamily AutoElectrico()} solo tendrá código específicos  para la información y el comportamiento de los vehículos eléctricos.
+
+\subsubsection{Anulación de métodos de la clase principal}
+
+Puede anular cualquier método de la clase principal que no se ajuste a lo que queremos modelar en la clase secundaria. Para lograrlose  define un método en la clase secundaria con el mismo nombre que el método que desea anular en la clase principal. Python ignorará el método de la clase principal y solo prestará atención al método que se defina en la clase secundaria.
+
+Por ejemplo, el método llamado {\ttfamily depos\_combustible()} en la clase {\ttfamily Auto()}  no tiene sentido para un vehículo totalmente eléctrico, por lo que se debe anular para evitar confusiones. Aquí presentamos una forma de anular o sobrescribir  métodos:
+
+\hspace{-2.6cm}{\ttfamily \scriptsize Auto}
+
+\vspace{-0.2cm}
+\hspace{-2.6cm}{\ttfamily \scriptsize Electrico.py}\vspace{-1.00cm}
+\begin{lstlisting}
+	class AutoElectrico(Auto):
+	...
+	
+	def depos_combustible(self,combustible):
+	"""Los coches eléctricos no tienen depósito de gasolina."""
+	print("¡Este auto no tiene deposito de gasolina, es eléctrico!")
+\end{lstlisting}
+
+Ahora, si alguien intenta llamar a {\ttfamily depos\_combustible()} con un automóvil eléctrico, Python ignorará el método de la clase {\ttfamily  Auto()}, y ejecutará este código en su lugar:
+
+\begin{lstlisting}
+	In[]:
+	>>> auto_electrico.depos_combustible(10)
+	¡Este auto no usa depósito de combustible, es eléctrico!
+\end{lstlisting}
+
+Cuando usas la herencia, puedes hacer que sus clases secundarias conserven lo que necesitas y anulen todo lo que no necesites de la clase principal. Este procedimiento se conoce como sobrescribir métodos.
+
+\subsection{Instancias como atributo dentro de una Clase} 
+
+Al modelar algo del mundo real en código, es posible que estés agregando más y más detalles a una clase. Descubrirá que tiene una lista cada vez mayor de atributos y métodos, y  sus programas cada vez más largos. En estas situaciones, es posible que necesite dividir la clase, y escribirla como clases separadas.  En este caso puede dividir esa clase muy grande en clases más pequeñas que trabajen juntas; este enfoque se llama composición, y lo ilustramos a continuación:\\
+
+
+Por ejemplo, si  agregamos más detalles en la clase {\ttfamily AutoElectrico()}, digamos que le agregamos  muchos atributos y métodos específicos de la batería. Cuando  sucede esta situación, podemos detener y mover esos atributos y métodos a una clase separada llamada  {\ttfamily Bateria()}.
+
+Definimos una nueva clase llamada {\ttfamily Bateria}; con su respectiva documentación y constructor {\ttfamily \_\!\!\_init\_\!\!\_()}, con  sus  parámetros {\ttfamily self}, y además un parámetro para la capacidad de la batería como {\ttfamily c\_batería }. Este es un parámetro predeterminado que establece la capacidad de la batería en 40, por si no se proporciona el valor. El método  {\ttfamily describe\_bateria()}  también se ha movido a ésta clase.
+
+\hspace{-2.7cm}{\ttfamily \scriptsize composicion}
+
+\vspace{-0.2cm}
+\hspace{-2.3cm}{\ttfamily \scriptsize \_Auto.py}\vspace{-0.86cm}
+\begin{lstlisting}
+	class Auto():
+	...
+	
+	class Batería:
+	"""Describe un modelo simple de una batería para auto eléctrico."""
+	def __init__(self, c_batería = 40):
+	"""Inicializar los atributos de la batería."""
+	self.bateria = c_batería
+	def descripcion_bateria(self):
+	"""Imprime una declaración que describe el tamaño de la batería."""        
+	print(f"Este auto tiene una batería de {self.bateria} kWh.")
+\end{lstlisting}
+
+Luego instanciamos ésta clase {\ttfamily Batería()} como un atributo en la clase {\ttfamily AutoElectrico}:
+
+
+\begin{lstlisting}
+	class AutoElectrico(Auto):
+	"""Representan los aspectos de un auto eléctrico."""
+	def __init__(self, marca, modelo, año):
+	"""
+	Inicializa los atributos de la clase padre.
+	Luego inicializa los atributos de la clase AutoElectrico().
+	"""
+	super().__init__(marca, modelo, año)
+	self.bateria = Batería()
+	
+	def depos_combustible(self):
+	"""Los coches eléctricos no tienen depósito de gasolina."""        
+	print("¡Este auto no tiene deposito de gasolina, es eléctrico!")
+\end{lstlisting}
+
+
+En la clase {\ttfamily AutoElectrico} hemos agregamos una línea con un atributo llamado {\ttfamily self.bateria = Bateria()}, esta línea le dice a Python que cree una nueva instancia de la clase {\ttfamily Bateria()} (con una capacidad predeterminado de 40) y asignamos esa instancia al atributo {\ttfamily self.bateria}. Esto sucederá cada vez que  se llame al método {\ttfamily \_\!\!\_init\_\!\!\_()}. Ahora cualquier instancia de {\ttfamily AutoElectrico()}  tendrá una instancia de batería creada automáticamente.\\
+
+A continuación creamos una instancia de {\ttfamily AutoElectrico()}  y lo asignamos a la variable {\ttfamily carro\_electrico}. Cuando queremos describir la batería, tenemos que usar el atributo {\ttfamily bateria} seguido de un punto y el método {\ttfamily descripcion\_bateria()}:
+
+\begin{lstlisting}
+	In[]:
+	>>> carro_electrico = AutoElectrico("chevrolet Electrico","Spark", 2007)	
+	>>> carro_electrico.bateria.descripcion_bateria()
+	Este auto tiene una batería de 40 kWh.
+\end{lstlisting}La segunda línea de código le indica a Python que busque en la instancia  {\ttfamily carro\_electrico} el atributo {\ttfamily bateria}, y que llame al método definido como {\ttfamily descripcion\_bateria()}, que está asociado con la instancia de la clase {\ttfamily Bateria()} asignada al atributo {\ttfamily bateria}. Al ejecutar, se obtiene el resultado  idéntico al que vimos anteriormente en la página \pageref{bateria40}.\\
+
+
+
+
+Esto parece mucho trabajo extra, pero ahora podemos describir la batería, 
+con tantos detalle como queramos sin saturar la clase {\ttfamily AutoElectrico}. 
+
+Agreguemos otro método a Batería que informe la autonomía del automóvil según el tamaño de la batería:
+
+\hspace{-2.7cm}{\ttfamily \scriptsize composicion}
+
+\vspace{-0.2cm}
+\hspace{-2.3cm}{\ttfamily \scriptsize \_Auto.py}\vspace{-0.88cm}
+\begin{lstlisting}
+	class Auto():
+	...
+	
+	class Batería:
+	"""Describe un modelo simple de una batería para auto eléctrico."""
+	def __init__(self, c_batería = 40):
+	"""Inicializar los atributos de la batería."""
+	self.bateria = c_batería
+	def descripcion_bateria(self):
+	"""Imprime una declaración que describe el tamaño de la batería."""        
+	print(f"Este auto tiene una batería de {self.bateria} kWh.")
+	#  Agregando mas metodos en clase Bateria
+	def alcance(self,bateria):
+	"""Alcance de esta batería."""
+	self.bateria = bateria
+	if self.bateria == 40:
+	rango = 150
+	elif self.bateria == 65:
+	rango = 225
+	elif self.bateria < 40 or self.bateria > 65 or 40 < self.bateria < 65:
+	rango = self.bateria*3
+	print(f"Este automóvil puede recorrer aproximadamente {rango}\
+	\nkilometros con una carga de { self.bateria} kWh.")
+\end{lstlisting}
+
+Nuevamente instanciamos {\ttfamily auto\_electrico}, y llamamos los métodos el atributo {\ttfamily  bateria}, {\ttfamily  describe\_bateria()}  y {\ttfamily alcance()}:
+
+\begin{lstlisting}
+	>>> auto_electrico = AutoElectrico('Chevrolet', 'Equinox ', 2024)
+	>>> print(auto_electrico.descripcion())
+	Tipo De Vehículo: Chevrolet Equinox  2024
+	>>> auto_electrico.bateria.descripcion_bateria()
+	Este auto tiene una batería de 40 kWh.
+	>>> auto_electrico_B.bateria.alcance(65)
+	Este automóvil puede recorrer aproximadamente 225
+	kilometros con una carga de 65 kWh.
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+El nuevo método {\ttfamily alcance()} realiza un análisis simple. Si la capacidad de la batería es de 40 kWh, establece el alcance en 150 millas, y si la capacidad es de 65 kWh, establece el alcance en 225 millas, y en cualquier otro caso hace una estimación. Luego informa este valor. Para ver este informe, tiene que llamar el método a través del atributo {\ttfamily bateria} asociado a la clase  {\ttfamily Bateria}.
+
+El resultado nos indica la autonomía del automóvil en función de la capacidad de su batería:
+
+\begin{lstlisting}
+	>>> auto_electrico_B.bateria.alcance(65)
+	Este automóvil puede recorrer aproximadamente 210
+	kilometros con una carga de 65 kWh.
+\end{lstlisting}
+
+
+Este caso de la composición de clases también se puede implementar como herencia, donde la clase {\ttfamily Bateria} se usa como una clase principal para la clase {\ttfamily class AutoElectrico\_B(Auto,Bateria)}:
+
+\begin{lstlisting}
+	class AutoElectrico_B(Auto,Bateria):
+	"""Un modelo simple para representar un vehículos eléctrico."""
+	def __init__(self,marca, modelo, año):
+	"""Initializa los atributos de la clase padre."""
+	super().__init__(marca, modelo, año)
+	Bateria.__init__(self, batería = 40)
+	def depos_combustible(self,combustible):
+	"""Los coches eléctricos no tienen depósito de gasolina."""
+	print("¡Este auto no usa depósito de combustible, es eléctrico!")
+\end{lstlisting}
+
+Instanciando, se obtiene el mismo resultado:
+
+\begin{lstlisting}
+	In[]:
+	>>> auto_electrico_B = AutoElectrico_B('Chevrolet', 'Elec', 2024)
+	>>> print(auto_electrico_B.descripcion())
+	Tipo De Vehículo: Chevrolet Elec 2024 
+	>>> auto_electrico_B.alcance(56) 
+	Este automóvil puede recorrer aproximadamente 168
+	kilometros con una carga de 56 kWh.
+\end{lstlisting}
+
+Todo sera estilo, conveniencia o decisión del programador.
+
+\section{Modelado de objetos del mundo real}
+% Rechazar = rejetc
+
+A medida que empieces a modelar cosas más complicadas, como los coches eléctricos, te enfrentarás a situaciones  interesantes. Y se dará cuenta que a menudo no existen enfoques correctos o incorrectos para modelar situaciones del mundo real, solo que algunos enfoques son más eficientes que otros, pero se necesita práctica para encontrar las representaciones más eficientes.  Si su código funciona como quieres, ¡lo estás haciendo bien!, No te desanimes
+si descubres que estás destrozando tus clases y reescribiéndolas varias veces utilizando diferentes enfoques; en la búsqueda de escribir de forma precisa y eficiente código, no se preocupe todos pasan por este proceso.
+
+
+
+
+
+\section{Estilo de Clases}
+
+Vale la pena aclarar algunas cuestiones de estilo relacionadas con las clases, especialmente cuando sus programas crecen y se hacen más complicados.
+
+Para los nombres de las clases se sugiere escribir en mayúscula primera letra de cada palabra del nombre, y no usar el guion bajos. Para las instancias y los nombres de módulos deben escribirse en minúsculas, y con guiones bajos entre palabras.
+
+Cada clase debe tener una cadena de documentación inmediatamente después de la definición de clase. La cadena de documentación debe ser una breve descripción de lo que hace la clase, y debes seguir las mismas convenciones de formato que se usan para escribir la documentación en funciones.
+Cada módulo también debe tener una cadena de documentación que describa para qué se pueden utilizar las clases del módulo. Puedes usar líneas en blanco para organizar el código, pero no las uses en exceso. Dentro de una clase puedes
+usar una línea en blanco entre métodos, y dentro de un módulo puede utilizar dos líneas en blanco para separar las clases.
+
+Si necesita importar un módulo de la librería estándar y un módulo que Usted escribió, coloque la declaración de importación para el módulo de librería estándar primero; luego agregue una línea en blanco y la declaración de importación para el módulo que escribió. 
+
+En programas con múltiples declaraciones de importación, esta convención hace que sea más fácil ver 
+de dónde provienen los diferentes módulos utilizados en el programa.
+
+\section{Resumen}
+
+
+En este capítulo, se estudio el tema referente a clase, desde la construcción de clases,  almacenamiento de  información en una clase usando atributos, a escribir métodos que le dan a las clases el comportamiento que se necesita, y los métodos {\ttfamily \_\!\_init\_\!\_()} que crean las instancias de las clases con los atributos que definidos.
+
+Se estudio las formas para modificar los atributos de una instancia, tanto directamente como a través de métodos.
+Se enseñó como la herencia puede simplificar la creación de clases que están relacionadas entre sí, 
+y se mostró el uso de instancias de una clase como atributos en otra clase para mantener cada clase simple.
+
+Se mostró cómo almacenar clases en módulos e importar solo las clases que se  utilizarán,  para mantener los proyectos organizados. 
+
+Finalmente, aprendiste a diseñar tus clases usando convenciones de Python.\\
+
+En el próximo capítulo \ref{Cap10}, se inicia el tratamiento con archivos que permitirán guardar el trabajo que se ha realice como
+programa y  las actividades que realicen los usuarios. También se estudia las excepciones, una clase especial de Python diseñada para ayudarle responder algunos los errores comunes cuando surjan.\\
+
+
+A medida que agrega más funciones a sus clases, sus archivos pueden alargarse, incluso cuando se utiliza la herencia y 
+la composición correctamente. De acuerdo con el filosofía general de Python, se debe mantener los archivos lo más ordenados posible.
+Python te permite almacenar clases en módulos y luego importarlas las clases que necesitas en tu programa principal.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     Archivos y Excepciones     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%       Capitulo                  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+

@@ -1,0 +1,540 @@
+
+
+
+%   https://www.youtube.com/watch?v=oUdd3u7E5ms
+%   https://www.youtube.com/watch?v=aBBmR5Tw9yY
+%   https://www.youtube.com/watch?v=ADHzoMTTsDg
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Inicio   Capitulo  %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% El codigo ASCII sigla en inglés de American Standard Code for Information Interchange ( Código Estadounidense Estándar para el Intercambio de Información )
+
+
+%  https://elcodigoascii.com.ar/
+
+
+
+
+%	\addcontentsline{toc}{chapter}{Resumen }	
+
+\newpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{plain}
+
+
+%     https://www.freeconvert.com/es/epub-to-pdf/download
+
+
+\chapter{Introducción}{\label{Cap1}}\hypertarget{Cap1}{}  %  \hypertarget{Introd}{}\label{Introd}
+
+
+
+
+\begin{wrapfigure}{l}{0.4\textwidth} 
+\vspace{-25pt}\begin{center} \includegraphics[width=0.41\textwidth]{../Logos_de_Python/PythonB}
+	\end{center}\vspace{-30.5pt} %\caption{Python 3} 
+\end{wrapfigure}
+Un lenguaje de programación es un lenguaje informático\footnote{\scriptsize{Un lenguaje informático es un idioma artificial, utilizado por ordenadores, cuyo fin es transmitir información de algo a alguien. Los lenguajes informáticos, pueden clasificarse en: a) lenguajes de programación (Python, PHP, Pearl, C, etc.); b) lenguajes de especificación (UML); c) lenguajes de consulta (SQL);
+ d) lenguajes de marcas (HTML, XML); e) lenguajes de transformación (XSLT); f) protocolos de comunicaciones (HTTP, FTP); entre otros.}}, diseñado para expresar órdenes e instrucciones precisas, que deben ser llevadas a cabo por una computadora. El mismo puede utilizarse para crear programas que controlen el comportamiento físico o lógico de un ordenador. Está compuesto por una serie de
+símbolos, reglas sintácticas y semánticas que definen la estructura del lenguaje.\\
+
+
+%\section*{Compilador e intérprete} \ref{Compilador}
+% https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/compilador-e-interprete/
+
+Para que un ordenador o el procesador puedan comprender las instrucciones que contiene un programa desarrollado previamente, el código fuente escrito en los lenguajes de programación actuales debe convertirse a un formato legible por máquina. De este procedimiento, dependiendo del lenguaje de programación, se encarga un {\bf{compilador}} o un {\bf{intérprete}}. \\
+
+% ¿Qué son exactamente estos dos programas? Y ¿en qué se diferencian?
+
+
+
+Un {\bf{Compilador}} es un programa informático que traduce todo el código fuente de un proyecto de software a código máquina antes de ejecutarlo. Y es luego que el procesador ejecuta el software, obteniendo todas las instrucciones en código máquina antes de comenzar. De esta manera, el procesador cuenta con todos los componentes necesarios para ejecutar el software, procesar las entradas y generar los resultados. 
+Entre los lenguajes compilados puros se incluyen, entre otros,  C, C++ y Pascal.
+
+Los compiladores, por norma general, tienen un mayor rendimiento, porque el código se transforma inmediatamente y no tiene que hacer la transformación cada vez. Convierten todo el código fuente escrito en un lenguaje de programación a un lenguaje de máquina en un solo paso antes de la ejecución. En lugar de ejecutar el código directamente, el compilador crea un archivo ejecutable que contiene todo el código traducido.  Los compiladores tienden a producir ejecutables más rápidos y eficientes porque la transformación se realiza una vez y el proceso de interpretación no tiene que repetirse en cada ejecución.\\
+
+Un {\bf{Intérprete}} es un programa informático que procesa el código fuente de un proyecto de software durante su tiempo de ejecución, es decir, mientras el software se está ejecutando, y actúa como una interfaz entre ese proyecto y el procesador. Un intérprete siempre procesa el código línea por línea, de modo que lee, analiza y prepara cada secuencia de forma consecutiva para el procesador. El proceso de conversión no finaliza hasta que se ha interpretado todo el código. Solo se interrumpe prematuramente si se produce un fallo durante el procesamiento, lo que simplifica mucho la resolución de los errores, ya que la línea de código problemática se detecta inmediatamente después de ocurrir el fallo. Esto hace que los intérpretes permitan depurar  el código más fácilmente (solucionar errores en el código).
+
+
+Entre los lenguajes de programación más populares que dependen de un intérprete  tenemos el BASIC, Perl, Ruby, PHP, y por supuesto  {\bf{Python}};  el  intérprete  traduce  de código fuente a código máquina. Por ello, también suelen llamarse lenguajes interpretados.
+
+
+
+
+
+% Un lenguaje interpretado o de script es aquel que se ejecuta utilizando un programa intermedio llamado intérprete, en lugar de compilar el código a lenguaje máquina que pueda comprender y ejecutar directamente en una computador.
+
+% La ventaja de los lenguajes compilados es que su ejecución es más rápida.  Sin embargo los lenguajes interpretados son más flexibles y más portables.
+
+
+
+\subsubsection*{El intérprete de Python}
+
+El intérprete de Python es un programa que ejecuta el código fuente de Python línea por línea, lo traduce a lenguaje de máquina y lo ejecuta de inmediato.  Puede interpretar este proceso semejante al trabajo de los traductores de directos, que van traduciendo lo que se dice frase por frase a medida que van hablando o leyendo. El intérprete toma cada instrucción, la traduce a lenguaje de máquina y luego la ejecuta.
+Si hay un error en tu programa, el intérprete muestra un mensaje de error y la zona exacta del problema. Esto va a facilitar la identificación y corrección del mismo. Esto hace que el proceso de desarrollo y depuración sea más eficiente y productivo.
+Cuando se leen los comandos desde una terminal, se dice que el intérprete está en modo interactivo. \\
+
+
+Python es un lenguaje de programación  de propósito general, significa que se puede utilizar en una amplia variedad de áreas; sus procedimientos, instrucciones y estructuras de datos están diseñados para crear casi cualquier proyecto que implique usar datos, cálculos matemáticos o líneas de código. No hay exclusividad, es software libre y de código abierto; Python y todas las herramientas necesarias están disponibles para todas las plataformas y sistemas operativos principales.  Por lo tanto, es un lenguaje multiplataforma.
+
+El hecho de ser un lenguaje de código abierto, significa que es libre de usar, cualquier persona puede acceder a él,  modificar, crear extensiones o aportes para este lenguaje. Se desarrolla bajo una licencia de Open source o código abierto denominada Python Software Foundation Licence,  aprobada por OSI (\href{https://es.wikipedia.org/wiki/Open_Source_Initiative}{\color{vino} Open Source Initiative }), por lo que se puede usar y distribuir libremente, incluso para uso comercial.\\
+ 
+%   https://informaticapc.com/poo/
+% https://lenguajejs.com/javascript/oop/que-es/
+
+
+
+
+
+
+
+
+
+%  Recordemos que un algoritmo es un procedimiento de resolución de problemas que está formado por una secuencia de instrucciones o pasos bien definidos, ordenados y finitos. Los bucles son secuencias de instrucciones cíclicas que nos permiten repetir una acción mientras se está cumpliendo una determinada condición y el proceso no se para hasta que esta condición no se cumple.
+
+
+\section{Programación Orientada a Objetos}\label{oop}
+%\addcontentsline{toc}{section}{Programación Orientada a Objetos}
+
+
+
+Python es un lenguaje orientado a objetos y preparado para realizar cualquier tipo de programa, se puede desarrollar software para App (Aplicaciones) científicas, para comunicaciones de red, para App de escritorio con Interfaz\footnote{\scriptsize{El término interfaz proveniente del inglés interface, comprendido como “superficie de contacto” entre dos entidades, y se popularizó a través de la tecnología informática; empleándose el vocablo interfaz para referirse  a la interconexión funcional entre dos sistemas, programas, dispositivos,  o bien entre un sistema informático y su usuario humano, permitiendo el intercambio de información.}} gráfica de usuario (GUI, por sus siglas de inglés: Graphics User Interface) para crear  videojuegos, para smartphones, para inteligencia artificial, para automatización de tareas,
+y por supuesto, en la programación Web. 
+
+%  https://concepto.de/interfaz/      https://concepto.de/interfaz/#ixzz8LyL5n1WC   Interfaces gráficas de usuario: 
+
+En general, las interfaces gráficas de usuario  son programas informáticos dedicados a mediar entre el usuario y un sistema computarizado. Brindan un entorno visual con imágenes, animaciones y objetos gráficos que representan la información del sistema y las acciones posibles a llevar adelante. Su principal uso es como Sistema Operativo, como es el caso de Microsoft  Windows,  Linux, Android, iOS, Mac OS,  etc.\\
+
+
+% Interfaces de usuario, cuando sirven para comunicar al usuario de un sistema informático con este último. Por ejemplo: un teclado y un ratón constituyen una interfaz de usuario entre un PC y su usuario. Interfaces físicas, cuando sirven para conectar físicamente (o sea, electrónicamente) dos dispositivos. Por ejemplo, los puertos USB de computadoras y consolas. Interfaces lógicas, cuando permiten la comunicación entre dos programas o piezas de software, como en el caso de los protocolos informáticos. Por ejemplo, la API y el DOM.
+
+
+
+% Este tipo de interfaces le proponen al usuario un lenguaje gráfico interactivo, compuesto por íconos, señales, movimientos y otras dinámicas propias que representan las acciones del sistema informático. Brindan un entorno de trabajo mucho más amigable que una pantalla negra con una línea de texto de comando, o peor aún, un conjunto de operaciones algebraicas.
+
+
+%Las primeras interfaces gráficas de usuario surgieron en la década de 1970, como parte de las primeras computadoras personales en ofrecerse comercialmente. Empleaban la metáfora del escritorio de oficina como motivo del entorno gráfico, ya que las computadoras fueron pensadas inicialmente como herramientas de trabajo, exclusivamente.
+
+%Posteriormente, la llegada de los primeros productos Apple y Microsoft trajo consigo un importante salto adelante en esta materia, tanto así que hoy en día es impensable la interacción con un sistema informático sin este tipo de herramientas vituales (o naturales) a nuestra disposición.
+
+
+
+
+La {{Programación Orientada a Objetos}} (POO, o en inglés OOP) es un estilo o forma de programar muy utilizado, en la que se plantea crear y utilizar estructuras de datos intentando realizar una asociación con objetos muy similar  a la vida real, y expresándolas mediante un conjunto determinado de técnicas de programación; lo que facilita considerablemente la forma de planificar y preparar el código de tus programas o aplicaciones.\\
+
+%\section*{Estructuras de datos}  Donde lo encajo ....
+% https://www.linkedin.com/pulse/python-para-principiantes-estructuras-de-datos-ariza-mahecha/?trk=article-ssr-frontend-pulse_more-articles_related-content-card&originalSubdomain=es
+
+En ciencias de la computación, una estructura de datos es una forma particular de organizar información en un computador para que pueda ser utilizada de manera eficiente.  Los diferentes tipos de estructuras de datos son adecuados para diferentes tipos de aplicaciones, y algunos son altamente especializados para tareas específicas.
+Las estructuras de datos son medios para manejar grandes cantidades de información de manera eficiente para usos tales como grandes bases de datos y servicios de indización de Internet. 
+
+Por lo general, las estructuras de datos eficientes son clave para diseñar algoritmos eficientes. Algunos métodos formales de diseño de lenguajes de programación destacan las estructuras de datos, en lugar de los algoritmos, como el factor clave de organización en el diseño de software. 
+
+Más precisamente, una estructura de datos es una colección de datos que se caracterizan por su organización y las operaciones que se definen en ellos   (\href{https://editorial.uader.edu.ar/wp-content/uploads/2021/04/Algoritmos%20y%20estructuras%20de%20datos%20en%20Python%20-%20digital.pdf}{\color{vino}Quetglás at. al., 1995: 171}); es decir, es una estructura algebraica de datos.\\
+
+% Una variable  puede almacenar  un único  elemento, por el contrario, con las estructuras de datos podemos almacenar muchos más y de varios tipos. Algunas estructuras de datos en Python son las tuplas, las listas, diccionarios, conjuntos, y composiciones de ellos.
+
+% Es administrado por la Python Software Foundation, posee una licencia de código abierto, denominada Python Software Foundation License, que es compatible con la Licencia pública general de GNU a partir de la versión 2.1.1.  
+% Se trata de un lenguaje interpretado o de script, con tipado dinámico, multiplataforma y orientado  a objetos, además cuenta con un gran cantidad de librerías y frameworks disponibles. La sintaxis de Python es sencilla y cercana al lenguaje natural. Por estas razones se trata de uno de los mejores lenguajes para comenzar a programar, –ya que es como programar en pseudocódigo–, y la curva de aprendizaje es bastante alta y rápida.
+
+
+
+
+La Programación Orientada a Objetos está relacionada con resolver grandes problemas dividiéndolos en programa más pequeños a cargo de unidades llamadas objetos con determinadas características y tareas encomendadas. Siguiendo la filosofía de diseño \href{https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/python-oop/}{\color{vino}  "everything is an object"}, es decir, todo es un objeto.\\
+
+Usando  objetos podrás organizar el código, facilitar su reutilización y construir sistemas modulares más flexibles. El término objeto puede referirse a cualquier elemento que quieras manipular o cambiar mientras trabajas en el código. Cada vez que se crea una instancia de una clase (crear un objeto a partir de clase), se declara una variable y crea un nuevo objeto. Los objetos de clase creados de esta forma pueden utilizarse tantas veces como sea necesario.\\
+
+%  Pero estos atributos y métodos se definen en la clase; al momento  de crear la clase y luego al momento de instanciar (crear un objeto a partir de clase) se le brindan los «argumentos» para esos atributos y métodos.
+
+Por ejemplo, si pensamos en un vehículo nos daremos cuenta de que todos tienen en común determinadas características como marca, modelo, color, cilindrada, etc; y realizan las mismas acciones como arrancar, acelerar, frenar, apagar, etc. Si construimos un programa que represente cualquier vehículo con sus características y acciones simuladas, de tal forma que podamos usar este programa para crear un registro por cada vehículo independiente (este es un objeto en POO),  con sus características y acciones del vehículo particular; entonces este programa o prototipo, es llamado en la programación orientada a objeto {\bf Clase} (ver página \pageref{clase}). Las variables y constantes incluidas en una clase se denominan atributos (ver página \pageref{atributos}), y se utilizan para guardar información relacionada (llamada estado). Por otro lado, las funciones que se usan dentro de una clase para modelar las acciones se denominan métodos (ver página \pageref{metodo}). \\
+
+
+
+
+Dentro de este tipo de lenguajes de programación, los más conocidos son C++ y Java, y Python, cabe destacar que no todos ellos implementan las mismas características definidas en dicha metodología.  Este tema de programación orientada a objetos se ve más claro cuando se maneja bien el concepto de Clase. Para mayor información consultar en \href{https://lenguajejs.com/javascript/oop/que-es/}{\color{vino}  Programación orientada a objetos}  y \href{https://es.wikipedia.org/wiki/Programaci%C3%B3n_estructurada}{\color{vino}  Programación estructurada}.\\
+
+
+
+ 
+La sintaxis de Python es simple y se basa en el inglés, lo que hace que sea muy fácil de aprender y utilizar. Python es muy cercano al lenguaje que utilizamos en nuestra comunicación cotidiana, idiomas humanos. Por esta razón, se dice que es un lenguaje de alto nivel\footnote{\scriptsize{Los lenguajes de alto nivel son aquellos cuya característica principal, consiste en una estructura sintáctica y semántica legible, acorde a las capacidades cognitivas humanas. A diferencia de los lenguajes de bajo nivel, son independientes de la arquitectura del hardware, motivo por el cual, asumen mayor portabilidad.}}.\\
+
+En términos técnicos, Python es un lenguaje de programación de alto nivel, que permite procesar fácilmente todo tipo de estructuras de datos, tanto numéricos como de texto;  con una semántica dinámica integrada, que facilita el desarrollo web y las aplicaciones informáticas.\\
+
+
+
+
+
+
+\section{Nacimiento y creador de Python}
+
+\begin{wrapfigure}{l}{0.3\textwidth} 
+	\vspace{-25pt}	\begin{center} \includegraphics[width=0.3\textwidth]{../Logos_de_Python/Guido}
+	\end{center}\vspace{-30.5pt} %\caption{Python 3} 
+\end{wrapfigure} Un programador holandés \href{https://es.wikipedia.org/wiki/Guido_van_Rossum}{\color{vino}Guido Van Rossum}, creó al final de la década de 1980 el lenguaje de programación  Python. Comenzó en 1989 en el Instituto Nacional de Investigación en Matemáticas y Ciencias de la Computación (Centrum Wiskunde \& Informatica, CWI), en principio como un proyecto de afición para mantenerse ocupado durante las vacaciones de Navidad. Logrando lanzar su primera versión  en 1991 en los Países Bajos. El nombre del lenguaje se inspiró en el programa de televisión de la BBC "Monty Python’s Flying Circus", un grupo cómico británico, debido a que era un gran aficionado del programa.
+
+
+Guido Van Rossum, publicó la primera versión del código Python (versión 0.9.0) en 1991. Dicha versión ya incluía buenas características, como algunos tipos de datos y funciones para la gestión de errores. En el 1994 se lanzó la versión  Python 1.0 con nuevas funciones para procesar fácilmente una lista de datos, como la asignación, el filtrado y la reducción. El  16 de octubre de 2000 se lanzó  Python 2.0, con nuevas características útiles para los programadores, como la compatibilidad con los caracteres Unicode y una forma más corta de recorrer una lista. El 3 de diciembre de 2008, se lanzó Python 3.0. Incluía características como la función de impresión y más soporte para la división de números y la gestión de errores. \\
+
+En el año 1999 Van Rossum hizo una propuesta llamada Computer Programming for Everybody a 
+\href{https://es.wikipedia.org/wiki/Agencia_de_Proyectos_de_Investigación_Avanzados_de_Defensa}{\color{vino} DARPA}, en la que describió qué y cómo debería ser Python: 
+
+\begin{itemize}
+	\item[] Python debería ser fácil, intuitivo y tan potente como sus principales competidores. 
+	\item[] El proyecto sería de código abierto para que cualquiera pudiera colaborar.
+	\item[] El código escrito en Python sería tan comprensible como cualquier texto en inglés.
+	\item[] Python debería ser apto para las actividades diarias permitiendo la construcción de prototipos en poco tiempo.
+\end{itemize}
+
+
+
+El lenguaje ha experimentado grandes avances en el desarrollo de código abierto, utilizando 
+las {\bf {"Propuestas de Mejora de Python"{}}} (PEPs) como principal herramienta para sugerencias de mejora y discusiones dentro de la comunidad  (en la sección \ref{PEP} se da una breve introducción a las PPEs). Estas PEPs  se utilizan para describir cambios en el lenguaje o en sus normas, y son evaluadas, aceptadas o rechazadas después de grandes discusiones. Cualquier persona puede escribir y enviar una PEP para su evaluación. \\
+
+
+
+
+
+En los últimos años, Python se ha convertido en uno de los lenguajes de programación más populares\footnote{\scriptsize{Según \href{https://www.economist.com/graphic-detail/2018/07/26/python-is-becoming-the-worlds-most-popular-coding-language}{\color{vino}The Economist} (2018), Python va camino de convertirse en el lenguaje de codificación más popular del mundo. Mientras que lenguajes como Fortran y Lisp  han experimentado un precipitado declive, y lenguajes como C y C++ permanecen estables, lenguajes como Python y JavaScript están en crecimiento. LISP es una familia de lenguajes de programación de computadora de tipo multiparadigma.  Se convirtió rápidamente en el lenguaje de programación favorito en la investigación de la inteligencia artificial.}} del mundo.  Por su versatilidad, simplicidad y potencia que permite realizar aplicaciones de una manera rápida, sencilla y óptima para el despliegue en distintas plataformas, además permite utilizar algoritmos de machine learning e inteligencia artificial en producción. 
+% LiSP : https://es.wikipedia.org/wiki/Lisp#:~:text=Lisp%20(hist%C3%B3ricamente%20LISP)%20es%20una,basada%20en%20la%20notaci%C3%B3n%20polaca.
+
+
+
+
+
+
+
+\section{Usos y características de Python}
+
+Existen muchos casos de grandes empresas, los gigantes de la tecnología que utilizan la programación Python para construir partes de sus paquetes tecnológicos con gran éxito, tal es el caso de Google, la NASA, Netflix, Mercado libre, Spotify, Dropbox, Instagram, Pinterest, Globant, Sattelogic y un largo etcétera.
+
+
+Pero también puede ser usado para construir programas básicos y proyectos en todos los puntos intermedios. Se puede utilizar para crear una amplia variedad de aplicaciones, como:
+
+1. Aplicaciones de escritorio: Se pueden crear aplicaciones de escritorio utilizando el framework Qt o la librería  Tkinter.
+
+2. Aplicaciones web: Se pueden crear aplicaciones web utilizando frameworks como Django, Flask y Pyramid.
+
+3. Juegos: Se pueden crear juegos utilizando librería como Pygame y Panda3D.
+
+4. Análisis de datos: Python es muy popular en el campo del análisis de datos debido a sus librerías, como Pandas, Numpy y Matplotlib.
+
+5. Machine Learning: Python es muy popular en el campo del aprendizaje automático y la inteligencia artificial debido a su librería Scikit-Learn y TensorFlow.
+
+6. Automatización de tareas: Python es muy útil para automatizar tareas repetitivas o para realizar operaciones en varios archivos o carpetas.
+
+7. Redes y seguridad: Python se puede utilizar para crear herramientas de hacking ético, herramientas de seguridad y scripts para administración de redes.\\
+
+
+ Además, es un lenguaje  de programación de propósito general, libre y relativamente fácil de aprender,  características que te invitan a explorar este mundo maravilloso y sorprendente  de Python. 
+ 
+\subsection{Características importantes de Python}
+
+Python es un lenguaje de programación interpretado cuya filosofía hace énfasis  en una sintaxis muy clara y simple con características muy particulares como: \\
+
+ 
+ Es un lenguaje de programación de propósito general, y software de código abierto.\\
+ 
+ Un lenguaje de alto nivel. Es un lenguaje muy fácil de utilizar, debido a que Python utiliza palabras similares a las del inglés. Python es más cercano a los idiomas humanos que otros lenguajes de programación. \\
+ 
+  Es un lenguaje orientado a los objetos. Python considera todo como un objeto, pero también admite otros 
+    tipos de programación, como la programación estructurada y la funcional.\\
+ 
+  Python es un lenguaje interpretado, lo que significa que el código se ejecuta directamente línea por línea,  mediante un intérprete; es decir, no necesita pasar por el proceso de compilación. Si existen errores en el  código del programa, la ejecución se detiene.\\
+  
+   Legibilidad del código: Utiliza una sintaxis clara y simple que hace que el código sea fácil de leer y entender. Esto es especialmente útil para los programadores que trabajan en equipo o que necesitan mantener el código a lo largo del tiempo.\\
+  
+   Es un lenguaje de tipado dinámico\footnote{\scriptsize{Un lenguaje de tipado dinámico es aquel cuyas variables, no requieren ser definidas asignando su tipo de datos, sino que éste, se auto-asigna en tiempo de ejecución, según el valor declarado.  Debido a esto, es posible escribir programas de Python con mayor rapidez.}}, es decir los programadores no tienen que definir tipos de variables cuando escriben código, porque Python determina el tipo en el tiempo de ejecución. \\
+  
+   Python es un lenguaje de programación multipropósito que puede ser utilizado en muchos campos diferentes, lo que lo hace muy versátil.\\
+   
+   Es un lenguaje multiplataforma: significa que puede ser interpretado en diversos Sistemas
+   operativos como GNU/Linux, Windows, Mac OS, Solaris, entre otros.\\
+   
+   Es un lenguaje multiparadigma: acepta diferentes paradigmas (técnicas) de programación, tales
+   como la orientación a objetos, la programación imperativa y funcional.\\
+   
+Cuenta con una gran cantidad de librerías o bibliotecas, lo que hace que sea fácil y rápido desarrollar aplicaciones y programas. Estas librerías cubren una amplia variedad de áreas, desde la manipulación de datos hasta el aprendizaje automático. Tiene librerías para cargar datos, para estadísticas, para visualización, para procesamiento de lenguaje natural, procesamiento de imágenes, para videosjuegos, para inteligencia artificial, machine learning, deep learning, ahora también para IA generativas y sigue sorprendiendo.\\ 
+
+
+%   https://aws.amazon.com/es/what-is/python/
+% https://www.aluracursos.com/blog/que-es-python-historia-guia-para-iniciar#:~:text=Es%20multiparadigma%2C%20lo%20que%20significa,programas%20aplicando%20y%20componiendo%20funciones.
+
+% https://es.wikipedia.org/wiki/Zen_de_Python
+
+% TensorFlow, PyTorch TorchGAN
+
+Esta amplia caja de herramientas proporciona a los {\bf científicos de datos} una gran variedad
+de información general y de especial funcionalidad. Una de las principales ventajas de usar Python es la habilidad para interactuar directamente con el código, utilizando una terminal o entornos de desarrollo internado (IDE), como el IDlE de Python, el Visual Studio Code (VS code), el distribuidor Anaconda con IDE como Spyderm, Jupyter, Jupyter Notebook,  etcétera.  En lo particular a mi me gusta usar Spyderm que viene integrado en Anaconda;  pero en este trabajo he usado el IDLE de Python por su inmediatez  para usar la terminal y los módulos o script. 
+
+Como lenguaje de programación de propósito general, Python también permite la creación de complejas interfaces gráficas de usuario (GUI) y servicios web, y para la integración en sistemas existentes.\\
+
+
+
+En definitiva, es un lenguaje de programación relativamente fácil de aprender, con un gran numero de herramientas  disponibles para todos de forma gratuita.  Esto hace que sea accesible para casi todo el mundo. 
+
+Si dispones de tiempo para aprender Python, conseguirás crear esos proyectos que tienes en mente.\\
+
+
+Los editores o entorno de desarrollo integrado (IDE)  facilitan la edición y creación de código Python, en la siguiente sección \ref{IDEs1} se hace referencia de algunos IDEs y editores con sus características más importantes.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Visual Studio Code   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  https://code.visualstudio.com/updates/v1_84
+%  https://es.wikipedia.org/wiki/Visual_Studio_Code
+%  https://code.visualstudio.com/
+%  https://visualstudio.microsoft.com/es/
+%  https://www.programaenpython.com/miscelanea/configurar-visual-studio-code-para-python/
+%   https://www.freecodecamp.org/espanol/news/visual-studio-vs-visual-studio-code-cual-es-la-diferencia-entre-estos-editores-de-codigo-ide/
+%  https://openwebinars.net/blog/que-es-visual-studio-code-y-que-ventajas-ofrece/
+
+
+
+ 
+
+
+\section{Entornos de desarrollo integrado IDEs}\label{IDEs1}
+% https://aws.amazon.com/es/what-is/python/
+
+Los programadores pasan mucho tiempo escribiendo, leyendo, y editando código, para este trabajo usan un editor de texto o un entorno de desarrollo integrado (IDE, por sus siglas de inglés Integrated DeveLopment Environment); este último es un software que brinda a los desarrolladores  herramientas que facilitan el trabajar con código y hacen que sea lo más eficiente posible. 
+
+Un buen editor realizará tareas sencillas, como resaltar la estructura de su código para que pueda captar o visualizar errores comunes mientras se trabaja.  Los editores también tienen funciones útiles,  como sangría automática, marcadores para mostrar la longitud de línea adecuada, y atajos o salidas rápidas de teclado para operaciones comunes. 
+
+Y un IDE es un editor de texto que incluye otras herramientas, como interactivas, depuradores e introspección de código. Un IDE examina su código al ingresarlo  e intentas aprender sobre el proyecto que estás construyendo. Por ejemplo, cuando comienzas a escribir el nombre de una función, un IDE puede mostrarte todo los argumentos que acepta la función. Este comportamiento puede ser muy útil cuando conoce la funciona y entiendes lo que le muestra. Pero  también puede ser abrumador para un principiante y difícil de solucionar cuando no esta seguro de por qué el código no funciona en el IDE.
+
+% con el siguiente conjunto completo de características: Compleción automática e inspección del código, Gestión de errores y correcciones rápidas, Limpieza del código sin necesidad de cambios de funcionalidad, Compatibilidad con los marcos de aplicaciones web, como Django y Flask Compatibilidad con otros lenguajes de programación, como JavaScript, CoffeeScript, TypeScript, AngularJS y Node. posibilidad de ejecutar, depurar, probar e implementar aplicaciones en máquinas virtuales remotas un depurador para encontrar errores en el código, un creador de perfiles para identificar problemas de rendimiento en el código y un ejecutor de pruebas para llevar a cabo pruebas de unidad Soporte para bases de dato.
+
+Hoy en día, las diferencias entre los editores de texto y los IDE se han desdibujado. Mayoría
+los editores populares tienen algunas características que solían ser exclusivas de los IDE. Asimismo,
+la mayoría de los IDE se pueden configurar para ejecutarse en un modo más ligero que distraiga menos, y le permite utilizar las funciones más avanzadas cuando las necesita.\\
+
+
+Si ya tienes instalado un editor o IDE que te gusta, y además ya ha configurado una versión reciente de Python en su sistema, entonces le animo a que continué esa herramienta que ya conoce. Si aún no tienes un editor o IDE instalado, te recomiendo que instale y configure Visual Studio Code.\\
+
+ A continuación describimos éste IDE, y en el próximo Capítulo  se darán las instrucciones necesarias para su configuración y  como cambiar algunas preferencias como fuentes, indentación, combinaciones de teclas, color de tema, tamaño fuentes,  ayuda adicionales y extensiones.\\
+
+\subsection*{Visual Studio Code}
+\addcontentsline{toc}{section}{Visual Studio Code}
+
+Visual Studio Code (VS Code) es un entorno de desarrollo integrado con un potente editor de código fuente desarrollado por  \href{https://visualstudio.microsoft.com/es/}{\color{vino} Microsoft}, es gratis y se publica bajo una licencia de código abierto. 
+Apto para principiantes, no requiere ninguna configuración para ejecutar sus primeros programas;  pero también lo suficientemente potente como para que  programadores profesionales lo utilicen como su editor principal.
+
+Es un editor multiplataforma, lo que significa que puede ser instalado en todos los sistemas operativos modernos (disponible para Windows, GNU/Linux y macOS), compatible con la mayoría de la programación lenguajes xxx, incluido Python. 
+
+Además del editor y depurador estándar que ofrecen la mayoría de los IDEs,  Visual Studio Code incluye compiladores, herramientas autocompletación de código y resaltado los errores de sintaxis, posee diseñadores gráficos y muchas más funciones para mejorar el proceso de desarrollo de software; con soporte para depuración de código,  y dispone de un gran número de extensiones, que básicamente dan la posibilidad de escribir y ejecutar código en cualquier lenguaje de programación. 
+
+Se puede utilizar para editar, depurar y compilar código, finalmente, publicar su aplicación.  Además, hay disponible una extensión de Python que hace que el editor sea muy eficiente  para escribir y mantener código Python.  También, tiene una buena integración con Git.
+
+
+
+
+
+
+Tiene una terminal integrada, por lo que su salida aparece en la misma ventana como su código. \\
+
+
+
+Y es altamente personalizable, por lo que puedes ajustarlo para que coincida con tu forma de trabajar el código.\\
+
+
+
+
+
+
+
+
+
+En resumen, VS Code un potente editor de texto de calidad profesional, gratuito y apto para principiantes. Ideal tanto para proyectos  simples como complejos, por lo que tal vez se sentirá cómodo usándolo mientras aprendes Python, puedes continuar usándolo
+a medida que avanza hacia proyectos más grandes y complicados.  VS Code puede ser instalado en todos los sistemas operativos modernos y es compatible con la mayoría de la programación lenguajes, incluido Python.\\
+
+
+
+Existen otros editores de texto o IDE, y seguro escuchará y verá a personas que utilizan otros editores de texto, como el IDlE de Python, el distribuidor Anaconda con IDE como Spyderm, Jupyter, Jupyter Notebook. La mayoría de ellos se  configurar de la misma manera que se configura VS Code, y algunos el proceso es más sencillo. A continuación se hace una  breve descripción estos IDEs.\\
+
+
+
+
+
+
+\subsection*{El IDLE de Python}
+\addcontentsline{toc}{section}{Entorno de desarrollo y aprendizaje integrado de  Python}
+
+%  https://docs.python.org/es/3/library/idle.html    acrónimo
+El entorno de desarrollo y aprendizaje integrado (IDLE, por sus siglas de inglés: Integrated Development and Learning Environment)  es el entorno gráfico de desarrollo integrado de Python, que permite editar y ejecutar programas en Python, también es un entorno interactivo (Shell) en el que se pueden ejecutar fragmentos código Python; es instalado de forma predeterminada. 
+
+
+IDLE es también un editor de programas elemental, que permite redactar programas, guardarlos en archivos.py y ejecutarlos.
+La ventana principal de IDLE es siempre el entorno interactivo, pero también es la ventana donde se ejecutarán los programas.
+
+{\bf{IDLE tiene las siguientes características}}\\
+
+Funciona en su mayoría igual en Windows, Unix y macOS, considerado multiplataforma. 
+La ventana del shell de Python (interprete interactivo) con coloreado de código de entrada, salida y mensajes de error. 
+Con editor de texto multiventana con deshacer múltiple, coloreación Python, indentado inteligente, sugerencias de llamadas a funciones, autocompletado.  Búsqueda dentro de cualquier ventana, reemplazo dentro de las ventanas del editor, y búsqueda a través de múltiples archivos.
+Depurador con breakpoints persistentes, por pasos y visualización de espacios de nombres globales y locales.
+Configuración, navegadores y otros cuadros de diálogo.\\
+
+
+
+
+
+
+\subsection*{Anaconda}
+\addcontentsline{toc}{section}{Anaconda}
+%  https://www.anaconda.com/
+En proceso...\\
+
+
+Anaconda es una de las mejores distribuciones de Python y el R. Las distribuciones de Python son un paquete de software que tiene alberga muchos componentes que se suelen utilizar en conjunto.   Esto permite que los usuarios puedan instalar todas las librerías y herramientas con un solo programa, lo que facilita la distribución y uso de los mismos.  El gestor de paquetes por defecto de Anaconda es Conda. Un gestor de paquetes es una herramienta que permite listar, instalar y desinstalar paquetes instalados en un entorno de Python.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.30]{../Logos_de_Python/Anaconda}
+	\caption[Interfaz de Anaconda Navigator]{Interfaz de Anaconda Navigator}
+	\label{Anaconda}
+\end{figure} 
+
+Anaconda está orientada a dar soporte integral al desarrollo científico con Python tanto analítico como gráfico. Entre sus características destacan:
+
+Aplicación gráfica que integra las herramientas y versiones de Python orientadas al desarrollo científico. 
+IDE para desarrollar fácilmente aplicaciones científicas, tanto en código como creación de gráficos. 
+Gestor de paquetes integrado (Conda).  Integración avanzada con Jupyter Notebook. Soporte de entornos virtuales de Python.
+Permite utilizar Python y R en el mismo entorno.\\
+
+
+Anaconda es mantenida y desarrollada por la compañia \href{https://www.anaconda.com}{\color{vino} Anaconda Inc}, que es la responsable de mantener y evaluar la herramienta y los paquetes disponibles del repositorio de Conda. La versión individual de Anaconda es gratuita y se puede descargar \href{https://www.anaconda.com/download}{\color{vino} gratis aquí}. Existe versión para Windows (versión para 32 como 64 bit), MacOS (versión gráfica y de línea de comandos) y para Linux (ubuntu, centos, debian, etc). 
+
+Además, con esto es muy simple crear entornos virtuales e instalar los programas más utilizados para los proyectos de ciencia de datos, como pueden ser Spyder, Pycharm,  Jupyter Notebook, RStudio, y por supuesto también VS code,  a través de la interfaz de Anaconda Navigator (figura \ref{Anaconda}).  Anaconda Navigator es una interfaz gráfica de usuario (GUI) de escritorio incluida en la distribución Anaconda que le permite iniciar aplicaciones y administrar fácilmente paquetes, entornos y canales conda sin usar comandos.
+Navigator puede buscar paquetes en Anaconda.org o en un repositorio local de Anaconda. Está disponible para Windows, macOS y Linux.\\
+
+Anaconda es una herramienta poderosa que ofrece una variedad de características y ventajas para los desarrolladores de Python. Es una herramienta ideal para desarrolladores principiantes y experimentados por igual.
+
+%  https://codigospython.com/introduccion-al-ide-anaconda-caracteristicas-y-ventajas/
+
+Introducción al IDE Anaconda
+
+Anaconda es un entorno de desarrollo integrado (IDE) para el lenguaje de programación Python. Es una herramienta poderosa que ofrece una variedad de características y ventajas para los desarrolladores de Python.
+
+Características
+
+Anaconda ofrece una amplia gama de características, que incluyen:
+
+Integración con Python: Anaconda viene preinstalado con Python, lo que facilita la creación de proyectos de Python.
+Gestor de paquetes: Anaconda incluye un gestor de paquetes llamado conda, que facilita la instalación y actualización de paquetes de Python.
+Entornos virtuales: Anaconda permite crear entornos virtuales, que son entornos de desarrollo aislados que contienen su propio conjunto de paquetes de Python.
+Editor de texto: Anaconda incluye un editor de texto integrado llamado Spyder, que ofrece características avanzadas para el desarrollo de Python.
+Herramientas de ciencia de datos: Anaconda incluye una amplia gama de herramientas de ciencia de datos, como NumPy, SciPy y Pandas.
+
+Ventajas
+
+Anaconda ofrece una serie de ventajas para los desarrolladores de Python, que incluyen:
+
+Facilidad de uso: Anaconda es una herramienta fácil de usar, incluso para los desarrolladores principiantes.
+Eficiencia: Anaconda es una herramienta eficiente que permite a los desarrolladores crear proyectos de Python rápidamente.
+Flexibilidad: Anaconda ofrece una amplia gama de características y herramientas que permiten a los desarrolladores adaptarla a sus necesidades.
+
+Instalación
+
+Anaconda se puede instalar en Windows, macOS y Linux. Para instalar Anaconda, siga estos pasos:
+
+Visite el sitio web de Anaconda y descargue el instalador para su sistema operativo.
+Ejecute el instalador y siga las instrucciones en pantalla.
+
+Tutorial
+
+Para obtener un tutorial paso a paso sobre cómo usar Anaconda, consulte la documentación oficial de Anaconda.
+
+
+
+Conclusión
+
+Anaconda es una herramienta poderosa que ofrece una variedad de características y ventajas para los desarrolladores de Python. Es una herramienta ideal para desarrolladores principiantes y experimentados.\\
+
+
+
+
+
+
+
+
+
+\section*{Spyder} 
+\addcontentsline{toc}{section}{Spyder}
+
+en proceso...\\
+
+Spyder es un entorno de desarrollo integrado (IDE) de código abierto que utilizan numerosos científicos y analistas de datos. Proporciona una experiencia integral de desarrollo con características para el análisis avanzado de datos, su visualización y depuración. 
+
+También incluye las siguientes características:  Editor completo de código que admite varios lenguajes, Consola interactiva de IPython, Depurador básico; y librerías científicas, como Matplotlib, SciPy y NumPy,  con posibilidad de explorar variables en el código
+y posibilidad de visualizar documentación en tiempo real.\\
+
+
+\section*{Jupyter Notebook}
+\addcontentsline{toc}{section}{Jupyter Notebook}
+
+en proceso...\\
+
+Jupyter Notebook es un tipo de herramienta diferente a los editores de texto tradicionales o
+IDE, en el sentido de que es una aplicación web construida principalmente a partir de bloques; cada bloque es un
+un bloque de texto o de código. Los bloques de texto se representan en Markdown, por lo que puedes incluir formato simple 
+en tus bloques de texto.
+
+Los Jupyter Notebooks fueron desarrollados para soportar el uso de Python en
+aplicaciones científicas, pero desde entonces se han expandido hasta volverse útiles en
+una amplia variedad de situaciones. En lugar de simplemente escribir comentarios dentro de un archivo.py, puede escribir texto claro con formato simple, como encabezados, viñetas listas e hipervínculos entre secciones de código.
+Cada bloque de código puede ejecutarse de forma independiente, permitiéndole probar pequeñas partes de su programa, o
+puedes ejecutar todos los bloques de código a la vez. Cada bloque de código tiene su propia salida y puede activar o desactivar las áreas de salida según sea necesario.
+
+Los Jupyter Notebooks pueden resultar confusos a veces debido a las interacciones
+entre diferentes células. Si define una función en una celda, esa función es
+disponible para otras células también. Esto es beneficioso la mayor parte del tiempo, pero puede
+ser confuso en cuadernos más largos y si no comprende completamente cómo el entorno del portátil funciona.
+Si está realizando algún trabajo científico o centrado en datos en Python, podrá casi seguro que vea Jupyter Notebooks en algún momento.\\
+
+
+
+
+
+
+
+La ventana o terminal  shell para ejecutar comandos y mostrar el resultado un editor de textos de varias ventanas que proporciona resaltado de la sintaxis del código y completación automática del código  posesión de su propio depurador.\\
+
+
+Ya tenemos una idea teórica de tanto de Python como de algunos editores e IDEs; ahora debemos dar el paso más importante, que es descargar e instalar Python y  su editor o IDE,  y configurarlos para su conveniencia y comodidad. En el próximo capítulo configuración de Python y los IDEs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Configurando Python   %%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Aqui seguia el Cap 02
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Inicio Cap4  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Inicio %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%   Cap 05
+%%%%%%%%%%%%%%%%%%%%%%%%%%     Funciones           %%%%%%%%%%%%%%%%%%%%%%%%%%%%  Revision Una sentencia de retorno (opcional) 
+
+ 

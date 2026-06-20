@@ -1,0 +1,235 @@
+
+
+\usepackage[spanish]{babel}
+%\usepackage[spanish,es-tabla]{babel}
+
+%\usepackage[spanish]{}
+\usepackage [T1]{fontenc}
+\setcounter{tocdepth}{2}
+
+\newtheorem{defi}{{\bf Definición}}[chapter]
+\usepackage{pifont}  % simbolos del 2023
+\usepackage{amsmath}
+\usepackage{enumerate} 
+\usepackage{xcolor}
+
+
+
+
+%  	\usepackage[color]{showkeys}    %  visualiza etiquetas
+%%%%%%%%%%%%%%%%%%%%%%%%% hiper  vinculos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \renewcommand{\chapter}{\LARGE{\bf {Capítulo}}}
+\usepackage{hyperref}
+\hypersetup{colorlinks , citecolor=Violet, 	linkcolor=black, 	urlcolor=black}
+%  \usepackage[dvipdfm]{hyperref}
+%  \tableofcontents
+
+
+%\hypertarget{bar}
+%Go to \hyperlink{bar}{bar graphic}
+
+
+\usepackage{background} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Rotar texto
+\usepackage{multirow}
+\usepackage{rotating}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     Mini pagina    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \usepackage[papersize={160mm,225mm},tmargin=15mm,bmargin=15mm,lmargin=15mm,rmargin=15mm]{geometry}
+
+%    \usepackage[left=3cm,top=2cm,right=3cm,bottom=8.5cm]{geometry}
+%     
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%  \usepackage{python}
+%  marca de agua
+
+%%%%%%%%%%%%%%%%%%%%%%%%%  Marca de Agua  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage{background} 
+% \backgroundsetup{contents=Borrador, opacity=0.45, scale=10, color=blue, angle=45}
+
+%\includegraphics{logo1} para figuras o graficos
+
+%  https://www.youtube.com/watch?v=a3kbr4UtLXk
+%%%%%%%%%%%%%%%%%%%%%%%%%  Marca de Agua  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Marca de Agua
+%\usepackage{background}
+
+
+%\usepackage{listings}
+
+\usepackage{dsfont}   %  Simbolo de  Numeros en latex
+
+\usepackage{picinpar}  % Para abrir ventanas en parrafos
+
+% Graficas en latex
+
+\usepackage{graphicx} 
+
+\graphicspath{{Imagenes/}} 
+
+%	\usepackage{lscape}   %   pagina horizontal, pero no funciono, giro la figura
+\usepackage{pdflscape}  %   pagina horizontal, si funciona
+
+
+\DeclareGraphicsRule{.emf}{bmp}{}{}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}     %solo para PDFLaTeX
+
+\usepackage{wrapfig}
+
+\usepackage[skins]{tcolorbox}
+
+%	\usepackage{hyperref}         %%%% hiper enlaces 
+
+\usepackage{fancybox}
+
+%\addto\captionsspanish{
+%	\renewcommand{\partname}{Libro}
+%	\renewcommand{\chaptername}{Jornada}     }
+
+\renewcommand{\partname}{Libro}
+
+\renewcommand{\chaptername}{Capítulo}
+
+
+
+
+
+%  \renewcommand{\thefootnote}{\arabic{footnote}}  Nota pie de pagina
+%  \renewcommand{\chaptername}{Capítulo}
+
+
+
+\usepackage{subcaption}
+
+
+
+
+\usepackage{python}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\definecolor{deepblue}{rgb}{0,0,0.5}
+%\definecolor{deepred}{rgb}{0.6,0,0}
+%\definecolor{deepgreen}{rgb}{0,0.5,0}
+%\tiny       	5 5	6 6	6 6
+%\scriptsize	    7 7	8	8
+%\footnotesize
+
+
+
+
+
+
+
+
+\usepackage{colortbl}
+\definecolor{vino}{rgb}{0.5, 0.0, 0.13}
+
+\definecolor{azul}{rgb}{0.1, 0.1, 0.9} 
+\definecolor{azul}{rgb}{0.1, 0.1, 0.9} 
+\definecolor{verde1}{rgb}{0.55, 0.71, 0.0}
+
+\definecolor{verde2}{rgb}{0.01, 0.75, 0.24}
+
+\definecolor{azul2}{rgb}{0.40, 0.56, 0.76}
+\definecolor{amarillo1}{rgb}{0.98, 1, 0.40}
+
+
+\usepackage{listings}
+\usepackage{comment}
+
+\lstset{language=Python,
+	basicstyle=\ttfamily\scriptsize\scriptsize,  
+	%	otherkeywords={self},             % Add keywords here
+	%	keywordstyle=\color{blue},
+    captionpos =b, %  Establece la posición de la leyenda del cuadro de código, pie de código, b= debajo	                  % 
+	% commentstyle=\color{miverde},	
+	emph={0,1,2,3,4,5,6,7,8,9},          % Custom highlighting
+	emphstyle=  \color{black},         % \color{red!85!black},    % Custom highlighting style
+	keepspaces= true,
+	showspaces= false, 
+	otherkeywords={0,1,2,3,4,5,6,7,8,9},              
+%	rulecolor=  \color{green!85!black},%\color{green!85!black},% \color{red!70!blue},    %      \color{gray},	
+	stringstyle= \color{green!85!black},    %    \color{red},
+	% title=\lstname\color{green},
+	keywordstyle= \color{red!70!blue},	%  \bf\color{blue!75!black},    % 
+	%	frame=tb,                         % Any extra options here
+	identifierstyle=  \color{black},   %  \color{blue},
+  %  stringstyle=  \color{red},   %  \color{green!85!black}, 
+   % otherkeywords=   \color{blue},             % Add keywords here
+  %	keywordstyle=\color{blue},
+	showstringspaces=false,
+	commentstyle=\color{red}	
+	      }
+   
+
+
+
+
+\lstset{literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
+	{Ã}{{\~A}}1 {Ẽ}{{\~E}}1 {Ĩ}{{\~I}}1 {Õ}{{\~O}}1 {Ũ}{{\~U}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+	{€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+	{»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1 {¡}{{!`}}1 
+}
+
+%%=================================================================================%%
+%%                        Pagina de fondo   \BgThispage                                          %%
+%%=====================   Pagina da fondo    +=====================================%%
+
+%\usepackage{scrextend}  %  Tamano de letra
+
+%La opción pages puede ser all (para todo el documento) o some, para algunas partes del documento
+
+
+
+% \usepackage[pages=some]{background}  %  some, y  no   all. Por pagina   pages=all  205
+
+
+
+%    \BgThispage   por pagina la marca de aguaa
+
+\backgroundsetup{     % aqui configuracion 
+	scale=1, %escala de la imagen, es recomendable que sea del mismo tamaño que el pdf
+	color=black, %fondo a usar para transparencia
+	opacity=  1,  %       0.2, %nivel de transparencia
+	angle=0, %en caso de querer una rotación
+	contents={%
+%	\includegraphics[width=1.6\linewidth, height=1.45\textheight]{Bill}
+	\includegraphics[width=1.6\linewidth, height=1.45\textheight]{Texto1}
+%   { \bf\Huge{ {\color{red} {\emph{T r a d u c c i ó n:  L i n i s \hspace{0.2cm} G u e r r e r o} } }} } %	\includegraphics[width=\paperwidth,height=\paperheight]{Traducción}%{Bill.jpg} %nombre de la imagen a utilizar como fondo  \LARGE
+	 }}%
+%  {Bill}
+
+%    \BgThispage 
+
+ %  Si la opción en pages=all, entonces automáticamente el fondo de asignará a toda la página, en caso 
+ %   de usar some, entonces es necesario utilizar la etiqueta \BgThispage , para indicar que esa página llevará  % fondo, pero las otras páginas no.
+
+ 
+  
+  %
+ 
+ 
+ 
