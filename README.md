@@ -2,12 +2,9 @@
 \# 📘 Libro de Python - Curso Intensivo
 
 
+👉 Descargar libro en PDF:
 
-\## 📄 Descarga del libro
-
-
-
-👉 \[Descargar PDF](./Para\_Comercializar.pdf)
+👉 https://raw.githubusercontent.com/linis28/Libro_Python_Curso_Intensivo/master/Para_Comercializar.pdf
 
 
 
